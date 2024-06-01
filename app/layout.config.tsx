@@ -16,11 +16,11 @@ export const layoutOptions: Omit<DocsLayoutProps, 'children'> = {
     banner: <SidebarBanner />,
   },
   links: [
-    {
+    /*{
       icon: <BookIcon />,
       text: 'Blog',
       url: '/blog',
       active: 'nested-url',
-    },
+    },*/
   ],
 };
