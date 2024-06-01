@@ -1,0 +1,42 @@
+---
+title: Use Dexalot Subnet
+description: Get first hand experience with an Avalanche Subnet.
+updated: 2024-05-31
+authors: [ashucoder9]
+---
+
+In this activity, we'll interact with our first Subnet. The Dexalot Subnet aims to replicate the user experience of a centralized exchange (CEX) with greater decentralization and transparency. By using a Subnet, Dexalot can offer cheaper transaction fees than other traditional decentralized exchanges while keeping the transparency that centralized exchanges lack.
+
+## Display the Dexalot Subnet in Core
+
+Make sure your Core Wallet is set to Testnet mode, so we do not use real funds. Open your Core Wallet Browser Extension and click "Show all Networks." To display Dexalot to our home screen, click the star icon next to its name.
+
+## Bridge Tokens to Dexalot
+
+Head over to the [Dexalot Testnet](https://app.dexalot-test.com/trade), connect your wallet (top right), and click on the Portfolio Tab. You will have to authenticate your wallet for the first time you interact with Dexalot.
+
+On the Portfolio page, select to deposit 1 AVAX in the Dexalot Portfolio.
+
+![](/course/avalanche-fundamentals/15.png)
+
+A few moments later, your balances should update:
+
+![](/course/avalanche-fundamentals/16.png)
+
+Now head to the Trade tab and sell 0.5 AVAX for USDC. You can select the trading pair AVAX/USDC on the left:
+
+![](/course/avalanche-fundamentals/17.png)
+
+Now, head back to the Portfolio tab and check how the balances updated.
+
+## Withdraw to Fuji C-Chain
+
+From the Portfolio tab, withdraw your AVAX and USDC back to the Fuji C-Chain:
+
+![](/course/avalanche-fundamentals/18.png)
+
+## What just happened?
+
+On the surface, it might feel like a regular decentralized swap. However, there is a substantial difference. We performed our operation not on the C-Chain, but bridged our tokens to a Subnet, performed the operations there, and bridged our tokens back to the C-Chain.
+
+The Subnet (Dexalot) we used was highly specialized for our use case and very cheap. We actually got all the gas token ALOT we needed airdropped, just for bridging assets over. The only fees we had to pay were for bridging. Usually, we would not have done this for a single operation, so these costs do not occur for a single trade, but only for depositing and withdrawing from the portfolio.

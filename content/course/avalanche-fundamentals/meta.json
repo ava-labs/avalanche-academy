@@ -1,0 +1,19 @@
+{
+  "title": "avalanche-fundamentals",
+  "root": true,
+  "pages": [
+    "---Avalanche Fundamentals---",
+    "index",
+    "...01-intro",
+    "---Primer on Avalanche Consensus---",
+    "...02-avalanche-consensus-intro",
+    "---Subnet Architecture---",
+    "...03-multi-chain-architecture-intro",
+    "---Creating A Subnet---",
+    "...04-creating-a-blockchain",
+    "---Virtual Machines & Blockchains---",
+    "...05-vms-and-blockchains",
+    "---Virtual Machine Customization---",
+    "...06-vm-customization"
+  ]
+}
