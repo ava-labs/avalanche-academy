@@ -2,11 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
-.avalanche-fundamentals, .multi-chain-architecture {
+.avalanche-fundamentals, .multi-chain-architecture, .teleporter-token-bridge {
   --primary: 0 100% 50%;
 }
 
-.dark .avalanche-fundamentals, .dark .multi-chain-architecture {
+.dark .avalanche-fundamentals, .dark .multi-chain-architecture, .dark .teleporter-token-bridge {
   --primary: 0deg 92% 76%;
 }
 
