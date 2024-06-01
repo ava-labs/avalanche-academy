@@ -35,7 +35,7 @@ export function Body({
 
 export function NavChildren(): React.ReactElement {
 
-const solutions = [
+const courses = [
   { name: 'Avalanche Fundamentals', description: 'Get a high level overview of Avalanche Consensus, Subnets and VMs', href: '/course/avalanche-fundamentals', icon: CubeTransparentIcon },
   { name: 'Multi-Chain Architecture', description: 'Dive deeper into the Multi-Chain Architecture and deploy your own Blockchain', href: '/course/multi-chain-architecture', icon: CircleStackIcon },
   { name: 'Teleporter', description: "Utilize Teleporter to build cross-chain dApps in Avalanche network", href: '#', icon: ArrowsRightLeftIcon },
@@ -47,7 +47,7 @@ const callsToAction = [
 ]
 
   return (
-    <Popover className="relative">
+    <Popover className="relative hidden md:block">
       <PopoverButton className="inline-flex items-center gap-x-1 text-sm font-semibold leading-6">
         <span>Explore Courses</span>
         <ChevronDownIcon className="h-5 w-5" aria-hidden="true" />
@@ -64,7 +64,7 @@ const callsToAction = [
         <PopoverPanel className="absolute left-1/2 z-10 mt-5 flex w-screen max-w-max -translate-x-1/2 px-4">
           <div className="w-screen max-w-md flex-auto overflow-hidden rounded-3xl bg-white text-sm leading-6 shadow-lg ring-1 ring-gray-900/5">
             <div className="p-4">
-              {solutions.map((item) => (
+              {courses.map((item) => (
                 <div key={item.name} className="group relative flex gap-x-6 rounded-lg p-4 hover:bg-gray-50">
                   <div className="mt-1 flex h-11 w-11 flex-none items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white">
                     <item.icon className="h-6 w-6 text-gray-600 group-hover:text-indigo-600" aria-hidden="true" />
