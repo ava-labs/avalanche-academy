@@ -18,7 +18,6 @@ const withAnalyzer = createBundleAnalyzer({
 
 /** @type {import('next').NextConfig} */
 const config = {
-  output: "export",
   reactStrictMode: true,
   eslint: {
     // Replaced by root workspace command
