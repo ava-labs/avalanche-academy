@@ -37,3 +37,8 @@
   --muted-foreground: 230 80% 84% !important;
   --card: 230 40% 26.3% !important;
 }
+
+/* Fix padding bug in Code block */
+.nd-codeblock .highlighted {
+  padding: 0 16px;
+}
