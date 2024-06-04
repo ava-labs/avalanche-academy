@@ -39,7 +39,7 @@ export function NavChildren(): React.ReactElement {
 const courses = [
   { name: 'Avalanche Fundamentals', description: 'Get a high level overview of Avalanche Consensus, Subnets and VMs', href: '/course/avalanche-fundamentals', icon: CubeTransparentIcon },
   { name: 'Multi-Chain Architecture', description: 'Dive deeper into the Multi-Chain Architecture and deploy your own Blockchain', href: '/course/multi-chain-architecture', icon: CircleStackIcon },
-  { name: 'Teleporter', description: "Utilize Teleporter to build cross-chain dApps in Avalanche network", href: '#', icon: ArrowsRightLeftIcon },
+  { name: 'Teleporter', description: "Utilize Teleporter to build cross-chain dApps in Avalanche network", href: '/course/teleporter', icon: ArrowsRightLeftIcon },
   { name: 'Teleporter Token Bridge', description: "Utilize Teleporter to bridge Tokens in the Avalanche Network", href: '/course/teleporter-token-bridge', icon: CoinsIcon },
   { name: 'HyperSDK', description: 'Learn to build customized Virtual Machines using our SDK', href: '#', icon: CodeBracketIcon },
 ]

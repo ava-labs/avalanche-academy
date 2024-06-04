@@ -1,0 +1,61 @@
+import Link from 'next/link';
+import { cn } from '@/utils/cn';
+import { buttonVariants } from '@/components/ui/button.tsx'
+
+The Avalanche Starter Kit contains everything you need to get started quickly with Avalanche. Among other tools it contains Avalanche CLI. With that you can set up a local network, create a Subnet, customize the Subnet/VM configuration, and so on. 
+
+In this course we will run the Avalanche Starter Kit in a hosted environment on Github. This is the most quick way to get started.
+
+# Start Avalanche Starter Kit in a Codespace
+
+Follow the steps in the following video:
+
+PLACEHOLDER: [Video: Start Avalanche Starter Kit in a Codespace]
+
+
+<Link
+    href="https://github.com/ava-labs/avalanche-starter-kit"
+    className={cn(
+    buttonVariants({ variant: 'default', className: 'mt-4' }),
+    )}
+>Open Avalanche Starter Kit</Link>
+
+- Open the Avalanche Starter Kit Github Repository
+- Click the green **Code** button
+- Switch to the **Codespaces* tab
+- Click **Create Codespace on main**
+
+The Codespace will open in a new tab. Wait until it's fully built
+
+# Verify everything is working correctly
+
+Open the terminal with `` Ctrl + ` `` or by opening it through the menu:
+
+![](/course-images/avalanche-starter-kit/new-terminal.png)
+
+Now enter avalanche -h to verify everything is working:
+
+```bash
+avalanche -h
+```
+
+As a result you should see the help of Avalanche CLI:
+
+```
+Avalanche-CLI is a command-line tool that gives developers access to
+everything Avalanche. This release specializes in helping developers
+build and test Subnets.
+
+To get started, look at the documentation for the subcommands or jump right
+in with avalanche subnet create myNewSubnet.
+
+Usage:
+  avalanche [command]
+
+Available Commands:
+  config                Modify configuration for Avalanche-CLI
+  help                  Help about any command
+  key                   Create and manage testnet signing keys
+
+...
+```

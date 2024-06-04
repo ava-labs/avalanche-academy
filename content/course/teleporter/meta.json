@@ -1,0 +1,25 @@
+{
+  "title": "teleporter",
+  "root": true,
+  "pages": [
+    "---Teleporter---",
+    "index",
+    "...01-intro",
+    "---Interoperability between Blockchains---",
+    "...02-interoperability",
+    "---Avalanche Starter Kit---",
+    "...03-avalanche-starter-kit",
+    "---Teleporter Token Bridge---",
+    "...04-teleporter-token-bridge",
+    "---ERC-20 to ERC-20 Token Bridge---",
+    "...05-erc-20-to-erc-20-bridge",
+    "---Tokens on Multiple Chains---",
+    "...06-tokens-on-multiple-chains",
+    "---Native to ERC-20 Token Bridge---",
+    "...07-native-to-erc-20-bridge",
+    "---ERC-20 to Native Token Bridge---",
+    "...08-erc-20-to-native-bridge",
+    "---Native to Native Token Bridge---",
+    "...09-native-to-native-bridge"
+  ]
+}

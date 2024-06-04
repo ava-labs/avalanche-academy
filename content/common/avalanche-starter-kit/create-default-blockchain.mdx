@@ -1,0 +1,151 @@
+In the following commands, make sure to substitute the name of your Subnet for `<subnetName>` (including the `<>`). You can choose whatever name you want, but I recommend using `mysubnet` as the name to avoid the need for some manual configuration.
+
+To create a Subnet configuration run the following command
+
+```bash
+avalanche subnet create <subnetName>
+```
+
+For example:
+
+```bash
+avalanche subnet create mysubnet
+```
+
+You will be prompted a Wizard to set the Subnet config. For now, follow the default options where possible, except when asked for the Airdrop. Select the **ewoq** address for the airdrop. This address is the default address for the Avalanche test environments and is used for testing purposes.
+
+PLACEHOLDER VIDEO subnet create
+
+After the finishing, you should see something like this:
+
+```
+@martineckardt ➜ /workspaces/avalanche-starter-kit (main) $ avalanche subnet create mysubnet
+✔ Subnet-EVM
+✔ Use latest release version
+Installing subnet-evm-v0.6.3...
+subnet-evm-v0.6.3 installation successful
+creating genesis for subnet mysubnet
+Enter your subnet's ChainId. It can be any positive integer.
+ChainId: 9999
+Select a symbol for your subnet's native token
+Token symbol: TOK
+✔ Low disk use    / Low Throughput    1.5 mil gas/s (C-Chain's setting)
+✔ Airdrop 1 million tokens to the default ewoq address (do not use in production)
+✔ No
+✔ Yes
+✔ Yes
+generating stored key "cli-teleporter-deployer" for teleporter deploys
+  (evm address, genesis balance) = (0x59560360Cb5EA935849C07af1952fF0910bA690D, 600000000000000000000)
+using latest teleporter version (v1.0.0)
+✓ Successfully created subnet configuration
+```
+
+This command creates the config files `genesis.json` and `sidecar.json` inside: `~/.avalanche-cli/subnets/<subnetName>`. If you want, you can retrieve the current config with the following command:
+
+```bash
+avalanche subnet describe <subnetName>
+```
+
+# Start your Local Network (optional)
+
+Now that we created our Subnet config, we need a network that will host that Subnet. The following command will launch 5 nodes running locally:
+
+```bash
+avalanche network start
+```
+
+The result should be something like this:
+
+```
+@martineckardt ➜ /workspaces/avalanche-starter-kit (main) $ avalanche network start
+Backend controller started, pid: 10949, output at: /home/vscode/.avalanche-cli/runs/server_20240328_200709/avalanche-cli-backend.log
+Installing avalanchego-v1.11.3...
+avalanchego-v1.11.3 installation successful
+Starting previously deployed and stopped snapshot
+Booting Network. Wait until healthy...
+Node logs directory: /home/vscode/.avalanche-cli/runs/network_20240328_200711/network_20240328_200712/node<i>/logs
+Network ready to use.
+```
+
+You can check at any time if the network is running by issuing the following command:
+
+```bash
+avalanche network status
+```
+
+If you don't start your network manually it will be automatically started when you deploy your first Subnet with the `avalanche subnet deploy <subnetName>` command.
+
+# Deploy your Subnet
+To deploy your Subnet, run
+
+```bash
+avalanche subnet deploy <subnetName>
+```
+
+When prompted select `Local Network` to deploy on. After the deployment your should see something like this:
+
+```
+@martineckardt ➜ /workspaces/avalanche-starter-kit (main) $ avalanche subnet deploy mysubnet
+✔ Local Network
+Deploying [mysubnet] to Local Network
+Backend controller started, pid: 4623, output at: /home/vscode/.avalanche-cli/runs/server_20240422_160014/avalanche-cli-backend.log
+Installing avalanchego-v1.11.4...
+avalanchego-v1.11.4 installation successful
+​
+Booting Network. Wait until healthy...
+Node logs directory: /home/vscode/.avalanche-cli/runs/network_20240422_160015/node<i>/logs
+Network ready to use.
+​
+Deploying Blockchain. Wait until network acknowledges...
+​
+Teleporter Messenger successfully deployed to c-chain (0x253b2784c75e510dD0fF1da844684a1aC0aa5fcf)
+Teleporter Registry successfully deployed to c-chain (0x17aB05351fC94a1a67Bf3f56DdbB941aE6c63E25)
+​
+Teleporter Messenger successfully deployed to mysubnet (0x253b2784c75e510dD0fF1da844684a1aC0aa5fcf)
+Teleporter Registry successfully deployed to mysubnet (0xA27afa6C3247d91bB1CdeDE8fa374Bda93487777)
+​
+using latest awm-relayer version (v1.1.0)
+Installing AWM-Relayer v1.1.0
+Executing AWM-Relayer...
+​
+Blockchain ready to use. Local network node endpoints:
++-------+----------+-------------------------------------------------------------------------------------+-------------------------------------------+
+| NODE  |    VM    |                                         URL                                         |                 ALIAS URL                 |
++-------+----------+-------------------------------------------------------------------------------------+-------------------------------------------+
+| node1 | mysubnet | http://127.0.0.1:9650/ext/bc/237eLnHWEv6kZsQogeRdTrDzg193HQyRBESoBVM38xjPYPPXaR/rpc | http://127.0.0.1:9650/ext/bc/mysubnet/rpc |
++-------+----------+-------------------------------------------------------------------------------------+-------------------------------------------+
+| node2 | mysubnet | http://127.0.0.1:9652/ext/bc/237eLnHWEv6kZsQogeRdTrDzg193HQyRBESoBVM38xjPYPPXaR/rpc | http://127.0.0.1:9652/ext/bc/mysubnet/rpc |
++-------+----------+-------------------------------------------------------------------------------------+-------------------------------------------+
+| node3 | mysubnet | http://127.0.0.1:9654/ext/bc/237eLnHWEv6kZsQogeRdTrDzg193HQyRBESoBVM38xjPYPPXaR/rpc | http://127.0.0.1:9654/ext/bc/mysubnet/rpc |
++-------+----------+-------------------------------------------------------------------------------------+-------------------------------------------+
+| node4 | mysubnet | http://127.0.0.1:9656/ext/bc/237eLnHWEv6kZsQogeRdTrDzg193HQyRBESoBVM38xjPYPPXaR/rpc | http://127.0.0.1:9656/ext/bc/mysubnet/rpc |
++-------+----------+-------------------------------------------------------------------------------------+-------------------------------------------+
+| node5 | mysubnet | http://127.0.0.1:9658/ext/bc/237eLnHWEv6kZsQogeRdTrDzg193HQyRBESoBVM38xjPYPPXaR/rpc | http://127.0.0.1:9658/ext/bc/mysubnet/rpc |
++-------+----------+-------------------------------------------------------------------------------------+-------------------------------------------+
+​
+Codespace node endpoints:
++-------+----------+-----------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------+
+| NODE  |    VM    |                                                             URL                                                             |                                     ALIAS URL                                     |
++-------+----------+-----------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------+
+| node1 | mysubnet | https://fictional-enigma-x5wrqj6xjjxf99j4-9650.app.github.dev/ext/bc/237eLnHWEv6kZsQogeRdTrDzg193HQyRBESoBVM38xjPYPPXaR/rpc | https://fictional-enigma-x5wrqj6xjjxf99j4-9650.app.github.dev/ext/bc/mysubnet/rpc |
++-------+----------+-----------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------+
+| node2 | mysubnet | https://fictional-enigma-x5wrqj6xjjxf99j4-9652.app.github.dev/ext/bc/237eLnHWEv6kZsQogeRdTrDzg193HQyRBESoBVM38xjPYPPXaR/rpc | https://fictional-enigma-x5wrqj6xjjxf99j4-9652.app.github.dev/ext/bc/mysubnet/rpc |
++-------+----------+-----------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------+
+| node3 | mysubnet | https://fictional-enigma-x5wrqj6xjjxf99j4-9654.app.github.dev/ext/bc/237eLnHWEv6kZsQogeRdTrDzg193HQyRBESoBVM38xjPYPPXaR/rpc | https://fictional-enigma-x5wrqj6xjjxf99j4-9654.app.github.dev/ext/bc/mysubnet/rpc |
++-------+----------+-----------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------+
+| node4 | mysubnet | https://fictional-enigma-x5wrqj6xjjxf99j4-9656.app.github.dev/ext/bc/237eLnHWEv6kZsQogeRdTrDzg193HQyRBESoBVM38xjPYPPXaR/rpc | https://fictional-enigma-x5wrqj6xjjxf99j4-9656.app.github.dev/ext/bc/mysubnet/rpc |
++-------+----------+-----------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------+
+| node5 | mysubnet | https://fictional-enigma-x5wrqj6xjjxf99j4-9658.app.github.dev/ext/bc/237eLnHWEv6kZsQogeRdTrDzg193HQyRBESoBVM38xjPYPPXaR/rpc | https://fictional-enigma-x5wrqj6xjjxf99j4-9658.app.github.dev/ext/bc/mysubnet/rpc |
++-------+----------+-----------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------+
+​
+Browser Extension connection details (any node URL from above works):
+RPC URL:           http://127.0.0.1:9650/ext/bc/237eLnHWEv6kZsQogeRdTrDzg193HQyRBESoBVM38xjPYPPXaR/rpc
+Codespace RPC URL: https://fictional-enigma-x5wrqj6xjjxf99j4-9650.app.github.dev/ext/bc/237eLnHWEv6kZsQogeRdTrDzg193HQyRBESoBVM38xjPYPPXaR/rpc
+Funded address:    0x59560360Cb5EA935849C07af1952fF0910bA690D with 600
+Funded address:    0x8db97C7cEcE249c2b98bDC0226Cc4C2A57BF52FC with 1000000 (10^18) - private key: 56289e99c94b6912bfc12adc093c9b51124f0dc54ac7a766b2bc5ccf558d8027
+Network name:      mysubnet
+Chain ID:          9999
+Currency Symbol:   TOK
+```
+
+This output includes the endpoints of your 5 nodes where you can connect to interact with your Subnet. You're running a Subnet-EVM, this means you can use those RPC URLs to connect to EVM compatible wallet or tools. 
