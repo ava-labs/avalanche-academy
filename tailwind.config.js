@@ -35,13 +35,7 @@ export default {
         sans: ['var(--font-geist-sans)'],
         mono: ['var(--font-geist-mono)'],
       },
-      backgroundImage: {
-        'gradient-radial': 'radial-gradient(circle, var(--tw-gradient-stops))',
-        'repeat-gradient-to-r':
-          'repeating-linear-gradient(to right, var(--tw-gradient-stops))',
-        'repeat-gradient-to-br':
-          'repeating-linear-gradient(to bottom right, var(--tw-gradient-stops))',
-      },
+      
       keyframes: {
         updown: {
           'from, to': {

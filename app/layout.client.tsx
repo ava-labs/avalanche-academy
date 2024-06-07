@@ -4,13 +4,8 @@ import type { ReactNode } from 'react';
 import { modes } from '@/utils/modes';
 import { Popover, PopoverButton, PopoverPanel, Transition } from '@headlessui/react';
 import { ChevronDownIcon, DocumentTextIcon, UserGroupIcon } from '@heroicons/react/20/solid';
-import {
-  CubeTransparentIcon,
-  CircleStackIcon,
-  ArrowsRightLeftIcon,
-  CodeBracketIcon,
-} from '@heroicons/react/24/outline';
-import { CoinsIcon } from 'lucide-react';
+import COURSES from '@/content/courses';
+
 
 export function Title(): React.ReactElement {
 
@@ -36,17 +31,10 @@ export function Body({
 
 export function NavChildren(): React.ReactElement {
 
-const courses = [
-  { name: 'Avalanche Fundamentals', description: 'Get a high level overview of Avalanche Consensus, Subnets and VMs', href: '/course/avalanche-fundamentals', icon: CubeTransparentIcon },
-  { name: 'Multi-Chain Architecture', description: 'Dive deeper into the Multi-Chain Architecture and deploy your own Blockchain', href: '/course/multi-chain-architecture', icon: CircleStackIcon },
-  { name: 'Teleporter', description: "Utilize Teleporter to build cross-chain dApps in Avalanche network", href: '/course/teleporter', icon: ArrowsRightLeftIcon },
-  { name: 'Teleporter Token Bridge', description: "Utilize Teleporter to bridge Tokens in the Avalanche Network", href: '/course/teleporter-token-bridge', icon: CoinsIcon },
-  { name: 'HyperSDK', description: 'Learn to build customized Virtual Machines using our SDK', href: '/course/hypersdk', icon: CodeBracketIcon },
-]
-const callsToAction = [
-  { name: 'Documentation', href: 'https://docs.avax.network', icon: DocumentTextIcon },
-  { name: 'Join our Community', href: 'https://t.me/avalancheacademy', icon: UserGroupIcon },
-]
+  const callsToAction = [
+    { name: 'Documentation', href: 'https://docs.avax.network', icon: DocumentTextIcon },
+    { name: 'Join our Community', href: 'https://t.me/avalancheacademy', icon: UserGroupIcon },
+  ]
 
   return (
     <Popover className="md:relative">
@@ -66,13 +54,13 @@ const callsToAction = [
         <PopoverPanel className="absolute left-1/2 z-10 mt-5 flex w-screen max-w-max -translate-x-1/2 px-4">
           <div className="w-screen max-w-xs md:max-w-md flex-auto overflow-hidden rounded-3xl bg-white text-sm leading-6 shadow-lg ring-1 ring-gray-900/5">
             <div className="p-4">
-              {courses.map((item) => (
+              {COURSES.official_featured.map((item) => (
                 <div key={item.name} className="group relative flex gap-x-6 rounded-lg p-4 hover:bg-gray-50">
                   <div className="mt-1 flex h-4 md:h-12 w-4 md:w-12 flex-none items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white">
                     <item.icon className="h-6 w-6 text-gray-600 group-hover:text-indigo-600" aria-hidden="true" />
                   </div>
                   <div>
-                    <a href={item.href} className="font-semibold text-gray-900">
+                    <a href={`/course/${item.slug}`} className="font-semibold text-gray-900">
                       {item.name}
                       <span className="absolute inset-0" />
                     </a>
