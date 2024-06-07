@@ -67,7 +67,7 @@ const officialCourses: Course[] = [
         icon: Dice3Icon,
         featured: true,
         duration: "2.5 hours",
-        tools: ["Telepoter", "Chainlink VRF"],
+        tools: ["Teleporter", "Chainlink VRF"],
         languages: ["Solidity"]
      },
      {

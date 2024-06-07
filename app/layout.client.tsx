@@ -1,10 +1,11 @@
 'use client';
 import { useParams } from 'next/navigation';
 import type { ReactNode } from 'react';
-import { modes } from '@/utils/modes';
 import { Popover, PopoverButton, PopoverPanel, Transition } from '@headlessui/react';
 import { ChevronDownIcon, DocumentTextIcon, UserGroupIcon } from '@heroicons/react/20/solid';
 import COURSES from '@/content/courses';
+import { LibraryIcon } from 'lucide-react';
+import { useRouter } from 'next/router';
 
 
 export function Title(): React.ReactElement {
@@ -24,9 +25,8 @@ export function Body({
 }: {
   children: ReactNode;
 }): React.ReactElement {
-  const mode = useMode();
 
-  return <div className={mode}>{children}</div>;
+  return <div>{children}</div>;
 }
 
 export function NavChildren(): React.ReactElement {
@@ -94,9 +94,7 @@ export function useMode(): string | undefined {
 }
 
 export function SidebarBanner(): React.ReactElement {
-  const mode = useMode();
-  const currentMode = modes.find((item) => item.param === mode) ?? modes[0];
-  const Icon = currentMode.icon;
+  const Icon = LibraryIcon;
 
   return (
     <div className="-mt-2 flex flex-row items-center gap-2 rounded-lg p-2 text-card-foreground transition-colors hover:bg-muted/80">
