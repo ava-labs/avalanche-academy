@@ -96,7 +96,7 @@ function Courses(props: {title: string, description: string, courses: any[]}): R
           {props.courses.map((course) => (
             <a href={`/course/${course.slug}`} key={course.slug} className="flex max-w-xl flex-col items-start space-y-2">
               <img src={`/course-banner/${course.slug}.jpg`} alt="" className="w-full aspect-[3/2] object-cover rounded-lg mb-5" />
-              <div className="flex items-center gap-x-4 text-xs">
+              <div className="flex flex-wrap items-center gap-4 text-xs">
                 <span className="text-gray-500">
                   {course.duration}
                 </span>
