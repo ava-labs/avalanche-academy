@@ -1,0 +1,9 @@
+{
+  "title": "avalanche-fundamentals",
+  "root": true,
+  "pages": [
+    "---Chainlink VRF with Teleporter---",
+    "index",
+    "...01-intro"
+  ]
+}

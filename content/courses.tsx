@@ -6,7 +6,7 @@ import {
     CodeBracketIcon,
   } from '@heroicons/react/24/outline';
 
-import { CoinsIcon } from 'lucide-react';
+import { CoinsIcon, Dice3, Dice3Icon } from 'lucide-react';
 
 type Course = {
     name: string;
@@ -47,7 +47,7 @@ const officialCourses: Course[] = [
         icon: ArrowsRightLeftIcon,
         featured: true,
         duration: "3 hours",
-        tools: ["Avalanche-CLI"],
+        tools: ["Avalanche-CLI", "Telepoter"],
         languages: ["Solidity"]
      },
      {
@@ -57,8 +57,18 @@ const officialCourses: Course[] = [
         icon: CoinsIcon,
         featured: true,
         duration: "2.5 hours",
-        tools: ["Avalanche-CLI"],
-        languages: ["Solidity", "Go"]
+        tools: ["Avalanche-CLI", "Telepoter"],
+        languages: ["Solidity"]
+     },
+     {
+        name:"Chainlink VRF with Teleporter ",
+        description:"Utilize Teleporter to make Chainlink VRF available on any blockchain in the Avalanche Network",
+        slug:"teleporter-chainlink-vrf",
+        icon: Dice3Icon,
+        featured: true,
+        duration: "2.5 hours",
+        tools: ["Telepoter", "Chainlink VRF"],
+        languages: ["Solidity"]
      },
      {
         name:"HyperSDK",
