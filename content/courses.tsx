@@ -77,6 +77,7 @@ const ecosystemCourses: Course[] = [
         description:"A Minipool represents a validator that is jointly funded equally by AVAX borrowed from liquid stakers and AVAX contribution from the minipool operator. Thanks to Minipool design architecture, users can become validators on the Avalanche network with nearly half the usual AVAX requirement.",
         slug:"gogopool-minipool",
         icon:CodeBracketIcon,
+        duration: "2 hours",
         tools: ["Avalanche-CLI"],
         languages: ["Go"]
    },
@@ -85,6 +86,7 @@ const ecosystemCourses: Course[] = [
         description:"Secure your multi-sig wallet with Safe on a Subnet.",
         slug:"safe-on-an-avalanche-chain",
         icon:CodeBracketIcon,
+        duration: "4 hours",
         tools: ["Avalanche-CLI"],
         languages: ["Go"]
    }

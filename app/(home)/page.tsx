@@ -32,7 +32,7 @@ const features = [
 export default function HomePage(): React.ReactElement {
   return (
     <>
-      <main className="container relative ">
+      <main className="container relative">
         <Hero />
         <Courses title="Explore our Courses" description="We offer fundamental courses are specifically designed for individuals who are new to the Avalanche ecosystem, and advanced courses for those who wish to master the art of configuring, modifying, or even creating entirely new Virtual Machines from scratch." courses={COURSES.official}/>
 
@@ -69,7 +69,7 @@ function Hero(): React.ReactElement {
             </div>
           </div>
           <img
-            src="/banner.png"
+            src="/course-preview.png"
             alt="Product screenshot"
             className="w-[48rem] max-w-none rounded-xl shadow-xl ring-1 ring-gray-400/10 sm:w-[57rem] md:-ml-4 lg:-ml-0"
             width={2432}
@@ -94,7 +94,7 @@ function Courses(props: {title: string, description: string, courses: any[]}): R
         </div>
         <div className="mx-auto mt-7 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 border-gray-200 pt-7 sm:mt-12 sm:pt-12 lg:mx-0 lg:max-w-none lg:grid-cols-3">
           {props.courses.map((course) => (
-            <article key={course.slug} className="flex max-w-xl flex-col items-start space-y-2">
+            <a href={`/course/${course.slug}`} key={course.slug} className="flex max-w-xl flex-col items-start space-y-2">
               <img src={`/course-banner/${course.slug}.jpg`} alt="" className="w-full aspect-[3/2] object-cover rounded-lg mb-5" />
               <div className="flex items-center gap-x-4 text-xs">
                 <span className="text-gray-500">
@@ -111,13 +111,13 @@ function Courses(props: {title: string, description: string, courses: any[]}): R
               </div>
               <div className="group">
                 <h3 className="mt-3 text-lg font-semibold leading-6 group-hover:text-gray-600">
-                  <a href={`/course/${course.slug}`}>
+                  <span>
                     {course.name}
-                  </a>
+                  </span>
                 </h3>
                 <p className="mt-5 line-clamp-3 text-sm leading-6 text-muted-foreground">{course.description}</p>
               </div>
-            </article>
+            </a>
           ))}
         </div>
       </div>
