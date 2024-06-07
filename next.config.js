@@ -19,6 +19,7 @@ const withAnalyzer = createBundleAnalyzer({
 /** @type {import('next').NextConfig} */
 const config = {
   reactStrictMode: true,
+  basePath: '/academy',
   eslint: {
     // Replaced by root workspace command
     ignoreDuringBuilds: true,

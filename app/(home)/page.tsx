@@ -1,12 +1,7 @@
-import { cva } from 'class-variance-authority';
-import {
-  FileTextIcon,
-  SearchIcon,
-} from 'lucide-react';
-import { cn } from '@/utils/cn';
 import { AcademicCapIcon, ChatBubbleLeftRightIcon, CloudArrowUpIcon, GiftIcon, LockClosedIcon, ServerIcon } from '@heroicons/react/20/solid'
 
 import COURSES from '@/content/courses';
+import Link from 'next/link';
 
 
 const features = [
@@ -69,7 +64,7 @@ function Hero(): React.ReactElement {
             </div>
           </div>
           <img
-            src="/course-preview.png"
+            src="/academy/course-preview.png"
             alt="Product screenshot"
             className="w-[48rem] max-w-none rounded-xl shadow-xl ring-1 ring-gray-400/10 sm:w-[57rem] md:-ml-4 lg:-ml-0"
             width={2432}
@@ -94,8 +89,8 @@ function Courses(props: {title: string, description: string, courses: any[]}): R
         </div>
         <div className="mx-auto mt-7 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 border-gray-200 pt-7 sm:mt-12 sm:pt-12 lg:mx-0 lg:max-w-none lg:grid-cols-3">
           {props.courses.map((course) => (
-            <a href={`/course/${course.slug}`} key={course.slug} className="flex max-w-xl flex-col items-start space-y-2">
-              <img src={`/course-banner/${course.slug}.jpg`} alt="" className="w-full aspect-[3/2] object-cover rounded-lg mb-5" />
+            <Link href={`/course/${course.slug}`} key={course.slug} className="flex max-w-xl flex-col items-start space-y-2">
+              <img src={`/academy/course-banner/${course.slug}.jpg`} alt="" className="w-full aspect-[3/2] object-cover rounded-lg mb-5" />
               <div className="flex flex-wrap items-center gap-4 text-xs">
                 <span className="text-gray-500">
                   {course.duration}
@@ -117,7 +112,7 @@ function Courses(props: {title: string, description: string, courses: any[]}): R
                 </h3>
                 <p className="mt-5 line-clamp-3 text-sm leading-6 text-muted-foreground">{course.description}</p>
               </div>
-            </a>
+            </Link>
           ))}
         </div>
       </div>

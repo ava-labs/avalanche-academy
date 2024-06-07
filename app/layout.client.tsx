@@ -6,6 +6,7 @@ import { ChevronDownIcon, DocumentTextIcon, UserGroupIcon } from '@heroicons/rea
 import COURSES from '@/content/courses';
 import { LibraryIcon } from 'lucide-react';
 import { useRouter } from 'next/router';
+import Link from 'next/link';
 
 
 export function Title(): React.ReactElement {
@@ -60,10 +61,10 @@ export function NavChildren(): React.ReactElement {
                     <item.icon className="h-6 w-6 text-gray-600 group-hover:text-indigo-600" aria-hidden="true" />
                   </div>
                   <div>
-                    <a href={`/course/${item.slug}`} className="font-semibold text-gray-900">
+                    <Link href={`/course/${item.slug}`} className="font-semibold text-gray-900">
                       {item.name}
                       <span className="absolute inset-0" />
-                    </a>
+                    </Link>
                     <p className="mt-1 text-gray-600 hidden md:block">{item.description}</p>
                   </div>
                 </div>
@@ -71,14 +72,14 @@ export function NavChildren(): React.ReactElement {
             </div>
             <div className="grid grid-cols-2 divide-x divide-gray-900/5 bg-gray-50 hidden md:block">
               {callsToAction.map((item) => (
-                <a
+                <Link
                   key={item.name}
                   href={item.href}
                   className="flex items-center justify-center gap-x-2.5 p-3 font-semibold text-gray-900 hover:bg-gray-100"
                 >
                   <item.icon className="h-5 w-5 flex-none text-gray-400" aria-hidden="true" />
                   {item.name}
-                </a>
+                </Link>
               ))}
             </div>
           </div>
