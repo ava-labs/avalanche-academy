@@ -4,3 +4,25 @@ description: Learn about the basics of Avalanche.
 updated: 2024-05-31
 authors: [ashucoder9]
 ---
+
+When we send message with Teleporter, we can see check if a message has been delivered, but we do not get any feedback wether the message has been processed correctly or any return value. If we wanted to achieve this, we need to send a message back from the receiver to the original sender.
+
+![](/course-images/teleporter/two-way-communication.png)
+
+# What You Will Learn
+
+In this section, you will go through the following topics:
+
+- **Sender & Receiver:** Understand how we need to change the contracts to send a message back
+- **Send & Track:** Send a roundtrip message and follow the logs
+- **Adapt the example:** Take what you learned and adapt the example
+
+# Exercises
+You will apply your learned knowledge by building your first Cross-Chain application! This application will be deployed on two chains: C-chain and your own Subnet, both running on a Local Network.
+
+Therefore, you will deploy two contracts:
+
+- **Sender on Local C-Chain:** Send a message with a simple string
+- **Receiver on your Subnet:** Receives the message, adds something to the string and send it back
+
+At the end of the section, you will be adapting the example to build an a cross-Subnet dApp that send a number to a contract on another Subnet and receives the result of a mathematical operation. This application is similar to the example above, but will the message will include a number. The receiving contract performs a mathematical operation. 

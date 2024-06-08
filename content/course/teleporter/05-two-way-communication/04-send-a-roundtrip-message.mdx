@@ -1,0 +1,20 @@
+---
+title: 👩‍💻 Send an Track a Roundtrip Message
+description: TBD
+updated: 2024-05-31
+authors: [ashucoder9]
+---
+
+Alright, now let's send the message:
+
+```bash 
+cast send --rpc-url local-c --private-key $PK $SENDER_ADDRESS "sendMessage(address)" $RECEIVER_ADDRESS
+```
+
+## Verify Message Receipt
+
+To check wether the message has been received, we can call the `roundtripMessage()` function on the sender contract. 
+
+```bash
+cast call --rpc-url local-c $SENDER_ADDRESS "roundtripMessage()(string)"
+```

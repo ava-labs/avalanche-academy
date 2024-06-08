@@ -1,0 +1,64 @@
+---
+title: 📕 AWM Relayer
+description: Learn about the basics of Avalanche.
+updated: 2024-05-31
+authors: [ashucoder9]
+---
+
+The AWM Relayer is an application run independently of the blockchain clients. Anyone can run their own AWM Relayer to create a communication channel between two Subnets, and there can be multiple relayers for the same communication channel. There is an open source implementation anyone can use [here](https://github.com/ava-labs/awm-relayer). Soon, AvaCloud will offer hosted relayers.
+
+The AWM Relayers are responsible for picking up the messages at the source Subnet, aggregating the BLS signatures from a sufficiently large share of the source Subnet's validators and submitting a transaction on the destination Subnet.
+
+It is up to the cross-chain application to decide if they allow any relayer to be part of the delivery process, or whether to restrict participation to certain Relayers.
+
+## AWM Relayer Config
+
+The AWM Relayer can be configured so that it is reusable for different networks (Mainnet, Fuji Testnet, Local) and communication channels between Subnets. The following configurations are available:
+
+```json title="https://github.com/ava-labs/awm-relayer/blob/main/sample-relayer-config.json"
+{
+  "info-api": {
+    "base-url": "https://api.avax-test.network"
+  },
+  "p-chain-api": {
+    "base-url": "https://api.avax-test.network"
+  },
+  "source-blockchains": [
+    {
+      "subnet-id": "11111111111111111111111111111111LpoYY",
+      "blockchain-id": "yH8D7ThNJkxmtkuv2jgBa4P1Rn3Qpr4pPr7QYNfcdoS6k6HWp",
+      "vm": "evm",
+      "rpc-endpoint": {
+        "base-url": "https://api.avax-test.network/ext/bc/C/rpc"
+      },
+      "ws-endpoint": {
+        "base-url": "wss://api.avax-test.network/ext/bc/C/ws"
+      },
+      "message-contracts": {
+        "0x253b2784c75e510dD0fF1da844684a1aC0aa5fcf": {
+          "message-format": "teleporter",
+          "settings": {
+            "reward-address": "0x5072..."
+          }
+        }
+      }
+    }
+  ],
+  "destination-blockchains": [
+    {
+      "subnet-id": "7WtoAMPhrmh5KosDUsFL9yTcvw7YSxiKHPpdfs4JsgW47oZT5",
+      "blockchain-id": "2D8RG4UpSXbPbvPCAWppNJyqTG2i2CAXSkTgmTBBvs7GKNZjsY",
+      "vm": "evm",
+      "rpc-endpoint": {
+        "base-url": "https://subnets.avax.network/dispatch/testnet/rpc"
+      },
+      "account-private-key": "0x7493..."
+    }
+  ]
+}
+```
+
+- **Info API URL:** An RPC endpoint where the AWM Relayer can access the Info API to retrieve the information about the network
+- **P-Chain API URL:** An RPC endpoint where the AWM Relayer can access the P-Chain to retrieve the validators of the source Subnet
+- **Source Subnet Configs:** An array of configurations for the source Subnets where the messages are picked up from
+- **Destination Subnet Configs:** An array of configurations for the destination Subnets where the messages are delivered to
