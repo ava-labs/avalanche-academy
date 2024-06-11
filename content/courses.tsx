@@ -1,4 +1,5 @@
 
+import { CommandLineIcon } from '@heroicons/react/20/solid';
 import {
     CubeTransparentIcon,
     CircleStackIcon,
@@ -76,6 +77,16 @@ const officialCourses: Course[] = [
         slug:"hypersdk",
         icon: CodeBracketIcon,
         duration: "4 hours",
+        tools: ["Avalanche-CLI"],
+        languages: ["Go"]
+     },
+     {
+        name:"Customizing the EVM",
+        description:"Learn how to customize the EVM and add your own custom precompiles",
+        slug:"customizing-evm",
+        icon: CommandLineIcon,
+        duration: "4 hours",
+        featured: true,
         tools: ["Avalanche-CLI"],
         languages: ["Go"]
      }

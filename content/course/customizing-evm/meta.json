@@ -1,0 +1,11 @@
+{
+  "title": "customizing-evm",
+  "root": true,
+  "pages": [
+    "---Customizing the EVM---",
+    "index",
+    "...01-intro",
+    "---Primer on Avalanche Consensus---",
+    "...02-intro-to-evm"
+  ]
+}
