@@ -1,0 +1,43 @@
+---
+title: Transactions and Blocks
+description: Learn about another fundamental aspect of the Ethereum ecosystem - Transactions and Blocks.
+updated: 2024-05-31
+authors: [ashucoder9]
+---
+
+## Transactions
+
+In the EVM, a transaction is the smallest piece of work that can be included in a block. It represents a state transition, changing the data of accounts and moving Ether around the network.
+
+Transactions can be Ether transfers or smart contract calls. Each transaction includes the following components:
+
+- Nonce: A value set by the sender to ensure each transaction can only be processed once and to prevent replay attacks
+- Gas Price: How much the sender is willing to pay per unit of gas. Usually, gas is denominated in terms of nanoAvax (or nAvax). Note that 1 nAvax = 1/(10^9) Avax. This is comprised of three components:
+- Base Gas Fee: The minimum nAvax a sender must pay for each unit of gas
+- Maximum Priority Gas Fee: Given that all transactions will pay at least the base gas fee, the maximum priority gas fee is a field which specifies how much additional nAvax a sender is willing to spend per unit of gas.
+- Maximum Total Gas Fee: Specifies the maximum amount of nAvax a sender is willing to spend per unit of gas. The gas price a spender pays is equal to the maximum total gas fee if base gas fee + maximum priority gas fee > maximum total gas fee.
+- Gas Limit: The maximum amount of gas units the sender is willing to pay for the execution of this transaction. When the gas limit is reached, the transaction fails. This prevents transactions from running indefinitely.
+- To: The Ethereum address of the recipient or the smart contract the transaction is directed towards.
+- V, R, S: Cryptographic data used to generate the sender's signature.
+
+## Note on Account Types
+
+In the EVM, there are two types of accounts:
+
+1. Externally Owned Accounts (EOAs): These are accounts controlled by private keys and have no associated code with them. They can send transactions (including Ether transfers) by creating and signing them with their private keys. Essentially, if you are an end-user of Ethereum or Avalanche, you'd likely be using an EOA.
+2. Contract Accounts: These are accounts that have associated code with them (Smart Contracts). Contract accounts can't initiate transactions on their own. Instead, they only perform an operation when instructed to do so by an EOA. This could be a simple Ether transfer or a function call in a smart contract.
+
+## Blocks
+
+A block in the EVM contains a series of transactions that have been validated by miners, bundled together, and linked to the previous block. Each block includes:
+
+- Block Number: If we think of the blockchain as a linked-list, this is the index of the block in a zero-indexed linked-list.
+- Timestamp: The time when the block was mined.
+- Transactions Root: The merkle root of all transactions included in the block.
+- Receipts Root: The merkle root of all transaction receipts.
+- State Root: A hash of the entire Ethereum state after all transactions in the block have been executed.
+- Parent Hash: The hash of the parent block.
+- Gas Limit: The maximum amount of gas all transactions in the block can consume.
+- Gas Used: The total gas used by all transactions in the block.
+- Extra Data: An optional field that can include any data up to 32 bytes.
+- Validator: The address of the node who proposed the block.

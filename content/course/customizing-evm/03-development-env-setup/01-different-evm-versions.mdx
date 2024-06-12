@@ -1,0 +1,30 @@
+---
+title: Different Versions of EVM
+description: Learn about the different versions of Ethereum Virtual Machine (EVM) in Avalanche ecosystem.
+updated: 2024-05-31
+authors: [ashucoder9]
+---
+
+## Geth
+
+Geth (or go-ethereum) is the official implementation of an Ethereum client, written in the Go programming language. It is one of the original and most popular Ethereum clients used today. It is responsible for handling transactions, the deployment and execution of smart contracts and contains the Ethereum Virtual Machine.
+
+## Coreth
+
+Coreth is a fork of Geth maintained by the Ava Labs team that implements the Virtual Machine of the C-Chain. It has been adapted to work with Avalanche Consensus.
+
+## Subnet-EVM
+
+Subnet-EVM is a fork of Coreth that has been altered to make it easy to launch customized EVM-based blockchains on a Subnet. It differs from Coreth in the following ways:
+
+&rarr; Configurable fees and gas limits were added in genesis
+
+&rarr; Avalanche hardforks were merged into the single "Subnet EVM" hardfork
+
+&rarr; Atomic Txs and Shared Memory were removed
+
+&rarr; Multicoin Contract and State were removed
+
+## Precompile-EVM
+
+Precompile-EVM enables registering precompiles to Subnet-EVM without forking the Subnet-EVM codebase. It makes the most common customization of Subnet-EVM easier and more approachable. Also it makes it easier to keep Subnet-EVM up-do-date. 

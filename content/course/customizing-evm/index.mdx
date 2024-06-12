@@ -1,0 +1,88 @@
+---
+title: 👋 Welcome to the Course
+description: Learn how to customize the Ethereum Virtual Machine.
+updated: 2024-05-31
+authors: [ashucoder9]
+---
+
+In this course you will learn how to customize your own EVM. We will configure the EVM using the available parameters of the chainConfig and modify the VM by adding precompiles. At the end of this course you will be able to build customized and optimized versions of the EVM.
+
+## Why take this Course?
+
+A significant innovation in blockchain is the development of multi-chain systems, such as Avalanche, which provide a significant improvement in scalability, interoperability, and flexibility. At the core of these multi-chain systems is the ability to run multiple blockchains powered by different virtual machines simultaneously. Each VM of a chain is optimized for specialized use cases, thereby boosting the network's overall performance.
+
+Configuring and modifying the Ethereum Virtual Machine (EVM) is an incredible efficient way to create a specialized VM, since developers can build on top years of work of an active community and leverage an extensive ecosystem around the EVM consisting of wallets, explorers and development frameworks. 
+
+Customizing the EVM running on the Ethereum network or any other "one-chain-fits-all" network is a difficult process, requiring a wide consensus that the proposed change is mutually beneficial for all network participants. This can make customizations for unique use cases challenging, if not impossible. 
+
+## Course Content
+
+### EVM Basics & Precompiles
+
+In the first section of the course we will go through some basic concepts of the EVM, such as the account-based model, keys, addresses, transactions, and blocks. Furthermore, we will explain what a precompile is and let you interact with a precompile of the Fuji testnet.
+
+### Development Environment Setup
+
+We will show different ways to set up a development environment for building customized EVMs. You will learn about Codespace, DevContainer and if you opt for the local setup, you will install a code editor, the Go language, configure your shell, and install some more dependencies.
+
+### Hands-On Exercises
+
+The following sections contain hands-on exercises where you customize the EVM. The difficulty of the customizations will increase from section to section. Find out more about each exercise by clicking its name below:
+
+<Accordions>
+    <Accordion title="Create your own EVM Blockchain">
+
+    - Learn how the Avalanche Network Runner Works
+    - Create a your own Avalanche Network
+    - Create an EVM Blockchain on your network 
+    - Connect Core Wallet to your blockchain
+
+    </Accordion>
+    <Accordion title="Customize the EVM with chainConfig">
+
+    - Learn what the genesis block is and how the data is structured
+    - Create a custom gas fee structure for your blockchain
+    - Define the initial token allocation at launch
+    - Configure pre-installed precompiles
+    - Create the blockchain and connect to it
+
+    </Accordion>
+    <Accordion title="Build a Hash Function Precompile">
+
+    Learn about the basic building blocks of a precompile by building a precompile for the md5 hash function:
+
+    - Generate boilerplate code for the precompile from a solidity interface
+    - Learn how to unpack inputs and pack outputs into 32 byte arrays
+    - Configure and register your md5 precompile
+    - Create a new blockchain, connect to it and interact with your precompile
+
+    </Accordion>
+    <Accordion title="Build a Calculator Precompile">
+
+    Learn to build more complex precompiles by building a calculator precompile and master the following skills in addition to the previous section:
+    
+    - Unpack multiple inputs and pack multiple outputs into 32 byte arrays
+    - Set a gas cost for your precompile
+    - Add go tests for your precompile
+
+    </Accordion>
+    <Accordion title="Build a Counter Stateful Precompile">
+
+    Learn to build stateful precompiles by building a counter precompile and master the following skills in addition to the previous sections:
+    
+    - Read from and write to the EVM state
+    - Define the initial state in the precompileConfig
+    - Add solidity tests for your precompile
+
+    </Accordion>
+    <Accordion title="Build a Permissioned Precompile (Coming Soon)">
+
+    Learn to build permissioned precompiles by building a XXX precompile and master the following skills in addition to the previous sections:
+    
+    - Add permissions to only allow certain addresses to interact with the precompile 
+    - Define the initial permissions in the precompileConfig
+    - Change the permissions on the fly
+
+    </Accordion>
+
+</Accordions>
