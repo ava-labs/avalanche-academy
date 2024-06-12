@@ -1,0 +1,110 @@
+---
+title: Connect Core
+description: Learn how to connect your blockchain to Core wallet,
+updated: 2024-05-31
+authors: [ashucoder9]
+---
+
+## Connecting to a Local Blockchain
+
+In order to interact with our freshly launched blockchain, we need to connect a wallet to it. Wallets communicate with the blockchain through one of the nodes. To connect a wallet to the blockchain, we need to provide the following information:
+
+- Network RPC URL
+- Network Name
+- Chain ID
+- Token Symbol
+- Default funded account
+
+## RPC URL Structure
+
+Each node provides an RPC endpoint for its Blockchains. When you create a transaction, click on send and sign it. After this, it is sent to the specified RPC URL of your blockchain by your wallet. An RPC URL could look something like this:
+
+```http://127.0.0.1:9654/ext/bc/2YUr8sULVTm25EDFNDUwxnwk73enuqhkci4yXzoAgJYEjQ2HuC/rpc```
+
+Let's dissect this URL:
+
+```http://<node_ip>:<node_port>/ext/bc/<blockchain_id>/rpc```
+
+- node_ip: The IP of the node. Since we are testing locally, all of our nodes share the same IP 127.0.0.1 which equals to localhost, meaning it is always the current machine  
+- node_port: Each Machine requires a unique port to send and receive network data. The standard port is 9650. When running 5 local nodes, they use different ports, skipping odd-numbered ones.
+- blockchain_id: Each Blockchain has a unique id. Since a node validates multiple chains, we have to specify in the url which blockchain we want to submit the transaction to
+
+## Find RPC URLs
+
+To find the RPC URLs of your recently launched blockchain, head to ThunderClient in VS Code and query the RPC URLs endpoint:
+
+![](/course/customizing-evm/17.png)
+
+Alternatively, you can call the command and it will give you the RPCs: `avalanche-network-runner control list-rpcs`
+
+Note: This endpoint has just been recently added. If you don't have the most recent version of ANR, please update ANR or find it in the RPC URLs in the Server Logs.
+
+## RPC URLs for Codespaces
+
+Since we're running our Avalanche network on Github Servers, if we are using codespaces, localhost refers to the machine in the cloud. Therefore, we must take additional steps:
+
+### Publish Ports
+
+First, let's instruct the codespace to make the port available to everyone on the internet. Find the port 9650, right-click the entry, and set the Port Visibility to Public.
+
+![](/course/customizing-evm/18.png)
+
+### Get URL
+
+Next, right-click the same row and click Copy Local Address.
+
+![](/course/customizing-evm/19.png)
+
+This will give us something like:
+
+https://obscure-succotash-pjr7qxv9q6gh696v-9650.app.github.dev/
+
+This is equivalent to "localhost:9650" if we were running the network on our local machine. Now we have to add the rest of the URL (/ext/bc/BLOCKCHAIN_ID/rpc), so we will end up with something like this:
+
+https://obscure-succotash-pjr7qxv9q6gh696v-9650.app.github.dev/ext/bc/2YUr8sULVTm25EDFNDUwxnwk73enuqhkci4yXzoAgJYEjQ2HuC/rpc
+
+Follow these steps to create the RPC Urls for one of the Avalanche nodes running in your own codespace.
+
+## Add Network to Core
+
+Now, open the Core browser extension and navigate to the screen to add a new network.
+
+![](/course/customizing-evm/20.png)
+
+![](/course/customizing-evm/21.png)
+
+Now, enter the RPC URL for your network. Make sure it ends with /rpc: `http://127.0.0.1:node_port/ext/bc/your_blockchain_id/rpc`
+
+Also, add the following information:
+
+- Network Name: Pick an arbitrary name, such as MyChain
+- ChainId: Use the number you assigned at the top of your Genesis JSON file. (If you have been following this tutorial, that should be 99999)
+- Token Symbol: Any symbol name for your native gas token, such as TOK
+
+![](/course/customizing-evm/22.png)
+
+![](/course/customizing-evm/23.png)
+
+Hit **Save**. Then make sure to **switch** to the newly created Network.
+
+## Import Default Account
+
+This Subet uses the default address: 0x8db97C7cEcE249c2b98bDC0226Cc4C2A57BF52FC to airdrop the initial amount of tokens. You will learn how to customize this field in the upcoming ChainConfig section. For now, import the default private key to Core
+
+Private Key: `56289e99c94b6912bfc12adc093c9b51124f0dc54ac7a766b2bc5ccf558d8027`
+
+![](/course/customizing-evm/24.png)
+
+![](/course/customizing-evm/25.png)
+
+## Send Tokens
+
+Send tokens to your other account by clicking the circle with the plus and then send. Now, click on the icon in the address field and switch to the tab My Account to select another account.
+
+![](/course/customizing-evm/26.png)
+
+![](/course/customizing-evm/27.png)
+
+While sending the tokens, reflect on how this is influenced by:
+- The initial token allocation you have set
+- The gas fees you have set

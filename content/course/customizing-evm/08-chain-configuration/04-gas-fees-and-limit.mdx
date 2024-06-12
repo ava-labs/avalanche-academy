@@ -1,0 +1,26 @@
+---
+title: Gas Fees and Gas Limit
+description: Learn about Gas Fees and Gas Limit in the context of the EVM.
+updated: 2024-05-31
+authors: [ashucoder9]
+---
+
+## Background
+
+Gas in the context of the EVM is a unit that measures the amount of computational effort that it will take to execute certain operations. Every operation that can be performed by a contract or a transaction in an EVM chain costs certain gas units depending on the complexity of the interaction, with operations that require more computational resources costing more gas than those that require fewer. The gas units needed are calculated automatically by the EVM. It is recommended that developers optimize their contracts code, leading to less gas units spent.
+
+The price of executing a transaction will depend on the gas units consumed and the price of each gas unit. Transaction cost = gas units * gas price
+
+For EVM Subnets, this gas payment can be configured in the way to better serve the use case deployed on the Subnet, This means that is up to the Subnet design to decide whether the gas fees are burned, paid to incentivize validators or any other custom behavior.
+
+## Purpose
+
+The main goal of setting and enforcing computational cost via the gas, is to prevent spam and abuse on the network. By requiring users to pay for every computational step, the network makes it costly for malicious actors to launch denial-of-service (DoS) attacks, which involve inundating the network with spurious transactions. Essentially, the gas system acts as a form of deterrent against such attacks.
+
+## Gas Price and Gas Limit
+
+**Gas Price:** Each transaction specifies the gas price and gas limit. The gas price is the amount of the Subnet's Native Token that the sender is willing to spend on each unit of gas, usually denoted in 'gwei' (1 Native Token = 1,000,000,000 gwei). A sucessful, well designed gas mechanism, will adapt the gas price according to the network activity in order to actually protect the network from spam.
+
+**Gas Limit:** The gas limit is the maximum amount of gas the sender is willing to use in the transaction. A primary reason for introducing the gas limit was to prevent infinite loops in contract execution. In a Turing-complete language like Solidity (main programming language in EVM), it's entirely possible to write a contract with an infinite loop, either accidentally or intentionally. In a traditional computing environment, an infinite loop might be a nuisance, but in a decentralized blockchain, it could have disastrous consequences, essentially causing the entire network to hang as it attempts to process a never-ending transaction. The gas limit prevents this. When the gas consumed by a transaction reaches the gas limit, execution stops.
+
+If the gas used by a transaction exceeds the gas limit, the transaction fails but the fee amounting to the gas limit is still paid by the sender.

@@ -1,0 +1,33 @@
+---
+title: Choose Your Development Setup
+description: Learn about different development setups available for developing on the Avalanche EVM.
+updated: 2024-05-31
+authors: [ashucoder9]
+---
+
+## Setup Steps
+
+At the highest level, setting up an development environment for the Precompile-EVM requires users to take these steps:
+
+![](/course/customizing-evm/6.png)
+
+For now, it not necessary to fully understand each of these steps. What you do need to know is that for some, these steps may be difficult to achieve. Let's look at examples:
+
+- Windows User: can't install AvalancheGo + ANR
+- Beginner Developer: likely has no experience working with the Linux file system + Bash
+
+## Automated Setup
+
+For other users, the steps above might be easy. However, our objective is to make Precompile-EVM accessible to all. As a result, we created three different development setups you can choose from with different degrees of complexity:
+
+- Manual Local Setup: You install all the dependencies and configure them manually. This is only suitable for experienced experts and teams building larger projects
+- Developing in a Container: You run a Docker container with all the dependencies already set up on your machine and access it through VS Code
+- Codespace (Recommended): The same container is hosted by Github on a server. You can access it through your browser or VS Code
+
+![](/course/customizing-evm/7.png)
+
+**The good news:** You can switch back and forth between all three ways. They are completely compatible with one another So if you change your mind or run into a problem, just switch 🥳
+
+## How To Decide?
+
+Generally we recommend going with GitHub Codespaces for the start. This has demonstrated to be the easiest across all platforms. Alternatively, you can also opt for running the DevContainer locally. Setting up the environment locally is only recommended for experienced developers. 

@@ -1,0 +1,18 @@
+---
+title: Setup Your ChainID
+description: Learn how to create your own genesis file.
+updated: 2024-05-31
+authors: [ashucoder9]
+---
+
+## What is ChainID?
+
+The ChainID of an Ethereum Virtual Machine (EVM) blockchain is a unique identifier distinguishing Ethereum chains from one another. This mechanism was introduced in Ethereum Improvement Proposal (EIP) 155 to prevent transaction replay attacks, which could occur when the same transaction is valid across multiple different chains.
+
+## Setting the ChainID
+
+Set the ChainID at the top of you genesis JSON to 99999.
+
+If you want to set a custom ChainID, you can check chainlist.org to confirm your proposed chain ID is NOT in use by any other network. Make sure to cross check with Testnets as well.
+
+![](/course/customizing-evm/28.png)
