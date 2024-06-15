@@ -7,6 +7,8 @@ authors: [ashucoder9]
 
 The AWM Relayer is an application run independently of the blockchain clients. Anyone can run their own AWM Relayer to create a communication channel between two Subnets, and there can be multiple relayers for the same communication channel. There is an open source implementation anyone can use [here](https://github.com/ava-labs/awm-relayer). Soon, AvaCloud will offer hosted relayers.
 
+![AWM Relayer data flow](/course-images/teleporter/teleporter-source-destination-with-relayer.png)
+
 The AWM Relayers are responsible for picking up the messages at the source Subnet, aggregating the BLS signatures from a sufficiently large share of the source Subnet's validators and submitting a transaction on the destination Subnet.
 
 It is up to the cross-chain application to decide if they allow any relayer to be part of the delivery process, or whether to restrict participation to certain Relayers.
