@@ -3,6 +3,7 @@ title: Create Solidity Interface
 description: Learn how to create the Solidity interface for your calculator precompile.
 updated: 2024-05-31
 authors: [ashucoder9]
+icon: Terminal
 ---
 
 Just like in the MD5 section, we will start off by first demonstrating the Solidity interface for the Calculator precompile before guiding you on how to build the **CalculatorPlus** precompile. To start, let's take a look at the Calculator Solidity interface:
@@ -32,16 +33,15 @@ With this in mind, let's define the CalculatorPlus Solidity interface. Your inte
 
 ```solidity title="solidity/interfaces/ICalculatorPlus.sol"
 // SPDX-License-Identifier: MIT
+
 pragma solidity >=0.8.0;
 
 interface ICalculatorPlus {
-
     function powOfThree(uint256 base) external view returns(uint256 secondPow, uint256 thirdPow, uint256 fourthPow);
 
     function moduloPlus(uint256 dividend, uint256 divisor) external view returns(uint256 multiple, uint256 remainder);
 
     function simplFrac(uint256 numerator, uint256 denominator) external view returns(uint256 simplNum, uint256 simplDenom);
-
 }
 ```
 
