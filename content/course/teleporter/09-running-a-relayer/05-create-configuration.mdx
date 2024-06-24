@@ -1,0 +1,73 @@
+---
+title: 👩‍💻 Create Configuration
+description: TBD
+updated: 2024-05-31
+authors: [ashucoder9]
+---
+
+Alright, now let's create a configuration file for the AWM Relayer.
+
+## Get the Sample Relayer Config
+
+You can get the sample relayer config from the [AWM Relayer GitHub repository](https://github.com/ava-labs/awm-relayer/blob/main/sample-relayer-config.json).
+
+## General Config
+
+We will use the local node running on port 9650 for both the P-Chain and Info API.
+
+```json
+{ 
+  "p-chain-api": {
+    "base-url": "http://127.0.0.1:9650",
+  },
+  "info-api": {
+    "base-url": "http://127.0.0.1:9650",
+  }
+}
+```
+
+## Source Blockchain Configs
+
+```bash
+avalanche primary describe
+```
+
+```json
+{
+  "source-blockchains": [
+    {
+      "subnet-id": "...",
+      "blockchain-id": "...",
+      "vm": "evm",
+      "rpc-endpoint": {
+        "base-url": "http://...",
+        "query-parameters": null,
+        "http-headers": null
+      },
+      "ws-endpoint": {
+        "base-url": "ws://127.0.0.1:9650/ext/bc/epm5fG6Pn1Y5rBHdTe36aZYeLqpXugreyHLZB5dV81rVTs7Ku/ws",
+        "query-parameters": null,
+        "http-headers": null
+      },
+      "message-contracts": {
+        "0x0000000000000000000000000000000000000000": {
+          "message-format": "off-chain-registry",
+          "settings": {
+            "teleporter-registry-address": "0x17aB05351fC94a1a67Bf3f56DdbB941aE6c63E25"
+          }
+        },
+        "0x253b2784c75e510dD0fF1da844684a1aC0aa5fcf": {
+          "message-format": "teleporter",
+          "settings": {
+            "reward-address": "0x4Fc7Cddd060e4AE86A1DB54dE877C0b3441d5EbD"
+          }
+        }
+      },
+      "supported-destinations": null,
+      "process-historical-blocks-from-height": 0,
+      "allowed-origin-sender-addresses": null
+    }
+  ]
+}
+```
+
