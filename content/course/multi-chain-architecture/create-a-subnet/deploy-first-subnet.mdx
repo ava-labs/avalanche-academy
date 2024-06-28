@@ -5,13 +5,13 @@ updated: 2024-05-31
 authors: [ashucoder9]
 ---
 
-To create a Subnet configuration run the following commands:
+To create a Custom Network configuration run the following commands:
 
 ```
 avalanche subnet create <subnetName>
 ```
 
-You will be prompted a Wizard to set the Subnet config. For now, follow the default options where possible.
+You will be prompted a Wizard to set the custom network config. For now, follow the default options where possible.
 
 After the finishing, you should see something like this:
 
@@ -45,7 +45,7 @@ avalanche subnet describe <subnetName>
 
 ## Start your Local Network
 
-Now that we created our Subnet config, we need a network that will host that Subnet. The following command will launch 5 nodes running locally:
+Now that we created our custom network config, we need to that will host that network. The following command will launch 5 nodes running locally:
 
 ```
 avalanche network start
@@ -70,7 +70,7 @@ You can check at any time if the network is running by issuing the following com
 avalanche network status
 ```
 
-If you don't start your network manually it will be automatically started when you deploy your first Subnet.
+If you don't start your network manually it will be automatically started when you deploy your first custom blockchain network.
 
 ## Deploy your Subnet
 
@@ -146,6 +146,6 @@ Chain ID:          9999
 Currency Symbol:   TOK
 ```
 
-This output includes the endpoints of your 5 nodes where you can connect to interact with your Subnet. You're running a Subnet-EVM, this means you can use those RPC URLs to connect to EVM compatible wallet or tools. 
+This output includes the endpoints of your 5 nodes where you can connect to interact with your custom network. You're running a Subnet-EVM, this means you can use those RPC URLs to connect to EVM compatible wallet or tools. 
 
 Please note that since the Avalanche Network is running in a Github Codespace the localhost (127.0.0.1) will only be accessible from inside the Codespace, so connecting your wallet using the localhost RPC URL will not work since your wallet will be running in the local environment of the host (your PC), and not the local environment where the network is running (the Codespace cloud). We will cover how to connect your wallet in the coming steps.
