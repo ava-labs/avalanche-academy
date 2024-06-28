@@ -1,14 +1,53 @@
 ---
 title: A Subset of Validators Unites
-description: Quickly recap our past learnings about Subnets.
-updated: 2024-05-31
-authors: [ashucoder9]
+description: Quickly recap our past learnings about Avalanche Custom Blockchains.
+updated: 2024-06-28
+authors: [usmaneth]
 ---
 
-A Subnet is a sovereign network defining its own rules of its membership and token economics. It’s composed of a dynamic subset of Avalanche validators working together to achieve consensus on the state of one or more blockchains. Each blockchain is validated by exactly one Subnet, and a Subnet can have many blockchains. A validator may be a member of many Subnets.
+## Custom Blockchains and Validator Subsets in Avalanche
 
-Avalanche's three main blockchains: the Platform Chain (P-Chain), Contract Chain (C-Chain), and Exchange Chain (X-Chain) are validated and secured by all the Avalanche validators, which compose a special Subnet: the Primary Network.
+An Avalanche Custom Blockchain is a sovereign network that defines its own rules for membership and token economics. It's validated by a dynamic subset of Avalanche validators working together to achieve consensus on the blockchain's state.
 
-By definition, all Subnet validators must also validate the Avalanche Primary Network.
+# Key Concepts
 
-Subnets are independent. They specify their own execution logic, determine their own fee regime, maintain their own state, facilitate their own networking, and provide their own security. They don’t share execution thread, storage ,or networking with other Subnets, including the Primary Network, effectively allowing the Avalanche network to scale up easily while enabling lower latency, higher transactions per second (TPS), and lower transaction costs.
+- Custom Blockchain: A unique blockchain within the Avalanche ecosystem.
+- Validator Subset: A group of validators responsible for a specific blockchain or set of blockchains.
+- Subnet: A subset of validators united to validate one or more blockchains.
+
+# Relationship Between Blockchains and Subnets
+
+- Each blockchain is validated by exactly one Subnet.
+- A Subnet can validate multiple blockchains.
+- A validator may participate in multiple Subnets.
+
+# The Primary Network
+
+Avalanche's three main blockchains form the Primary Network:
+
+- Platform Chain (P-Chain)
+- Contract Chain (C-Chain)
+- Exchange Chain (X-Chain)
+
+These blockchains are validated and secured by all Avalanche validators, which collectively form a special Subnet known as the Primary Network.
+
+Important: By definition, all validators participating in custom blockchain Subnets must also validate the Avalanche Primary Network.
+
+# Independence and Scalability
+
+Custom blockchains and their associated Subnets operate independently:
+
+- They specify their own execution logic.
+- They determine their own fee structures.
+- They maintain their own state.
+- They facilitate their own networking.
+- They provide their own security.
+
+# This independence ensures that custom blockchains don't share execution threads, storage, or networking with other Subnets or the Primary Network. As a result, the Avalanche network can:
+
+- Scale up easily
+- Enable lower latency
+- Achieve higher transactions per second (TPS)
+- Offer lower transaction costs
+
+By leveraging custom blockchains and Subnets, Avalanche creates a flexible and scalable ecosystem that can adapt to a wide range of use cases and requirements.
