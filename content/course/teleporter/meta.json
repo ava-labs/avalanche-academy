@@ -19,11 +19,11 @@
     "...07-teleporter-registry",
     "---Avalanche Warp Messaging---",
     "...08-avalanche-warp-messaging",
-    "---Incentivizing a Relayer---",
-    "...09-incentivizing-a-relayer",
+    "---Running a Relayer---",
+    "...09-running-a-relayer",
     "---Restricting-the-relayer---",
     "...10-restricting-the-relayer",
-    "---Running a Relayer---",
-    "...11-running-a-relayer"
+    "---Incentivizing a Relayer---",
+    "...11-incentivizing-a-relayer"
   ]
 }
