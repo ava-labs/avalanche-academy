@@ -10,9 +10,7 @@ name: Lint Code Base
 # Start the job on all push #
 #############################
 on:
-  push:
-    branches-ignore: [main]
-    # Remove the line above to run when pushing to master
+  
   pull_request:
     branches: [main]
 
@@ -44,7 +42,8 @@ jobs:
       # Run Linter against code base #
       ################################
       - name: Lint Code Base
-        uses: github/super-linter@v6
+        uses: super-linter/super-linter@v6.6.0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          VALIDATE_MARKDOWN: false
+          VALIDATE_MARKDOWN: true
+          VALIDATE_JAVASCRIPT_ES: true
