@@ -6,6 +6,7 @@ import { GeistMono } from 'geist/font/mono';
 import { baseUrl, createMetadata } from '@/utils/metadata';
 import { Footer } from '@/components/footer';
 import { Provider } from './provider';
+import { Analytics } from "@vercel/analytics/react";
 
 export const metadata = createMetadata({
   title: {
@@ -39,6 +40,7 @@ export default function RootLayout({
           {children}
           <Footer />
         </Provider>
+        <Analytics />
       </body>
     </html>
   );
