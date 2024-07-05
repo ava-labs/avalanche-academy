@@ -1,0 +1,31 @@
+---
+title: 📕 Message Delivery
+description: Learn about the basics of Avalanche.
+updated: 2024-05-31
+authors: [ashucoder9]
+---
+
+Next, the AWM Relayer delivers the message with the aggregated signature by simply submitting a transaction to the destination Subnet. The transaction is propagated through the validator set of the destination blockchain just as any other regular transaction would.
+
+In order to submit the transaction, the AWM Relayer needs access to the private key of a wallet holding the gas token of the destination blockchain to sign the transaction.
+
+![](/course-images/awm/relayer-delivery.png)
+
+When the validators verify the transaction, they perform the following steps:
+
+- **Query the P-Chain:** The verifying validators each receive the validator set of the source Subnet with its stake weights and BLS Public Keys
+- **Verify Stake Weight:** First, the verifying validators are checking if the combined stake weight of the validators that have signed the Warp message is large enough to accept the message (e.g. validators representing 50% of the total stake have signed the message). The required stake weight may vary from chain to chain. A Subnet may require 50% for chain A and 90% for chain B. If the stake weight is insufficient the message is rejected.
+- **Aggregate BLS Public Keys:** The verifying validators aggregate the BLS Public Keys of the validators that signed the message. 
+- **Verify BLS Multi-Signature:** The aggregated signature (created by the AWM Relayer) is now being verified using the aggregated BLS Public Key (created by the verifying validators). If the verification fails (e.g. the AWM Relayer modified the message), the message is rejected.
+
+If the verification is successful, the message is executed. 
+
+
+## Why doesn't the AWM Relayer also aggregate the BLS Public Keys?
+
+
+The BLS public key aggregation has to be done by every validator of the destination subnet. Some may ask why we don't perform this action off-chain through the AWM Relayer and attach it to the message (similar to the BLS signature aggregation).
+
+Even though this would make the verification much faster, there is a security issue here. How can we be sure that the aggregated public key actually represents the public keys of the signing validators? How do we know that the AWM Relayer did not just create a bunch of public keys and an aggregated signature of these?
+
+The only way to verify that is to aggregate the public keys of the signing validators and compare it to the one sent by the AWM Relayer. Therefore, it is pointless to attach it to the message.
