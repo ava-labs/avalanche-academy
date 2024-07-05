@@ -1,13 +1,5 @@
 
-import { CommandLineIcon } from '@heroicons/react/20/solid';
-import {
-    CubeTransparentIcon,
-    CircleStackIcon,
-    ArrowsRightLeftIcon,
-    CodeBracketIcon,
-  } from '@heroicons/react/24/outline';
-
-import { CoinsIcon, Dice3, Dice3Icon } from 'lucide-react';
+import { ArrowLeftRight, Blocks, CoinsIcon, Dice3, Dice3Icon, Mail, Sprout, SquareStack } from 'lucide-react';
 
 type Course = {
     name: string;
@@ -25,7 +17,7 @@ const officialCourses: Course[] = [
         name: "Avalanche Fundamentals",
         description: "Get a high level overview of Avalanche Consensus, Subnets and VMs",
         slug: "avalanche-fundamentals",
-        icon: CubeTransparentIcon,
+        icon: Sprout,
         featured: true,
         duration: "1 hour",
         languages: [],
@@ -35,7 +27,7 @@ const officialCourses: Course[] = [
         name: "Multi-Chain Architecture",
         description: "Dive deeper into the Multi-Chain Architecture and deploy your own Blockchain",
         slug: "multi-chain-architecture",
-        icon: CircleStackIcon,
+        icon: SquareStack,
         featured: true,
         duration: "1.5 hours",
         languages: [],
@@ -45,7 +37,7 @@ const officialCourses: Course[] = [
         name:"Teleporter",
         description:"Utilize Teleporter to build cross-chain dApps in Avalanche network",
         slug:"teleporter",
-        icon: ArrowsRightLeftIcon,
+        icon: Mail,
         featured: true,
         duration: "3 hours",
         tools: ["Avalanche-CLI", "Telepoter"],
@@ -55,7 +47,7 @@ const officialCourses: Course[] = [
         name:"Teleporter Token Bridge",
         description:"Utilize Teleporter to bridge Tokens in the Avalanche Network",
         slug:"teleporter-token-bridge",
-        icon: CoinsIcon,
+        icon: ArrowLeftRight,
         featured: true,
         duration: "2.5 hours",
         tools: ["Avalanche-CLI", "Telepoter"],
@@ -75,7 +67,7 @@ const officialCourses: Course[] = [
         name:"HyperSDK",
         description:"Learn to build customized Virtual Machines using our SDK",
         slug:"hypersdk",
-        icon: CodeBracketIcon,
+        icon: Blocks,
         duration: "4 hours",
         tools: ["Avalanche-CLI"],
         languages: ["Go"]
@@ -84,7 +76,7 @@ const officialCourses: Course[] = [
         name:"Customizing the EVM",
         description:"Learn how to customize the EVM and add your own custom precompiles",
         slug:"customizing-evm",
-        icon: CommandLineIcon,
+        icon: Blocks,
         duration: "4 hours",
         featured: true,
         tools: ["Avalanche-CLI"],
@@ -97,7 +89,7 @@ const ecosystemCourses: Course[] = [
         name:"Run a Gogopool Minipool",
         description:"A Minipool represents a validator that is jointly funded equally by AVAX borrowed from liquid stakers and AVAX contribution from the minipool operator. Thanks to Minipool design architecture, users can become validators on the Avalanche network with nearly half the usual AVAX requirement.",
         slug:"gogopool-minipool",
-        icon:CodeBracketIcon,
+        icon: Blocks,
         duration: "2 hours",
         tools: ["Avalanche-CLI"],
         languages: ["Go"]
@@ -106,7 +98,7 @@ const ecosystemCourses: Course[] = [
         name:"Use Safe on an Avalanche Chain",
         description:"Secure your multi-sig wallet with Safe on a Subnet.",
         slug:"safe-on-an-avalanche-chain",
-        icon:CodeBracketIcon,
+        icon: Blocks,
         duration: "4 hours",
         tools: ["Avalanche-CLI"],
         languages: ["Go"]
