@@ -27,7 +27,7 @@ export const utils = loader({
               return z.NEVER;
             }
           }),
-        authors: z.array(z.string()),
+        //authors: z.array(z.string()),
       }),
     },
   }),
