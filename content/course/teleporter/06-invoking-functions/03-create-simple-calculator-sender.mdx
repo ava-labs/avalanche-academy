@@ -1,8 +1,9 @@
 ---
-title: 👩‍💻 Create Simple Calculator Sender
+title: Create Simple Calculator Sender
 description: TBD
 updated: 2024-05-31
-authors: [ashucoder9]
+authors: [martineckardt]
+icon: Terminal
 ---
 
 Now, our goal is to create a dApp that works as a cross-Subnet Calculator, receiving multiple parameters and using those for a calculation. For now our calculator will only have the Sum function.
@@ -23,8 +24,8 @@ contract SimpleCalculatorSenderOnCChain {
     function sendAddMessage(address destinationAddress, uint256 num1, uint256 num2) external {
         teleporterMessenger.sendCrossChainMessage(
             TeleporterMessageInput({
-                // Replace with chain id of your Subnet (see instructions in Readme)
-                destinationBlockchainID: 0x92756d698399805f0088fc07fc42af47c67e1d38c576667ac6c7031b8df05293,
+                // Replace with chain id of your Subnet (see instructions in Readme) // [!code highlight]
+                destinationBlockchainID: 0xd7ed7b978d4d6c478123bf9b326d47e69f959206d34e42ea4de2d1d2acbc93ea, // [!code highlight]
                 destinationAddress: destinationAddress,
                 feeInfo: TeleporterFeeInfo({feeTokenAddress: address(0), amount: 0}),
                 requiredGasLimit: 100000,
@@ -52,7 +53,7 @@ To increase the readability of the code, we have created a helper function `enco
 Deploy the sender contract on the Local C-Chain:
 
 ```bash
-forge create --rpc-url local-c --private-key $PK src/02a-encoding-multiple-paramters/SimpleCalculatorSenderOnCChain.sol:SimpleCalculatorSenderOnCChain
+forge create --rpc-url local-c --private-key $PK src/2a-invoking-functions/SimpleCalculatorSenderOnCChain.sol:SimpleCalculatorSenderOnCChain
 ```
 
 Then save the sender contract address (displayed in `Deployed To:`) in an environment variable:
