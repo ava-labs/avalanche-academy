@@ -1,14 +1,15 @@
 ---
-title: 👩‍💻 Call simple Calculator
+title: Call simple Calculator
 description: TBD
 updated: 2024-05-31
-authors: [ashucoder9]
+authors: [martineckardt]
+icon: Terminal
 ---
 
 Alright, now let's call our Calculators:
 
 ```bash 
-cast send --rpc-url local-c --private-key $PK $SENDER_ADDRESS "sendAddMessage(address, uint, uint)" $RECEIVER_ADDRESS 2 3
+cast send --rpc-url local-c --private-key $PK $SENDER_ADDRESS "sendAddMessage(address, uint256, uint256)" $RECEIVER_ADDRESS 2 3
 ```
 
 ## Verify Message Receipt

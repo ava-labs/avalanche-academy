@@ -1,8 +1,9 @@
 ---
-title: 👩‍💻 Create Simple Calculator Receiver
+title: Create Simple Calculator Receiver
 description: TBD
 updated: 2024-05-31
-authors: [ashucoder9]
+authors: [martineckardt]
+icon: Terminal
 ---
 
 On our Subnet, we need to create the receiver part of our cross-chain calculator. It will receive two numbers and store the result. 
@@ -41,11 +42,11 @@ contract SimpleCalculatorReceiverOnSubnet is ITeleporterReceiver {
 Deploy the receiver contract on your Subnet:
 
 ```bash
-forge create --rpc-url local-c --private-key $PK src/02a-encoding-multiple-paramters/SimpleCalculatorReceiverOnSubnet.sol:SimpleCalculatorReceiverOnSubnet
+forge create --rpc-url mysubnet --private-key $PK src/2a-invoking-functions/SimpleCalculatorReceiverOnSubnet.sol:SimpleCalculatorReceiverOnSubnet
 ```
 
 Then save the sender contract address (displayed in `Deployed To:`) in an environment variable:
 
 ```bash
-export SENDER_ADDRESS=0x123...
+export RECEIVER_ADDRESS=0x123...
 ```
