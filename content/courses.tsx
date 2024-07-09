@@ -43,7 +43,7 @@ const officialCourses: Course[] = [
         tools: ["Avalanche-CLI", "Telepoter"],
         languages: ["Solidity"]
      },
-     {
+     /*{
         name:"Teleporter Token Bridge",
         description:"Utilize Teleporter to bridge Tokens in the Avalanche Network",
         slug:"teleporter-token-bridge",
@@ -71,7 +71,7 @@ const officialCourses: Course[] = [
         duration: "4 hours",
         tools: ["Avalanche-CLI"],
         languages: ["Go"]
-     },
+     },*/
      {
         name:"Customizing the EVM",
         description:"Learn how to customize the EVM and add your own custom precompiles",
@@ -85,7 +85,7 @@ const officialCourses: Course[] = [
 ];
 
 const ecosystemCourses: Course[] = [
-    {
+    /*{
         name:"Run a Gogopool Minipool",
         description:"A Minipool represents a validator that is jointly funded equally by AVAX borrowed from liquid stakers and AVAX contribution from the minipool operator. Thanks to Minipool design architecture, users can become validators on the Avalanche network with nearly half the usual AVAX requirement.",
         slug:"gogopool-minipool",
@@ -102,7 +102,7 @@ const ecosystemCourses: Course[] = [
         duration: "4 hours",
         tools: ["Avalanche-CLI"],
         languages: ["Go"]
-   }
+   }*/
 ];
 
 export default {
