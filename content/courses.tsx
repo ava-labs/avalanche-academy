@@ -35,7 +35,7 @@ const officialCourses: Course[] = [
     },
     {
         name:"Teleporter",
-        description:"Utilize Teleporter to build cross-chain dApps in Avalanche network",
+        description:"Utilize Teleporter to build cross-chain dApps in the Avalanche network",
         slug:"teleporter",
         icon: Mail,
         featured: true,
