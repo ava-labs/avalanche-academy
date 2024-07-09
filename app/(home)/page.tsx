@@ -48,7 +48,7 @@ function Hero(): React.ReactElement {
               <h2 className="text-base font-semibold leading-7 text-muted-foreground">Build on Avalanche</h2>
               <p className="mt-2 text-3xl font-bold tracking-tight sm:text-4xl">Create Without Limits</p>
               <p className="mt-6 text-lg leading-8 text-muted-foreground">
-                Become an expert in the Avalanche Ecosystem, Virtual Machine Development and Subnet Architecture.
+                Become an expert in the Avalanche Ecosystem, Virtual Machine Development and Multi-Chain Architecture.
               </p>
               <dl className="mt-10 max-w-xl space-y-8 text-base leading-7 text-muted-foreground lg:max-w-none">
                 {features.map((feature) => (

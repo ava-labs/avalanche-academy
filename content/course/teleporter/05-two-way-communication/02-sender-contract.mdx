@@ -1,8 +1,9 @@
 ---
-title: 📕 Sender Contract
+title: Sender Contract
 description: TBD
 updated: 2024-05-31
-authors: [ashucoder9]
+authors: [martineckardt]
+icon: BookOpen
 ---
 
 The sender contract has now two tasks: 
@@ -57,14 +58,3 @@ contract SenderOnCChain is ITeleporterReceiver { // [!code highlight]
 
 <Callout type="warn" title="Don't forget to replace the destinationBlockchainID with the one from your Subnet!" />
 
-Go ahead and deploy the sender contract on the C-Chain. 
-
-```bash
-forge create --rpc-url local-c --private-key $PK src/1-send-roundtrip/senderOnCChain.sol:SenderOnCChain
-```
-
-Then save the sender contract address in an environment variable:
-
-```bash
-export SENDER_ADDRESS="0x123..."
-```

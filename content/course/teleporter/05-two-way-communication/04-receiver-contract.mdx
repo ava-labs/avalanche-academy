@@ -1,8 +1,9 @@
 ---
-title: 📕 Receiver Contract
+title: Receiver Contract
 description: TBD
 updated: 2024-05-31
-authors: [ashucoder9]
+authors: [martineckardt]
+icon: BookOpen
 ---
 
 The receiver contract now also has two tasks: 
@@ -50,14 +51,3 @@ contract ReceiverOnSubnet is ITeleporterReceiver {
 }
 ```
 
-Go ahead and deploy the contract:
-
-```bash
-forge create --rpc-url mysubnet --private-key $PK src/1-send-roundtrip/receiverOnSubnet.sol:ReceiverOnSubnet
-```
-
-Then save the receiver contract address in an environment variable:
-
-```bash
-export RECEIVER_ADDRESS="0x123..."
-```
