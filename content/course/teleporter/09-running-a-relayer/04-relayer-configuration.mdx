@@ -130,6 +130,7 @@ Next is the configuration for our source blockchain. This is the configuration o
   ],
 }
 ```
+
 For each destination Subnet, the relayer has the following config parameter:
 
 - **subnet-id:** The ID of the Subnet that the destination blockchain is part of. 
@@ -139,5 +140,7 @@ For each destination Subnet, the relayer has the following config parameter:
 - **kms-key-id:** The ID of the KMS key to use for signing transactions on the destination blockchain. Only one of account-private-key or kms-key-id should be provided. If kms-key-id is provided, then kms-aws-region is required. Please note that the private key in KMS should be exclusive to the relayer. 
 - **kms-aws-region:** The AWS region in which the KMS key is located. Required if kms-key-id is provided. 
 - **account-private-key:** A private key for a wallet that holds gas tokens on the destination Subnet. This is required so the relayer can sign the transaction that delivers the warp message.
+
+If you have been following all the course up to this point with the Avalanche-starter-kit and Avalanche-CLI will provide you with a relayer already funded to perform transactions between the local C-chain and your own chain
 
 Some configuration fields have been omitted for the purpose of this exercise. If you are interested to read the extensive list of relayer configurations, you can visit the awm-relayer GitHub repository [here](https://github.com/ava-labs/awm-relayer/tree/main?tab=readme-ov-file#configuration).
