@@ -1,8 +1,9 @@
 ---
-title: 🗺️ Teleporter Token Bridge
+title: Teleporter Token Bridge
 description: TBD
 updated: 2024-05-31
 authors: [ashucoder9]
+icon: Book
 ---
 
 In addition to supporting basic token transfers, the token bridge contracts offer a `sendAndCall` interface for bridging tokens and using them in a smart contract interaction all within a single Teleporter message. If the call to the recipient smart contract fails, the bridged tokens are sent to a fallback recipient address on the destination chain of the transfer. The `sendAndCall` interface enables the direct use of bridged tokens in dApps on other chains, such as performing swaps, using the tokens to pay for fees when invoking services, etc.
