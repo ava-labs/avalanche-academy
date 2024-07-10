@@ -46,3 +46,7 @@
 svg.lucide {
   color: #3752AC;
 }
+
+.my-6 > svg.lucide {
+    color: #fff;
+}
