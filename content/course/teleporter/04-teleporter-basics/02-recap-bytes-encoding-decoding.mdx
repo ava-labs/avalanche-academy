@@ -16,18 +16,18 @@ In this section we will recap these topics:
 
 We will use these concepts a lot going forward for our messages we send, so make sure you read this carefully.
 
-# Bytes
+## Bytes
 In Solidity, the bytes data type serves as a versatile container for encoding multiple values of different types into a single unified value. You can think of it as a flexible box that can hold various forms of data, such as integers, text, images, or any binary information. The bytes data type allows you to mix and match these different types of data and put them all in one box.
 
 This makes it a pragmatic choice for encapsulating diverse data and data type ensures that all the data is efficiently packaged into a single unit for transfer, and recipients can decode and extract the individual components as needed.
 
-# Encoding & Decoding
+## Encoding & Decoding
 
 In solidity we can use the functions `abi.encode()` and `abi.decode()` for encoding and decoding. These are part of the solidity language, so we do not need to import anything to use them.
 
 ![Encoding and Decoding](/common-images/solidity/encoding-decoding.png)
 
-## Encoding
+### Encoding
 When we encode data, we convert it into a byte array. This is useful when we want to send data from one contract to another. We can encode multiple values into a single byte array, which can then be decoded by the receiving contract.
 
 ```solidity
@@ -39,7 +39,7 @@ bytes message = abi.encode(someString, someNumber);
 
 This single value message here we can now use as a message for Teleporter.
 
-## Decoding
+### Decoding
 When we decode data, we convert it from a byte array back into its original form. This is useful when we receive data from another contract. We can decode the byte array into its original values.
 
 ```solidity
