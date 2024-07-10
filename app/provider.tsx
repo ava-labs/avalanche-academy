@@ -17,7 +17,7 @@ export function Provider({
   return (
     <RootProvider
       search={{
-        SearchDialog,
+        enabled: false,
       }}
     >
       <TooltipProvider>

@@ -31,7 +31,7 @@ export default function HomePage(): React.ReactElement {
         <Hero />
         <Courses title="Explore our Courses" description="We offer fundamental courses are specifically designed for individuals who are new to the Avalanche ecosystem, and advanced courses for those who wish to master the art of configuring, modifying, or even creating entirely new Virtual Machines from scratch." courses={COURSES.official}/>
 
-        <Courses title="Ecosystem Courses" description="Check out these courses provided by our ecosystem partners." courses={COURSES.ecosystem}/>
+        {COURSES.ecosystem.length > 0 && <Courses title="Ecosystem Courses" description="Check out these courses provided by our ecosystem partners." courses={COURSES.ecosystem}/>}
 
       </main>
     </>
@@ -39,6 +39,7 @@ export default function HomePage(): React.ReactElement {
 }
 
 function Hero(): React.ReactElement {
+
   return (
     <div className="overflow-hidden py-12 sm:py-24">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
@@ -64,7 +65,7 @@ function Hero(): React.ReactElement {
             </div>
           </div>
           <img
-            src="/academy/course-preview.png"
+            src={`/course-preview.png`}
             alt="Product screenshot"
             className="w-[48rem] max-w-none rounded-xl shadow-xl ring-1 ring-gray-400/10 sm:w-[57rem] md:-ml-4 lg:-ml-0"
             width={2432}
@@ -90,7 +91,7 @@ function Courses(props: {title: string, description: string, courses: any[]}): R
         <div className="mx-auto mt-7 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 border-gray-200 pt-7 sm:mt-12 sm:pt-12 lg:mx-0 lg:max-w-none lg:grid-cols-3">
           {props.courses.map((course) => (
             <Link href={`/course/${course.slug}`} key={course.slug} className="flex max-w-xl flex-col items-start space-y-2">
-              <img src={`/academy/course-banner/${course.slug}.jpg`} alt="" className="w-full aspect-[3/2] object-cover rounded-lg mb-5" />
+              <img src={`/course-banner/${course.slug}.jpg`} alt="" className="w-full aspect-[3/2] object-cover rounded-lg mb-5" />
               <div className="flex flex-wrap items-center gap-4 text-xs">
                 <span className="text-gray-500">
                   {course.duration}

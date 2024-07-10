@@ -8,7 +8,7 @@ icon: BookOpen
 
 To receive a message we need to enable out cross-Subnet dApps to being called by the Teleporter contract.
 
-<img src="/academy/course-images/teleporter/teleporter-source-destination.png" width="400" class="mx-auto"/>
+<img src="/course-images/teleporter/teleporter-source-destination.png" width="400" class="mx-auto"/>
 
 The Teleporter does not know out contract and what functions it has. Therefore, our dApp on the destination Subnet has to implement the ITeleporterReceiver interface. It is very straight forward and only requires a single method for receiving the message that then can be called by the Teleporter contract:
 
