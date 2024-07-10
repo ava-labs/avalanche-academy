@@ -1,6 +1,6 @@
 ---
 title: Private Blockchains
-description: Learn about the different benefits of using Custom Blockchains.
+description: Learn about different ways of permissioning your Avalanche L1 blockchain.
 updated: 2024-06-28
 authors: [usmaneth]
 icon: BookOpen
@@ -18,8 +18,8 @@ In summary, privacy in the context of private, permissioned blockchains isn't ju
 
 This has made private, permissioned blockchains an attractive option for businesses and organizations dealing with sensitive data, high-value transactions, or strict confidentiality requirements.
 
-# Private Blockchains
+## Private Blockchains
 
-The data of Avalanche Subnets, by default, are publicly available. This means that every node can sync and listen to ongoing transactions/blocks in Subnets, even if they're not validating the listened Subnet. Nodes may do this for indexing purposes or just having access to the current state of the blockchain without relying on third-parties.
+The data of Avalanche L1s, by default, are publicly available. This means that every node can sync and listen to ongoing transactions/blocks in these blockchains, even if they're not validating the network. Nodes may do this for indexing purposes or just having access to the current state of the blockchain without relying on third-parties.
 
-Subnet validators can choose not to publish data from their blockchains. If a node sets validatorOnly to true, the node exchanges messages only with this Subnet's validators. Other peers won't be able to learn contents of this Subnet from this node.
+Avalanche L1 validators can choose not to publish data from their blockchains. If a node sets `validatorOnly` to true, the node exchanges messages only with the blockchain's validators. Other peers won't be able to learn contents of this blockchain from their nodes.

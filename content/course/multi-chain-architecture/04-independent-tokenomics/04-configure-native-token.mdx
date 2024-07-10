@@ -1,0 +1,24 @@
+---
+title: Configure Native Token
+description: Learn about how to configure your native token.
+updated: 2024-06-28
+authors: [usmaneth]
+icon: Terminal
+---
+
+Let's create a new Subnet and spend some more attention on how we can configure our gas token: `avalanche subnet create mysubnet2`
+
+Pick some ChainID different from your first subnet (e.g. 8888). Then choose a name for your native token.
+
+```bash
+@martineckardt ➜ /workspaces/avalanche-starter-kit (main) $ avalanche subnet create mysubnet2
+✔ Subnet-EVM
+✔ Use latest release version
+creating genesis for subnet mysubnet2
+Enter your subnet's ChainId. It can be any positive integer.
+ChainId: 9999
+Select a symbol for your subnet's native token
+Token symbol: TOK
+```
+
+Now, we have configured our own token. In the next step we will look at the fees.
