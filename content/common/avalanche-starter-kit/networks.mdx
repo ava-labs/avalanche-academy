@@ -1,22 +1,22 @@
-# Networks
+## Networks
 We can deploy a Subnet to a network of validators. This means we either run these validators on our own or we convince a subset of the existing validators of the Avalanche network to validate our Subnet.
 
 These validators validate the Subnet according to our rules and will get compensated with transaction fees. A validator can validate as many Subnets as they like. However, in practice hardware usually limits it to around 5 Subnets per Validator.
 
 Depending on our use case, we can choose a network to deploy on:
 
-## Mainnet
+### Mainnet
 
 When our Subnet goes into production, we want to run it on mainnet. To run a validator on mainnet, we have to stake 2,000 AVAX on each.
 
-## Testnet (Fuji)
+### Testnet (Fuji)
 
 When we want to test our Subnet, we can deploy it to the Fuji Testnet. The easiest way to do this is to run a Fuji Node. On Testnet, it only costs 1 AVAX to run a node. That AVAX can be obtained for free from the Testnet Faucet we used in the Avalanche Fundamentals course. All tokens on the Testnet are valueless.
 
 When deploying the Subnet to Fuji, anyone can interact with it, so long as at least one validator is online. This is great for more intense testing with multiple parties. Further, the Subnet can interact with other Subnets deployed in Fuji to test more complex behavior.
 
 
-## Local Network
+### Local Network
 
 For our purposes, it is sufficient to run a small local network of 5 nodes on our machine exclusive to us. This has advantages:
 
