@@ -41,15 +41,7 @@ export function Footer() {
                     Statistics
                   </a>
                 </li>
-                <li>
-                  <a
-                    href="https://support.avax.network/"
-                    target="_blank"
-                    className="relative after:absolute after:-bottom-1 after:left-0 after:h-[2px] after:w-full after:origin-bottom-right after:scale-x-0 after:bg-gray-500 after:transition-transform after:duration-200 after:ease-&lsqb;cubic-bezier(0.65_0.05_0.36_1)&rsqb; hover:after:origin-bottom-left hover:after:scale-x-100 p-0.5 rounded-md transition duration-300 outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-neutral-800 dark:focus:ring-neutral-600 focus:ring-neutral-100"
-                  >
-                    Support
-                  </a>
-                </li>
+                
               </ul>
             </div>
             <div>
