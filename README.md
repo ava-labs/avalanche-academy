@@ -1,18 +1,21 @@
-Issues to fix:
+## Avalanche Academy
 
-Top Priority: customize the homepage to present different courses and remove anything unnecessary
+Avalanche Academy is a comprehensive learning platform designed to educate developers, enthusiasts, and industry professionals about the Avalanche ecosystem. It offers a variety of courses and resources to help users understand and leverage Avalanche's blockchain technology stack.
 
-1. Bring all existing course content into the course folder and make sure nothing looks offbeat
-2. Migrate to FlexSearch, ditch Algolia
-3. Once this is done, get access of original avalanche academy repo and push changes
-4. Blog can be removed (but we can use it for posting long-form technical tutorials fyi)
-5. Create a proper README which demonstrates how to make contributions to this repo
-6. Rebuild Blog according to our needs
+### Features
 
+- **Courses**: Structured learning paths covering different aspects of the Avalanche ecosystem.
+- **Resources**: Access to tutorials, documentation, and community support.
+- **Community**: Engage with other learners and contributors.
 
-## Course Migration Status: (only lists what is done)
+### Getting Started
 
-Avalanche Fundamentals:
-- Welcome complete (except telegram chat link)
-- Primer (skipped demo, whitepaper, learning checklist)
-- 
+1. **Clone the Repository**: `git clone https://github.com/ava-labs/avalanche-academy.git`
+2. **Install Dependencies**: `yarn install`
+3. **Run Locally**: `yarn run start`
+
+### Contributing
+
+We welcome contributions! Please confirm changes on your local machine before opening a pull request. Once you raise the PR, a team member will review your changes and approve the PR.
+
+For more information, visit [Avalanche Academy](https://academy.avax.network).
