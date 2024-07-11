@@ -10,7 +10,7 @@ To add incentives for a relayer we need to specify the ERC20 contract we will be
 
 ## Deploy and Mint ERC20 
 
-Incentives are set with ERC20 tokens deployed on the Source chain, in this case our local C-chain. While this token can be a wrapped version of the native token, for this example we will be using just a simple ERC20 located under src/05-incentivize-relayer/ERC20FeeToken.sol. Let's deploy and mint some of these FEE tokens to later be used to incentivize the relayer.
+Incentives are set with ERC20 tokens deployed on the Source chain, in this case our local C-chain. While this token can be a wrapped version of the native token, for this example we will be using just a simple ERC20 included as demo in the Avalanche-CLI. Let's deploy and mint some of these FEE tokens to later be used to incentivize the relayer.
 
 To deploy your FEE Token contract run:
 
@@ -22,7 +22,7 @@ This command will deploy a demo ERC20. Add the following configuration
 ```bash
 ✔ Use the private key of the Genesis Allocated address 0x8db97C7cEcE249c2b98bDC0226Cc4C2A57BF52FC
 Which is the token symbol?
-Token symbol: TOK
+Token symbol: FEE
 Which is the total token supply?
 Token supply: 100000
 Which address should receive the supply?
@@ -32,5 +32,5 @@ Which address should receive the supply?
 Save the ERC20 address in an environment address
 
 ```bash
-export ERC20_address=0x...
+export ERC20_fee_address=0x...
 ```

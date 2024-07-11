@@ -49,14 +49,3 @@ contract SenderWithFeesOnCChain {
 }
 
 ```
-
-Let's now deploy the sender contract 
-
-```bash
-forge create --rpc-url mysubnet --private-key $PK src/9-incentivize-relayer/senderWithFees.sol:SenderWithFeesOnCChain
-```
-
-
-```bash
-cast send --rpc-url local-c --private-key $PK <sender_contract_address> "sendMessage(address,string,string)" <receiver_contract_address> <name> <symbol>
-```
