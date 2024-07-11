@@ -11,9 +11,9 @@ import { Analytics } from "@vercel/analytics/react";
 export const metadata = createMetadata({
   title: {
     template: '%s | Avalanche Academy',
-    default: 'Avalanche Academy',
+    default: 'The Learning Platform for Avalanche Ecosystem',
   },
-  description: 'Learning hub for the Avalanche Network',
+  description: 'The Learning Platform for Avalanche Ecosystem',
   metadataBase: baseUrl,
 });
 

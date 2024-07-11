@@ -1,0 +1,72 @@
+---
+title: Build and Run Custom Genesis Blockchain
+description: Learn how to build and run your blockchain with custom genesis file.
+updated: 2024-05-31
+authors: [ashucoder9]
+icon: Terminal
+---
+
+## Build the Precompile-EVM
+
+In the root of your Precompile-EVM, run the following script: `./scripts/build.sh`
+
+## Launch Avalanche-Network-Runner
+
+To create a blockchain from our genesis block, we need to start a local Avalanche network using the Avalanche Network Runner. Make sure you do not have another instance of Avalanche Network Runner running in another terminal.
+
+Let's start the gRPC server, which will manage the Avalanche nodes for us, so we do not have to build the network manually.
+
+```bash
+avalanche-network-runner server \
+--log-level debug \
+--port=":8080" \
+--grpc-gateway-port=":8081"
+```
+
+In this terminal, you should now the the gRPC server logs. Since this will not launch the network yet, but just start the managing server, this should go fast.
+
+![](/course-images/customizing-evm/37.png)
+
+## Start an Avalanche Network with a New Blockchain
+
+Next, run a local Avalanche Network with five nodes and create a Blockchain of your EVM using the Genesis block you have created.
+
+From here, we can interact with the gRPC server we just launched. We do this using the HTTP client or by issuing command in the terminal.
+
+### Using HTTP Client
+
+To start the network, navigate to **ThunderClient** and select the **Start Network** endpoint. As we can see, most of the data is already prefilled:
+
+![](/course-images/customizing-evm/38.png)
+
+The only thing we have to specify is the path to our genesis JSON. Navigate to the file in `tests/precompile/genesis` and copy the absolute file path:
+
+![](/course-images/customizing-evm/39.png)
+
+Paste this path into the genesis value of the JSON. The path should look something like this `/Users/.../go/src/github.com/ava-labs/precompile-evm/tests/precompile/genesis/sha256.json`.
+
+Finally, click the **Send** button and observe what happens in the terminal of the server. This process should take about a minute.
+
+### By Issuing a Command in Terminal
+
+Alternatively, open up a new terminal and issue the following command:
+
+```bash
+avalanche-network-runner control start \
+  --log-level debug \
+  --endpoint="0.0.0.0:8080" \
+  --number-of-nodes=5 \
+  --blockchain-specs '[{"vm_name": "subnetevm", "genesis": "./tests/precompile/genesis/evm-configuration-genesis.json"}]'
+```
+
+The command uses the environment variables for AvalancheGo we set earlier and a relative path to the the genesis JSON we have been modifying thoughout this section. It is important to understand that we can build the Virtual Machine once and create multiple blockchains from it using multiple genesis configurations.
+
+You should first see an output like this:
+
+```bash
+[07-05|17:54:15.547] DEBUG client/client.go:71 dialing server at  {"endpoint": "0.0.0.0:8080"}
+[07-05|17:54:15.548] INFO client/client.go:140 start
+[07-05|17:54:51.047] INFO ux/output.go:13 start response: cluster_info:{node_names:"node1"  node_names:"node2"  node_names:"node3"  node_names:"node4"  node_names:"node5"  node_infos:{key:"node1"  value:{name:"node1"  exec_path:"/Users/Martin.Eckardt/go/src/github.com/ava-labs/avalanchego/build/avalanchego"  uri:"http://127.0.0.1:9650"  id:"NodeID-7Xhw2mDxuDS44j42TCB6U5579esbSt3Lg"  log_dir:"/var/folders/6m/57y_04h52mv7_93ycwdp30gw0000gn/T/network-runner-root-data/network_20230705_175415/node1/logs"  db_dir:"/var/folders/6m/57y_04h52mv7_93ycwdp30gw0000gn/T/network-runner-root-data/network_20230705_175415/node1/db"  plugin_dir:"/Users/Martin.Eckardt/go/src/github.com/ava-labs/avalanchego/build/plugins"  whitelisted_subnets:"p433wpuXyJiDhyazPYyZMJeaoPSW76CBZ2x7wrVPLgvokotXz"}}  node_infos:{key:"node2"  value:{name:"node2"  exec_path:"/Users/Martin.Eckardt/go/src/github.com/ava-labs/avalanchego/build/avalanchego"  uri:"http://127.0.0.1:9652"  id:"NodeID-MFrZFVCXPv5iCn6M9K6XduxGTYp891xXZ"  log_dir:"/var/folders/6m/57y_04h52mv7_93ycwdp30gw0000gn/T/network-runner-root-data/network_20230705_175415/node2/logs"  db_dir:"/var/folders/6m/57y_04h52mv7_93ycwdp30gw0000gn/T/network-runner-root-data/network_20230705_175415/node2/db"  plugin_dir:"/Users/Martin.Eckardt/go/src/github.com/ava-labs/avalanchego/build/plugins"  whitelisted_subnets:"p433wpuXyJiDhyazPYyZMJeaoPSW76CBZ2x7wrVPLgvokotXz"}}  node_infos:{key:"node3"  value:{name:"node3"  exec_path:"/Users/Martin.Eckardt/go/src/github.com/ava-labs/avalanchego/build/avalanchego"  uri:"http://127.0.0.1:9654"  id:"NodeID-NFBbbJ4qCmNaCzeW7sxErhvWqvEQMnYcN"  log_dir:"/var/folders/6m/57y_04h52mv7_93ycwdp30gw0000gn/T/network-runner-root-data/network_20230705_175415/node3/logs"  db_dir:"/var/folders/6m/57y_04h52mv7_93ycwdp30gw0000gn/T/network-runner-root-data/network_20230705_175415/node3/db"  plugin_dir:"/Users/Martin.Eckardt/go/src/github.com/ava-labs/avalanchego/build/plugins"  whitelisted_subnets:"p433wpuXyJiDhyazPYyZMJeaoPSW76CBZ2x7wrVPLgvokotXz"}}  node_infos:{key:"node4"  value:{name:"node4"  exec_path:"/Users/Martin.Eckardt/go/src/github.com/ava-labs/avalanchego/build/avalanchego"  uri:"http://127.0.0.1:9656"  id:"NodeID-GWPcbFJZFfZreETSoWjPimr846mXEKCtu"  log_dir:"/var/folders/6m/57y_04h52mv7_93ycwdp30gw0000gn/T/network-runner-root-data/network_20230705_175415/node4/logs"  db_dir:"/var/folders/6m/57y_04h52mv7_93ycwdp30gw0000gn/T/network-runner-root-data/network_20230705_175415/node4/db"  plugin_dir:"/Users/Martin.Eckardt/go/src/github.com/ava-labs/avalanchego/build/plugins"  whitelisted_subnets:"p433wpuXyJiDhyazPYyZMJeaoPSW76CBZ2x7wrVPLgvokotXz"}}  node_infos:{key:"node5"  value:{name:"node5"  exec_path:"/Users/Martin.Eckardt/go/src/github.com/ava-labs/avalanchego/build/avalanchego"  uri:"http://127.0.0.1:9658"  id:"NodeID-P7oB2McjBGgW2NXXWVYjV8JEDFoW9xDE5"  log_dir:"/var/folders/6m/57y_04h52mv7_93ycwdp30gw0000gn/T/network-runner-root-data/network_20230705_175415/node5/logs"  db_dir:"/var/folders/6m/57y_04h52mv7_93ycwdp30gw0000gn/T/network-runner-root-data/network_20230705_175415/node5/db"  plugin_dir:"/Users/Martin.Eckardt/go/src/github.com/ava-labs/avalanchego/build/plugins"  whitelisted_subnets:"p433wpuXyJiDhyazPYyZMJeaoPSW76CBZ2x7wrVPLgvokotXz"}}  pid:58541  root_data_dir:"/var/folders/6m/57y_04h52mv7_93ycwdp30gw0000gn/T/network-runner-root-data/network_20230705_175415"  healthy:true  custom_chains_healthy:true  custom_chains:{key:"2YUr8sULVTm25EDFNDUwxnwk73enuqhkci4yXzoAgJYEjQ2HuC"  value:{chain_name:"subnetevm"  vm_id:"srEXiWaHuhNyGwPUi444Tu47ZEDwxTWrbQiuD7FmgSAQ6X7Dy"  subnet_id:"p433wpuXyJiDhyazPYyZMJeaoPSW76CBZ2x7wrVPLgvokotXz"  chain_id:"2YUr8sULVTm25EDFNDUwxnwk73enuqhkci4yXzoAgJYEjQ2HuC"}}  subnets:{key:"p433wpuXyJiDhyazPYyZMJeaoPSW76CBZ2x7wrVPLgvokotXz"  value:{is_elastic:true  subnet_participants:{node_names:"node5"  node_names:"node4"  node_names:"node3"  node_names:"node2"  node_names:"node1"}}}}  chain_ids:"2YUr8sULVTm25EDFNDUwxnwk73enuqhkci4yXzoAgJYEjQ2HuC"
+```
+
+After around 1 minute the blockchain should have been created and some more output should appear in the terminal.

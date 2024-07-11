@@ -27,7 +27,9 @@ contract ReceiverOnSubnet is ITeleporterReceiver {
 }
 ```
 
-If there was now a new Teleporter version that would be used for sending messages, we would have to update the contract. Instead, we can use the registry to check if the sender is a registered Teleporter contract. 
+If there was now a new Teleporter version that would be used for sending messages, we would have to update the contract.
+
+Instead, we can use the registry to check if the sender is a registered Teleporter contract. 
 
 ```solidity
 pragma solidity ^0.8.18;
@@ -53,5 +55,3 @@ contract ReceiverOnDispatchWithRegistry is ITeleporterReceiver {
     }
 }
 ```
-
-```solidity

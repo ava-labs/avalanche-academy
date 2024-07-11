@@ -1,5 +1,4 @@
 import type { DocsLayoutProps } from 'fumadocs-ui/layout';
-import { BookIcon } from 'lucide-react';
 import { utils } from '@/utils/source';
 import { NavChildren, SidebarBanner, Title } from '@/app/layout.client';
 

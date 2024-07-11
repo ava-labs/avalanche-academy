@@ -7,7 +7,7 @@ icon: Terminal
 ---
 The final step, is to send the message between the two chains. Assuming everything went smooth so far, your local C-chain and your Subnet will have their corresponding parts of the sender/receiver deployed on them.
 
-# Send a Message
+## Send a Message
 
 ```bash
 cast send --rpc-url local-c --private-key $PK $SENDER_ADDRESS "sendMessage(address,string)" $RECEIVER_ADDRESS "Hello"
@@ -24,6 +24,4 @@ cast call --rpc-url mysubnet $RECEIVER_ADDRESS "lastMessage()(string)"
 
 If the output says "Hello" then the message was successfully delivered and processed.
 
-### 🎉 Congrats
-
-You have just sent your first cross-Subnet message. This will be one of many to come!
+Congratulations 🎉 You have just sent your first cross-Subnet message. This will be one of many to come!

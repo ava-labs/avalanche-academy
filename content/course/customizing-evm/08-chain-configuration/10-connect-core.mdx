@@ -1,0 +1,82 @@
+---
+title: Connect Core
+description: Learn how to Connect Core to your new blockchain.
+updated: 2024-05-31
+authors: [ashucoder9]
+icon: Terminal
+---
+
+## Connecting to a Local Blockchain
+
+In order to interact with our new Blockchain, we need to connect a wallet. Wallets communicate with the blockchain through one of the nodes. To connect a wallet to the blockchain, we need to provide the following information:
+
+- Network RPC URL
+- Network Name
+- Chain ID
+- Token Symbol
+
+## RPC URLs
+
+Each node provides an RPC endpoint for its Blockchains. When you create a transaction, click on send and sign it, which causes it to be sent to the specified RPC URL of your blockchain by your wallet.
+
+An RPC URL could look something like this: http://127.0.0.1:9654/ext/bc/2YUr8sULVTm25EDFNDUwxnwk73enuqhkci4yXzoAgJYEjQ2HuC/rpc
+
+Let's dissect this URL: `http://<node_ip>:<node_port>/ext/bc/<blockchain_id>/rpc`
+
+**&rarr; node_ip:** The IP of the node. Since we are testing locally, all of our nodes share the same IP 127.0.0.1 which equals to localhost, meaning it is always the current machine.
+
+**&rarr; node_port:** Each Machine requires a unique port, so send and receive network data. The default port is 9650. Since we are are running 5 nodes locally, they are run on different ports. Uneven port numbers are skipped.
+
+**&rarr; blockchain_id:** Each Blockchain has a unique id. Because a node validates multiple chains, we have to specify in the url which blockchain we want to submit the transaction to.
+
+## RPC URLs for Codespaces
+
+Since we are running our Avalanche network on Github Cloud while using Codespaces, localhost refers to the machine in the cloud. Therefore, we need to take few extra steps.
+
+### 1. Publish Ports
+
+First, let's instruct the codespace to make the port available to everyone on the internet. Find the port 9650, right-click the entry, and set the **Port Visibility** to **Public**.
+
+![](/course-images/customizing-evm/40.png)
+
+### 2. Get URL
+
+Next, right-click the same row and click **Copy Local Address**.
+
+![](/course-images/customizing-evm/41.png)
+
+This will give us something like: `https://obscure-succotash-pjr7qxv9q6gh696v-9650.app.github.dev/`
+
+This is equivalent to `localhost:9650` if we were running the network on our local machine. Now, we have to add the rest of the URL (`/ext/bc/<BLOCKCHAIN_ID>/rpc`), 
+so we will end up with something like this: `https://obscure-succotash-pjr7qxv9q6gh696v-9650.app.github.dev/ext/bc/2YUr8sULVTm25EDFNDUwxnwk73enuqhkci4yXzoAgJYEjQ2HuC/rpc`
+
+Follow these steps to create the RPC URLs for one of the Avalanche nodes running in your own codespace.
+
+## Add Network to Core
+
+Now, open the Core browser extension and navigate from there to the screen to add a new network.
+
+<Gallery url1="/course-images/customizing-evm/42.png" url2="/course-images/customizing-evm/43.png" />
+
+Now, enter the RPC URL for your network and append **/rpc** to it: `http://127.0.0.1:<node_port>/ext/bc/<your_blockchain_id>/rpc`
+
+Also, add the following information:
+
+- **Network Name**: Pick an arbitrary name, such as MyChain
+- **ChainID**: Use the number you assigned at the top of your Genesis JSON file
+- **Token Symbol**: Any symbol name for your native gas token, such as TOK
+
+<Gallery url1="/course-images/customizing-evm/44.png" url2="/course-images/customizing-evm/45.png" />
+
+Hit **Save** and make sure to **switch** to the newly created Network.
+
+## Send Tokens
+
+Go ahead and send some tokens to your other account by clicking the **circle with the plus** and then **Send**. From there, click on icon in the address field and switch to the tab **My Account** to select another of you accounts.
+
+<Gallery url1="/course-images/customizing-evm/46.png" url2="/course-images/customizing-evm/47.png" />
+
+While sending the tokens, reflect on how this is influenced by:
+
+- the initial token allocation you have set
+- the gas fees you have set

@@ -5,8 +5,6 @@ import { DocsPage, DocsBody } from 'fumadocs-ui/page';
 import { notFound } from 'next/navigation';
 import { utils, type Page } from '@/utils/source';
 import { createMetadata } from '@/utils/metadata';
-import Preview from '@/components/preview';
-import Link from "next/link";
 
 interface Param {
   slug: string[];
@@ -95,7 +93,6 @@ export default function Page({
         {page.data.description}
       </p>
       <DocsBody>
-        {preview && preview in Preview ? Preview[preview] : null}
         {page.data.index ? (
           <Category page={page} />
         ) : (

@@ -34,7 +34,7 @@ Let's dissect this URL:
 
 To find the RPC URLs of your recently launched blockchain, head to ThunderClient in VS Code and query the RPC URLs endpoint:
 
-![](/course/customizing-evm/17.png)
+![](/course-images/customizing-evm/17.png)
 
 Alternatively, you can call the command and it will give you the RPCs: `avalanche-network-runner control list-rpcs`
 
@@ -48,13 +48,13 @@ Since we're running our Avalanche network on Github Servers, if we are using cod
 
 First, let's instruct the codespace to make the port available to everyone on the internet. Find the port 9650, right-click the entry, and set the Port Visibility to Public.
 
-![](/course/customizing-evm/18.png)
+![](/course-images/customizing-evm/18.png)
 
 ### Get URL
 
 Next, right-click the same row and click Copy Local Address.
 
-![](/course/customizing-evm/19.png)
+![](/course-images/customizing-evm/19.png)
 
 This will give us something like:
 
@@ -70,7 +70,7 @@ Follow these steps to create the RPC Urls for one of the Avalanche nodes running
 
 Now, open the Core browser extension and navigate to the screen to add a new network.
 
-<Gallery url1="/course/customizing-evm/20.png" url2="/course/customizing-evm/21.png" />
+<Gallery url1="/course-images/customizing-evm/20.png" url2="/course-images/customizing-evm/21.png" />
 
 Now, enter the RPC URL for your network. Make sure it ends with /rpc: `http://127.0.0.1:node_port/ext/bc/your_blockchain_id/rpc`
 
@@ -80,7 +80,7 @@ Also, add the following information:
 - ChainId: Use the number you assigned at the top of your Genesis JSON file. (If you have been following this tutorial, that should be 99999)
 - Token Symbol: Any symbol name for your native gas token, such as TOK
 
-<Gallery url1="/course/customizing-evm/22.png" url2="/course/customizing-evm/23.png" />
+<Gallery url1="/course-images/customizing-evm/22.png" url2="/course-images/customizing-evm/23.png" />
 
 Hit **Save**. Then make sure to **switch** to the newly created Network.
 
@@ -90,13 +90,13 @@ This Subet uses the default address: 0x8db97C7cEcE249c2b98bDC0226Cc4C2A57BF52FC 
 
 Private Key: `56289e99c94b6912bfc12adc093c9b51124f0dc54ac7a766b2bc5ccf558d8027`
 
-<Gallery url1="/course/customizing-evm/24.png" url2="/course/customizing-evm/25.png" />
+<Gallery url1="/course-images/customizing-evm/24.png" url2="/course-images/customizing-evm/25.png" />
 
 ## Send Tokens
 
 Send tokens to your other account by clicking the circle with the plus and then send. Now, click on the icon in the address field and switch to the tab My Account to select another account.
 
-<Gallery url1="/course/customizing-evm/26.png" url2="/course/customizing-evm/27.png" />
+<Gallery url1="/course-images/customizing-evm/26.png" url2="/course-images/customizing-evm/27.png" />
 
 While sending the tokens, reflect on how this is influenced by:
 - The initial token allocation you have set

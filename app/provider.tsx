@@ -6,7 +6,7 @@ import type { ReactNode } from 'react';
 import { TooltipProvider } from '@radix-ui/react-tooltip';
 
 const SearchDialog = dynamic(() => import('@/components/search'), {
-  ssr: false,
+  ssr: true,
 });
 
 export function Provider({

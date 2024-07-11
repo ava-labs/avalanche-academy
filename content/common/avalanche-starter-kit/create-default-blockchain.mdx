@@ -46,7 +46,7 @@ This command creates the config files `genesis.json` and `sidecar.json` inside: 
 avalanche subnet describe <subnetName>
 ```
 
-# Start your Local Network (optional)
+## Start your Local Network (optional)
 
 Now that we created our Subnet config, we need a network that will host that Subnet. The following command will launch 5 nodes running locally:
 
@@ -75,7 +75,7 @@ avalanche network status
 
 If you don't start your network manually it will be automatically started when you deploy your first Subnet with the `avalanche subnet deploy <subnetName>` command.
 
-# Deploy your Subnet
+## Deploy your Subnet
 To deploy your Subnet, run
 
 ```bash
@@ -91,23 +91,23 @@ Deploying [mysubnet] to Local Network
 Backend controller started, pid: 4623, output at: /home/vscode/.avalanche-cli/runs/server_20240422_160014/avalanche-cli-backend.log
 Installing avalanchego-v1.11.4...
 avalanchego-v1.11.4 installation successful
-​
+
 Booting Network. Wait until healthy...
 Node logs directory: /home/vscode/.avalanche-cli/runs/network_20240422_160015/node<i>/logs
 Network ready to use.
-​
+
 Deploying Blockchain. Wait until network acknowledges...
-​
+
 Teleporter Messenger successfully deployed to c-chain (0x253b2784c75e510dD0fF1da844684a1aC0aa5fcf)
 Teleporter Registry successfully deployed to c-chain (0x17aB05351fC94a1a67Bf3f56DdbB941aE6c63E25)
-​
+
 Teleporter Messenger successfully deployed to mysubnet (0x253b2784c75e510dD0fF1da844684a1aC0aa5fcf)
 Teleporter Registry successfully deployed to mysubnet (0xA27afa6C3247d91bB1CdeDE8fa374Bda93487777)
-​
+
 using latest awm-relayer version (v1.1.0)
 Installing AWM-Relayer v1.1.0
 Executing AWM-Relayer...
-​
+
 Blockchain ready to use. Local network node endpoints:
 +-------+----------+-------------------------------------------------------------------------------------+-------------------------------------------+
 | NODE  |    VM    |                                         URL                                         |                 ALIAS URL                 |
@@ -122,7 +122,7 @@ Blockchain ready to use. Local network node endpoints:
 +-------+----------+-------------------------------------------------------------------------------------+-------------------------------------------+
 | node5 | mysubnet | http://127.0.0.1:9658/ext/bc/237eLnHWEv6kZsQogeRdTrDzg193HQyRBESoBVM38xjPYPPXaR/rpc | http://127.0.0.1:9658/ext/bc/mysubnet/rpc |
 +-------+----------+-------------------------------------------------------------------------------------+-------------------------------------------+
-​
+
 Codespace node endpoints:
 +-------+----------+-----------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------+
 | NODE  |    VM    |                                                             URL                                                             |                                     ALIAS URL                                     |
@@ -137,7 +137,7 @@ Codespace node endpoints:
 +-------+----------+-----------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------+
 | node5 | mysubnet | https://fictional-enigma-x5wrqj6xjjxf99j4-9658.app.github.dev/ext/bc/237eLnHWEv6kZsQogeRdTrDzg193HQyRBESoBVM38xjPYPPXaR/rpc | https://fictional-enigma-x5wrqj6xjjxf99j4-9658.app.github.dev/ext/bc/mysubnet/rpc |
 +-------+----------+-----------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------+
-​
+
 Browser Extension connection details (any node URL from above works):
 RPC URL:           http://127.0.0.1:9650/ext/bc/237eLnHWEv6kZsQogeRdTrDzg193HQyRBESoBVM38xjPYPPXaR/rpc
 Codespace RPC URL: https://fictional-enigma-x5wrqj6xjjxf99j4-9650.app.github.dev/ext/bc/237eLnHWEv6kZsQogeRdTrDzg193HQyRBESoBVM38xjPYPPXaR/rpc

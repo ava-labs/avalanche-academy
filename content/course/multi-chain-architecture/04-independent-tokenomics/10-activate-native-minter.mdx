@@ -1,0 +1,57 @@
+---
+title: Activating Native Minter Precompile
+description: Learn how to activate the native minter precompile.
+updated: 2024-06-28
+authors: [usmaneth]
+icon: Terminal
+---
+
+Ok, let's see how we can enable the native token minting rights. When prompted if you want to add a custom precompile, select **Yes**.
+
+```bash
+? Advanced: Would you like to add a custom precompile to modify the EVM?: 
+    No
+  ▸ Yes
+    Go back to previous step
+```
+
+Next press enter when the Native Minter precompile is selected:
+
+```bash
+Use the arrow keys to navigate: ↓ ↑ → ← 
+? Choose precompile: 
+  ▸ Native Minting
+    Contract Deployment Allow List
+    Transaction Allow List
+    Manage Fee Settings
+    RewardManagerConfig
+    Cancel
+```
+
+Let's add an address as an admin for our native token minting:
+
+```bash
+? Configure native minting admin addresses: 
+  ▸ Add
+    Delete
+    Preview
+    More Info
+↓   Done
+```
+
+Now enter this address and confirm with enter: `0x8db97C7cEcE249c2b98bDC0226Cc4C2A57BF52FC`
+
+Feel free to add more addresses here. Note that every address added here is an Admin. After setting all the admin addresses, go to done and press enter.
+
+```bash
+? Configure native minting admin addresses: 
+    Add
+    Delete
+    Preview
+    More Info
+↓ ▸ Done
+```
+
+Now it will ask you to add the Managers and Enabled addresses. There are three levels of permissions for precompiles. You will learn more about this in upcoming chapters.
+
+Feel free to add any addresses or just skip both by going straight to done.
