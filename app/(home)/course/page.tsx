@@ -1,13 +1,6 @@
 import { cva } from 'class-variance-authority';
-import { LayoutIcon, LibraryIcon } from 'lucide-react';
-import Link, { type LinkProps } from 'next/link';
-import Image from 'next/image';
 import { buttonVariants } from '@/components/ui/button';
 import { cn } from '@/utils/cn';
-
-const cardIconVariants = cva(
-  'mb-2 size-9 rounded-lg border p-1 shadow-sm shadow-primary/50',
-);
 
 export default function DocsPage(): React.ReactElement {
   return (
@@ -25,67 +18,19 @@ export default function DocsPage(): React.ReactElement {
       <div className="absolute inset-0 z-[-1] select-none overflow-hidden opacity-30">
       </div>
       <h1 className="mb-4 text-4xl font-semibold md:text-5xl">
-        Getting Started
+        Start Learning
       </h1>
       <p className="text-muted-foreground">
-        You can start with Fumadocs UI, or just use the core library.
+        Check out our Courses
       </p>
-      <div className="mt-4 grid grid-cols-2 gap-4">
+      <div className="mt-4 grid gap-4">
         <a
-          href="https://github.com/fuma-nama/fumadocs"
-          rel="noreferrer noopener"
+          href="/"
           className={cn(buttonVariants({ size: 'lg' }))}
         >
-          Github
+          Home
         </a>
-        <Link
-          href="/showcase"
-          className={cn(buttonVariants({ variant: 'outline', size: 'lg' }))}
-        >
-          Showcase
-        </Link>
-      </div>
-      <div className="mt-16 grid grid-cols-1 gap-4 text-left md:grid-cols-2">
-        <Item href="/docs/ui">
-          <div className={cn(cardIconVariants())}>
-            <LayoutIcon className="size-full" />
-          </div>
-          <h2 className="mb-2 text-lg font-semibold">Fumadocs UI</h2>
-          <p className="text-sm text-muted-foreground">
-            The full-powered documentation framework with an excellent UI.
-          </p>
-        </Item>
-        <Item href="/docs/headless">
-          <div className={cn(cardIconVariants())}>
-            <LibraryIcon className="size-full" />
-          </div>
-          <h2 className="mb-2 text-lg font-semibold">Fumadocs Core</h2>
-          <p className="text-sm text-muted-foreground">
-            The core library of Fumadocs.
-          </p>
-        </Item>
       </div>
     </main>
-  );
-}
-
-function Item(
-  props: LinkProps & { children: React.ReactNode },
-): React.ReactElement {
-  return (
-    <Link
-      {...props}
-      className="rounded-2xl border border-transparent p-6 shadow-primary/30 transition-all hover:shadow-primary/50"
-      style={{
-        backgroundImage:
-          'linear-gradient(to right bottom, hsl(var(--background)) 10%, hsl(var(--accent)), hsl(var(--background)) 60%),' +
-          'linear-gradient(to right bottom, black 10%, rgb(180,180,180), black 60%)',
-        backgroundOrigin: 'border-box',
-        boxShadow: 'inset 0px 2px 8px 0px var(--tw-shadow-color)',
-        backgroundClip: 'padding-box, border-box',
-      }}
-    >
-      {props.children}
-    </Link>
   );
 }
