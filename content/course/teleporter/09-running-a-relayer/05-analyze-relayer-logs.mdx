@@ -3,12 +3,16 @@ title: Relayer Logs
 description: Get the logs and activity of the relayer
 updated: 2024-05-31
 authors: [martineckardt]
-icon: Book
+icon: BookOpen
 ---
 
-To analyze the relayer activity you can check the relayer logs. 
+To analyze the relayer activity you can check the relayer logs. If you're using the Avalanche CLI, you can access them with the following command:
 
-Logs can be located under "~/.avalanche-cli/runs/awm-relayer.log". Let's take a look at them:
+```bash
+avalanche teleporter relayer logs
+```
+
+Alternatively the JSON logs can be located under "~/.avalanche-cli/runs/awm-relayer.log". Let's take a look at them:
 
 ```bash
 code ~/.avalanche-cli/runs/awm-relayer.log 
@@ -47,5 +51,4 @@ code ~/.avalanche-cli/runs/awm-relayer.log
 {"level":"info","timestamp":"2024-07-11T01:43:59.063Z","logger":"awm-relayer","caller":"evm/destination_client.go:192","msg":"Sent transaction","txID":"0x291bc3a3784dd79871cf4f95ba8f3fb3519e25c73848ee27bc5ebd7e3fe178d5","nonce":0}
 {"level":"info","timestamp":"2024-07-11T01:43:59.266Z","logger":"awm-relayer","caller":"teleporter/message_handler.go:250","msg":"Delivered message to destination chain","destinationBlockchainID":"dXobeMTZB89Fy6E987aaRBDz2j8mVparqRRfvvmQDsH8haNJJ","warpMessageID":"2ZV5u7WPVozo386A3d8T5B81vAKvcSDdNsggpmHFvihy5Yut1S","teleporterMessageID":"Hqr8jHV4NjTf4sbCoGqNJEuntm8QoWnDXdivFNLizAzFxRxm3","txHash":"0x291bc3a3784dd79871cf4f95ba8f3fb3519e25c73848ee27bc5ebd7e3fe178d5"}
 {"level":"info","timestamp":"2024-07-11T01:43:59.266Z","logger":"awm-relayer","caller":"relayer/application_relayer.go:246","msg":"Finished relaying message to destination chain","destinationBlockchainID":"dXobeMTZB89Fy6E987aaRBDz2j8mVparqRRfvvmQDsH8haNJJ"}
-
 ```
