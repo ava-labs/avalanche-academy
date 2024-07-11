@@ -25,7 +25,7 @@ avalanche-network-runner server \
 
 In this terminal, you should now the the gRPC server logs. Since this will not launch the network yet, but just start the managing server, this should go fast.
 
-![](/course/customizing-evm/37.png)
+![](/course-images/customizing-evm/37.png)
 
 ## Start an Avalanche Network with a New Blockchain
 
@@ -37,11 +37,11 @@ From here, we can interact with the gRPC server we just launched. We do this usi
 
 To start the network, navigate to **ThunderClient** and select the **Start Network** endpoint. As we can see, most of the data is already prefilled:
 
-![](/course/customizing-evm/38.png)
+![](/course-images/customizing-evm/38.png)
 
 The only thing we have to specify is the path to our genesis JSON. Navigate to the file in `tests/precompile/genesis` and copy the absolute file path:
 
-![](/course/customizing-evm/39.png)
+![](/course-images/customizing-evm/39.png)
 
 Paste this path into the genesis value of the JSON. The path should look something like this `/Users/.../go/src/github.com/ava-labs/precompile-evm/tests/precompile/genesis/sha256.json`.
 

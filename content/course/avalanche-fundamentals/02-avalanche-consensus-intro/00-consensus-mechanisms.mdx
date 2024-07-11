@@ -14,7 +14,7 @@ Validators can reach a consensus by following a set of steps called a consensus 
 
 Consensus is needed to agree on the order of state changes in a blockchain. This allows the validators to decide between two conflicting states.
 
-![](/course/avalanche-fundamentals/1.png)
+![](/course-images/avalanche-fundamentals/1.png)
 
 ## Double Spending Attack
 
@@ -22,7 +22,7 @@ A Double Spending Attack is when a user attempts to spend more crypto that they 
 
 Let's look at an Example: Alice owns 5 AVAX
 
-![](/course/avalanche-fundamentals/2.png)
+![](/course-images/avalanche-fundamentals/2.png)
 
 Now Alice issues two transactions at the same time to different validators:
 
@@ -31,10 +31,10 @@ Now Alice issues two transactions at the same time to different validators:
 
 It is important that there is only a limited notion of time in blockchain systems. Even if Alice does not issue these transactions at the exact same time, validators cannot identify which was issued first.
 
-![](/course/avalanche-fundamentals/3.png)
+![](/course-images/avalanche-fundamentals/3.png)
 
 Each of the transaction in itself is valid. Alice owns 5 AVAX and should be able to send them to whomever she wants. However, she should only be able to send the amount she actually owns.
 
-![](/course/avalanche-fundamentals/4.png)
+![](/course-images/avalanche-fundamentals/4.png)
 
 Therefore, validators have to collectively come to consensus on which of the two conflicting transactions will be included in the blockchain first, and therefore be accepted by all validators as the next state. To illustrate, we will color the validators preferring Charlie yellow and the validators preferring Bob blue.
