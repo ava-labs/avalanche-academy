@@ -1,0 +1,17 @@
+---
+title: Finality Importance in Interoperabile Systems
+description:  Learn about interoperability and it's importance in multichain systems
+updated: 2024-06-10
+authors: [andyvargtz]
+icon: BookOpen
+---
+
+Finality is crucial for building cross-chain applications and interoperable systems because it ensures that transactions on the source chain are confirmed and immutable, therefore whatever action is triggered on the destination chain can securely be executed knowing the source chain won't revert the state induced by that cross chain message.
+
+To 
+
+This rapid confirmation is essential for maintaining the integrity and reliability of transactions across different blockchain networks. In an environment where multiple chains need to communicate and transact with each other, slow finality can lead to delays, increased risk of double-spending, and reduced overall efficiency. Fast finality enhances user experience by providing near-instant transaction confirmations, which is vital for applications such as decentralized finance (DeFi), supply chain management, and other use cases that require swift and secure transaction processing across interconnected blockchain ecosystems.
+
+![](/common-images/multi-chain-architecture/vm-variety.png)
+
+Avalanche, as a multi-chain system, provides flexibility on the execution and application layer but also offers a standardized messaging protocol. The necessary cryptographic algorithms are implemented in AvalancheGo, enabling cross-Subnet communication out of the box, even when the application and execution layers of the chains may be completely different. The VMs can utilize these modules to sign and verify messages, making interoperability between Subnets much easier than between unrelated chains from different networks.
