@@ -4,7 +4,6 @@ import type { Viewport } from 'next';
 import { GeistSans } from 'geist/font/sans';
 import { GeistMono } from 'geist/font/mono';
 import { baseUrl, createMetadata } from '@/utils/metadata';
-import { Footer } from '@/components/footer';
 import { Provider } from './provider';
 import { Analytics } from "@vercel/analytics/react";
 
@@ -38,7 +37,6 @@ export default function RootLayout({
       <body className="flex min-h-screen flex-col">
         <Provider>
           {children}
-          <Footer />
         </Provider>
         <Analytics />
       </body>
