@@ -8,7 +8,7 @@ export function Title(): React.ReactElement {
   return (
     <>
       <img width="80" height="80" src={`data:image/svg+xml;utf8,${encodeURIComponent(svgCode)}`} className="size-7" alt="logo" />
-      <span className="max-md:hidden [.uwu_&]:hidden" style={{fontSize: "larger"}}>Academy</span>
+      <span style={{fontSize: "larger"}}>Academy</span>
     </>
   );
 }
