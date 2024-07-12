@@ -1,5 +1,5 @@
 ---
-title: Send an Track a Roundtrip Message
+title: Send a Roundtrip Message
 description: Send roundtrip message
 updated: 2024-05-31
 authors: [martineckardt]
@@ -18,4 +18,10 @@ To check wether the message has been received, we can call the `roundtripMessage
 
 ```bash
 cast call --rpc-url local-c $SENDER_ADDRESS "roundtripMessage()(string)"
+```
+
+To understand in more detail what happened, check out the relayer logs:
+
+```bash
+avalanche teleporter relayer logs
 ```
