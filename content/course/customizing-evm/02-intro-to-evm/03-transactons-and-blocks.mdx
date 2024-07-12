@@ -21,13 +21,6 @@ Transactions can be Ether transfers or smart contract calls. Each transaction in
 - To: The Ethereum address of the recipient or the smart contract the transaction is directed towards.
 - V, R, S: Cryptographic data used to generate the sender's signature.
 
-## Note on Account Types
-
-In the EVM, there are two types of accounts:
-
-1. Externally Owned Accounts (EOAs): These are accounts controlled by private keys and have no associated code with them. They can send transactions (including Ether transfers) by creating and signing them with their private keys. Essentially, if you are an end-user of Ethereum or Avalanche, you'd likely be using an EOA.
-2. Contract Accounts: These are accounts that have associated code with them (Smart Contracts). Contract accounts can't initiate transactions on their own. Instead, they only perform an operation when instructed to do so by an EOA. This could be a simple Ether transfer or a function call in a smart contract.
-
 ## Blocks
 
 A block in the EVM contains a series of transactions that have been validated by miners, bundled together, and linked to the previous block. Each block includes:
