@@ -1,17 +1,19 @@
 import './global.css';
-import 'fumadocs-ui/twoslash.css';
+import { RootProvider } from 'fumadocs-ui/provider';
 import type { Viewport } from 'next';
+import type { ReactNode } from 'react';
 import { GeistSans } from 'geist/font/sans';
 import { GeistMono } from 'geist/font/mono';
 import { baseUrl, createMetadata } from '@/utils/metadata';
-import { Provider } from './provider';
 import { Analytics } from "@vercel/analytics/react";
 
 export const metadata = createMetadata({
   title: {
     template: '%s | Avalanche Academy',
-    default: 'The Learning Platform for Avalanche Ecosystem',
+    default: 'Avalanche Academy',
   },
+
+  // area for improvement: add page specific metadata
   description: 'The Learning Platform for Avalanche Ecosystem',
   metadataBase: baseUrl,
 });
@@ -23,21 +25,11 @@ export const viewport: Viewport = {
   ],
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}): React.ReactElement {
+export default function Layout({ children }: { children: ReactNode }) {
   return (
-    <html
-      lang="en"
-      className={`${GeistSans.variable} ${GeistMono.variable}`}
-      suppressHydrationWarning
-    >
+    <html lang="en" className={`${GeistSans.variable} ${GeistMono.variable}`} suppressHydrationWarning>
       <body className="flex min-h-screen flex-col">
-        <Provider>
-          {children}
-        </Provider>
+        <RootProvider>{children}</RootProvider>
         <Analytics />
       </body>
     </html>

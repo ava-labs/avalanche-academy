@@ -1,13 +1,5 @@
 'use client';
-import { useParams } from 'next/navigation';
 import type { ReactNode } from 'react';
-import { Popover, PopoverButton, PopoverPanel, Transition } from '@headlessui/react';
-import { ChevronDownIcon, DocumentTextIcon, UserGroupIcon } from '@heroicons/react/20/solid';
-import COURSES from '@/content/courses';
-import { LibraryIcon } from 'lucide-react';
-import { useRouter } from 'next/router';
-import Link from 'next/link';
-
 
 export function Title(): React.ReactElement {
 
@@ -26,88 +18,5 @@ export function Body({
 }: {
   children: ReactNode;
 }): React.ReactElement {
-
   return <div>{children}</div>;
-}
-
-export function NavChildren(): React.ReactElement {
-
-  const callsToAction = [
-    { name: 'Documentation', href: 'https://docs.avax.network', icon: DocumentTextIcon },
-    { name: 'Join our Community', href: 'https://t.me/avalancheacademy', icon: UserGroupIcon },
-  ]
-
-  return (
-    <Popover className="md:relative">
-      <PopoverButton className="inline-flex items-center gap-x-1 text-sm font-semibold leading-6">
-        <span>Explore Courses</span>
-        <ChevronDownIcon className="h-5 w-5" aria-hidden="true" />
-      </PopoverButton>
-
-      <Transition
-        enter="transition ease-out duration-200"
-        enterFrom="opacity-0 translate-y-1"
-        enterTo="opacity-100 translate-y-0"
-        leave="transition ease-in duration-150"
-        leaveFrom="opacity-100 translate-y-0"
-        leaveTo="opacity-0 translate-y-1"
-      >
-        <PopoverPanel className="absolute left-1/2 z-10 mt-5 flex w-screen max-w-max -translate-x-1/2 px-4">
-          <div className="w-screen max-w-xs md:max-w-md flex-auto overflow-hidden rounded-3xl bg-white text-sm leading-6 shadow-lg ring-1 ring-gray-900/5">
-            <div className="p-4">
-              {COURSES.official_featured.map((item) => (
-                <div key={item.name} className="group relative flex gap-x-6 rounded-lg p-4 hover:bg-gray-50">
-                  <div className="mt-1 flex h-4 md:h-12 w-4 md:w-12 flex-none items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white">
-                    <item.icon className="h-6 w-6 text-gray-600 group-hover:text-indigo-600" aria-hidden="true" />
-                  </div>
-                  <div>
-                    <Link href={`/course/${item.slug}`} className="font-semibold text-gray-900">
-                      {item.name}
-                      <span className="absolute inset-0" />
-                    </Link>
-                    <p className="mt-1 text-gray-600 hidden md:block">{item.description}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-            <div className="grid grid-cols-2 divide-x divide-gray-900/5 bg-gray-50 hidden md:block">
-              {callsToAction.map((item) => (
-                <Link
-                  key={item.name}
-                  href={item.href}
-                  className="flex items-center justify-center gap-x-2.5 p-3 font-semibold text-gray-900 hover:bg-gray-100"
-                >
-                  <item.icon className="h-5 w-5 flex-none text-gray-400" aria-hidden="true" />
-                  {item.name}
-                </Link>
-              ))}
-            </div>
-          </div>
-        </PopoverPanel>
-      </Transition>
-    </Popover>
-  );
-}
-
-export function useMode(): string | undefined {
-  const { slug } = useParams();
-  return Array.isArray(slug) && slug.length > 0 ? slug[0] : undefined;
-}
-
-export function SidebarBanner(): React.ReactElement {
-  const Icon = LibraryIcon;
-
-  return <></>
-  /** return (
-    <div className="-mt-2 flex flex-row items-center gap-2 rounded-lg p-2 text-card-foreground transition-colors hover:bg-muted/80">
-      <Icon className="size-9 shrink-0 rounded-md bg-primary/30 bg-gradient-to-t from-background/80 p-1.5 text-primary shadow-md shadow-primary/50" />
-      <div>
-        <p className="font-medium">WHAT TO ADD</p>
-        <p className="text-xs text-muted-foreground">
-          CAN BE ANYTHING
-        </p>
-      </div>}
-    </div>
-  );
-  **/
 }
