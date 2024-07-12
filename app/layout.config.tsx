@@ -2,6 +2,7 @@ import { type BaseLayoutProps, type DocsLayoutProps } from 'fumadocs-ui/layout';
 import { utils } from '@/utils/source';
 import { RootToggle } from 'fumadocs-ui/components/layout/root-toggle';
 import { Title } from '@/app/layout.client';
+import { BlocksIcon, MailIcon, SproutIcon, SquareStackIcon } from 'lucide-react';
 
 export const baseOptions: BaseLayoutProps = {
   nav: {
@@ -33,25 +34,25 @@ export const docsOptions: DocsLayoutProps = {
           {
             title: 'Avalanche Fundamentals',
             description: '',
-            icon: 'Book',
+            icon: <SproutIcon />,
             url: '/course/avalanche-fundamentals',
           },
           {
             title: 'Multi-Chain Architecture',
             description: '',
-            icon: 'Book',
+            icon: <SquareStackIcon />,
             url: '/course/multi-chain-architecture',
           },
           {
             title: 'Customizing EVM',
             description: '',
-            icon: 'Book',
+            icon: <BlocksIcon />,
             url: '/course/customizing-evm',
           },
           {
             title: 'Teleporter',
             description: '',
-            icon: 'Book',
+            icon: <MailIcon />,
             url: '/course/teleporter',
           },
         ]}
