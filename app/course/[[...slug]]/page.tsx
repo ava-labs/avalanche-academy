@@ -50,6 +50,7 @@ export default function Page({
               </div>
             */}
             <div className="grid grid-cols-3 text-sm gap-y-4 text-muted-foreground">
+              {/* 
               <div>Author{page.data.authors.length > 1 ? "s" : ""}:</div>
               <div className="col-span-2 flex flex-col gap-2">
                 {page.data.authors.map(author => (
@@ -66,6 +67,7 @@ export default function Page({
                   </Link>
                 ))}
               </div>
+              */}
               <div>Updated:</div>
               <time dateTime={updatedISO} title={updatedISO} className="col-span-2 text-foreground">
                 {updatedHuman}
