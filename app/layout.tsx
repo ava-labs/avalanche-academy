@@ -6,6 +6,7 @@ import { GeistSans } from 'geist/font/sans';
 import { GeistMono } from 'geist/font/mono';
 import { baseUrl, createMetadata } from '@/utils/metadata';
 import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 export const metadata = createMetadata({
   title: {
@@ -30,7 +31,8 @@ export default function Layout({ children }: { children: ReactNode }) {
     <html lang="en" className={`${GeistSans.variable} ${GeistMono.variable}`} suppressHydrationWarning>
       <body className="flex min-h-screen flex-col">
         <RootProvider>{children}</RootProvider>
-        <Analytics />
+        <Analytics/>
+        <SpeedInsights/>
       </body>
     </html>
   );
