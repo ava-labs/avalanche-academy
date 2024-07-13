@@ -2,14 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-.avalanche-fundamentals, .multi-chain-architecture, .teleporter-token-bridge, .teleporter {
-  --primary: 0 100% 50%;
-}
-
-.dark .avalanche-fundamentals, .dark .multi-chain-architecture, .dark .teleporter-token-bridge, .dark .teleporter {
-  --primary: 0deg 92% 76%;
-}
-
 /* List items in prose */
 .prose :where(ul > li):not(:where([class~="not-prose"],[class~="not-prose"] *))::marker {
   color: #E84142;
