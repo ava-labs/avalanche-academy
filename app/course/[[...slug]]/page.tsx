@@ -5,7 +5,6 @@ import { DocsPage, DocsBody } from 'fumadocs-ui/page';
 import { notFound } from 'next/navigation';
 import { utils, type Page } from '@/utils/source';
 import { createMetadata } from '@/utils/metadata';
-import Link from 'next/link';
 
 interface Param {
   slug: string[];
@@ -44,11 +43,6 @@ export default function Page({
       tableOfContent={{
         header: (
           <div className="flex flex-col gap-6">
-            {/*
-              <div className="bg-secondary/50 rounded-lg border border-border p-4 text-sm">
-                This space will be used for right sidebar action items during lessons.{" "}
-              </div>
-            */}
             <div className="grid grid-cols-3 text-sm gap-y-4 text-muted-foreground">
               {/* 
               <div>Author{page.data.authors.length > 1 ? "s" : ""}:</div>

@@ -44,16 +44,16 @@ export const docsOptions: DocsLayoutProps = {
             url: '/course/multi-chain-architecture',
           },
           {
-            title: 'Customizing EVM',
-            description: '',
-            icon: <BlocksIcon />,
-            url: '/course/customizing-evm',
-          },
-          {
             title: 'Teleporter',
             description: '',
             icon: <MailIcon />,
             url: '/course/teleporter',
+          },
+          {
+            title: 'Customizing EVM',
+            description: '',
+            icon: <BlocksIcon />,
+            url: '/course/customizing-evm',
           },
         ]}
       />
