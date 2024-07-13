@@ -46,9 +46,9 @@ Since we're running our Avalanche network on Github Servers, if we are using cod
 
 ### Publish Ports
 
-First, let's instruct the codespace to make the port available to everyone on the internet. Find the port 9650, right-click the entry, and set the Port Visibility to Public.
+import PublishPort from "@/content/common/codespaces/publish-port.mdx";
 
-![](/course-images/customizing-evm/18.png)
+<PublishPort />
 
 ### Get URL
 
@@ -70,7 +70,7 @@ Follow these steps to create the RPC Urls for one of the Avalanche nodes running
 
 Now, open the Core browser extension and navigate to the screen to add a new network.
 
-<Gallery url1="/course-images/customizing-evm/20.png" url2="/course-images/customizing-evm/21.png" />
+<Gallery url1="/common-images/core-wallet/go-to-manage-networks.png" url2="/common-images/core-wallet/go-to-add-network.png" />
 
 Now, enter the RPC URL for your network. Make sure it ends with /rpc: `http://127.0.0.1:node_port/ext/bc/your_blockchain_id/rpc`
 

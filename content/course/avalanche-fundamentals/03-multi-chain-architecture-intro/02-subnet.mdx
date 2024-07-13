@@ -1,0 +1,17 @@
+---
+title: Subnets
+description: Learn about the Multi-Chain Architecture.
+updated: 2024-05-31
+authors: [ashucoder9]
+icon: BookOpen
+---
+
+A Subnet is a network with its own set of rules regarding membership, token economics, and execution layer. It is composed of a Subset of Avalanche validators collaborating to achieve consensus on the state of one or more blockchains. Validators can be members of numerous Subnets.
+
+Avalanche enables multiple interconnected Subnets. Each Subnet is independent while maintaining the capacity to communicate with other Subnets. All validators are part of the Subnet known as the Primary Network.
+
+![](/common-images/multi-chain-architecture/subnets.png)
+
+Each blockchain belongs to exactly one Subnet, but a Subnet can validate many blockchains. Each blockchain can define its own Virtual Machine (EVM, customized EVM or entirely new VM). 
+
+The tailored, application-specific blockchains of Subnets offer a solution to these challenges and many others, moving away from the monolithic blockchain structure of the past.

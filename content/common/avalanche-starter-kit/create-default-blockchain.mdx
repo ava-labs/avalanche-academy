@@ -86,15 +86,7 @@ When prompted select `Local Network` to deploy on. After the deployment your sho
 
 ```
 @martineckardt ➜ /workspaces/avalanche-starter-kit (main) $ avalanche subnet deploy mysubnet
-✔ Local Network
 Deploying [mysubnet] to Local Network
-Backend controller started, pid: 4623, output at: /home/vscode/.avalanche-cli/runs/server_20240422_160014/avalanche-cli-backend.log
-Installing avalanchego-v1.11.4...
-avalanchego-v1.11.4 installation successful
-
-Booting Network. Wait until healthy...
-Node logs directory: /home/vscode/.avalanche-cli/runs/network_20240422_160015/node<i>/logs
-Network ready to use.
 
 Deploying Blockchain. Wait until network acknowledges...
 
@@ -102,52 +94,55 @@ Teleporter Messenger successfully deployed to c-chain (0x253b2784c75e510dD0fF1da
 Teleporter Registry successfully deployed to c-chain (0x17aB05351fC94a1a67Bf3f56DdbB941aE6c63E25)
 
 Teleporter Messenger successfully deployed to mysubnet (0x253b2784c75e510dD0fF1da844684a1aC0aa5fcf)
-Teleporter Registry successfully deployed to mysubnet (0xA27afa6C3247d91bB1CdeDE8fa374Bda93487777)
+Teleporter Registry successfully deployed to mysubnet (0x0a3D3aa12Ddc6cfbF21764592cc1223e56F143F4)
 
-using latest awm-relayer version (v1.1.0)
-Installing AWM-Relayer v1.1.0
+using awm-relayer version (v1.3.3)
 Executing AWM-Relayer...
 
-Blockchain ready to use. Local network node endpoints:
-+-------+----------+-------------------------------------------------------------------------------------+-------------------------------------------+
-| NODE  |    VM    |                                         URL                                         |                 ALIAS URL                 |
-+-------+----------+-------------------------------------------------------------------------------------+-------------------------------------------+
-| node1 | mysubnet | http://127.0.0.1:9650/ext/bc/237eLnHWEv6kZsQogeRdTrDzg193HQyRBESoBVM38xjPYPPXaR/rpc | http://127.0.0.1:9650/ext/bc/mysubnet/rpc |
-+-------+----------+-------------------------------------------------------------------------------------+-------------------------------------------+
-| node2 | mysubnet | http://127.0.0.1:9652/ext/bc/237eLnHWEv6kZsQogeRdTrDzg193HQyRBESoBVM38xjPYPPXaR/rpc | http://127.0.0.1:9652/ext/bc/mysubnet/rpc |
-+-------+----------+-------------------------------------------------------------------------------------+-------------------------------------------+
-| node3 | mysubnet | http://127.0.0.1:9654/ext/bc/237eLnHWEv6kZsQogeRdTrDzg193HQyRBESoBVM38xjPYPPXaR/rpc | http://127.0.0.1:9654/ext/bc/mysubnet/rpc |
-+-------+----------+-------------------------------------------------------------------------------------+-------------------------------------------+
-| node4 | mysubnet | http://127.0.0.1:9656/ext/bc/237eLnHWEv6kZsQogeRdTrDzg193HQyRBESoBVM38xjPYPPXaR/rpc | http://127.0.0.1:9656/ext/bc/mysubnet/rpc |
-+-------+----------+-------------------------------------------------------------------------------------+-------------------------------------------+
-| node5 | mysubnet | http://127.0.0.1:9658/ext/bc/237eLnHWEv6kZsQogeRdTrDzg193HQyRBESoBVM38xjPYPPXaR/rpc | http://127.0.0.1:9658/ext/bc/mysubnet/rpc |
-+-------+----------+-------------------------------------------------------------------------------------+-------------------------------------------+
+Blockchain ready to use
 
-Codespace node endpoints:
-+-------+----------+-----------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------+
-| NODE  |    VM    |                                                             URL                                                             |                                     ALIAS URL                                     |
-+-------+----------+-----------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------+
-| node1 | mysubnet | https://fictional-enigma-x5wrqj6xjjxf99j4-9650.app.github.dev/ext/bc/237eLnHWEv6kZsQogeRdTrDzg193HQyRBESoBVM38xjPYPPXaR/rpc | https://fictional-enigma-x5wrqj6xjjxf99j4-9650.app.github.dev/ext/bc/mysubnet/rpc |
-+-------+----------+-----------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------+
-| node2 | mysubnet | https://fictional-enigma-x5wrqj6xjjxf99j4-9652.app.github.dev/ext/bc/237eLnHWEv6kZsQogeRdTrDzg193HQyRBESoBVM38xjPYPPXaR/rpc | https://fictional-enigma-x5wrqj6xjjxf99j4-9652.app.github.dev/ext/bc/mysubnet/rpc |
-+-------+----------+-----------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------+
-| node3 | mysubnet | https://fictional-enigma-x5wrqj6xjjxf99j4-9654.app.github.dev/ext/bc/237eLnHWEv6kZsQogeRdTrDzg193HQyRBESoBVM38xjPYPPXaR/rpc | https://fictional-enigma-x5wrqj6xjjxf99j4-9654.app.github.dev/ext/bc/mysubnet/rpc |
-+-------+----------+-----------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------+
-| node4 | mysubnet | https://fictional-enigma-x5wrqj6xjjxf99j4-9656.app.github.dev/ext/bc/237eLnHWEv6kZsQogeRdTrDzg193HQyRBESoBVM38xjPYPPXaR/rpc | https://fictional-enigma-x5wrqj6xjjxf99j4-9656.app.github.dev/ext/bc/mysubnet/rpc |
-+-------+----------+-----------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------+
-| node5 | mysubnet | https://fictional-enigma-x5wrqj6xjjxf99j4-9658.app.github.dev/ext/bc/237eLnHWEv6kZsQogeRdTrDzg193HQyRBESoBVM38xjPYPPXaR/rpc | https://fictional-enigma-x5wrqj6xjjxf99j4-9658.app.github.dev/ext/bc/mysubnet/rpc |
-+-------+----------+-----------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------+
++-------------------+----------------------------------------------------------------------------------------------------------------------------+
+|                                                               mysubnet RPC URLs                                                                |
++-------------------+----------------------------------------------------------------------------------------------------------------------------+
+| Localhost         | http://127.0.0.1:9650/ext/bc/mysubnet/rpc                                                                                  |
++                   +----------------------------------------------------------------------------------------------------------------------------+
+|                   | http://127.0.0.1:9650/ext/bc/2rrM1F6UNo6soe9UuyAHCHtUNLpGbHSrU4CYzvkv6UspxYFGW5/rpc                                        |
++-------------------+----------------------------------------------------------------------------------------------------------------------------+
+| Codespace         | https://ideal-funicular-g4qxwg9pqxxh9gr4-9650.app.github.dev/ext/bc/mysubnet/rpc                                           |
++                   +----------------------------------------------------------------------------------------------------------------------------+
+|                   | https://ideal-funicular-g4qxwg9pqxxh9gr4-9650.app.github.dev/ext/bc/2rrM1F6UNo6soe9UuyAHCHtUNLpGbHSrU4CYzvkv6UspxYFGW5/rpc |
++-------------------+----------------------------------------------------------------------------------------------------------------------------+
+
++-------+------------------------------------------+-----------------------+--------------------------------------------------------------+
+|                                                                  Nodes                                                                  |
++-------+------------------------------------------+-----------------------+--------------------------------------------------------------+
+| Name  | Node ID                                  | Localhost Endpoint    | Codespace Endpoint                                           |
++-------+------------------------------------------+-----------------------+--------------------------------------------------------------+
+| node1 | NodeID-7Xhw2mDxuDS44j42TCB6U5579esbSt3Lg | http://127.0.0.1:9650 | https://ideal-funicular-g4qxwg9pqxxh9gr4-9650.app.github.dev |
++-------+------------------------------------------+-----------------------+--------------------------------------------------------------+
+| node2 | NodeID-MFrZFVCXPv5iCn6M9K6XduxGTYp891xXZ | http://127.0.0.1:9652 | https://ideal-funicular-g4qxwg9pqxxh9gr4-9652.app.github.dev |
++-------+------------------------------------------+-----------------------+--------------------------------------------------------------+
+| node3 | NodeID-NFBbbJ4qCmNaCzeW7sxErhvWqvEQMnYcN | http://127.0.0.1:9654 | https://ideal-funicular-g4qxwg9pqxxh9gr4-9654.app.github.dev |
++-------+------------------------------------------+-----------------------+--------------------------------------------------------------+
+| node4 | NodeID-GWPcbFJZFfZreETSoWjPimr846mXEKCtu | http://127.0.0.1:9656 | https://ideal-funicular-g4qxwg9pqxxh9gr4-9656.app.github.dev |
++-------+------------------------------------------+-----------------------+--------------------------------------------------------------+
+| node5 | NodeID-P7oB2McjBGgW2NXXWVYjV8JEDFoW9xDE5 | http://127.0.0.1:9658 | https://ideal-funicular-g4qxwg9pqxxh9gr4-9658.app.github.dev |
++-------+------------------------------------------+-----------------------+--------------------------------------------------------------+
 
 Browser Extension connection details (any node URL from above works):
-RPC URL:           http://127.0.0.1:9650/ext/bc/237eLnHWEv6kZsQogeRdTrDzg193HQyRBESoBVM38xjPYPPXaR/rpc
-Codespace RPC URL: https://fictional-enigma-x5wrqj6xjjxf99j4-9650.app.github.dev/ext/bc/237eLnHWEv6kZsQogeRdTrDzg193HQyRBESoBVM38xjPYPPXaR/rpc
-Funded address:    0x59560360Cb5EA935849C07af1952fF0910bA690D with 600
+RPC URL:           http://127.0.0.1:9650/ext/bc/2rrM1F6UNo6soe9UuyAHCHtUNLpGbHSrU4CYzvkv6UspxYFGW5/rpc
+Codespace RPC URL: https://ideal-funicular-g4qxwg9pqxxh9gr4-9650.app.github.dev/ext/bc/2rrM1F6UNo6soe9UuyAHCHtUNLpGbHSrU4CYzvkv6UspxYFGW5/rpc
 Funded address:    0x8db97C7cEcE249c2b98bDC0226Cc4C2A57BF52FC with 1000000 (10^18) - private key: 56289e99c94b6912bfc12adc093c9b51124f0dc54ac7a766b2bc5ccf558d8027
+Funded address:    0xD6Fb3Cb2170A973A84b900Dff2479D0c9e8597DB with 600 (10^18)
 Network name:      mysubnet
-Chain ID:          9999
+Chain ID:          99999
 Currency Symbol:   TOK
 ```
 
 This output includes the endpoints of your 5 nodes where you can connect to interact with your Subnet. You're running a Subnet-EVM, this means you can use those RPC URLs to connect to EVM compatible wallet or tools.
 
-Please note that since the Avalanche Network is running in a Github Codespace the localhost (127.0.0.1) will only be accessible from inside the Codespace, so connecting your wallet using the localhost RPC URL will not work since your wallet will be running in the local environment of the host (your PC), and not the local environment where the network is running (the Codespace cloud). We will cover how to connect your wallet in the coming steps.
+## Make RPC-Endpoint publicly accessible
+
+import PublishPort from "@/content/common/codespaces/publish-port.mdx";
+
+<PublishPort />
