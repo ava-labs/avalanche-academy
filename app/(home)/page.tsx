@@ -29,9 +29,9 @@ export default function HomePage(): React.ReactElement {
     <>
       <main className="container relative">
         <Hero />
-        <Courses title="Explore our Courses" description="We offer fundamental courses specifically designed for individuals who are new to the Avalanche ecosystem, and advanced courses for those who wish to master the art of configuring, modifying, or even creating entirely new Virtual Machines from scratch." courses={COURSES.official}/>
+        <Courses title="Explore our Courses" description="We offer fundamental courses specifically designed for individuals who are new to the Avalanche ecosystem, and advanced courses for those who wish to master the art of configuring, modifying, or even creating entirely new Virtual Machines from scratch." courses={COURSES.official} />
 
-        {COURSES.ecosystem.length > 0 && <Courses title="Ecosystem Courses" description="Check out the courses provided by our ecosystem partners." courses={COURSES.ecosystem}/>}
+        {COURSES.ecosystem.length > 0 && <Courses title="Ecosystem Courses" description="Check out the courses provided by our ecosystem partners." courses={COURSES.ecosystem} />}
 
       </main>
     </>
@@ -41,54 +41,22 @@ export default function HomePage(): React.ReactElement {
 function Hero(): React.ReactElement {
 
   return (
-    <div className="overflow-hidden py-12 sm:py-24">
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 sm:gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-2">
-          <div className="lg:pr-8 lg:pt-4">
-            <div className="lg:max-w-lg">
-              <h2 className="text-base font-semibold leading-7 text-muted-foreground">Build on Avalanche</h2>
-              <p className="mt-2 text-3xl font-bold tracking-tight sm:text-4xl">Create Without Limits</p>
-              <p className="mt-6 text-lg leading-8 text-muted-foreground">
-                Become an expert in the Avalanche Ecosystem, Virtual Machine Development and Multi-Chain Architecture.
-              </p>
-              <dl className="mt-10 max-w-xl space-y-8 text-base leading-7 text-muted-foreground lg:max-w-none">
-                {features.map((feature) => (
-                  <div key={feature.name} className="relative pl-9">
-                    <dt className="inline font-semibold ">
-                      <feature.icon className="absolute left-1 top-1 h-5 w-5 text-red-600" aria-hidden="true" />
-                      {feature.name}
-                    </dt>{' '}
-                    <dd className="inline">{feature.description}</dd>
-                  </div>
-                ))}
-              </dl>
-            </div>
-          </div>
-          <img
-            src={`/course-preview.png`}
-            alt="Product screenshot"
-            className="w-[48rem] max-w-none rounded-xl shadow-xl ring-1 ring-gray-400/10 sm:w-[57rem] md:-ml-4 lg:-ml-0"
-            width={2432}
-            height={1442}
-          />
-        </div>
-      </div>
-    </div>
+<>  </>
   );
 }
 
 
-function Courses(props: {title: string, description: string, courses: any[]}): React.ReactElement {
+function Courses(props: { title: string, description: string, courses: any[] }): React.ReactElement {
   return (
     <div className="py-12 sm:py-24">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto w-full lg:mx-0">
-          <h2 className="text-center text-3xl font-bold tracking-tight sm:text-4xl">{props.title}</h2>
-          <p className="mt-2 text-center text-lg leading-8 text-muted-foreground">
-          {props.description}
+          <h2 className="text-center text-5xl font-bold tracking-tight sm:text-10xl">{props.title}</h2>
+          <p className="mt-12 text-center text-lg leading-8 text-muted-foreground">
+            {props.description}
           </p>
         </div>
-        <div className="mx-auto mt-7 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 border-gray-200 pt-7 sm:mt-12 sm:pt-12 lg:mx-0 lg:max-w-none lg:grid-cols-3">
+        <div className="mx-auto mt-6 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 border-gray-200 pt-7 sm:mt-12 sm:pt-12 lg:mx-0 lg:max-w-none lg:grid-cols-3">
           {props.courses.map((course) => (
             <Link href={`/course/${course.slug}`} key={course.slug} className="flex max-w-xl flex-col items-start space-y-2">
               <img src={`/course-banner/${course.slug}.jpg`} alt="" className="w-full aspect-[3/2] object-cover rounded-lg mb-5" />
@@ -97,7 +65,7 @@ function Courses(props: {title: string, description: string, courses: any[]}): R
                   {course.duration}
                 </span>
                 {[...course.tools, ...course.languages].map((item) => (
-                  <span key={item}  
+                  <span key={item}
                     className="relative z-10 rounded-full bg-accent px-3 py-1.5 font-medium text-muted-foreground"
                   >
                     {item}
