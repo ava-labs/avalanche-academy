@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+.prose {
+  font-size: 18px;
+} 
+
 /* List items in prose */
 .prose :where(ul > li):not(:where([class~="not-prose"],[class~="not-prose"] *))::marker {
   color: #E84142;
