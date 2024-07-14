@@ -5,6 +5,7 @@ import { DocsPage, DocsBody } from 'fumadocs-ui/page';
 import { notFound } from 'next/navigation';
 import { utils, type Page } from '@/utils/source';
 import { createMetadata } from '@/utils/metadata';
+import IndexedDBComponent from '../../tracker'
 
 interface Param {
   slug: string[];
@@ -89,6 +90,7 @@ export default function Page({
         {page.data.description}
       </p>
       <DocsBody>
+        <IndexedDBComponent/>
         {page.data.index ? (
           <Category page={page} />
         ) : (
