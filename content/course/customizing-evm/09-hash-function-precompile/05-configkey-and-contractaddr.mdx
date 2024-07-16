@@ -16,8 +16,11 @@ The generator chooses an initial value that should be sufficient for many cases.
 // ConfigKey is the key used in json config files to specify this precompile precompileconfig.
 // must be unique across all precompiles.
 const ConfigKey = "sha256Config"
-sha256/module.go
-This key is later used in the chainConfig to set the activation timestamp of the precompile:
+```
+
+This key is used for each precompile in the chainConfig to set the activation timestamp of the precompile.
+
+```json title=".devcontainer/genesis-example.json"
 {
   "config": {
     "chainId": 99999,
@@ -32,9 +35,13 @@ This key is later used in the chainConfig to set the activation timestamp of the
       "targetBlockRate": 2,
       "blockGasCostStep": 500000
     },
-    "sha256Config": {
+
+    "sha256Config": { // [!code highlight:2]
       "blockTimestamp": 0
     }
+
+    // Add the md5Config here
+
   },
   "alloc": {
     "8db97C7cEcE249c2b98bDC0226Cc4C2A57BF52FC": {
@@ -45,8 +52,6 @@ This key is later used in the chainConfig to set the activation timestamp of the
   // ...
 }
 ```
-
-We'll see later how we can use this config to do perform more sophisticated actions, like setting the initial state of the precompile.
 
 ## Contract Address
 
