@@ -12,12 +12,15 @@ In the last section, we created the ABI for our precompile contract. Now, we'll 
 
 ## Running the Generation Script
 
-To start, go to the root directory of your precompile-evm project and generate the files necessary for the precompile.
+To start, go to the root directory of your precompile-evm project: 
 
 ```bash
-# Change to root
 cd $GOPATH/src/github.com/ava-labs/precompile-evm
-# Generate go files
+```
+
+Now generate the files necessary for the precompile.
+
+```bash
 ./scripts/generate_precompile.sh --abi ./contracts/abis/IMD5.abi --type Md5 --pkg md5 --out ./md5
 ```
 

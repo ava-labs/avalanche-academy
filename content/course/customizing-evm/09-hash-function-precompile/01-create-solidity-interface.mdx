@@ -19,8 +19,8 @@ pragma solidity >=0.8.0;
 
 interface ISHA256 {
     /// Compute the hash of value
-    /// @param value the value to hash
-    /// @return the hashed value
+    /// @param value the value to be hashed
+    /// @return hash the hash of the value
     function hashWithSHA256(string memory value) external view returns(bytes32 hash);
     }
 ```
@@ -55,14 +55,21 @@ interface IMD5 {
 
 ## Generate the ABI
 
-Now that we have an interface of our precompile, let's create an ABI of our Solidity interface. Open the integrated VS Code terminal (control + `), change to the subdirectory /contracts directory, and run the command to compile to solidity interface to the ABI:
+Now that we have an interface of our precompile, let's create an ABI of our Solidity interface. Open the integrated VS Code terminal (control + `), change to the subdirectory /contracts directory.
 
 ```bash
-# Change directory to /contracts
-cd contracts
-# Compile Imd5.sol to ABI
+cd $GOPATH/src/github.com/ava-labs/precompile-evm/contracts
+```
+
+Run the command to compile to solidity interface to the ABI:
+
+```bash
 npx solc@latest --abi ./contracts/interfaces/IMD5.sol -o ./abis --base-path . --include-path ./node_modules
-# Rename 
+```
+
+Now rename the file:
+
+```bash
 mv ./abis/contracts_interfaces_IMD5_sol_IMD5.abi ./abis/IMD5.abi
 ```
 
