@@ -10,9 +10,9 @@ Avalanche Academy is a comprehensive learning platform designed to educate devel
 
 ### Getting Started
 
-1. **Clone the Repository**: `git clone https://github.com/ava-labs/avalanche-academy.git`
-2. **Install Dependencies**: `yarn install`
-3. **Run Locally**: `yarn run start`
+1. **Clone the Repository:** `git clone https://github.com/ava-labs/avalanche-academy.git`
+2. **Install Dependencies:** `yarn install`
+3. **Run Locally:** `yarn run start`
 
 ### Contributing
 
