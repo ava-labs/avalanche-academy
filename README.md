@@ -16,6 +16,6 @@ Avalanche Academy is a comprehensive learning platform designed to educate devel
 
 ### Contributing
 
-We welcome contributions! Please confirm changes on your local machine before opening a pull request. Once you raise the PR, a team member will review your changes and approve the PR.
+We welcome contributions! Please confirm changes on your local machine before opening a pull request. Raise the PR to the `dev` branch. Once you raise the PR, a team member will review your changes and approve the PR.
 
 For more information, visit [Avalanche Academy](https://academy.avax.network).
