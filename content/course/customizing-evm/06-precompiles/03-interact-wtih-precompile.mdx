@@ -17,3 +17,5 @@ In this example, we will call the SHA256 precompile to generate hash of the inpu
 ```bash 
 cast call --rpc-url local-c --private-key $PK 0x0000000000000000000000000000000000000002 "run(string)(bytes32)" "test"
 ```
+
+You should see a bytes32 hash of the input string `test` as the output. 
