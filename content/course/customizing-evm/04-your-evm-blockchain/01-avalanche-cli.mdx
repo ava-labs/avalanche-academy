@@ -1,0 +1,29 @@
+---
+title: Avalanche CLI
+description: Learn about the Avalanche Command-Line Interface tooling.
+updated: 2024-05-31
+authors: [ashucoder9]
+icon: BookOpen
+---
+
+## What is the Avalanche CLI?
+
+Avalanche-CLI is a command-line tool that gives developers access to everything Avalanche. This tool specializes in helping developers build and test their independent blockchains.
+
+Each Avalanche network has its own Primary Network, which comes with a Contract (C), Platform (P), and Exchange (X) chain. Note, that the naming "Primary Network" isn't actually very accurate, since it's a special Subnet, not its own network. 
+
+Your local network is completely independent from the Mainnet or Fuji Testnet. You can even run your own Avalanche Network without being connected to the internet. Any local Avalanche network supports (but is not limited to) the following commands:
+
+- **Start and stop a network**: Starts and stops a local network
+- **Health Check**: Provide information on the health of each node of the network
+- **Create Blockchains**: Create a new Blockchain using the specified parameters
+
+When we start a network or create a new blockchain, we will need to communicate with all involved nodes. Since our local network may consist of many nodes, this can take a lot of effort.
+
+To make managing the local Avalanche network easier, the Avalanche CLI comes packed with easy-to-use commands.
+
+## Usage
+
+Avalanche Starter Kit pre-loads Avalanche CLI for you along with Foundry. You do not need to install any external tooling to start building inside Codespaces. Simply use the terminal inside your Codespace to run Avalanche CLI commands.
+
+- Command Line: Commands can be issued using the command line, e.g. `avalanche network clean`

@@ -16,13 +16,13 @@
     "---Precompiles---",
     "...06-precompiles",
     "---Hash Function Precompile---",
-    "...09-hash-function-precompile",
+    "...07-hash-function-precompile",
     "---Calculator Precompile---",
-    "...10-calculator-precompile",
+    "...08-calculator-precompile",
     "---Stateful Precompiles---",
-    "...11-stateful-precompiles",
+    "...09-stateful-precompiles",
     "---Stateful Counter Precompile---",
-    "...12-stateful-counter-precompile"
+    "...10-stateful-counter-precompile"
 
   ]
 }

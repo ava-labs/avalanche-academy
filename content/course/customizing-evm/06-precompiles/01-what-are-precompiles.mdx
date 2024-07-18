@@ -60,14 +60,14 @@ Let's ignore what stateful means as well as the first parameter `accessibleState
 
 From the function specifying the logic of our precompile we have access to the following data:
 
-- caller: The address of the account that called the precompile
-- addr: The address of the precompile being called
-- input: All inputs encoded in a byte array
-- suppliedGas: How much gas was supplied to the call of the precompile
-- readOnly: A boolean flag to indicate if the interaction is only reading or modifying the state.
+- **caller**: The address of the account that called the precompile
+- **addr**: The address of the precompile being called
+- **input**: All inputs encoded in a byte array
+- **suppliedGas**: How much gas was supplied to the call of the precompile
+- **readOnly**: A boolean flag to indicate if the interaction is only reading or modifying the state.
 
 The precompile implementation has the return the following values:
 
-- ret: All return values encoded in a byte array
-- remainingGas: How much gas remains after the execution
-- err: If an error occurs, return it. Otherwise return nil 
+- **ret**: All return values encoded in a byte array
+- **remainingGas**: How much gas remains after the execution
+- **err**: If an error occurs, return it. Otherwise return nil 

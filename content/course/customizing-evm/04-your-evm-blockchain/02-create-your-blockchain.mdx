@@ -6,43 +6,80 @@ authors: [ashucoder9]
 icon: Terminal
 ---
 
-## Launch Avalanche-Network-Runner
+In this tutorial, we'll create a simple blockchain network and deploy it on the local Avalanche Network.
 
-To create a blockchain from the genesis block, start a local Avalanche network using the Avalanche Network Runner. Make sure you do not have another instance of Avalanche Network Runner running in another terminal.
+For convenience, the private key `56289e99c94b6912bfc12adc093c9b51124f0dc54ac7a766b2bc5ccf558d8027` of the default airdrop address is stored in the environment variable `$PK`. Furthermore, the RPC URL for the C-Chain of your local network is set in the `foundry.toml` file.
 
-Start the gRPC server, which will manage the Avalanche nodes for us so we don't have to build the network manually.
+## Configuration
 
-```bash
-avalanche-network-runner server \
---log-level debug \
---port=":8080" \
---grpc-gateway-port=":8081"
-```
-
-In this terminal you should now the the gRPC server logs. Since this will not launch the network yet, but just start the managing server, this should go fairly fast.
-
-![](/course-images/customizing-evm/16.png)
-
-## Start Avalanche Network with new Blockchain
-
-Next, lets run a local Avalanche Network with five nodes and create a Blockchain with your EVM using the Avalanche Network Runner. Open up a new terminal and issue the following command:
+To get started, create a new configuration named `mysubnet`:
 
 ```bash
-  avalanche-network-runner control start \
-  --log-level debug \
-  --endpoint="0.0.0.0:8080" \
-  --number-of-nodes=5 \
-  --blockchain-specs '[{"vm_name": "subnetevm", "genesis": "./.devcontainer/genesis-example.json"}]'
+avalanche subnet create mysubnet
 ```
 
-The command uses the environment variables for AvalancheGo we have set earlier and a relative path to the the example genesis JSON. We can build the Virtual Machine once and create multiple blockchains from it using multiple genesis configurations.
-
-You should first see an output like this:
+Next, follow the steps one-by-one as highlighted by the CLI. Below is an example configuration of our blockchain network.
 
 ```bash
-[07-05|17:54:15.547] DEBUG client/client.go:71 dialing server at  {"endpoint": "0.0.0.0:8080"}
-[07-05|17:54:15.548] INFO client/client.go:140 start
-[07-05|17:54:51.047] INFO ux/output.go:13 start response: cluster_info:{node_names:"node1"  node_names:"node2"  node_names:"node3"  node_names:"node4"  node_names:"node5"  node_infos:{key:"node1"  value:{name:"node1"  exec_path:"/Users/Martin.Eckardt/go/src/github.com/ava-labs/avalanchego/build/avalanchego"  uri:"http://127.0.0.1:9650"  id:"NodeID-7Xhw2mDxuDS44j42TCB6U5579esbSt3Lg"  log_dir:"/var/folders/6m/57y_04h52mv7_93ycwdp30gw0000gn/T/network-runner-root-data/network_20230705_175415/node1/logs"  db_dir:"/var/folders/6m/57y_04h52mv7_93ycwdp30gw0000gn/T/network-runner-root-data/network_20230705_175415/node1/db"  plugin_dir:"/Users/Martin.Eckardt/go/src/github.com/ava-labs/avalanchego/build/plugins"  whitelisted_subnets:"p433wpuXyJiDhyazPYyZMJeaoPSW76CBZ2x7wrVPLgvokotXz"}}  node_infos:{key:"node2"  value:{name:"node2"  exec_path:"/Users/Martin.Eckardt/go/src/github.com/ava-labs/avalanchego/build/avalanchego"  uri:"http://127.0.0.1:9652"  id:"NodeID-MFrZFVCXPv5iCn6M9K6XduxGTYp891xXZ"  log_dir:"/var/folders/6m/57y_04h52mv7_93ycwdp30gw0000gn/T/network-runner-root-data/network_20230705_175415/node2/logs"  db_dir:"/var/folders/6m/57y_04h52mv7_93ycwdp30gw0000gn/T/network-runner-root-data/network_20230705_175415/node2/db"  plugin_dir:"/Users/Martin.Eckardt/go/src/github.com/ava-labs/avalanchego/build/plugins"  whitelisted_subnets:"p433wpuXyJiDhyazPYyZMJeaoPSW76CBZ2x7wrVPLgvokotXz"}}  node_infos:{key:"node3"  value:{name:"node3"  exec_path:"/Users/Martin.Eckardt/go/src/github.com/ava-labs/avalanchego/build/avalanchego"  uri:"http://127.0.0.1:9654"  id:"NodeID-NFBbbJ4qCmNaCzeW7sxErhvWqvEQMnYcN"  log_dir:"/var/folders/6m/57y_04h52mv7_93ycwdp30gw0000gn/T/network-runner-root-data/network_20230705_175415/node3/logs"  db_dir:"/var/folders/6m/57y_04h52mv7_93ycwdp30gw0000gn/T/network-runner-root-data/network_20230705_175415/node3/db"  plugin_dir:"/Users/Martin.Eckardt/go/src/github.com/ava-labs/avalanchego/build/plugins"  whitelisted_subnets:"p433wpuXyJiDhyazPYyZMJeaoPSW76CBZ2x7wrVPLgvokotXz"}}  node_infos:{key:"node4"  value:{name:"node4"  exec_path:"/Users/Martin.Eckardt/go/src/github.com/ava-labs/avalanchego/build/avalanchego"  uri:"http://127.0.0.1:9656"  id:"NodeID-GWPcbFJZFfZreETSoWjPimr846mXEKCtu"  log_dir:"/var/folders/6m/57y_04h52mv7_93ycwdp30gw0000gn/T/network-runner-root-data/network_20230705_175415/node4/logs"  db_dir:"/var/folders/6m/57y_04h52mv7_93ycwdp30gw0000gn/T/network-runner-root-data/network_20230705_175415/node4/db"  plugin_dir:"/Users/Martin.Eckardt/go/src/github.com/ava-labs/avalanchego/build/plugins"  whitelisted_subnets:"p433wpuXyJiDhyazPYyZMJeaoPSW76CBZ2x7wrVPLgvokotXz"}}  node_infos:{key:"node5"  value:{name:"node5"  exec_path:"/Users/Martin.Eckardt/go/src/github.com/ava-labs/avalanchego/build/avalanchego"  uri:"http://127.0.0.1:9658"  id:"NodeID-P7oB2McjBGgW2NXXWVYjV8JEDFoW9xDE5"  log_dir:"/var/folders/6m/57y_04h52mv7_93ycwdp30gw0000gn/T/network-runner-root-data/network_20230705_175415/node5/logs"  db_dir:"/var/folders/6m/57y_04h52mv7_93ycwdp30gw0000gn/T/network-runner-root-data/network_20230705_175415/node5/db"  plugin_dir:"/Users/Martin.Eckardt/go/src/github.com/ava-labs/avalanchego/build/plugins"  whitelisted_subnets:"p433wpuXyJiDhyazPYyZMJeaoPSW76CBZ2x7wrVPLgvokotXz"}}  pid:58541  root_data_dir:"/var/folders/6m/57y_04h52mv7_93ycwdp30gw0000gn/T/network-runner-root-data/network_20230705_175415"  healthy:true  custom_chains_healthy:true  custom_chains:{key:"2YUr8sULVTm25EDFNDUwxnwk73enuqhkci4yXzoAgJYEjQ2HuC"  value:{chain_name:"subnetevm"  vm_id:"srEXiWaHuhNyGwPUi444Tu47ZEDwxTWrbQiuD7FmgSAQ6X7Dy"  subnet_id:"p433wpuXyJiDhyazPYyZMJeaoPSW76CBZ2x7wrVPLgvokotXz"  chain_id:"2YUr8sULVTm25EDFNDUwxnwk73enuqhkci4yXzoAgJYEjQ2HuC"}}  subnets:{key:"p433wpuXyJiDhyazPYyZMJeaoPSW76CBZ2x7wrVPLgvokotXz"  value:{is_elastic:true  subnet_participants:{node_names:"node5"  node_names:"node4"  node_names:"node3"  node_names:"node2"  node_names:"node1"}}}}  chain_ids:"2YUr8sULVTm25EDFNDUwxnwk73enuqhkci4yXzoAgJYEjQ2HuC"
+? Choose your VM:
+✔ Subnet-EVM
+? What version of Subnet-EVM would you like?:
+✔ Use latest release version
+? Would you like to enable Teleporter on your VM?:
+✔ Yes
+? Would you like to run AMW Relayer when deploying your VM?:
+✔ Yes
+Installing subnet-evm-v0.6.4...
+subnet-evm-v0.6.4 installation successful
+creating genesis for subnet mysubnet
+Enter your subnet's ChainId. It can be any positive integer.
+ChainId: 12345
+Select a symbol for your subnet's native token
+Token symbol: ASH
+? How would you like to set fees:
+✔ Low disk use    / Low Throughput    1.5 mil gas/s (C-Chain's setting)
+? How would you like to distribute funds:
+✔ Airdrop 1 million tokens to the default ewoq address (do not use in production)
+prefunding address 0x8db97C7cEcE249c2b98bDC0226Cc4C2A57BF52FC with balance 1000000000000000000000000
+? Advanced: Would you like to add a custom precompile to modify the EVM?:
+✔ No
+✓ Successfully created subnet configuration
 ```
 
-After around 1 minute the blockchain should have been created and some more output should appear in the terminal.
+## Deployment
+
+Finally, it's time to deploy our blockchain on the Local Network:
+
+```bash
+avalanche subnet deploy mysubnet
+? Choose a network for the operation:
+✔ Local Network
+Deploying [mysubnet] to Local Network
+```
+
+You'll see the following output:
+
+```
+Deploying Blockchain. Wait until network acknowledges...
+
+Teleporter Messenger successfully deployed to c-chain (0x253b2784c75e510dD0fF1da844684a1aC0aa5fcf)
+Teleporter Registry successfully deployed to c-chain (0x17aB05351fC94a1a67Bf3f56DdbB941aE6c63E25)
+
+Teleporter Messenger successfully deployed to mysubnet (0x253b2784c75e510dD0fF1da844684a1aC0aa5fcf)
+Teleporter Registry successfully deployed to mysubnet (0x73b1dB7E9923c9d8fd643ff381e74dd9618EA1a5)
+
+using awm-relayer version (v1.3.0)
+Executing AWM-Relayer...
+
+<lots of node information...>
+
+Browser Extension connection details (any node URL from above works):
+RPC URL:           http://127.0.0.1:9650/ext/bc/bFjwbbhaSCotYtdZTPDrQwZn8uVqRoL7YbZxCxXY94k7Qhf3E/rpc
+Codespace RPC URL: https://humble-cod-j4prxq655qpcpw96-9650.app.github.dev/ext/bc/bFjwbbhaSCotYtdZTPDrQwZn8uVqRoL7YbZxCxXY94k7Qhf3E/rpc
+Funded address:    0x8db97C7cEcE249c2b98bDC0226Cc4C2A57BF52FC with 1,000,000 (10^18) - private key: 56289e99c94b6912bfc12adc093c9b51124f0dc54ac7a766b2bc5ccf558d8027
+Network name:      mysubnet
+Chain ID:          12345
+Currency Symbol:   ASH
+```
+
+Congratulations, you've successfully created your own EVM blockchain on the Avalanche Local Network.
