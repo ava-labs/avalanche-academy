@@ -52,16 +52,19 @@ const IndexedDBComponent: React.FC = () => {
         const paths = event.target.result as { path: string }[];
         paths.forEach(item => {
           const sidebarItem = document.querySelector(`a[href="${item.path}"]`);
+          
           if (sidebarItem) {
-            const iconContainer = sidebarItem.querySelector('div');
-            if (iconContainer) {
-              iconContainer.style.backgroundColor = 'rgba(55, 82, 172, 0.6)';
-              const icon = iconContainer.querySelector('svg'); // Select the SVG icon within the container
-              if (icon) {
-                icon.style.color = 'white'; // Change icon color to white
-              }
+            // Check if a checkmark already exists
+            const existingCheckmark = sidebarItem.querySelector('.lucide-check');
+            
+            // If no checkmark exists, append a new one
+            if (!existingCheckmark) {
+              sidebarItem.innerHTML += `
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#3752AC" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check ml-auto shrink-0"><path d="M20 6 9 17l-5-5"></path></svg>
+              `;
             }
           }
+          
         });
       };
 
