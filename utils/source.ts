@@ -67,6 +67,7 @@ export const guide = loader({
     schema: {
       frontmatter: defaultSchemas.frontmatter.extend({
         authors: z.array(z.string()),
+        topics: z.array(z.string()),
         date: z.string().date().or(z.date()).optional(),
       }),
     },
