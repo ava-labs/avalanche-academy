@@ -18,7 +18,7 @@ You start by sampling the current preference of five other nodes and they reply:
 
 Avalanche consensus dictates, that a validator changes its preference if a α-majority of the sampled validators agrees on another option and it goes along with this popular choice. 
 
-Let's set the alpha value to 3 in our example, meaning that we change our preference when 3 out 5 sampled nodes have another preference. Since 3 out of 5 have replied with blue (Bob) we are changing our own preference to Bob. 
+Let's set the alpha value to 3 in our example, meaning that we change our preference when 3 out of 5 sampled nodes have another preference. Since 3 out of 5 have replied with blue (Bob) we are changing our own preference to Bob. 
 
 ![](/course-images/avalanche-fundamentals/6.png)
 
@@ -28,7 +28,7 @@ From now on you will respond with blue, when another validators queries you for 
 
 Avalanche Consensus does not run for a fixed number of rounds, but until a decision threshold is hit. This means the validator keep sampling until their preference is confirmed for beta (β) consecutive rounds.
 
-Now you query another five validator for their preference. Again, three of the five reply with the preference blue (Bob). Since your current preference is confirmed, you increment a counter for consecutive successes by one. You repeat this sampling process until their preference is confirmed for 8 consecutive rounds. 
+Now you query another five validators for their preference. Again, three of the five reply with the preference blue (Bob). Since your current preference is confirmed, you increment a counter for consecutive successes by one. You repeat this sampling process until their preference is confirmed for 8 consecutive rounds. 
 
 ![](/course-images/avalanche-fundamentals/7.png)
 
@@ -39,7 +39,7 @@ In our example we used fixed values for how many nodes are sampled, how many are
 |Symbol|Name|Range|Explanation|
 |---|---|---|---|
 |n  |Number of Participants|1 to ∞|How many participants take part in the system?|
-|k  |Sample Size|1 to n|How many of these participants get asked every round of sub-sampiling?|
+|k  |Sample Size|1 to n|How many of these participants get asked every round of sub-sampling?|
 |α  |Quorum Size|1 to k|How many of the asked participants have to have the same preference for me to change my preference?|
 |β  |Decision Threshold|>= 1|How many times does the quorum have to confirm my preference until I finalize my decision?|
 
