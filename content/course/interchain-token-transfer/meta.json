@@ -5,23 +5,16 @@
     "---Teleporter Token Bridge---",
     "index",
     "...01-intro",
-    "---Tokens---",
+    "---Environment Setup---",
     "...02-tokens",
+    "---Tokens---",
+    "...03-tokens",
     "---Token Bridging---",
-    "...03-token-bridging",
+    "...04-token-bridging",
     "---Teleporter Token Bridge---",
-    "...04-teleporter-token-bridge",
+    "...05-teleporter-token-bridge",
     "---ERC-20 to ERC-20 Token Bridge---",
-    "...05-erc-20-to-erc-20-bridge",
-    "---Tokens on Multiple Chains---",
-    "...06-tokens-on-multiple-chains",
-    "---Native to ERC-20 Token Bridge---",
-    "...07-native-to-erc-20-bridge",
-    "---Recap Precompiles---",
-    "...08-recap-precompiles",
-    "---ERC-20 to Native Token Bridge---",
-    "...09-erc-20-to-native-bridge",
-    "---Native to Native Token Bridge---",
-    "...10-native-to-native-bridge"
+    "...06-erc-20-to-erc-20-bridge"
   ]
 }
+

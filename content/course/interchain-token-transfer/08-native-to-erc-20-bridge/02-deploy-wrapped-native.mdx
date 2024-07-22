@@ -1,0 +1,114 @@
+---
+title: Deploy a ICTT contracts
+description: deploy remote, home and wrapped native tokens
+updated: 2024-05-31
+authors: [ashucoder9]
+icon: Book
+---
+
+
+### Wrapped Native Token
+
+On your Subnet, deploy a wrapped token contract for your native token. When we configured the Subnet earlier, we named the token `NATV`. This is reflected in line 19 of our [example wrapped token contract](./ExampleWNATV.sol).
+
+```
+forge create --rpc-url mysubnet --private-key $PK src/5-native-to-erc20-token-bridge/ExampleWNATV.sol:WNATV
+```
+
+Export the "Deployed to" address as an environment variables.
+
+```bash
+export WRAPPED_ERC20_HOME_SUBNET=<"Deployed to" address>
+```
+
+```zsh
+[⠊] Compiling...
+[⠃] Compiling 7 files with Solc 0.8.18
+[⠊] Solc 0.8.18 finished in 778.12ms
+Compiler run successful!
+Deployer: 0x8db97C7cEcE249c2b98bDC0226Cc4C2A57BF52FC
+Deployed to: 0x52C84043CD9c865236f11d9Fc9F56aa003c1f922
+Transaction hash: 0x054e7b46b221c30f400b81df0fa2601668ae832054cf8e8b873f4ba615fa4115
+```
+
+### Native Token Home
+
+To bridge the token out of your Subnet, you'll need to first deploy a _home_ contract on your Subnet that implements the `INativeTokenBridge` interface, and inherits the properties of the `TeleporterTokenHome` contract standard.
+
+Using the [`forge create`](https://book.getfoundry.sh/reference/forge/forge-create) command, we will deploy the [NativeTokenHome.sol](./NativeTokenHome.sol) contract, passing in the following constructor arguments:
+
+```zsh
+forge create --rpc-url mysubnet --private-key $PK lib/teleporter-token-bridge/contracts/src/TokenHome/NativeTokenHome.sol:NativeTokenHome --constructor-args $TELEPORTER_REGISTRY_SUBNET $FUNDED_ADDRESS $WRAPPED_ERC20_HOME_SUBNET
+```
+
+- Teleporter Registry (for our Subnet)
+- Teleporter Manager (our funded address)
+- Wrapped Token Address (deployed in the last step)
+
+For example, this foundry command could be entered into your terminal as:
+
+```zsh
+forge create --rpc-url mysubnet --private-key $PK src/5-native-token-bridge/NativeTokenHome.sol:NativeTokenHome --constructor-args 0xAd00Ce990172Cfed987B0cECd3eF58221471a0a3 0x8db97C7cEcE249c2b98bDC0226Cc4C2A57BF52FC 0x52C84043CD9c865236f11d9Fc9F56aa003c1f922
+```
+
+Note the address the home contract was "Deployed to".
+
+```zsh
+export ERC20_HOME_BRIDGE_SUBNET=<"Deployed to" address>
+```
+
+### ERC20 Remote
+
+To ensure the wrapped token is bridged into the destination chain (in this case, C-Chain) you'll need to deploy a _remote_ contract that implements the `IERC20Bridge` interface, as well as inheriting the properties of `TeleporterTokenRemote`. In order for the bridged tokens to have all the normal functionality of a locally deployed ERC20 token, this remote contract must also inherit the properties of a standard `ERC20` contract.
+
+First, get the `Source Blockchain ID` in hexidecimal format, which in this example is the BlockchainID of your Subnet, run:
+
+```zsh
+avalanche subnet describe mysubnet
+```
+
+```bash
+export SUBNET_BLOCKCHAIN_ID_HEX=0x4d569bf60a38e3ab3e92afd016fe37f7060d7d63c44e3378f42775bf82a7642d
+```
+
+`Source Blockchain ID` is in the field: `Local Network BlockchainID (HEX)`.
+
+Using the [`forge create`](https://book.getfoundry.sh/reference/forge/forge-create) command, we will deploy the [ERC20Remote.sol](./NativeTokenHome.sol) contract, passing in the following constructor arguments:
+
+```zsh
+forge create --rpc-url local-c --private-key $PK lib/teleporter-token-bridge/contracts/src/TokenRemote/ERC20TokenRemote.sol:ERC20TokenRemote --constructor-args "(${TELEPORTER_REGISTRY_C_CHAIN}, ${FUNDED_ADDRESS}, ${SUBNET_BLOCKCHAIN_ID_HEX}, ${ERC20_HOME_BRIDGE_SUBNET})" "Wrapped NATV" "WNATV" 18
+```
+
+- Teleporter Registry Address **(for C-Chain)**
+- Teleporter Manager (our funded address)
+- Source Blockchain ID (hexidecimal representation of our Subnet's Blockchain ID)
+- Token Home Address (address of NativeTokenHome.sol deployed on Subnet in the last step)
+- Token Name (input in the constructor of the [wrapped token contract](./ExampleWNATV.sol))
+- Token Symbol (input in the constructor of the [wrapped token contract](./ExampleWNATV.sol))
+- Token Decimals (uint8 integer representing number of decimal places for the ERC20 token being created. Most ERC20 tokens follow the Ethereum standard, which defines 18 decimal places.)
+
+For example, this contract deployment could be entered into your terminal as:
+
+```zsh
+forge create --rpc-url local-c --private-key $PK \
+lib/teleporter-token-bridge/contracts/src/TokenRemote/ERC20TokenRemote.sol:ERC20TokenRemote \
+--constructor-args 0xAd00Ce990172Cfed987B0cECd3eF58221471a0a3 \
+0x8db97C7cEcE249c2b98bDC0226Cc4C2A57BF52FC \
+0xbcb8143686b1f0c765a1404bb94ad13134cafa5cf56f181a3a990ba21b1151b9 \
+0x17aB05351fC94a1a67Bf3f56DdbB941aE6c63E25 \
+"Wrapped NATV" \
+"WNATV" \
+18
+```
+
+Note the address the remote contract was "Deployed to".
+
+export ERC20_TOKEN_REMOTE_C_CHAIN=<"Deployed to" address>
+
+## Register Remote Bridge with Home Bridge
+
+After deploying the bridge contracts, you'll need to register the remote bridge by sending a dummy message using the `registerWithHome` method. This message includes details which inform the home bridge about your destination blockchain and bridge settings, eg. `initialReserveImbalance`.
+
+```bash
+cast send --rpc-url local-c --private-key $PK $ERC20_TOKEN_REMOTE_C_CHAIN "registerWithHome((address, uint256))" "(0x0000000000000000000000000000000000000000, 0)"
+```

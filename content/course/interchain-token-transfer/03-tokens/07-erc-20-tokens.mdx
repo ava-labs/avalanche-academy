@@ -60,21 +60,3 @@ To facilitate more complex interactions, such as those involving smart contracts
 
 
 
-While must of the functions are self explanatory, let's review how 'allowance' and 'approve' work since these two will play a crucial role for using an ERC20 token in conjunction of another smart contract such as receiving funds or our Avalanche Interchain Token Transfer contracts. 
-
-## Allowance and Approve
-
-These two are needed for a ERC20 transfer Smart contract
-
-### approve()
-Since all balances are just a mapping of amount values to addresses, the owner of each address can 'approve' some other account as a _spender of their funds up to some limit determined by the approved _amount. The spender then will be able to withdraw from your account multiple times, up to the value set in amount.
-
-### allowance()
-Returns the amount which _spender is still allowed to withdraw from _owner.
-
-## Transfer ERC20 between accounts
-
-To transfer ERC20 between accounts you need to modify the balance registry from 
-```
-```
-

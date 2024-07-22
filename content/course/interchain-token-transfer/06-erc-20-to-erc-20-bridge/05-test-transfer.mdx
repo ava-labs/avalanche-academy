@@ -5,3 +5,21 @@ updated: 2024-05-31
 authors: [ashucoder9]
 icon: Terminal
 ---
+
+## Bridge the Token Cross-chain
+
+Now that all the bridge contracts have been deployed, send a native token from your Subnet to C-Chain with the [`cast send`](https://book.getfoundry.sh/reference/cast/cast-send) foundry command.
+
+`
+
+```bash
+cast send --rpc-url local-c --private-key $PK $ERC20_HOME_BRIDGE_C_CHAIN "send((bytes32, address, address, address, uint256, uint256, uint256, address), uint256)" "(${SUBNET_BLOCKCHAIN_ID_HEX}, ${ERC20_TOKEN_REMOTE_SUBNET}, ${FUNDED_ADDRESS}, ${ERC20_HOME_C_CHAIN}, 0, 0, 250000, 0x0000000000000000000000000000000000000000)" 1000000000000000000000
+```
+
+## Check Balances
+
+To confirm the token was bridged from C-Chain to a Subnet, we will check the recipient's balance of wrapped tokens on the Subnet with the [`cast call`](https://book.getfoundry.sh/reference/cast/cast-call?highlight=cast%20call#cast-call) foundry command:
+
+```zsh
+cast call --rpc-url mysubnet $ERC20_TOKEN_REMOTE_SUBNET "balanceOf(address)(uint)" $FUNDED_ADDRESS
+```
