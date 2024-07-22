@@ -29,9 +29,9 @@ export default function Page({
                 style={{
                     backgroundColor: 'black',
                     backgroundImage: [
-                        'linear-gradient(140deg, hsla(274,94%,54%,0.3), transparent 50%)',
-                        'linear-gradient(to left top, hsla(260,90%,50%,0.8), transparent 50%)',
-                        'radial-gradient(circle at 100% 100%, hsla(240,100%,82%,1), hsla(240,40%,40%,1) 17%, hsla(240,40%,40%,0.5) 20%, transparent)',
+                        'linear-gradient(140deg, #3752AC 0%, transparent 50%)',
+                        'linear-gradient(to left top, #E84142 0%, transparent 50%)',
+                        'radial-gradient(circle at 100% 100%, #3752AC, #E84142 17%, transparent 20%)',
                     ].join(', '),
                     backgroundBlendMode: 'difference, difference, normal',
                 }}
