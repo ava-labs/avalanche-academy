@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { guide } from '@/utils/source';
+import { buttonVariants } from '@/components/ui/button';
 
 export default function Page(): React.ReactElement {
     const guides = [...guide.getPages()].sort(
@@ -14,7 +15,16 @@ export default function Page(): React.ReactElement {
                 <div className="mx-auto w-full lg:mx-0">
                     <h2 className="text-center text-5xl font-bold tracking-tight sm:text-10xl">Contribute to Avalanche Academy</h2>
                     <p className="m-12 text-center text-lg leading-8 text-muted-foreground">
-                        TBD
+                        The Avalanche Academy and Documentation is open to community contributions. You can help improve the content by fixing bugs, adding new content, or improving existing content.
+                    </p>
+                    <p className="m-12 text-center text-lg leading-8 text-muted-foreground">
+                        <Link
+                            href="https://github.com/ava-labs/avalanche-academy"
+                            target='_blank'
+                            className={buttonVariants({ size: 'lg', variant: 'default' })}
+                        >
+                            Open on Github
+                        </Link>
                     </p>
                 </div>
                 <div className="flex flex-col gap-5">
