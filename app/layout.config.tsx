@@ -24,7 +24,7 @@ export const baseOptions: BaseLayoutProps = {
     },
     {
       text: 'Contribute',
-      url: '/contribute/',
+      url: '/contribute',
     },
   ],
 };
