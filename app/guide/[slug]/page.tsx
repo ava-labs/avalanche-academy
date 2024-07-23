@@ -5,6 +5,7 @@ import { InlineTOC } from 'fumadocs-ui/components/inline-toc';
 import { guide } from '@/utils/source';
 import { createMetadata } from '@/utils/metadata';
 import { buttonVariants } from '@/components/ui/button';
+import { ArrowUpRightIcon } from 'lucide-react';
 //import { Control } from '@/app/(home)/blog/[slug]/page.client';
 
 interface Param {
@@ -21,6 +22,8 @@ export default function Page({
     const page = guide.getPage([params.slug]);
 
     if (!page) notFound();
+
+    const path = `content/guide/${page.file.path}`;
 
     return (
         <>
@@ -90,6 +93,15 @@ export default function Page({
                             ))}
                         </div>
                     </div>
+
+                    <a
+                        href={`https://github.com/ava-labs/avalanche-academy/blob/dev/${path}`}
+                        target="_blank"
+                        rel="noreferrer noopener"
+                        className="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground"
+                    >
+                        <ArrowUpRightIcon className="size-5" /> Edit on Github 
+                    </a>
 
                     {/*<Control url={page.url} />*/}
                 </div>
