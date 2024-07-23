@@ -17,7 +17,7 @@ export default function Page(): React.ReactElement {
                     <p className="m-12 text-center text-lg leading-8 text-muted-foreground">
                         The Avalanche Academy and Documentation is open to community contributions. You can help improve the content by fixing bugs, adding new content, or improving existing content.
                     </p>
-                    <p className="m-12 text-center text-lg leading-8 text-muted-foreground">
+                    <p className="m-12 text-center">
                         <Link
                             href="https://github.com/ava-labs/avalanche-academy"
                             target='_blank'
