@@ -33,7 +33,7 @@ cast send --rpc-url mysubnet --private-key $PK <TokenHomeAddress> \
 
 In line 60 of [`NativeTokenHome`](./NativeTokenHome.sol) is the send function we will call to send the tokens:
 
-```sol
+```solidity
 function send(SendTokensInput calldata input) external payable {
         _send(input, msg.value, false);
     }
@@ -63,6 +63,7 @@ struct SendTokensInput {
 
 For example, this token transfer could be entered into your terminal as:
 
+```solidity
   function sendAndCall(SendAndCallInput calldata input) external payable {
         _sendAndCall({
             sourceBlockchainID: blockchainID,
@@ -84,6 +85,7 @@ struct SendTokensInput {
     uint256 requiredGasLimit;
     address multiHopFallback;
 }
+```
 
 ```bash
 cast send --rpc-url mysubnet --private-key $PK $ERC20_HOME_BRIDGE_SUBNET "send((bytes32, address, address, address, uint256, uint256, uint256, address))" "(${C_CHAIN_BLOCKCHAIN_ID_HEX}, ${ERC20_TOKEN_REMOTE_C_CHAIN}, ${FUNDED_ADDRESS}, 0x0000000000000000000000000000000000000000, 0, 0, 250000, 0x0000000000000000000000000000000000000000)"  --value 1
