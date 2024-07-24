@@ -1,7 +1,6 @@
-
 ---
 title: Deploy a ICTT contracts
-description: deploy remote, home and wrapped native tokens
+description: deploy remote home and wrapped native tokens
 updated: 2024-05-31
 authors: [ashucoder9]
 icon: Book
@@ -41,7 +40,7 @@ function send(SendTokensInput calldata input) external payable {
 
 The function parameters are defined by the `SendTokensInput` struct defined in line 26 of [`ITeleporterTokenBridge`](./interfaces/ITeleporterTokenBridge.sol).
 
-```sol
+```solidity
 struct SendTokensInput {
     bytes32 destinationBlockchainID;
     address destinationBridgeAddress;
