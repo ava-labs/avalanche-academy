@@ -60,13 +60,14 @@ export const utils = loader({
   }),
 });
 
-export const blog = loader({
-  baseUrl: '/blog',
-  rootDir: 'blog',
+export const guide = loader({
+  baseUrl: '/guide',
+  rootDir: 'guide',
   source: createMDXSource(map, {
     schema: {
       frontmatter: defaultSchemas.frontmatter.extend({
-        author: z.string(),
+        authors: z.array(z.string()),
+        topics: z.array(z.string()),
         date: z.string().date().or(z.date()).optional(),
       }),
     },
