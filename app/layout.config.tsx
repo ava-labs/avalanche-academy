@@ -50,10 +50,10 @@ export const docsOptions: DocsLayoutProps = {
             url: '/course/multi-chain-architecture',
           },
           {
-            title: 'Teleporter',
+            title: 'Interchain Messaging',
             description: '',
             icon: <MailIcon />,
-            url: '/course/teleporter',
+            url: '/course/interchain-messaging',
           },
           {
             title: 'Customizing EVM',
