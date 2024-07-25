@@ -6,10 +6,6 @@ authors: [ashucoder9]
 icon: BookOpen
 ---
 
-![Token Spoke Contract Structure](/common-images/teleporter-token-bridge/spoke-contract-structure.png)
-
-- Mints assets (ERC-20 or native)
-
 ### `TokenRemote`
 
 An abstract implementation of `ITokenTransferrer` for a token transfer contract on a "remote" chain that receives transferred assets from a specific `TokenHome` instance. Each `TokenRemote` instance has a single `TokenHome` instance that it receives token transfers from to mint tokens. It also handles sending messages (and correspondingly burning tokens) to route tokens back to other chains (either its `TokenHome`, or other `TokenRemote` instances). Once deployed, a `TokenRemote` instance must be registered with its specified `TokenHome` contract. This is done by calling `registerWithHome` on the remote contract, which will send a Teleporter message to the home contract with the information to register.
