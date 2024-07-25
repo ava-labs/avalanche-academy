@@ -15,7 +15,7 @@ export const metadata = createMetadata({
   },
 
   // area for improvement: add page specific metadata
-  description: 'The Learning Platform for Avalanche Ecosystem',
+  description: 'The Learning Platform for the Avalanche Ecosystem',
   metadataBase: baseUrl,
 });
 
