@@ -34,17 +34,17 @@ const officialCourses: Course[] = [
         tools: ["Avalanche-CLI"]
     },
     {
-        name:"Teleporter",
-        description:"Utilize Teleporter to build cross-chain dApps in the Avalanche network",
-        slug:"teleporter",
+        name:"Avalanche Interchain Messaging",
+        description:"Utilize Avalanche Interchain Messaging to build cross-chain dApps in the Avalanche network",
+        slug:"interchain-messaging",
         icon: Mail,
         featured: true,
         duration: "3 hours",
-        tools: ["Avalanche-CLI", "Telepoter"],
+        tools: ["Avalanche-CLI"],
         languages: ["Solidity"]
      },
      /*{
-        name:"Teleporter Token Bridge",
+        name:"Interchain Token Transfer",
         description:"Utilize Teleporter to bridge Tokens in the Avalanche Network",
         slug:"teleporter-token-bridge",
         icon: ArrowLeftRight,
