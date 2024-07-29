@@ -56,16 +56,16 @@ export const docsOptions: DocsLayoutProps = {
             url: '/course/teleporter',
           },
           {
-            title: 'Customizing EVM',
-            description: '',
-            icon: <BlocksIcon />,
-            url: '/course/customizing-evm',
-          },
-          {
             title: 'Interchain Token Transfer',
             description: '',
             icon: <ArrowLeftRight />,
             url: '/course/interchain-token-transfer',
+          },
+          {
+            title: 'Customizing EVM',
+            description: '',
+            icon: <BlocksIcon />,
+            url: '/course/customizing-evm',
           },
         ]}
       />
