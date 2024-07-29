@@ -137,7 +137,7 @@ export function generateMetadata({ params }: { params: Param }): Metadata {
 
   const image = {
     alt: 'Banner',
-    url: `/api/og/${params.slug[0]}?${imageParams.toString()}`,
+    url: `/api/og/course/${params.slug[0]}?${imageParams.toString()}`,
     width: 1200,
     height: 630,
   };
