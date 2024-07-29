@@ -43,17 +43,17 @@ const officialCourses: Course[] = [
         tools: ["Avalanche-CLI", "Telepoter"],
         languages: ["Solidity"]
      },
-     /*{
-        name:"Teleporter Token Bridge",
-        description:"Utilize Teleporter to bridge Tokens in the Avalanche Network",
-        slug:"teleporter-token-bridge",
+     {
+        name:"Avalanche Interchain Token Transfer",
+        description:"Deploy Avalanche Interchain Token Transfer to transfer assets between Avalanche blockchains",
+        slug:"interchain-token-transfer",
         icon: ArrowLeftRight,
         featured: true,
         duration: "2.5 hours",
-        tools: ["Avalanche-CLI", "Telepoter"],
+        tools: ["Telepoter", "Foundry"],
         languages: ["Solidity"]
      },
-     {
+     /*{
         name:"Chainlink VRF with Teleporter ",
         description:"Utilize Teleporter to make Chainlink VRF available on any blockchain in the Avalanche Network",
         slug:"teleporter-chainlink-vrf",

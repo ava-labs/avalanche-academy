@@ -1,0 +1,101 @@
+---
+title: Deploy a ICTT contracts
+description: deploy remote home and wrapped native tokens
+updated: 2024-05-31
+authors: [ashucoder9]
+icon: Book
+---
+
+
+## Bridge the Token Cross-chain
+
+First, get the `Destination Blockchain ID` in hexidecimal format, which in this example is the BlockchainID of your local C-Chain, run:
+
+```zsh
+avalanche primary describe
+```
+
+`Destination Blockchain ID` is in the field: `BlockchainID (HEX)`.
+
+```bash
+export C_CHAIN_BLOCKCHAIN_ID_HEX=0x55e1fcfdde01f9f6d4c16fa2ed89ce65a8669120a86f321eef121891cab61241
+```
+
+Now that all the bridge contracts have been deployed, send a native token from your Subnet to C-Chain with the [`cast send`](https://book.getfoundry.sh/reference/cast/cast-send) foundry command.
+
+```zsh
+cast send --rpc-url mysubnet --private-key $PK <TokenHomeAddress> \
+"<functionToCall((parameterTypes))>" \
+"(<functionParameter0>,<functionParameter1>,...)" \
+--value <amountOfTokensToSend>
+```
+
+In line 60 of [`NativeTokenHome`](./NativeTokenHome.sol) is the send function we will call to send the tokens:
+
+```solidity
+function send(SendTokensInput calldata input) external payable {
+        _send(input, msg.value, false);
+    }
+```
+
+The function parameters are defined by the `SendTokensInput` struct defined in line 26 of [`ITeleporterTokenBridge`](./interfaces/ITeleporterTokenBridge.sol).
+
+```solidity
+struct SendTokensInput {
+    bytes32 destinationBlockchainID;
+    address destinationBridgeAddress;
+    address recipient;
+    address feeTokenAddress;
+    uint256 primaryFee;
+    uint256 secondaryFee;
+    uint256 requiredGasLimit;
+}
+```
+
+- destinationBlockchainID: C-Chain Blockchain ID
+- destinationBridgeAddress: ERC20 Remote address
+- recipient: any Ethereum Address you want to send funds to
+- feeTokenAddress: Wrapped Native Token address
+- primaryFee: amount of tokens to pay for Teleporter fee on the source chain, can be 0 for this example
+- secondaryFee: amount of tokens to pay for Teleporter fee if a multi-hop is needed, can be 0 for this example
+- requiredGasLimit: gas limit requirement for sending to a token bridge, can be 1000000 for this example
+
+For example, this token transfer could be entered into your terminal as:
+
+```solidity
+  function sendAndCall(SendAndCallInput calldata input) external payable {
+        _sendAndCall({
+            sourceBlockchainID: blockchainID,
+            originBridgeAddress: address(this),
+            originSenderAddress:_msgSender(),
+            input: input,
+            amount: msg.value,
+            isMultiHop: false
+        });
+    }
+
+struct SendTokensInput {
+    bytes32 destinationBlockchainID;
+    address destinationBridgeAddress;
+    address recipient;
+    address primaryFeeTokenAddress;
+    uint256 primaryFee;
+    uint256 secondaryFee;
+    uint256 requiredGasLimit;
+    address multiHopFallback;
+}
+```
+
+```bash
+cast send --rpc-url mysubnet --private-key $PK $ERC20_HOME_BRIDGE_SUBNET "send((bytes32, address, address, address, uint256, uint256, uint256, address))" "(${C_CHAIN_BLOCKCHAIN_ID_HEX}, ${ERC20_TOKEN_REMOTE_C_CHAIN}, ${FUNDED_ADDRESS}, 0x0000000000000000000000000000000000000000, 0, 0, 250000, 0x0000000000000000000000000000000000000000)"  --value 1
+```
+
+If your parameters were entered correctly, this command will sign and publish a transaction, resulting in a large JSON response of transaction information in the terminal.
+
+To confirm the token was bridged from Subnet to C-Chain, we will check the recipient's balance of wrapped tokens on the C-Chain with the [`cast call`](https://book.getfoundry.sh/reference/cast/cast-call?highlight=cast%20call#cast-call) foundry command:
+
+```zsh
+cast call --rpc-url local-c $ERC20_TOKEN_REMOTE_C_CHAIN "balanceOf(address)(uint)" $FUNDED_ADDRESS
+```
+
+If the command returns a balance greater than 0, congratulations, you've now successfully deployed a Teleporter-enabled bridge and successfully sent tokens cross-chain!
