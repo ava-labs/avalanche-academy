@@ -50,7 +50,7 @@ const officialCourses: Course[] = [
         icon: ArrowLeftRight,
         featured: true,
         duration: "2.5 hours",
-        tools: ["Avalanche-CLI", "Telepoter", "Foundry"],
+        tools: ["Telepoter", "Foundry"],
         languages: ["Solidity"]
      },
      /*{
