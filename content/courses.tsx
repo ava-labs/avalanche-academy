@@ -1,7 +1,7 @@
 
 import { ArrowLeftRight, Blocks, CoinsIcon, Dice3, Dice3Icon, Mail, Sprout, SquareStack } from 'lucide-react';
 
-type Course = {
+export type Course = {
     name: string;
     description: string;
     slug: string;
