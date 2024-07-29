@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { InlineTOC } from 'fumadocs-ui/components/inline-toc';
-import { guide } from '@/utils/source';
+import { utils, guide, type Page } from '@/utils/source';
 import { createMetadata } from '@/utils/metadata';
 import { buttonVariants } from '@/components/ui/button';
 import { ArrowUpRightIcon } from 'lucide-react';
@@ -111,16 +111,37 @@ export default function Page({
 }
 
 export function generateMetadata({ params }: { params: Param }): Metadata {
-    const page = guide.getPage([params.slug]);
+  const page = guide.getPage([params.slug]);
 
-    if (!page) notFound();
+  if (!page) notFound();
 
-    return createMetadata({
-        title: page.data.title,
-        description:
-            page.data.description ?? 'The library for building documentation sites',
-    });
+  const description =
+    page.data.description ?? 'Learn how to build on Avalanche blockchain with Academy';
+
+  const imageParams = new URLSearchParams();
+  imageParams.set('title', page.data.title);
+  imageParams.set('description', description);
+
+  const image = {
+    alt: 'Banner',
+    url: `/api/og-guide/${params.slug[0]}?${imageParams.toString()}`,
+    width: 1200,
+    height: 630,
+  };
+
+  return createMetadata({
+    title: page.data.title,
+    description,
+    openGraph: {
+      url: `/docs/${page.slugs.join('/')}`,
+      images: image,
+    },
+    twitter: {
+      images: image,
+    },
+  });
 }
+
 
 export function generateStaticParams(): Param[] {
     return guide.getPages().map<Param>((page) => ({
