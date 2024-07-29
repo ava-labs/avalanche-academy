@@ -1,12 +1,12 @@
 ---
-title: Deploy an Remote
+title: Deploy a Remote Contract
 description: Deploy the Token Remote on your own blockchain
 updated: 2024-05-31
 authors: [ashucoder9]
 icon: Terminal
 ---
 
-### ERC20 Remote
+## ERC20 Remote
 
 To ensure the wrapped token is bridged into the destination chain (in this case, C-Chain) you'll need to deploy a _remote_ contract that implements the `IERC20Bridge` interface, as well as inheriting the properties of `TeleporterTokenRemote`. In order for the bridged tokens to have all the normal functionality of a locally deployed ERC20 token, this remote contract must also inherit the properties of a standard `ERC20` contract.
 

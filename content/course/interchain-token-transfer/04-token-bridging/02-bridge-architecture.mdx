@@ -10,12 +10,12 @@ Asset bridging refers to the mechanism that allows assets, such as cryptocurrenc
 
 ## Bridge Mechanisms
 
-### Lock & mint
+### Lock & Mint
 
 Locking: The asset is locked in a smart contract on the source blockchain. For example, if you want to bridge AVAX from Avalanche's C-chain to Ethereum, you would lock your AVAX in a smart contract on Avalanche.
 Minting: Simultaneously, some event notifies Ethereum that an equivalent amount of a wrapped token (e.g., Wrapped AVAX) must be minted on the target blockchain and sent to the user’s address.
 
-### Burn & mint
+### Burn & Mint
 
 Burning: When transferring assets back to the source blockchain, the wrapped tokens are burned or destroyed on the target blockchain.
 Releasing: The original assets are then released from the smart contract on the source blockchain back to the user's address.
@@ -24,7 +24,7 @@ Releasing: The original assets are then released from the smart contract on the 
 
 Some bridges use a custodian or a centralized party to manage the assets. This party locks the asset on one blockchain and releases it on another, relying on trust and security measures.
 
-### Cross-Chain Communication:
+### Cross-Chain Communication
 
 Advanced bridges such as Avalanche Interchain Token Transfer utilize native cross-chain communication protocols to facilitate transactions between blockchains without requiring intermediaries. These protocols ensure that the asset's state and ownership are synchronized across different chains.
 
