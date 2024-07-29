@@ -44,7 +44,7 @@ const officialCourses: Course[] = [
         languages: ["Solidity"]
      },
      {
-        name:"Avalanche Interchain Token Transfer",
+        name:"Interchain Token Transfer",
         description:"Deploy Avalanche Interchain Token Transfer to transfer assets between Avalanche blockchains",
         slug:"interchain-token-transfer",
         icon: ArrowLeftRight,

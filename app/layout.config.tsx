@@ -62,7 +62,7 @@ export const docsOptions: DocsLayoutProps = {
             url: '/course/customizing-evm',
           },
           {
-            title: 'Avalanche Interchain Token Transfer',
+            title: 'Interchain Token Transfer',
             description: '',
             icon: <ArrowLeftRight />,
             url: '/course/interchain-token-transfer',
