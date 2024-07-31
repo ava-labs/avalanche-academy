@@ -52,7 +52,7 @@ For the source Subnets, the AWM Relayer offers the following configuration:
 - **vm:** A string specifying the virtual machine of the source Subnet's blockchain. Currently, only the evm is supported, but this field has been added in anticipation of communication between blockchains powered by different virtual machines in the future.
 - **rpc-endpoint:** The host of a node that can be queried for outgoing messages 
 - **rpc-endpoint:** The websocket endpoint of a node that can be queried for outgoing messages 
-- **message-contracts:** A map with the address of the teleporter contract as key and the following config parameters as values:
+- **message-contracts:** A map with the address of the Interchain Messaging contract as key and the following config parameters as values:
     - **message-format:** A string specifying the format. Currently, only the format "teleporter" exists, but this field has been added in anticipation of multiple formats in the future
-    - **settings:** A dictionary with settings for this Teleporter contract 
+    - **settings:** A dictionary with settings for this Interchain Messaging contract 
     - **reward-address:** The address rewards are paid out to

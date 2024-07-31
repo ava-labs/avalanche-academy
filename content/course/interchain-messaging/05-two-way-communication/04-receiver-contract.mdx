@@ -30,7 +30,7 @@ contract ReceiverOnSubnet is ITeleporterReceiver {
     function receiveTeleporterMessage(bytes32 sourceBlockchainID, address originSenderAddress, bytes calldata message)
         external
     {
-        // Only the Teleporter receiver can deliver a message.
+        // Only the Interchain Messaging receiver can deliver a message.
         require(msg.sender == address(messenger), "ReceiverOnSubnet: unauthorized TeleporterMessenger");
 
         // Send Roundtrip message back to sender

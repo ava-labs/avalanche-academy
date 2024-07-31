@@ -21,7 +21,7 @@ contract SimpleCalculatorReceiverOnSubnet is ITeleporterReceiver {
     uint256 public result_num;
 
     function receiveTeleporterMessage(bytes32, address, bytes calldata message) external {
-        // Only the Teleporter receiver can deliver a message.
+        // Only the Interchain Messaging receiver can deliver a message.
         require(
             msg.sender == address(teleporterMessenger), "CalculatorReceiverOnSubnet: unauthorized TeleporterMessenger"
         );

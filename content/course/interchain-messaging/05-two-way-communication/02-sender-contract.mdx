@@ -47,7 +47,7 @@ contract SenderOnCChain is ITeleporterReceiver { // [!code highlight]
     }
 
     function receiveTeleporterMessage(bytes32, address, bytes calldata message) external { // [!code highlight:7]
-        // Only the Teleporter receiver can deliver a message.
+        // Only the Interchain Messaging receiver can deliver a message.
         require(msg.sender == address(messenger), "SenderOnCChain: unauthorized TeleporterMessenger");
 
         // Store the message.

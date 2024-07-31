@@ -58,7 +58,7 @@ function receiveTeleporterMessage(
   address originSenderAddress,
   bytes calldata message
 ) external {
-  // Only the Teleporter receiver can deliver a message.
+  // Only the Interchain Messaging receiver can deliver a message.
   if (msg.sender != address(teleporterMessenger)) {
     revert Unauthorized();
   }

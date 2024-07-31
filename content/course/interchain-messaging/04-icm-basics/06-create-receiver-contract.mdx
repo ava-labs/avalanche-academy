@@ -29,7 +29,7 @@ contract ReceiverOnSubnet is ITeleporterReceiver {
     string public lastMessage;
 
     function receiveTeleporterMessage(bytes32, address, bytes calldata message) external {
-        // Only the Teleporter receiver can deliver a message.
+        // Only the Interchain Messaging receiver can deliver a message.
         require(msg.sender == address(messenger), "ReceiverOnSubnet: unauthorized TeleporterMessenger");
 
         // Store the message.
@@ -40,7 +40,7 @@ contract ReceiverOnSubnet is ITeleporterReceiver {
 The key things to understand:
 
 - **The key things to understand:**
-- **Importing Teleporter contracts (L8, L9):** We are importing the ITeleporterMessenger and ITeleporterReceiver interface we looked at in the previous activity.
+- **Importing Interchain Messaging contracts (L8, L9):** We are importing the ITeleporterMessenger and ITeleporterReceiver interface we looked at in the previous activity.
 - **Inheriting from ITeleporterReceiver (L11):** We are inheriting the interface that will require us to implement the receiveTeleporterMessage() function.
 - **Defining the lastMessage variable (L14):** Setting the lastMessage variable as public, will make that variable readable from the outside without the need of a getValue function.
 - **Implementing receiveTeleporterMessage (L16):** We implement the function that will be called when the message is received. Please note that we are not checking who calls that function for now. So anyone can pretend to deliver messages for now.
