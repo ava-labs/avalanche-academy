@@ -2,7 +2,7 @@ import { type BaseLayoutProps, type DocsLayoutProps } from 'fumadocs-ui/layout';
 import { utils } from '@/utils/source';
 import { RootToggle } from 'fumadocs-ui/components/layout/root-toggle';
 import { Title } from '@/app/layout.client';
-import { BlocksIcon, MailIcon, SproutIcon, SquareStackIcon } from 'lucide-react';
+import { BlocksIcon, MailIcon, SproutIcon, SquareStackIcon, ArrowLeftRight } from 'lucide-react';
 
 export const baseOptions: BaseLayoutProps = {
   githubUrl: 'https://github.com/ava-labs/avalanche-academy',
@@ -54,6 +54,12 @@ export const docsOptions: DocsLayoutProps = {
             description: '',
             icon: <MailIcon />,
             url: '/course/interchain-messaging',
+          },
+          {
+            title: 'Interchain Token Transfer',
+            description: '',
+            icon: <ArrowLeftRight />,
+            url: '/course/interchain-token-transfer',
           },
           {
             title: 'Customizing EVM',

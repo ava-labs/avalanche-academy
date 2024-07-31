@@ -1,0 +1,24 @@
+---
+title: Deploy a Home Contract
+description: Deploy the Token Home on C-chain
+updated: 2024-05-31
+authors: [ashucoder9]
+icon: Terminal
+---
+
+
+## Deploy Avalanche Interchain Token Transfer Contracts
+
+We will deploy two Avalanche Interchain Token Transfer contracts. One of the source chain (which is C-chain in our case) and another on the destination chain (mysubnet in our case).
+
+### ERC20Home Contract
+
+```bash
+forge create --rpc-url local-c --private-key $PK lib/avalanche-interchain-token-transfer/contracts/src/TokenHome/ERC20TokenHome.sol:ERC20TokenHome --constructor-args $TELEPORTER_REGISTRY_C_CHAIN $FUNDED_ADDRESS $ERC20_HOME_C_CHAIN 18
+```
+
+Export the "Deployed to" address as an environment variables.
+
+```bash
+export ERC20_HOME_TRANSFERER_C_CHAIN=<"Deployed to" address>
+```

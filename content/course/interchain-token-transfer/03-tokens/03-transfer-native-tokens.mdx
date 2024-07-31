@@ -1,0 +1,77 @@
+---
+title: Transfer Native Tokens
+description: Interact with native tokens 
+updated: 2024-05-31
+authors: [ashucoder9]
+icon: Terminal
+---
+
+In this exercise, you will learn how to transfer native tokens on your own L1 in the Avalanche network using Foundry, a powerful toolkit for EVM application development. 
+
+Start by creating and deploying a new blockchain using the Avalanche Starter Kit. With your chain up and running, let's transfer some native tokens from one account to another using Foundry
+
+## Create a blockchain with the following configuration
+
+```bash
+avalanche subnet create mysubnet
+```
+
+```bash
+✔ Subnet-EVM
+✔ Use latest release version
+✔ Yes
+✔ Yes
+Installing subnet-evm-v0.6.7...
+subnet-evm-v0.6.7 installation successful
+creating genesis for subnet mysubnet
+Enter your subnet's ChainId. It can be any positive integer.
+ChainId: 123
+Select a symbol for your subnet's native token
+Token symbol: NAT
+✔ Low disk use    / Low Throughput    1.5 mil gas/s (C-Chain's setting)
+✔ Airdrop 1 million tokens to the default ewoq address (do not use in production)
+prefunding address 0x8db97C7cEcE249c2b98bDC0226Cc4C2A57BF52FC with balance 1000000000000000000000000
+✔ No
+✓ Successfully created subnet configuration
+```
+
+## Deploy blockchain on Local network
+
+```
+avalanche subnet deploy mysubnet
+```
+
+## Create account
+```bash
+avalanche key create myKey
+```
+
+Retrieve the new address with and store it in an environment variable to match the following commands.
+ 
+```bash
+ avalanche key list -l --subnets mysubnet --keys myKey
+```
+
+```bash
+export $MYKEY=0x...
+```
+
+## Check balances
+
+```bash
+cast balance $MYKEY --rpc-url mysubnet
+```
+
+## Transfer funds
+
+```
+cast send $MYKEY --value 200000  --private-key $PK --rpc-url mysubnet
+```
+
+## Check balances to confirm transfer
+
+```bash
+cast balance $MYKEY --rpc-url mysubnet
+```
+
+As you saw, funds were transfered from one count to another within the same chain (mysubnet)
