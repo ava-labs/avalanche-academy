@@ -1,6 +1,6 @@
 ---
 title: What are Stateful Precompiles?
-description: Learn about Stateful Precompiles in Subnet EVM.
+description: Learn about Stateful Precompiles in Avalanche L1 EVM.
 updated: 2024-05-31
 authors: [ashucoder9]
 icon: Book
@@ -116,7 +116,7 @@ An example of how we could leverage `BlockContext` in precompiles: *building a v
 // [NodeID] is the ID of this node
 type Context struct {
     NetworkID uint32
-    SubnetID  ids.ID
+    Avalanche L1ID  ids.ID
     ChainID   ids.ID
     NodeID    ids.NodeID
     PublicKey *bls.PublicKey

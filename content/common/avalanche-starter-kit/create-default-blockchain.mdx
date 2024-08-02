@@ -1,18 +1,18 @@
-In the following commands, make sure to substitute the name of your Subnet for `<subnetName>` (including the `<>`). You can choose whatever name you want, but I recommend using `mysubnet` as the name to avoid the need for some manual configuration.
+In the following commands, make sure to substitute the name of your Avalanche L1 for `<subnetName>` (including the `<>`). You can choose whatever name you want, but I recommend using `mysubnet` as the name to avoid the need for some manual configuration.
 
-To create a Subnet configuration run the following command
+To create an Avalanche L1 configuration run the following command
 
 ```bash
-avalanche subnet create <subnetName>
+avalanche blockchain create <subnetName>
 ```
 
 For example:
 
 ```bash
-avalanche subnet create mysubnet
+avalanche blockchain create mysubnet
 ```
 
-You will be prompted a Wizard to set the Subnet config. For now, follow the default options where possible, except when asked for the **Airdrop**. Select the **ewoq** address for the airdrop. This address is the default address for the Avalanche test environments and is used for testing purposes. 
+You will be prompted a Wizard to set the Avalanche L1 config. For now, follow the default options where possible, except when asked for the **Airdrop**. Select the **ewoq** address for the airdrop. This address is the default address for the Avalanche test environments and is used for testing purposes. 
 
 For convenience, the private key `56289e99c94b6912bfc12adc093c9b51124f0dc54ac7a766b2bc5ccf558d8027` of the default ewoq address is stored in the environment variable `$PK`.
 
@@ -21,8 +21,8 @@ PLACEHOLDER VIDEO subnet create
 After the finishing, you should see something like this:
 
 ```
-@martineckardt ➜ /workspaces/avalanche-starter-kit (main) $ avalanche subnet create mysubnet
-✔ Subnet-EVM
+@martineckardt ➜ /workspaces/avalanche-starter-kit (main) $ avalanche blockchain create mysubnet
+✔ Avalanche L1-EVM
 ✔ Use latest release version
 Installing subnet-evm-v0.6.3...
 subnet-evm-v0.6.3 installation successful
@@ -50,7 +50,7 @@ avalanche subnet describe <subnetName>
 
 ## Start your Local Network (optional)
 
-Now that we created our Subnet config, we need a network that will host that Subnet. The following command will launch 5 nodes running locally:
+Now that we created our Avalanche L1 config, we need a network that will host that Avalanche L1. The following command will launch 5 nodes running locally:
 
 ```bash
 avalanche network start
@@ -75,10 +75,10 @@ You can check at any time if the network is running by issuing the following com
 avalanche network status
 ```
 
-If you don't start your network manually it will be automatically started when you deploy your first Subnet with the `avalanche subnet deploy <subnetName>` command.
+If you don't start your network manually it will be automatically started when you deploy your first Avalanche L1 with the `avalanche subnet deploy <subnetName>` command.
 
-## Deploy your Subnet
-To deploy your Subnet, run
+## Deploy your Avalanche L1
+To deploy your Avalanche L1, run
 
 ```bash
 avalanche subnet deploy <subnetName>
@@ -141,7 +141,7 @@ Chain ID:          99999
 Currency Symbol:   TOK
 ```
 
-This output includes the endpoints of your 5 nodes where you can connect to interact with your Subnet. You're running a Subnet-EVM, this means you can use those RPC URLs to connect to EVM compatible wallet or tools.
+This output includes the endpoints of your 5 nodes where you can connect to interact with your Avalanche L1. You're running a Avalanche L1-EVM, this means you can use those RPC URLs to connect to EVM compatible wallet or tools.
 
 ## Make RPC-Endpoint publicly accessible
 

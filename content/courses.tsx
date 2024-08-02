@@ -15,7 +15,7 @@ export type Course = {
 const officialCourses: Course[] = [
     {
         name: "Avalanche Fundamentals",
-        description: "Get a high level overview of Avalanche Consensus, Subnets and VMs",
+        description: "Get a high level overview of Avalanche Consensus, L1s and VMs",
         slug: "avalanche-fundamentals",
         icon: Sprout,
         featured: true,
@@ -96,7 +96,7 @@ const ecosystemCourses: Course[] = [
    },
    {
         name:"Use Safe on an Avalanche Chain",
-        description:"Secure your multi-sig wallet with Safe on a Subnet.",
+        description:"Secure your multi-sig wallet with Safe on a Avalanche L1.",
         slug:"safe-on-an-avalanche-chain",
         icon: Blocks,
         duration: "4 hours",

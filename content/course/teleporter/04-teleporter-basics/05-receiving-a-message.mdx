@@ -6,11 +6,11 @@ authors: [martineckardt]
 icon: BookOpen
 ---
 
-To receive a message we need to enable out cross-Subnet dApps to being called by the Teleporter contract.
+To receive a message we need to enable out cross-Avalanche L1 dApps to being called by the Teleporter contract.
 
 <img src="/course-images/teleporter/teleporter-source-destination.png" width="400" class="mx-auto"/>
 
-The Teleporter does not know out contract and what functions it has. Therefore, our dApp on the destination Subnet has to implement the ITeleporterReceiver interface. It is very straight forward and only requires a single method for receiving the message that then can be called by the Teleporter contract:
+The Teleporter does not know out contract and what functions it has. Therefore, our dApp on the destination Avalanche L1 has to implement the ITeleporterReceiver interface. It is very straight forward and only requires a single method for receiving the message that then can be called by the Teleporter contract:
 
 ```solidity
 pragma solidity 0.8.18;
@@ -37,7 +37,7 @@ interface ITeleporterReceiver {
 The function receiveTeleporterMessage has three parameters:
 
 - **originChainID**: The chainID where the message originates from, meaning where the user or contract called the sendCrossChainMessage function of the Teleporter contract
-- **originSenderAddress**: The address of the user or contract that called the sendCrossChainMessage function of the Teleporter contract on the origin Subnet
+- **originSenderAddress**: The address of the user or contract that called the sendCrossChainMessage function of the Teleporter contract on the origin Avalanche L1
 - **message**: The message encoded in bytes
 
 An example for a contract being able to receive Teleporter messages and storing these in a mapping could look like this:

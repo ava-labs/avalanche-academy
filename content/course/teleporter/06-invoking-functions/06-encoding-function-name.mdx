@@ -40,7 +40,7 @@ contract CalculatorSenderOnCChain {
     function sendAddMessage(address destinationAddress, uint256 num1, uint256 num2) external {
         teleporterMessenger.sendCrossChainMessage(
             TeleporterMessageInput({
-                // Replace with chain id of your Subnet (see instructions in Readme)
+                // Replace with chain id of your Avalanche L1 (see instructions in Readme)
                 destinationBlockchainID: 0x92756d698399805f0088fc07fc42af47c67e1d38c576667ac6c7031b8df05293,
                 destinationAddress: destinationAddress,
                 feeInfo: TeleporterFeeInfo({feeTokenAddress: address(0), amount: 0}),
@@ -83,14 +83,14 @@ As you can see here we are calling `abi.encode` twice in the encode helpers. The
 
 Let's now look at the receiver:
 
-```solidity title="src/2b-invoking-functions/CalculatorReceiverOnSubnet.sol"
+```solidity title="src/2b-invoking-functions/CalculatorReceiverOnAvalanche L1.sol"
 pragma solidity ^0.8.18;
 
 import "@teleporter/ITeleporterMessenger.sol";
 import "@teleporter/ITeleporterReceiver.sol";
 import "./CalculatorActions.sol";
 
-contract CalculatorReceiverOnSubnet is ITeleporterReceiver {
+contract CalculatorReceiverOnAvalanche L1 is ITeleporterReceiver {
     ITeleporterMessenger public immutable teleporterMessenger =
         ITeleporterMessenger(0x253b2784c75e510dD0fF1da844684a1aC0aa5fcf);
     uint256 public result_num;
@@ -99,7 +99,7 @@ contract CalculatorReceiverOnSubnet is ITeleporterReceiver {
     function receiveTeleporterMessage(bytes32, address, bytes calldata message) external {
         // Only the Teleporter receiver can deliver a message.
         require(
-            msg.sender == address(teleporterMessenger), "CalculatorReceiverOnSubnet: unauthorized TeleporterMessenger"
+            msg.sender == address(teleporterMessenger), "CalculatorReceiverOnAvalanche L1: unauthorized TeleporterMessenger"
         );
 
         // Decoding the Action type: // [!code highlight:2]
@@ -113,7 +113,7 @@ contract CalculatorReceiverOnSubnet is ITeleporterReceiver {
             (string memory text1, string memory text2) = abi.decode(paramsData, (string, string));
             _calculatorConcatenateStrings(text1, text2);
         } else {
-            revert("CalculatorReceiverOnSubnet: invalid action");
+            revert("CalculatorReceiverOnAvalanche L1: invalid action");
         }
     }
 
@@ -159,7 +159,7 @@ if (actionType == CalculatorAction.add) {
     (string memory text1, string memory text2) = abi.decode(paramsData, (string, string)); // [!code highlight]
     _calculatorConcatenateStrings(text1, text2);
 } else {
-    revert("CalculatorReceiverOnSubnet: invalid action");
+    revert("CalculatorReceiverOnAvalanche L1: invalid action");
 }
 ```
 
@@ -182,7 +182,7 @@ export SENDER_ADDRESS=0x123...
 Deploy the receiver contract:
 
 ```bash
-forge create --rpc-url mysubnet --private-key $PK src/2b-invoking-functions/CalculatorReceiverOnSubnet.sol:CalculatorReceiverOnSubnet
+forge create --rpc-url mysubnet --private-key $PK src/2b-invoking-functions/CalculatorReceiverOnAvalanche L1.sol:CalculatorReceiverOnAvalanche L1
 ```
 
 Save the receiver address:

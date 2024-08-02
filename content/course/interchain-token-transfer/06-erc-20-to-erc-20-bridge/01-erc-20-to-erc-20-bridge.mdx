@@ -10,9 +10,9 @@ icon: Book
 import ICTTsetup from "@/content/common/avalanche-ictt/setup-manual.mdx";
 
 
-## Transfer an ERC20 Token &rarr; Subnet as Native Token
+## Transfer an ERC20 Token &rarr; Avalanche L1 as Native Token
 
-The following example will show you how to send an ERC20 Token on C-chain to a Subnet as a native token using Teleporter and Foundry. This demo is conducted on a local network, but can be applied to Fuji Testnet and Avalanche Mainnet directly.
+The following example will show you how to send an ERC20 Token on C-chain to an Avalanche L1 as a native token using Teleporter and Foundry. This demo is conducted on a local network, but can be applied to Fuji Testnet and Avalanche Mainnet directly.
 
 **All Avalanche Interchain Token Transfer contracts and interfaces implemented in this example implementation are maintained in the [avalanche-interchain-token-transfer](https://github.com/ava-labs/avalanche-interchain-token-transfer/tree/main/contracts/src) repository.**
 
@@ -24,9 +24,9 @@ _Disclaimer: The avalanche-interchain-token-transfer contracts used in this tuto
 
 ## What we have to do
 
-1. Create a Subnet and Deploy on Local Network
+1. Create an Avalanche L1 and Deploy on Local Network
 2. Deploy an ERC20 Contract on C-chain
-3. Deploy the Interchain Token Transferer Contracts on C-chain and Subnet
+3. Deploy the Interchain Token Transferer Contracts on C-chain and Avalanche L1
 4. Register Remote Token with Home Transferer
 5. Add Collateral and Start Sending Tokens
 

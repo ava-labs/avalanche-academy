@@ -41,7 +41,7 @@ export RECEIVER_ADDRESS=0x...
 
 ## Approve ERC20 token expense
 
-👩 The Message Sender (User) requires to approve the Cross-Subnet dApp as a spender on the ERC20 contract to be used as fee. To do that lets use the function "approve" on our deployed FEE contract.
+👩 The Message Sender (User) requires to approve the Cross-Avalanche L1 dApp as a spender on the ERC20 contract to be used as fee. To do that lets use the function "approve" on our deployed FEE contract.
 
 ```bash
 //APPROVE OUR USER TO SPEND ERC20 
@@ -53,7 +53,7 @@ cast send --rpc-url local-c --private-key $PK ERC20_fee_address "approve(address
 ```bash
 cast send --rpc-url local-c --private-key $PK SENDER_ADDRESS "sendMessage(address, string, address)" $RECEIVER_ADDRESS, "Hello", $ERC20_fee_address
 ```
-## Verify message was received on Subnet 
+## Verify message was received on Avalanche L1 
 
 ```bash
 cast call --rpc-url local-c RECEIVER_ADDRESS "lastMessage()(string)"

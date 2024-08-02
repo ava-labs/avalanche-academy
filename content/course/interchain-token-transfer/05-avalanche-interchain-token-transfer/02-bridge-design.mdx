@@ -6,9 +6,9 @@ authors: [ashucoder9]
 icon: BookOpen
 ---
 
-Each token transferrer instance consists of one "home" contract and at least one but possibly many "remote" contracts. Each home contract instance manages one asset to be transferred out to `TokenRemote` instances. The home contract lives on the Subnet where the asset to be transferred exists.
+Each token transferrer instance consists of one "home" contract and at least one but possibly many "remote" contracts. Each home contract instance manages one asset to be transferred out to `TokenRemote` instances. The home contract lives on the Avalanche L1 where the asset to be transferred exists.
 
-A transfer involves locking the asset as collateral on the home Subnet and minting a representation of the asset on the remote Subnet. The remote contracts, each with a single specified home contract, live on other Subnets that want to import the asset transferred by their specified home.
+A transfer involves locking the asset as collateral on the home Avalanche L1 and minting a representation of the asset on the remote Avalanche L1. The remote contracts, each with a single specified home contract, live on other Avalanche L1s that want to import the asset transferred by their specified home.
 
 The token transferrers are designed to be permissionless: anyone can register compatible `TokenRemote` instances to transfer tokens from the `TokenHome` instance to that new `TokenRemote` instance.
 

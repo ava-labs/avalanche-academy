@@ -6,13 +6,13 @@ authors: [martineckardt]
 icon: Terminal
 ---
 
-Now it's time to deploy our receiver contract on our Subnet. It will implement the callback for the TeleporterMessenger contract when the message is received, decoding our message and storing the last received string. 
+Now it's time to deploy our receiver contract on our Avalanche L1. It will implement the callback for the TeleporterMessenger contract when the message is received, decoding our message and storing the last received string. 
 
 ## Read the Receiver Contract
 
 The following contract is located inside `src/0-send-receive` directory. Read through the contract below and and understand what is happening:
 
-```solidity title="src/0-send-receive/receiverOnSubnet.sol"
+```solidity title="src/0-send-receive/receiverOnAvalanche L1.sol"
 // (c) 2023, Ava Labs, Inc. All rights reserved.
 // See the file LICENSE for licensing terms.
 
@@ -23,14 +23,14 @@ pragma solidity ^0.8.18;
 import "@teleporter/ITeleporterMessenger.sol";
 import "@teleporter/ITeleporterReceiver.sol";
 
-contract ReceiverOnSubnet is ITeleporterReceiver {
+contract ReceiverOnAvalanche L1 is ITeleporterReceiver {
     ITeleporterMessenger public immutable messenger = ITeleporterMessenger(0x253b2784c75e510dD0fF1da844684a1aC0aa5fcf);
 
     string public lastMessage;
 
     function receiveTeleporterMessage(bytes32, address, bytes calldata message) external {
         // Only the Teleporter receiver can deliver a message.
-        require(msg.sender == address(messenger), "ReceiverOnSubnet: unauthorized TeleporterMessenger");
+        require(msg.sender == address(messenger), "ReceiverOnAvalanche L1: unauthorized TeleporterMessenger");
 
         // Store the message.
         lastMessage = abi.decode(message, (string));
@@ -51,7 +51,7 @@ The key things to understand:
 To deploy a contract using Foundry use the following command:
 
 ```bash
-forge create --rpc-url mysubnet --private-key $PK src/0-send-receive/receiverOnSubnet.sol:ReceiverOnSubnet
+forge create --rpc-url mysubnet --private-key $PK src/0-send-receive/receiverOnAvalanche L1.sol:ReceiverOnAvalanche L1
 ```
 Then save the receiver contract address in an environment variable:
 

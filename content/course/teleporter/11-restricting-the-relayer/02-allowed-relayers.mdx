@@ -6,7 +6,7 @@ authors: [martineckardt]
 icon: BookOpen
 ---
 
-In this segment, we'll delve into the mechanisms of restricting relayers for transmitting messages across Subnets. While the security in AWM and Teleporter doesn't rely at all on the Relayer, there might be some reasons why you would want to restrict the delivery of the message to certain Relayers. 
+In this segment, we'll delve into the mechanisms of restricting relayers for transmitting messages across Avalanche L1s. While the security in AWM and Teleporter doesn't rely at all on the Relayer, there might be some reasons why you would want to restrict the delivery of the message to certain Relayers. 
 
 The more obvious one is when you run your own Relayer, and don't want to incentivize any other to ensure your message gets to the destination. On following sections you will learn how to run your own Relayer so you can restrict the messages to your own.
 
@@ -34,7 +34,7 @@ As you can see the `TeleporterMessageInput` allows you to specify an array of ad
 ```solidity
 messenger.sendCrossChainMessage( 
     TeleporterMessageInput({
-        // Replace with blockchainID of your Subnet (see instructions in Readme)
+        // Replace with blockchainID of your Avalanche L1 (see instructions in Readme)
         destinationBlockchainID: 0x3861e061737eaeb8d00f0514d210ad1062bfacdb4bd22d1d1f5ef876ae3a8921,
         destinationAddress: destinationAddress, 
         feeInfo: TeleporterFeeInfo({feeTokenAddress: address(0), amount: 0}),
@@ -50,7 +50,7 @@ If you want to restrict the message to a certain relayer, you can simply add the
 ```solidity
 messenger.sendCrossChainMessage( 
     TeleporterMessageInput({
-        // Replace with blockchainID of your Subnet (see instructions in Readme)
+        // Replace with blockchainID of your Avalanche L1 (see instructions in Readme)
         destinationBlockchainID: 0x3861e061737eaeb8d00f0514d210ad1062bfacdb4bd22d1d1f5ef876ae3a8921,
         destinationAddress: destinationAddress, 
         feeInfo: TeleporterFeeInfo({feeTokenAddress: address(0), amount: 0}),

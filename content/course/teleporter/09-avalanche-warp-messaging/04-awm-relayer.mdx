@@ -6,17 +6,17 @@ authors: [martineckardt]
 icon: BookOpen
 ---
 
-The AWM Relayer is an application run independently of the blockchain clients. Anyone can run their own AWM Relayer to create a communication channel between two Subnets, and there can be multiple relayers for the same communication channel. There is an open source implementation anyone can use [here](https://github.com/ava-labs/awm-relayer). Soon, AvaCloud will offer hosted relayers.
+The AWM Relayer is an application run independently of the blockchain clients. Anyone can run their own AWM Relayer to create a communication channel between two Avalanche L1s, and there can be multiple relayers for the same communication channel. There is an open source implementation anyone can use [here](https://github.com/ava-labs/awm-relayer). Soon, AvaCloud will offer hosted relayers.
 
 ![AWM Relayer data flow](/course-images/teleporter/teleporter-source-destination-with-relayer.png)
 
-The AWM Relayers are responsible for picking up the messages at the source Subnet, aggregating the BLS signatures from a sufficiently large share of the source Subnet's validators and submitting a transaction on the destination Subnet.
+The AWM Relayers are responsible for picking up the messages at the source Avalanche L1, aggregating the BLS signatures from a sufficiently large share of the source Avalanche L1's validators and submitting a transaction on the destination Avalanche L1.
 
 It is up to the cross-chain application to decide if they allow any relayer to be part of the delivery process, or whether to restrict participation to certain Relayers.
 
 ## AWM Relayer Config
 
-The AWM Relayer can be configured so that it is reusable for different networks (Mainnet, Fuji Testnet, Local) and communication channels between Subnets. The following configurations are available:
+The AWM Relayer can be configured so that it is reusable for different networks (Mainnet, Fuji Testnet, Local) and communication channels between Avalanche L1s. The following configurations are available:
 
 ```json title="https://github.com/ava-labs/awm-relayer/blob/main/sample-relayer-config.json"
 {
@@ -62,6 +62,6 @@ The AWM Relayer can be configured so that it is reusable for different networks 
 ```
 
 - **Info API URL:** An RPC endpoint where the AWM Relayer can access the Info API to retrieve the information about the network
-- **P-Chain API URL:** An RPC endpoint where the AWM Relayer can access the P-Chain to retrieve the validators of the source Subnet
-- **Source Subnet Configs:** An array of configurations for the source Subnets where the messages are picked up from
-- **Destination Subnet Configs:** An array of configurations for the destination Subnets where the messages are delivered to
+- **P-Chain API URL:** An RPC endpoint where the AWM Relayer can access the P-Chain to retrieve the validators of the source Avalanche L1
+- **Source Avalanche L1 Configs:** An array of configurations for the source Avalanche L1s where the messages are picked up from
+- **Destination Avalanche L1 Configs:** An array of configurations for the destination Avalanche L1s where the messages are delivered to

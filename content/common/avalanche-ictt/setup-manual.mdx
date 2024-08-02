@@ -9,27 +9,27 @@ icon: Book
 
 ## Local Network Environment
 
-For convenience the private key `56289e99c94b6912bfc12adc093c9b51124f0dc54ac7a766b2bc5ccf558d8027` of the default airdrop address is stored in the environment variable `$PK` in `.devcontainer/devcontainer.json` of the Starter-kit. Furthermore, the RPC url for the C-Chain `local-c` and Subnet created with the name `mysubnet` on the local network is set in the `foundry.toml` file.
+For convenience the private key `56289e99c94b6912bfc12adc093c9b51124f0dc54ac7a766b2bc5ccf558d8027` of the default airdrop address is stored in the environment variable `$PK` in `.devcontainer/devcontainer.json` of the Starter-kit. Furthermore, the RPC url for the C-Chain `local-c` and the Avalanche L1 with the name `mysubnet` on the local network is set in the `foundry.toml` file.
 
-### Subnet Configuration and Deployment
+### Avalanche L1 Configuration and Deployment
 
-To get started, create a Subnet configuration named "mysubnet":
+To get started, create an Avalanche L1 configuration named "mysubnet":
 
 ```bash
-avalanche subnet create mysubnet
+avalanche blockchain create mysubnet
 ```
 
-Your Subnet should have the following things:
+Your Avalanche L1 should have the following things:
 
 - Teleporter enabled
 - CLI should run an AWM Relayer
-- Upon Subnet deployment, 100 tokens should be airdropped to the default ewoq address (0x8db97C7cEcE249c2b98bDC0226Cc4C2A57BF52FC)
+- Upon Avalanche L1 deployment, 100 tokens should be airdropped to the default ewoq address (0x8db97C7cEcE249c2b98bDC0226Cc4C2A57BF52FC)
 - Native Minter Precompile enabled with either your admin address or the pre-computed Remote token address
 
-_Note: If you have created your Subnet using AvaCloud, you can add Remote Token address [using the dashboard](https://support.avacloud.io/avacloud-how-do-i-use-the-native-token-minter)._
+_Note: If you have created your Avalanche L1 using AvaCloud, you can add Remote Token address [using the dashboard](https://support.avacloud.io/avacloud-how-do-i-use-the-native-token-minter)._
 
 ```bash
-✔ Subnet-EVM
+✔ Avalanche L1-EVM
 ✔ Use latest release version
 ✔ Yes
 ✔ Yes
@@ -54,7 +54,7 @@ Enter Address : 0x8db97C7cEcE249c2b98bDC0226Cc4C2A57BF52FC
 ✓ Successfully created subnet configuration
 ```
 
-Finally, deploy your Subnet:
+Finally, deploy your Avalanche L1:
 
 ```bash
 avalanche subnet deploy mysubnet
@@ -96,13 +96,13 @@ From this output, take note of the following parameters
 
 - Funded Address (with 100 tokens),
 - Teleporter Registry on C-chain, and
-- Teleporter Registry on Subnet
+- Teleporter Registry on Avalanche L1
 
 Set these parameters as environment variables so that we can manage them easily and also use them in the commands later.
 
 ```bash
 export FUNDED_ADDRESS=<Funded Address (with 100 tokens)>
 export TELEPORTER_REGISTRY_C_CHAIN=<Teleporter Registry on C-chain>
-export TELEPORTER_REGISTRY_SUBNET=<Teleporter Registry on Subnet>
+export TELEPORTER_REGISTRY_SUBNET=<Teleporter Registry on Avalanche L1>
 ```
 

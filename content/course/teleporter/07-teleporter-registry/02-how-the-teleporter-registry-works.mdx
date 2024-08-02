@@ -6,7 +6,7 @@ authors: [martineckardt]
 icon: BookOpen
 ---
 
-TeleporterRegistry keeps track of TeleporterMessenger contract versions. Cross-Subnet dApps can request the latest or a specific version of the TeleporterMessenger:
+TeleporterRegistry keeps track of TeleporterMessenger contract versions. Cross-Avalanche L1 dApps can request the latest or a specific version of the TeleporterMessenger:
 
 <img src="/common-images/teleporter/teleporter-registry.png" width="600" class="mx-auto"/>
 
@@ -58,7 +58,7 @@ contract TeleporterRegistry {
 }
 ```
 
-If a cross-Subnet dApps prefers a specific version, it can also call directly the getAddressFromVersion function:
+If a cross-Avalanche L1 dApps prefers a specific version, it can also call directly the getAddressFromVersion function:
 
 ```solidity title="/lib/teleporter/contracts/src/Teleporter/upgrades/TeleporterRegistry.sol"
 contract TeleporterRegistry {

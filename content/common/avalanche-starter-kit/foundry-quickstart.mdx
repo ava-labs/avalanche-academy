@@ -98,7 +98,7 @@ We need to pay for the fees of transactions that manipulate the state (deploying
 
 > Do not send any funds on any public blockchain to the ewoq address. The funds will most likely be lost immediately.
 
-When you create a Subnet you will be offered an option to configure the initial token allocation. The second option will allocate 1m tokens to that address so you can easily deploy all contracts and pay for the transactions from that address:
+When you create an Avalanche L1 you will be offered an option to configure the initial token allocation. The second option will allocate 1m tokens to that address so you can easily deploy all contracts and pay for the transactions from that address:
 
 ```bash
 ? How would you like to distribute funds: 
@@ -137,13 +137,13 @@ dispatch = "https://subnets.avax.network/dispatch/testnet/rpc"
 
 The RPC URLs defined by default are the following:
 - **local-c:** The C-Chain of your local Avalanche network
-- **mysubnet:** A Subnet on your local Avalanche network called mysubnet
+- **mysubnet:** A Avalanche L1 on your local Avalanche network called mysubnet
 - **fuji-c:** The C-Chain of the Fuji Testnet
-- **dispatch:** A Subnet on the Fuji Testnet called Dispatch. It was specifically created for testing Teleporter dApps. 
+- **dispatch:** A Avalanche L1 on the Fuji Testnet called Dispatch. It was specifically created for testing Teleporter dApps. 
 
 The ability to use an RPC with the name of our subnet comes from the alias API in our nodes. You can read more about it [here](https://docs.avax.network/reference/avalanchego/admin-api#adminalias).
 
-Feel free to add more RPC URLs to Subnets you create. You can also add more aliases for the RPC URLs to make it easier for you to send transactions to them.
+Feel free to add more RPC URLs to Avalanche L1s you create. You can also add more aliases for the RPC URLs to make it easier for you to send transactions to them.
 
 ## Learn more about Foundry
 

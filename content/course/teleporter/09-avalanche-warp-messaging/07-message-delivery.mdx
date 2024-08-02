@@ -6,7 +6,7 @@ authors: [martineckardt]
 icon: BookOpen
 ---
 
-Next, the AWM Relayer delivers the message with the aggregated signature by simply submitting a transaction to the destination Subnet. The transaction is propagated through the validator set of the destination blockchain just as any other regular transaction would.
+Next, the AWM Relayer delivers the message with the aggregated signature by simply submitting a transaction to the destination Avalanche L1. The transaction is propagated through the validator set of the destination blockchain just as any other regular transaction would.
 
 In order to submit the transaction, the AWM Relayer needs access to the private key of a wallet holding the gas token of the destination blockchain to sign the transaction.
 
@@ -14,8 +14,8 @@ In order to submit the transaction, the AWM Relayer needs access to the private 
 
 When the validators verify the transaction, they perform the following steps:
 
-- **Query the P-Chain:** The verifying validators each receive the validator set of the source Subnet with its stake weights and BLS Public Keys
-- **Verify Stake Weight:** First, the verifying validators are checking if the combined stake weight of the validators that have signed the Warp message is large enough to accept the message (e.g. validators representing 50% of the total stake have signed the message). The required stake weight may vary from chain to chain. A Subnet may require 50% for chain A and 90% for chain B. If the stake weight is insufficient the message is rejected.
+- **Query the P-Chain:** The verifying validators each receive the validator set of the source Avalanche L1 with its stake weights and BLS Public Keys
+- **Verify Stake Weight:** First, the verifying validators are checking if the combined stake weight of the validators that have signed the Warp message is large enough to accept the message (e.g. validators representing 50% of the total stake have signed the message). The required stake weight may vary from chain to chain. A Avalanche L1 may require 50% for chain A and 90% for chain B. If the stake weight is insufficient the message is rejected.
 - **Aggregate BLS Public Keys:** The verifying validators aggregate the BLS Public Keys of the validators that signed the message. 
 - **Verify BLS Multi-Signature:** The aggregated signature (created by the AWM Relayer) is now being verified using the aggregated BLS Public Key (created by the verifying validators). If the verification fails (e.g. the AWM Relayer modified the message), the message is rejected.
 

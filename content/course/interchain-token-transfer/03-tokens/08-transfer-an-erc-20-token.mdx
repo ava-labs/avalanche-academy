@@ -8,7 +8,7 @@ icon: Terminal
 
 ## Deploy ERC-20
 
-Let's deploy a basic demo ERC20 contract that comes integrated with the CLI on our Subnet.
+Let's deploy a basic demo ERC20 contract that comes integrated with the CLI on our Avalanche L1.
 
 ```bash 
 avalanche contract deploy erc20
@@ -16,7 +16,7 @@ avalanche contract deploy erc20
 and follow this configuration:
 ```bash 
 ✔ Local Network
-✔ Subnet mysubnet
+✔ Avalanche L1 mysubnet
 A private key is needed to pay for the contract deploy fees.
 It will also be considered the owner address of the contract, beign able to call
 the contract methods only available to owners.
@@ -76,7 +76,7 @@ Notice how we are setting the value to 0 since the --value command works for sen
 
 ## Verify transfer
 
-Again, you can verify the transfer was performed correctly by retrieving the balances of each token in the Subnet.
+Again, you can verify the transfer was performed correctly by retrieving the balances of each token in the Avalanche L1.
 
 ```bash
 avalanche key list -l --subnets mysubnet --tokens $ERC20_CONTRACT_SUBNET,native  --keys myKey,ewoq
