@@ -12,6 +12,11 @@ const config = {
         destination: '/course/multi-chain-architecture',
         permanent: true,
       },
+      {
+        source: '/course/teleporter',
+        destination: '/course/interchain-messaging',
+        permanent: true,
+      },
     ]
   },
 };
