@@ -1,4 +1,4 @@
-In the following commands, make sure to substitute the name of your Avalanche L1 for `<subnetName>` (including the `<>`). You can choose whatever name you want, but I recommend using `mysubnet` as the name to avoid the need for some manual configuration.
+In the following commands, make sure to substitute the name of your Avalanche L1 for `<subnetName>` (including the `<>`). You can choose whatever name you want, but I recommend using `myblockchain` as the name to avoid the need for some manual configuration.
 
 To create an Avalanche L1 configuration run the following command
 
@@ -9,7 +9,7 @@ avalanche blockchain create <subnetName>
 For example:
 
 ```bash
-avalanche blockchain create mysubnet
+avalanche blockchain create myblockchain
 ```
 
 You will be prompted a Wizard to set the Avalanche L1 config. For now, follow the default options where possible, except when asked for the **Airdrop**. Select the **ewoq** address for the airdrop. This address is the default address for the Avalanche test environments and is used for testing purposes. 
@@ -21,12 +21,12 @@ PLACEHOLDER VIDEO subnet create
 After the finishing, you should see something like this:
 
 ```
-@martineckardt ➜ /workspaces/avalanche-starter-kit (main) $ avalanche blockchain create mysubnet
+@martineckardt ➜ /workspaces/avalanche-starter-kit (main) $ avalanche blockchain create myblockchain
 ✔ Avalanche L1-EVM
 ✔ Use latest release version
 Installing subnet-evm-v0.6.3...
 subnet-evm-v0.6.3 installation successful
-creating genesis for subnet mysubnet
+creating genesis for subnet myblockchain
 Enter your subnet's ChainId. It can be any positive integer.
 ChainId: 9999
 Select a symbol for your subnet's native token
@@ -87,16 +87,16 @@ avalanche subnet deploy <subnetName>
 When prompted select `Local Network` to deploy on. After the deployment your should see something like this:
 
 ```
-@martineckardt ➜ /workspaces/avalanche-starter-kit (main) $ avalanche subnet deploy mysubnet
-Deploying [mysubnet] to Local Network
+@martineckardt ➜ /workspaces/avalanche-starter-kit (main) $ avalanche subnet deploy myblockchain
+Deploying [myblockchain] to Local Network
 
 Deploying Blockchain. Wait until network acknowledges...
 
 Teleporter Messenger successfully deployed to c-chain (0x253b2784c75e510dD0fF1da844684a1aC0aa5fcf)
 Teleporter Registry successfully deployed to c-chain (0x17aB05351fC94a1a67Bf3f56DdbB941aE6c63E25)
 
-Teleporter Messenger successfully deployed to mysubnet (0x253b2784c75e510dD0fF1da844684a1aC0aa5fcf)
-Teleporter Registry successfully deployed to mysubnet (0x0a3D3aa12Ddc6cfbF21764592cc1223e56F143F4)
+Teleporter Messenger successfully deployed to myblockchain (0x253b2784c75e510dD0fF1da844684a1aC0aa5fcf)
+Teleporter Registry successfully deployed to myblockchain (0x0a3D3aa12Ddc6cfbF21764592cc1223e56F143F4)
 
 using awm-relayer version (v1.3.3)
 Executing AWM-Relayer...
@@ -104,13 +104,13 @@ Executing AWM-Relayer...
 Blockchain ready to use
 
 +-------------------+----------------------------------------------------------------------------------------------------------------------------+
-|                                                               mysubnet RPC URLs                                                                |
+|                                                               myblockchain RPC URLs                                                                |
 +-------------------+----------------------------------------------------------------------------------------------------------------------------+
-| Localhost         | http://127.0.0.1:9650/ext/bc/mysubnet/rpc                                                                                  |
+| Localhost         | http://127.0.0.1:9650/ext/bc/myblockchain/rpc                                                                                  |
 +                   +----------------------------------------------------------------------------------------------------------------------------+
 |                   | http://127.0.0.1:9650/ext/bc/2rrM1F6UNo6soe9UuyAHCHtUNLpGbHSrU4CYzvkv6UspxYFGW5/rpc                                        |
 +-------------------+----------------------------------------------------------------------------------------------------------------------------+
-| Codespace         | https://ideal-funicular-g4qxwg9pqxxh9gr4-9650.app.github.dev/ext/bc/mysubnet/rpc                                           |
+| Codespace         | https://ideal-funicular-g4qxwg9pqxxh9gr4-9650.app.github.dev/ext/bc/myblockchain/rpc                                           |
 +                   +----------------------------------------------------------------------------------------------------------------------------+
 |                   | https://ideal-funicular-g4qxwg9pqxxh9gr4-9650.app.github.dev/ext/bc/2rrM1F6UNo6soe9UuyAHCHtUNLpGbHSrU4CYzvkv6UspxYFGW5/rpc |
 +-------------------+----------------------------------------------------------------------------------------------------------------------------+
@@ -136,7 +136,7 @@ RPC URL:           http://127.0.0.1:9650/ext/bc/2rrM1F6UNo6soe9UuyAHCHtUNLpGbHSr
 Codespace RPC URL: https://ideal-funicular-g4qxwg9pqxxh9gr4-9650.app.github.dev/ext/bc/2rrM1F6UNo6soe9UuyAHCHtUNLpGbHSrU4CYzvkv6UspxYFGW5/rpc
 Funded address:    0x8db97C7cEcE249c2b98bDC0226Cc4C2A57BF52FC with 1000000 (10^18) - private key: 56289e99c94b6912bfc12adc093c9b51124f0dc54ac7a766b2bc5ccf558d8027
 Funded address:    0xD6Fb3Cb2170A973A84b900Dff2479D0c9e8597DB with 600 (10^18)
-Network name:      mysubnet
+Network name:      myblockchain
 Chain ID:          99999
 Currency Symbol:   TOK
 ```

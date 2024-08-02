@@ -10,7 +10,7 @@ icon: Terminal
 We have all the Smart Contract 📜 set we can start sending incentivized Cross-Chain messages. Now let complete the flow 
 
 - Deploy sender contract on C-chain
-- Deploy receiver contract on mysubnet
+- Deploy receiver contract on myblockchain
 - Approve the sender contract to spend ERC20 funds from the message sender address
 - Send the message
 
@@ -19,7 +19,7 @@ We have all the Smart Contract 📜 set we can start sending incentivized Cross-
 To deploy the sender contract run:
 
 ```bash
-forge create --rpc-url mysubnet --private-key $PK src/9-incentivize-relayer/senderWithFees.sol:SenderWithFeesOnCChain
+forge create --rpc-url myblockchain --private-key $PK src/9-incentivize-relayer/senderWithFees.sol:SenderWithFeesOnCChain
 ```
 Save the sender contract address to an enviroment variable
 
@@ -31,7 +31,7 @@ export SENDER_ADDRESS=0x...
 Now, deploy the receiver contract.
 
 ```bash
-forge create --rpc-url mysubnet --private-key $PK src/9-incentivize-relayer/receiverWithFees.sol:receiverWithFeesOnCChain
+forge create --rpc-url myblockchain --private-key $PK src/9-incentivize-relayer/receiverWithFees.sol:receiverWithFeesOnCChain
 ```
 Save the receiver contract address to an enviroment variable
 

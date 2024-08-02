@@ -51,7 +51,7 @@ export ERC20_RECEIVER_SUBNET=0x...
 Now to send Tokens to that contract, the Receiver contracts needs to be allowed to take funds on behalf of the user. Therefore, we need to allow our receiver contract as spender on the TOK interface.
 
 ```bash
-cast send $ERC20_CONTRACT_SUBNET --private-key $PK "approve(address,uint256)" $ERC20_RECEIVER_SUBNET 20ether --rpc-url mysubnet
+cast send $ERC20_CONTRACT_SUBNET --private-key $PK "approve(address,uint256)" $ERC20_RECEIVER_SUBNET 20ether --rpc-url myblockchain
 ```
 
 ## Transfer tokens to Smart Contract
@@ -59,12 +59,12 @@ cast send $ERC20_CONTRACT_SUBNET --private-key $PK "approve(address,uint256)" $E
 Finally let's transfer tokens to this contract
 
 ```bash
-cast send $ERC20_RECEIVER_SUBNET --private-key $PK "receiveTokens(address,uint256)" $EWOQ 2ether --rpc-url mysubnet
+cast send $ERC20_RECEIVER_SUBNET --private-key $PK "receiveTokens(address,uint256)" $EWOQ 2ether --rpc-url myblockchain
 ```
 
 ## Confirm transfer
 
 
 ```bash
-cast call $ERC20_CONTRACT_SUBNET "balanceOf(address)(uint256)" $ERC20_RECEIVER_SUBNET --rpc-url mysubnet
+cast call $ERC20_CONTRACT_SUBNET "balanceOf(address)(uint256)" $ERC20_RECEIVER_SUBNET --rpc-url myblockchain
 ```

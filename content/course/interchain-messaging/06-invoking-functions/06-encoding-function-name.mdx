@@ -182,7 +182,7 @@ export SENDER_ADDRESS=0x123...
 Deploy the receiver contract:
 
 ```bash
-forge create --rpc-url mysubnet --private-key $PK src/2b-invoking-functions/CalculatorReceiverOnAvalanche L1.sol:CalculatorReceiverOnAvalanche L1
+forge create --rpc-url myblockchain --private-key $PK src/2b-invoking-functions/CalculatorReceiverOnAvalanche L1.sol:CalculatorReceiverOnAvalanche L1
 ```
 
 Save the receiver address:
@@ -202,5 +202,5 @@ cast send --rpc-url local-c --private-key $PK $SENDER_ADDRESS "sendAddMessage(ui
 And verify the result:
 
 ```bash
-cast call --rpc-url mysubnet $RECEIVER_ADDRESS "result_num()(uint)"
+cast call --rpc-url myblockchain $RECEIVER_ADDRESS "result_num()(uint)"
 ```

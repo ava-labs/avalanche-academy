@@ -24,7 +24,7 @@ export C_CHAIN_BLOCKCHAIN_ID_HEX=0x55e1fcfdde01f9f6d4c16fa2ed89ce65a8669120a86f3
 Now that all the bridge contracts have been deployed, send a native token from your Avalanche L1 to C-Chain with the [`cast send`](https://book.getfoundry.sh/reference/cast/cast-send) foundry command.
 
 ```zsh
-cast send --rpc-url mysubnet --private-key $PK <TokenHomeAddress> \
+cast send --rpc-url myblockchain --private-key $PK <TokenHomeAddress> \
 "<functionToCall((parameterTypes))>" \
 "(<functionParameter0>,<functionParameter1>,...)" \
 --value <amountOfTokensToSend>
@@ -56,8 +56,8 @@ struct SendTokensInput {
 - destinationBridgeAddress: ERC20 Remote address
 - recipient: any Ethereum Address you want to send funds to
 - feeTokenAddress: Wrapped Native Token address
-- primaryFee: amount of tokens to pay for Teleporter fee on the source chain, can be 0 for this example
-- secondaryFee: amount of tokens to pay for Teleporter fee if a multi-hop is needed, can be 0 for this example
+- primaryFee: amount of tokens to pay for Interchain Messaging fee on the source chain, can be 0 for this example
+- secondaryFee: amount of tokens to pay for Interchain Messaging fee if a multi-hop is needed, can be 0 for this example
 - requiredGasLimit: gas limit requirement for sending to a token bridge, can be 1000000 for this example
 
 For example, this token transfer could be entered into your terminal as:
@@ -87,7 +87,7 @@ struct SendTokensInput {
 ```
 
 ```bash
-cast send --rpc-url mysubnet --private-key $PK $ERC20_HOME_BRIDGE_SUBNET "send((bytes32, address, address, address, uint256, uint256, uint256, address))" "(${C_CHAIN_BLOCKCHAIN_ID_HEX}, ${ERC20_TOKEN_REMOTE_C_CHAIN}, ${FUNDED_ADDRESS}, 0x0000000000000000000000000000000000000000, 0, 0, 250000, 0x0000000000000000000000000000000000000000)"  --value 1
+cast send --rpc-url myblockchain --private-key $PK $ERC20_HOME_BRIDGE_SUBNET "send((bytes32, address, address, address, uint256, uint256, uint256, address))" "(${C_CHAIN_BLOCKCHAIN_ID_HEX}, ${ERC20_TOKEN_REMOTE_C_CHAIN}, ${FUNDED_ADDRESS}, 0x0000000000000000000000000000000000000000, 0, 0, 250000, 0x0000000000000000000000000000000000000000)"  --value 1
 ```
 
 If your parameters were entered correctly, this command will sign and publish a transaction, resulting in a large JSON response of transaction information in the terminal.

@@ -42,7 +42,7 @@ contract SimpleCalculatorReceiverOnAvalanche L1 is ITeleporterReceiver {
 Deploy the receiver contract on your Avalanche L1:
 
 ```bash
-forge create --rpc-url mysubnet --private-key $PK src/2a-invoking-functions/SimpleCalculatorReceiverOnAvalanche L1.sol:SimpleCalculatorReceiverOnAvalanche L1
+forge create --rpc-url myblockchain --private-key $PK src/2a-invoking-functions/SimpleCalculatorReceiverOnAvalanche L1.sol:SimpleCalculatorReceiverOnAvalanche L1
 ```
 
 Then save the sender contract address (displayed in `Deployed To:`) in an environment variable:

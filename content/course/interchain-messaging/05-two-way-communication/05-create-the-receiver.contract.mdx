@@ -9,7 +9,7 @@ icon: Terminal
 Go ahead and deploy the contract:
 
 ```bash
-forge create --rpc-url mysubnet --private-key $PK src/1-send-roundtrip/receiverOnAvalanche L1.sol:ReceiverOnAvalanche L1
+forge create --rpc-url myblockchain --private-key $PK src/1-send-roundtrip/receiverOnAvalanche L1.sol:ReceiverOnAvalanche L1
 ```
 
 Then save the receiver contract address in an environment variable:

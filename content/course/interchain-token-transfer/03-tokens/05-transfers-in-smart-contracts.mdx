@@ -32,7 +32,7 @@ In this example, the receiveNative function is marked as payable, enabling it to
 ### deploy smart contract with payable function
 
 ```bash
-forge create --rpc-url mysubnet --private-key $PK src/ICTT/01-transfer-funds/01-payable-function.sol:PayableExample
+forge create --rpc-url myblockchain --private-key $PK src/ICTT/01-transfer-funds/01-payable-function.sol:PayableExample
 ```
 
 And save the Deployed to address in an environment variable 
@@ -43,19 +43,19 @@ export PAYABLE_CONTRACT=0X..
 
 ### Check amountReceived
 ```bash
-cast call --rpc-url mysubnet $PAYABLE_CONTRACT "amountReceived()(uint)"
+cast call --rpc-url myblockchain $PAYABLE_CONTRACT "amountReceived()(uint)"
 ```
 
 ### Transfer Native Token to a Smart Contract
 
 Now let's use solidity to transfer funds to our PayableExample contract
 ```bash
-cast send --rpc-url mysubnet --private-key $PK $PAYABLE_CONTRACT "receiveNative()" --value 100000
+cast send --rpc-url myblockchain --private-key $PK $PAYABLE_CONTRACT "receiveNative()" --value 100000
 ```
 
 ### Check amountReceived
 ```bash
-cast call --rpc-url mysubnet $PAYABLE_CONTRACT "amountReceived()(uint)"
+cast call --rpc-url myblockchain $PAYABLE_CONTRACT "amountReceived()(uint)"
 ```
 
 Well done! You transfer native tokens to a Smart Contract.

@@ -12,7 +12,7 @@ icon: Book
 On your Avalanche L1, deploy a wrapped token contract for your native token. When we configured the Avalanche L1 earlier, we named the token `NATV`. This is reflected in line 19 of our [example wrapped token contract](./ExampleWNATV.sol).
 
 ```
-forge create --rpc-url mysubnet --private-key $PK src/5-native-to-erc20-token-bridge/ExampleWNATV.sol:WNATV
+forge create --rpc-url myblockchain --private-key $PK src/5-native-to-erc20-token-bridge/ExampleWNATV.sol:WNATV
 ```
 
 Export the "Deployed to" address as an environment variables.
@@ -38,17 +38,17 @@ To bridge the token out of your Avalanche L1, you'll need to first deploy a _hom
 Using the [`forge create`](https://book.getfoundry.sh/reference/forge/forge-create) command, we will deploy the [NativeTokenHome.sol](./NativeTokenHome.sol) contract, passing in the following constructor arguments:
 
 ```bash
-forge create --rpc-url mysubnet --private-key $PK lib/teleporter-token-bridge/contracts/src/TokenHome/NativeTokenHome.sol:NativeTokenHome --constructor-args $TELEPORTER_REGISTRY_SUBNET $FUNDED_ADDRESS $WRAPPED_ERC20_HOME_SUBNET
+forge create --rpc-url myblockchain --private-key $PK lib/teleporter-token-bridge/contracts/src/TokenHome/NativeTokenHome.sol:NativeTokenHome --constructor-args $TELEPORTER_REGISTRY_SUBNET $FUNDED_ADDRESS $WRAPPED_ERC20_HOME_SUBNET
 ```
 
-- Teleporter Registry (for our Avalanche L1)
-- Teleporter Manager (our funded address)
+- Interchain Messaging Registry (for our Avalanche L1)
+- Interchain Messaging Manager (our funded address)
 - Wrapped Token Address (deployed in the last step)
 
 For example, this foundry command could be entered into your terminal as:
 
 ```bash
-forge create --rpc-url mysubnet --private-key $PK src/5-native-token-bridge/NativeTokenHome.sol:NativeTokenHome --constructor-args 0xAd00Ce990172Cfed987B0cECd3eF58221471a0a3 0x8db97C7cEcE249c2b98bDC0226Cc4C2A57BF52FC 0x52C84043CD9c865236f11d9Fc9F56aa003c1f922
+forge create --rpc-url myblockchain --private-key $PK src/5-native-token-bridge/NativeTokenHome.sol:NativeTokenHome --constructor-args 0xAd00Ce990172Cfed987B0cECd3eF58221471a0a3 0x8db97C7cEcE249c2b98bDC0226Cc4C2A57BF52FC 0x52C84043CD9c865236f11d9Fc9F56aa003c1f922
 ```
 
 Note the address the home contract was "Deployed to".
@@ -64,7 +64,7 @@ To ensure the wrapped token is bridged into the destination chain (in this case,
 First, get the `Source Blockchain ID` in hexidecimal format, which in this example is the BlockchainID of your Avalanche L1, run:
 
 ```bash
-avalanche subnet describe mysubnet
+avalanche subnet describe myblockchain
 ```
 
 ```bash
@@ -79,8 +79,8 @@ Using the [`forge create`](https://book.getfoundry.sh/reference/forge/forge-crea
 forge create --rpc-url local-c --private-key $PK lib/teleporter-token-bridge/contracts/src/TokenRemote/ERC20TokenRemote.sol:ERC20TokenRemote --constructor-args "(${TELEPORTER_REGISTRY_C_CHAIN}, ${FUNDED_ADDRESS}, ${SUBNET_BLOCKCHAIN_ID_HEX}, ${ERC20_HOME_BRIDGE_SUBNET})" "Wrapped NATV" "WNATV" 18
 ```
 
-- Teleporter Registry Address **(for C-Chain)**
-- Teleporter Manager (our funded address)
+- Interchain Messaging Registry Address **(for C-Chain)**
+- Interchain Messaging Manager (our funded address)
 - Source Blockchain ID (hexidecimal representation of our Avalanche L1's Blockchain ID)
 - Token Home Address (address of NativeTokenHome.sol deployed on Avalanche L1 in the last step)
 - Token Name (input in the constructor of the [wrapped token contract](./ExampleWNATV.sol))

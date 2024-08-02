@@ -54,8 +54,8 @@ const officialCourses: Course[] = [
         languages: ["Solidity"]
      },
      /*{
-        name:"Chainlink VRF with Teleporter ",
-        description:"Utilize Teleporter to make Chainlink VRF available on any blockchain in the Avalanche Network",
+        name:"Chainlink VRF with Interchain Messaging ",
+        description:"Utilize Interchain Messaging to make Chainlink VRF available on any blockchain in the Avalanche Network",
         slug:"teleporter-chainlink-vrf",
         icon: Dice3Icon,
         featured: true,

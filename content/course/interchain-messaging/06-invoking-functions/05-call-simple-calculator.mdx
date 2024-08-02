@@ -17,5 +17,5 @@ cast send --rpc-url local-c --private-key $PK $SENDER_ADDRESS "sendAddMessage(ad
 To check wether the message has been received, we can call the `result_num()` function on the sender contract. 
 
 ```bash
-cast call --rpc-url mysubnet $RECEIVER_ADDRESS "result_num()(uint)"
+cast call --rpc-url myblockchain $RECEIVER_ADDRESS "result_num()(uint)"
 ```

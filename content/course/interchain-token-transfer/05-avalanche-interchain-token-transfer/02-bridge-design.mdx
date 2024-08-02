@@ -14,7 +14,7 @@ The token transferrers are designed to be permissionless: anyone can register co
 
 The home contract keeps track of token balances transferred to each `TokenRemote` instance and handles returning the original tokens to the user when assets are transferred back to the `TokenHome` instance.
 
-`TokenRemote` instances are registered with their home contract via a Teleporter message upon creation.
+`TokenRemote` instances are registered with their home contract via a Interchain Messaging message upon creation.
 
 Home contract instances specify the asset to be transferred as either an ERC20 token or the native token, and they allow for transferring the token to any registered `TokenRemote` instances. The token representation on the remote chain can also either be an ERC20 or native token, allowing users to have any combination of ERC20 and native tokens between home and remote chains:
 

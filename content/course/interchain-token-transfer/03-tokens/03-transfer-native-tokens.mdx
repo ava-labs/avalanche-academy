@@ -13,7 +13,7 @@ Start by creating and deploying a new blockchain using the Avalanche Starter Kit
 ## Create a blockchain with the following configuration
 
 ```bash
-avalanche blockchain create mysubnet
+avalanche blockchain create myblockchain
 ```
 
 ```bash
@@ -23,7 +23,7 @@ avalanche blockchain create mysubnet
 ✔ Yes
 Installing subnet-evm-v0.6.7...
 subnet-evm-v0.6.7 installation successful
-creating genesis for subnet mysubnet
+creating genesis for subnet myblockchain
 Enter your subnet's ChainId. It can be any positive integer.
 ChainId: 123
 Select a symbol for your subnet's native token
@@ -38,7 +38,7 @@ prefunding address 0x8db97C7cEcE249c2b98bDC0226Cc4C2A57BF52FC with balance 10000
 ## Deploy blockchain on Local network
 
 ```
-avalanche subnet deploy mysubnet
+avalanche subnet deploy myblockchain
 ```
 
 ## Create account
@@ -49,7 +49,7 @@ avalanche key create myKey
 Retrieve the new address with and store it in an environment variable to match the following commands.
  
 ```bash
- avalanche key list -l --subnets mysubnet --keys myKey
+ avalanche key list -l --subnets myblockchain --keys myKey
 ```
 
 ```bash
@@ -59,19 +59,19 @@ export $MYKEY=0x...
 ## Check balances
 
 ```bash
-cast balance $MYKEY --rpc-url mysubnet
+cast balance $MYKEY --rpc-url myblockchain
 ```
 
 ## Transfer funds
 
 ```
-cast send $MYKEY --value 200000  --private-key $PK --rpc-url mysubnet
+cast send $MYKEY --value 200000  --private-key $PK --rpc-url myblockchain
 ```
 
 ## Check balances to confirm transfer
 
 ```bash
-cast balance $MYKEY --rpc-url mysubnet
+cast balance $MYKEY --rpc-url myblockchain
 ```
 
-As you saw, funds were transfered from one count to another within the same chain (mysubnet)
+As you saw, funds were transfered from one count to another within the same chain (myblockchain)

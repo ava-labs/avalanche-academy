@@ -19,7 +19,7 @@ A relayer launched when you deployed the Avalanche L1 will now take the message 
 
 Now let's check if the "Hello" string sent from our C-chain was actually stored properly on the lastMessage variable on our Avalanche L1. Run the following command replacing the receiver contract address.
 ```
-cast call --rpc-url mysubnet $RECEIVER_ADDRESS "lastMessage()(string)"
+cast call --rpc-url myblockchain $RECEIVER_ADDRESS "lastMessage()(string)"
 ```
 
 If the output says "Hello" then the message was successfully delivered and processed.
