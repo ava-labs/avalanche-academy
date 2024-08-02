@@ -22,13 +22,15 @@ A **blockchain** is a new kind of computer with a unique and defining property: 
 - Restrict access to it
 - Interfere with the execution of the programs running on it
 
+Furthermore, the computation is transparent. Anyone can see the programs running on the blockchain and verify their correctness. This transparency ensures that the blockchain operates fairly and securely.
+
 ## How Decentralization Works
 Decentralization in blockchain is achieved through a network of **validators**. These are independent entities that run the blockchain software, perform computations, and ensure the integrity of the blockchain. Here’s how it works:
 
-1. **Computation Execution**: Each validator independently performs the same computation. For example, let's consider a simple computation: \(5 + 3\).
-2. **Consensus Process**: After performing the computation, validators share their results with each other. They then use a process called **consensus** to agree on the correct result.
+1. **Computation Execution**: Each validator independently performs the same computation. For example, let's consider a simple computation: `5 + 3`.
+2. **Consensus Process**: After performing the computation, validators share their results with each other. They then use a process called **consensus** to agree on the correct result. You can think of it as a election, where all validators vote on the correct answer.
 
-The consensus process ensures that all validators reach an agreement on the correct result. This agreement is crucial for maintaining the integrity and security of the blockchain. If a validator tries to cheat or provide an incorrect result, the other validators will detect the discrepancy, and the cheating validator will be penalized.
+The consensus process ensures that all validators reach an agreement on the correct result, given that the majority is honest. This agreement is crucial for maintaining the integrity and security of the blockchain. If a validator tries to cheat or provide an incorrect result, the other validators will detect the discrepancy, and the cheating validator will be penalized.
 
 ## Efficiency of Blockchain Computation
 While the decentralized nature of blockchain ensures security and integrity, it also makes it **inefficient** compared to traditional computers. Here’s why:
