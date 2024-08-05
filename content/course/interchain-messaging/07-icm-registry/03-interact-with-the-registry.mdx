@@ -1,0 +1,27 @@
+---
+title: Interact with the ICM Registry
+description: Retrieve latest Interchain Messaging version using the Registry.
+updated: 2024-05-31
+authors: [martineckardt]
+icon: Terminal
+---
+
+Let's start by interacting the registry. Registry is deployed on specific addresses depending the chain you're operating and the status of the network at the deployment time. For your local network you can find it out with the following command:
+
+```bash
+avalanche primary describe
+avalanche subnet describe myblockchain
+``` 
+
+Let's put the address of the registry in an environment variable:
+
+```bash
+export C_CHAIN_REGISTRY_ADDRESS=0x1234...
+export MYBLOCKCHAIN_REGISTRY_ADDRESS=0x5678...
+```
+
+Let's interact with the Registry by getting the latest version of the Interchain Messaging Messenger deployed on C-Chain:
+
+```bash
+cast call --rpc-url local-c --private-key $PK $C_CHAIN_REGISTRY_ADDRESS "latestVersion()(uint256)" 
+```

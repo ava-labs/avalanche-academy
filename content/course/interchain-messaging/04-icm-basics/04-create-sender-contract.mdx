@@ -1,0 +1,117 @@
+---
+title: Sender Contract
+description: Create a contract to send messages with Teleporter.
+updated: 2024-05-31
+authors: [martineckardt]
+icon: Terminal
+---
+
+Lets start by deploying our sender contract on C-Chain. It will be responsible for calling the the TeleporterMessenger contract, encoding our message and sending it to the destination chain. 
+
+## Read the Sender Contract
+
+The following contract is located inside `src/0-send-receive` directory. Read through the contract below and and understand what is happening:
+
+```solidity title="src/0-send-receive/senderOnCChain.sol"
+// (c) 2023, Ava Labs, Inc. All rights reserved.
+// See the file LICENSE for licensing terms.
+
+// SPDX-License-Identifier: Ecosystem
+
+pragma solidity ^0.8.18;
+
+import "@teleporter/ITeleporterMessenger.sol"; // [!code highlight]
+
+contract SenderOnCChain {
+    ITeleporterMessenger public immutable messenger = ITeleporterMessenger(0x253b2784c75e510dD0fF1da844684a1aC0aa5fcf); // [!code highlight]
+
+    /**
+     * @dev Sends a message to another chain.
+     */
+    function sendMessage(address destinationAddress, string calldata message) external {
+        messenger.sendCrossChainMessage( // [!code highlight]
+            TeleporterMessageInput({
+                // Replace with blockchainID of your Avalanche L1 (see instructions in Readme)
+                destinationBlockchainID: 0x3861e061737eaeb8d00f0514d210ad1062bfacdb4bd22d1d1f5ef876ae3a8921, // [!code highlight]
+                destinationAddress: destinationAddress, 
+                feeInfo: TeleporterFeeInfo({feeTokenAddress: address(0), amount: 0}),
+                requiredGasLimit: 100000,
+                allowedRelayerAddresses: new address[](0),
+                message: abi.encode(message)
+            })
+        );
+    }
+}
+```
+
+The key things to understand:
+
+- **Importing ITeleporterMessenger (Line 8):** We are importing the ITeleporterMessenger Interface we looked at in the previous activity.
+- **Defining teleporterMessenger contract (Line 12):** We are defining a the teleporterMessenger contract using the imported interface. It is important to note, that our cross-chain dApp is not implementing the interface itself, but initializes a contract using that interface.
+- **Sending the message (Line 21):** We are sending the message by calling the function of our teleporterMessenger. As an input we are defining a TeleporterMessageInput. Make sure to replace the `destinationChainId` with the one of your Blockchain. We will need to provide the address of the receiving contract on the Avalanche L1 as a parameter to the function, since we have not deployed it yet and don't know the address at this time.   
+- **No fees (Line 25):** In this exercise we are not providing any fees to the relayer for relaying the message. This is only possible since the relayer we are running here is configured to pick up any message even if it does not provide any rewards.
+- **Encoding the Message (Line 31):** The TeleporterMessageInput defines a message as an array of bytes. For now we will just simply encode the string with abi.encode(). In the future activities, you will see how we can encode multiple values of any type in that message.
+
+## Get destinationBlockchainID
+
+To get the blockchainID on our Avalanche L1 let's use the Avalanche-CLI built in feature with the command:
+
+``` bash
+avalanche subnet describe myblockchain
+```
+
+In the Details section of the output you will find something like this:
+ 
+```bash
+ _____       _        _ _
+|  __ \     | |      (_) |
+| |  | | ___| |_ __ _ _| |___
+| |  | |/ _ \ __/ _  | | / __|
+| |__| |  __/ || (_| | | \__ \
+|_____/ \___|\__\__,_|_|_|___/
++--------------------------------+-------------------------------------------------------------------------------------+
+|           PARAMETER            |                                        VALUE                                        |
++--------------------------------+-------------------------------------------------------------------------------------+
+| Avalanche L1 Name                    | myblockchain                                                                            |
++--------------------------------+-------------------------------------------------------------------------------------+
+| ChainID                        | 123498765                                                                           |
++--------------------------------+-------------------------------------------------------------------------------------+
+| Token Name                     | test Token                                                                          |
++--------------------------------+-------------------------------------------------------------------------------------+
+| Token Symbol                   | test                                                                                |
++--------------------------------+-------------------------------------------------------------------------------------+
+| VM Version                     | v0.6.4                                                                              |
++--------------------------------+-------------------------------------------------------------------------------------+
+| VM ID                          | qDNsVQJfGpi2RfCcESbeZauGqPVjtXwoopVMtrGkdoUxmFKov                                   |
++--------------------------------+-------------------------------------------------------------------------------------+
+| Local Network Avalanche L1ID         | 2CZP2ndbQnZxTzGuZjPrJAm5b4s2K2Bcjh8NqWoymi8NZMLYQk                                  |
++--------------------------------+-------------------------------------------------------------------------------------+
+| Local Network RPC URL          | http://127.0.0.1:9650/ext/bc/2mJS3tyZ26vVWapQGY9eamBtcx5o4fjGyfn9ZKpL8axnUDy5yx/rpc |
++--------------------------------+-------------------------------------------------------------------------------------+
+| Local Network BlockchainID     | 2mJS3tyZ26vVWapQGY9eamBtcx5o4fjGyfn9ZKpL8axnUDy5yx                                  |
++                                +-------------------------------------------------------------------------------------+
+|                                | 0xe849319dbab299f063eaccca029eb70f3a3337e10106d2c44d09a168385e570a                  |
++--------------------------------+-------------------------------------------------------------------------------------+
+| Local Network Interchain Messaging      | 0x253b2784c75e510dD0fF1da844684a1aC0aa5fcf                                          |
+| Messenger Address              |                                                                                     |
++--------------------------------+-------------------------------------------------------------------------------------+
+| Local Network Interchain Messaging      | 0x7001E06DF22d22Df4BBCa750CA0969FFf3739A7A                                          |
+| Registry Address               |                                                                                     |
++--------------------------------+-------------------------------------------------------------------------------------+
+```
+
+Replace the destinationBlockchainID in your sender code.
+
+## Deploy Sender Contract
+
+To deploy a contract using Foundry use the following command:
+
+```bash
+forge create --rpc-url local-c --private-key $PK src/0-send-receive/senderOnCChain.sol:SenderOnCChain
+```
+
+Then save the sender contract address in an environment variable:
+
+```bash
+export SENDER_ADDRESS="0x123..."
+```

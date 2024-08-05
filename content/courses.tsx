@@ -1,7 +1,7 @@
 
 import { ArrowLeftRight, Blocks, CoinsIcon, Dice3, Dice3Icon, Mail, Sprout, SquareStack } from 'lucide-react';
 
-type Course = {
+export type Course = {
     name: string;
     description: string;
     slug: string;
@@ -15,7 +15,7 @@ type Course = {
 const officialCourses: Course[] = [
     {
         name: "Avalanche Fundamentals",
-        description: "Get a high level overview of Avalanche Consensus, Subnets and VMs",
+        description: "Get a high level overview of Avalanche Consensus, L1s and VMs",
         slug: "avalanche-fundamentals",
         icon: Sprout,
         featured: true,
@@ -34,28 +34,28 @@ const officialCourses: Course[] = [
         tools: ["Avalanche-CLI"]
     },
     {
-        name:"Teleporter",
-        description:"Utilize Teleporter to build cross-chain dApps in the Avalanche network",
-        slug:"teleporter",
+        name:"Avalanche Interchain Messaging",
+        description:"Utilize Avalanche Interchain Messaging to build cross-chain dApps in the Avalanche network",
+        slug:"interchain-messaging",
         icon: Mail,
         featured: true,
         duration: "3 hours",
-        tools: ["Avalanche-CLI", "Telepoter"],
-        languages: ["Solidity"]
-     },
-     /*{
-        name:"Teleporter Token Bridge",
-        description:"Utilize Teleporter to bridge Tokens in the Avalanche Network",
-        slug:"teleporter-token-bridge",
-        icon: ArrowLeftRight,
-        featured: true,
-        duration: "2.5 hours",
-        tools: ["Avalanche-CLI", "Telepoter"],
+        tools: ["Avalanche-CLI"],
         languages: ["Solidity"]
      },
      {
-        name:"Chainlink VRF with Teleporter ",
-        description:"Utilize Teleporter to make Chainlink VRF available on any blockchain in the Avalanche Network",
+        name:"Interchain Token Transfer",
+        description:"Deploy Avalanche Interchain Token Transfer to transfer assets between Avalanche blockchains",
+        slug:"interchain-token-transfer",
+        icon: ArrowLeftRight,
+        featured: true,
+        duration: "2.5 hours",
+        tools: ["Telepoter", "Foundry"],
+        languages: ["Solidity"]
+     },
+     /*{
+        name:"Chainlink VRF with Interchain Messaging ",
+        description:"Utilize Interchain Messaging to make Chainlink VRF available on any blockchain in the Avalanche Network",
         slug:"teleporter-chainlink-vrf",
         icon: Dice3Icon,
         featured: true,
@@ -96,7 +96,7 @@ const ecosystemCourses: Course[] = [
    },
    {
         name:"Use Safe on an Avalanche Chain",
-        description:"Secure your multi-sig wallet with Safe on a Subnet.",
+        description:"Secure your multi-sig wallet with Safe on a Avalanche L1.",
         slug:"safe-on-an-avalanche-chain",
         icon: Blocks,
         duration: "4 hours",

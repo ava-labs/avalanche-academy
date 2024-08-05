@@ -9,13 +9,13 @@ icon: Terminal
 To make sure the the blockchain is up and running, let's make a simple token transfer to a random address `0x321f6B73b6dFdE5C73731C39Fd9C89c7788D5EBc` with foundry:
 
 ```bash
-cast send --rpc-url mysubnet --private-key $PK 0x321f6B73b6dFdE5C73731C39Fd9C89c7788D5EBc --value 1ether
+cast send --rpc-url myblockchain --private-key $PK 0x321f6B73b6dFdE5C73731C39Fd9C89c7788D5EBc --value 1ether
 ```
 
 Now let's check if the transaction was successful:
 
 ```bash
-cast balance --rpc-url mysubnet 0x321f6B73b6dFdE5C73731C39Fd9C89c7788D5EBc
+cast balance --rpc-url myblockchain 0x321f6B73b6dFdE5C73731C39Fd9C89c7788D5EBc
 ```
 
 You should see the balance of the address `0x321f6B73b6dFdE5C73731C39Fd9C89c7788D5EBc` as `1`.

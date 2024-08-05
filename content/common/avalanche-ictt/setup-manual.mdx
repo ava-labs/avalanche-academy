@@ -1,0 +1,108 @@
+---
+title: ERC-20 to ERC-20 Bridge
+description: TBD
+updated: 2024-05-31
+authors: [ashucoder9]
+icon: Book
+---
+
+
+## Local Network Environment
+
+For convenience the private key `56289e99c94b6912bfc12adc093c9b51124f0dc54ac7a766b2bc5ccf558d8027` of the default airdrop address is stored in the environment variable `$PK` in `.devcontainer/devcontainer.json` of the Starter-kit. Furthermore, the RPC url for the C-Chain `local-c` and the Avalanche L1 with the name `myblockchain` on the local network is set in the `foundry.toml` file.
+
+### Avalanche L1 Configuration and Deployment
+
+To get started, create an Avalanche L1 configuration named "myblockchain":
+
+```bash
+avalanche blockchain create myblockchain
+```
+
+Your Avalanche L1 should have the following things:
+
+- Interchain Messaging enabled
+- CLI should run an AWM Relayer
+- Upon Avalanche L1 deployment, 100 tokens should be airdropped to the default ewoq address (0x8db97C7cEcE249c2b98bDC0226Cc4C2A57BF52FC)
+- Native Minter Precompile enabled with either your admin address or the pre-computed Remote token address
+
+_Note: If you have created your Avalanche L1 using AvaCloud, you can add Remote Token address [using the dashboard](https://support.avacloud.io/avacloud-how-do-i-use-the-native-token-minter)._
+
+```bash
+✔ Avalanche L1-EVM
+✔ Use latest release version
+✔ Yes
+✔ Yes
+creating genesis for subnet myblockchain
+Enter your subnet's ChainId. It can be any positive integer.
+ChainId: 123
+Select a symbol for your subnet's native token
+Token symbol: NAT
+✔ Low disk use    / Low Throughput    1.5 mil gas/s (C-Chain's setting)
+✔ Customize your airdrop
+Address to airdrop to: 0x8db97C7cEcE249c2b98bDC0226Cc4C2A57BF52FC
+Amount to airdrop (in NAT units): 100
+✔ No
+✔ Yes
+✔ Native Minting
+✔ Add
+Enter Address : 0x8db97C7cEcE249c2b98bDC0226Cc4C2A57BF52FC
+✔ Done
+✔ Done
+✔ Done
+✔ No
+✓ Successfully created subnet configuration
+```
+
+Finally, deploy your Avalanche L1:
+
+```bash
+avalanche subnet deploy myblockchain
+```
+
+```bash
+? Choose a network for the operation:
+✔ Local Network
+Deploying [myblockchain] to Local Network
+```
+
+The CLI will output addresses and information that will be important for the rest of the tutorial:
+
+```bash
+Deploying Blockchain. Wait until network acknowledges...
+
+Teleporter Messenger successfully deployed to c-chain (0x253b2784c75e510dD0fF1da844684a1aC0aa5fcf)
+Interchain Messaging Registry successfully deployed to c-chain (0x17aB05351fC94a1a67Bf3f56DdbB941aE6c63E25)
+
+Teleporter Messenger successfully deployed to myblockchain (0x253b2784c75e510dD0fF1da844684a1aC0aa5fcf)
+Interchain Messaging Registry successfully deployed to myblockchain (0x73b1dB7E9923c9d8fd643ff381e74dd9618EA1a5)
+
+using awm-relayer version (v1.3.0)
+Executing AWM-Relayer...
+
+<lots of node information...>
+
+Browser Extension connection details (any node URL from above works):
+RPC URL:           http://127.0.0.1:9650/ext/bc/bFjwbbhaSCotYtdZTPDrQwZn8uVqRoL7YbZxCxXY94k7Qhf3E/rpc
+Codespace RPC URL: https://humble-cod-j4prxq655qpcpw96-9650.app.github.dev/ext/bc/bFjwbbhaSCotYtdZTPDrQwZn8uVqRoL7YbZxCxXY94k7Qhf3E/rpc
+Funded address:    0x834E891749c29d1417f4501B72945B72224d10dB with 600 (10^18)
+Funded address:    0x8db97C7cEcE249c2b98bDC0226Cc4C2A57BF52FC with 100 (10^18) - private key: 56289e99c94b6912bfc12adc093c9b51124f0dc54ac7a766b2bc5ccf558d8027
+Network name:      myblockchain
+Chain ID:          123
+Currency Symbol:   NAT
+```
+
+From this output, take note of the following parameters
+
+- Funded Address (with 100 tokens),
+- Interchain Messaging Registry on C-chain, and
+- Interchain Messaging Registry on Avalanche L1
+
+Set these parameters as environment variables so that we can manage them easily and also use them in the commands later.
+
+```bash
+export FUNDED_ADDRESS=<Funded Address (with 100 tokens)>
+export TELEPORTER_REGISTRY_C_CHAIN=<Interchain Messaging Registry on C-chain>
+export TELEPORTER_REGISTRY_SUBNET=<Interchain Messaging Registry on Avalanche L1>
+```
+

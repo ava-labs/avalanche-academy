@@ -2,25 +2,31 @@ import { type BaseLayoutProps, type DocsLayoutProps } from 'fumadocs-ui/layout';
 import { utils } from '@/utils/source';
 import { RootToggle } from 'fumadocs-ui/components/layout/root-toggle';
 import { Title } from '@/app/layout.client';
-import { BlocksIcon, MailIcon, SproutIcon, SquareStackIcon } from 'lucide-react';
+import { BlocksIcon, MailIcon, SproutIcon, SquareStackIcon, ArrowLeftRight } from 'lucide-react';
 
 export const baseOptions: BaseLayoutProps = {
+  githubUrl: 'https://github.com/ava-labs/avalanche-academy',
   nav: {
     title: <Title />,
-    // githubUrl: 'https://github.com/ava-labs/avalanche-academy',
   },
-  /*
   links: [
+    {
+      text: 'Courses',
+      url: '/',
+    },
+    {
+      text: 'Guides',
+      url: '/guide',
+    },
     {
       text: 'Documentation',
       url: 'https://docs.avax.network',
     },
     {
-      text: 'GitHub',
-      url: 'https://github.com/ava-labs/avalanche-academy',
+      text: 'Contribute',
+      url: '/contribute',
     },
   ],
-  */
 };
 
 export const docsOptions: DocsLayoutProps = {
@@ -44,10 +50,16 @@ export const docsOptions: DocsLayoutProps = {
             url: '/course/multi-chain-architecture',
           },
           {
-            title: 'Teleporter',
+            title: 'Interchain Messaging',
             description: '',
             icon: <MailIcon />,
-            url: '/course/teleporter',
+            url: '/course/interchain-messaging',
+          },
+          {
+            title: 'Interchain Token Transfer',
+            description: '',
+            icon: <ArrowLeftRight />,
+            url: '/course/interchain-token-transfer',
           },
           {
             title: 'Customizing EVM',
