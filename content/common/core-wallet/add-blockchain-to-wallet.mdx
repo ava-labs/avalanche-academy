@@ -6,7 +6,24 @@ In order to add your blockchain to the wallet, you need to have the following in
 - Network Token Symbol
 - Network Token Name
 
-You can find this information in the output of the 'avalanche subnet deploy myblockchain' command.
+You can find this information in the output of the `avalanche blockchain deploy myblockchain` command or by issuing the command `avalanche blockchain describe myblockchain`:
+
+```
++-------------------------------------------------------------------------------------------------------+
+|                                           WALLET CONNECTION                                           |
++-----------------+-------------------------------------------------------------------------------------+
+| Network RPC URL | https://humble-tribble-q7qvgwr6j44265v6-9650.app.github.dev/ext/bc/myblockchain/rpc |
+|                 | Please make sure to set visibility of port 9650 to public                           |
++-----------------+-------------------------------------------------------------------------------------+
+| Network Name    | myblockchain                                                                        |
++-----------------+-------------------------------------------------------------------------------------+
+| Chain ID        | 9999                                                                                |
++-----------------+-------------------------------------------------------------------------------------+
+| Token Symbol    | TOK                                                                                 |
++-----------------+-------------------------------------------------------------------------------------+
+| Token Name      | TOK Token                                                                           |
++-----------------+-------------------------------------------------------------------------------------+
+```
 
 ## Open Add Network Screen
 
@@ -14,41 +31,9 @@ Now, open the Core browser extension and navigate to the screen to add a new net
 
 <Gallery url1="/common-images/core-wallet/go-to-manage-networks.png" url2="/common-images/core-wallet/go-to-add-network.png" />
 
-## Network RPC URL
-
-Check the output of the 'avalanche subnet deploy myblockchain' command for the RPC URL of your network. Make sure it ends with /rpc.
-
-```
-+-------------------+----------------------------------------------------------------------------------------------------------------------------+
-|                                                               myblockchain RPC URLs                                                                |
-+-------------------+----------------------------------------------------------------------------------------------------------------------------+
-| Localhost         | http://127.0.0.1:9650/ext/bc/myblockchain/rpc                                                                                  |
-+                   +----------------------------------------------------------------------------------------------------------------------------+
-|                   | http://127.0.0.1:9650/ext/bc/2rrM1F6UNo6soe9UuyAHCHtUNLpGbHSrU4CYzvkv6UspxYFGW5/rpc                                        |
-+-------------------+----------------------------------------------------------------------------------------------------------------------------+
-| Codespace         | https://ideal-funicular-g4qxwg9pqxxh9gr4-9650.app.github.dev/ext/bc/myblockchain/rpc                                           | // [!code highlight]
-+                   +----------------------------------------------------------------------------------------------------------------------------+
-|                   | https://ideal-funicular-g4qxwg9pqxxh9gr4-9650.app.github.dev/ext/bc/2rrM1F6UNo6soe9UuyAHCHtUNLpGbHSrU4CYzvkv6UspxYFGW5/rpc |
-+-------------------+----------------------------------------------------------------------------------------------------------------------------+
-```
+Now enter the values from the table of our deployed blockchain.
 
 > Make sure you have published the port `9650` in your Codespace.
 
-Copy the `Codespace rpc` URL and paste it into the Core wallet.
 
-## Network Name
-
-Type the name of your Avalanche L1, for example, `myblockchain`.
-
-## Chain ID
-
-If you have been following this tutorial, that should be `99999`.
-
-## Token Symbol
-
-Any symbol name for your native token, such as `TOK`.
-
-## Token Name
-
-Any name for your native token, such as `MyToken`.
 

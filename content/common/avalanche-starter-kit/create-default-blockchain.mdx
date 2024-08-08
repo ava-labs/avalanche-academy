@@ -12,34 +12,38 @@ For example:
 avalanche blockchain create myblockchain
 ```
 
-You will be prompted a Wizard to set the Avalanche L1 config. For now, follow the default options where possible, except when asked for the **Airdrop**. Select the **ewoq** address for the airdrop. This address is the default address for the Avalanche test environments and is used for testing purposes. 
+You will be prompted a wizard to configure your Avalanche L1. In the first question, select `Subnet-EVM`:
 
-For convenience, the private key `56289e99c94b6912bfc12adc093c9b51124f0dc54ac7a766b2bc5ccf558d8027` of the default ewoq address is stored in the environment variable `$PK`.
+```
+? Which Virtual Machine would you like to use?: 
+  ▸ Subnet-EVM
+    Custom VM
+    Explain the difference
+```
 
-PLACEHOLDER VIDEO subnet create
+In the second question, select `I want to use defaults for a test environment`:
 
-After the finishing, you should see something like this:
+```
+? Do you want to use default values for the Blockchain configuration?: 
+  ▸ I want to use defaults for a test environment
+    I want to use defaults for a production environment
+    I don't want to use default values
+    Explain the difference
+```
+
+After the completing the configuration, you should see something like this:
 
 ```
 @martineckardt ➜ /workspaces/avalanche-starter-kit (main) $ avalanche blockchain create myblockchain
-✔ Avalanche L1-EVM
-✔ Use latest release version
-Installing subnet-evm-v0.6.3...
-subnet-evm-v0.6.3 installation successful
-creating genesis for subnet myblockchain
-Enter your subnet's ChainId. It can be any positive integer.
-ChainId: 9999
-Select a symbol for your subnet's native token
-Token symbol: TOK
-✔ Low disk use    / Low Throughput    1.5 mil gas/s (C-Chain's setting)
-✔ Airdrop 1 million tokens to the default ewoq address (do not use in production)
-✔ No
-✔ Yes
-✔ Yes
-generating stored key "cli-teleporter-deployer" for teleporter deploys
-  (evm address, genesis balance) = (0x59560360Cb5EA935849C07af1952fF0910bA690D, 600000000000000000000)
-using latest teleporter version (v1.0.0)
-✓ Successfully created subnet configuration
+✔ Subnet-EVM
+✔ I want to use defaults for a test environment
+Chain ID: 9999
+Token Symbol: TOK
+✔ Token Symbol: TOK
+prefunding address 0x8db97C7cEcE249c2b98bDC0226Cc4C2A57BF52FC with balance 1000000000000000000000000
+Installing subnet-evm-v0.6.8...
+subnet-evm-v0.6.8 installation successful
+✓ Successfully created blockchain configuration
 ```
 
 This command creates the config files `genesis.json` and `sidecar.json` inside: `~/.avalanche-cli/subnets/<subnetName>`. If you want, you can retrieve the current config with the following command:
@@ -48,102 +52,162 @@ This command creates the config files `genesis.json` and `sidecar.json` inside: 
 avalanche subnet describe <subnetName>
 ```
 
-## Start your Local Network (optional)
-
-Now that we created our Avalanche L1 config, we need a network that will host that Avalanche L1. The following command will launch 5 nodes running locally:
-
-```bash
-avalanche network start
-```
-
-The result should be something like this:
-
-```
-@martineckardt ➜ /workspaces/avalanche-starter-kit (main) $ avalanche network start
-Backend controller started, pid: 10949, output at: /home/vscode/.avalanche-cli/runs/server_20240328_200709/avalanche-cli-backend.log
-Installing avalanchego-v1.11.3...
-avalanchego-v1.11.3 installation successful
-Starting previously deployed and stopped snapshot
-Booting Network. Wait until healthy...
-Node logs directory: /home/vscode/.avalanche-cli/runs/network_20240328_200711/network_20240328_200712/node<i>/logs
-Network ready to use.
-```
-
-You can check at any time if the network is running by issuing the following command:
-
-```bash
-avalanche network status
-```
-
-If you don't start your network manually it will be automatically started when you deploy your first Avalanche L1 with the `avalanche subnet deploy <subnetName>` command.
-
 ## Deploy your Avalanche L1
+
 To deploy your Avalanche L1, run
 
 ```bash
-avalanche subnet deploy <subnetName>
+avalanche blockchain deploy <subnetName>
 ```
 
-When prompted select `Local Network` to deploy on. After the deployment your should see something like this:
+So in our case:
+
+```bash
+avalanche blockchain deploy myblockchain
+```
+
+When prompted select `Local Network` to deploy on. 
+
+```
+? Choose a network for the operation: 
+  ▸ Local Network
+    Devnet
+    Fuji Testnet
+    Mainnet
+```
+
+After the deployment your should see something like this:
 
 ```
 @martineckardt ➜ /workspaces/avalanche-starter-kit (main) $ avalanche subnet deploy myblockchain
+✔ Local Network
 Deploying [myblockchain] to Local Network
+Backend controller started, pid: 5317, output at: /home/vscode/.avalanche-cli/runs/server_20240808_164902/avalanche-cli-backend.log
+Installing avalanchego-v1.11.10...
+avalanchego-v1.11.10 installation successful
+
+Booting Network. Wait until healthy...
+Node logs directory: /home/vscode/.avalanche-cli/runs/network_20240808_164903/node<i>/logs
+Network ready to use.
 
 Deploying Blockchain. Wait until network acknowledges...
 
 Teleporter Messenger successfully deployed to c-chain (0x253b2784c75e510dD0fF1da844684a1aC0aa5fcf)
-Interchain Messaging Registry successfully deployed to c-chain (0x17aB05351fC94a1a67Bf3f56DdbB941aE6c63E25)
+Teleporter Registry successfully deployed to c-chain (0x17aB05351fC94a1a67Bf3f56DdbB941aE6c63E25)
 
 Teleporter Messenger successfully deployed to myblockchain (0x253b2784c75e510dD0fF1da844684a1aC0aa5fcf)
-Interchain Messaging Registry successfully deployed to myblockchain (0x0a3D3aa12Ddc6cfbF21764592cc1223e56F143F4)
+Teleporter Registry successfully deployed to myblockchain (0x82EeEf8e31D4Bf95916219D7949D66c468Ac0681)
 
 using awm-relayer version (v1.3.3)
+Installing AWM-Relayer v1.3.3
 Executing AWM-Relayer...
 
 Blockchain ready to use
 
-+-------------------+----------------------------------------------------------------------------------------------------------------------------+
-|                                                               myblockchain RPC URLs                                                                |
-+-------------------+----------------------------------------------------------------------------------------------------------------------------+
-| Localhost         | http://127.0.0.1:9650/ext/bc/myblockchain/rpc                                                                                  |
-+                   +----------------------------------------------------------------------------------------------------------------------------+
-|                   | http://127.0.0.1:9650/ext/bc/2rrM1F6UNo6soe9UuyAHCHtUNLpGbHSrU4CYzvkv6UspxYFGW5/rpc                                        |
-+-------------------+----------------------------------------------------------------------------------------------------------------------------+
-| Codespace         | https://ideal-funicular-g4qxwg9pqxxh9gr4-9650.app.github.dev/ext/bc/myblockchain/rpc                                           |
-+                   +----------------------------------------------------------------------------------------------------------------------------+
-|                   | https://ideal-funicular-g4qxwg9pqxxh9gr4-9650.app.github.dev/ext/bc/2rrM1F6UNo6soe9UuyAHCHtUNLpGbHSrU4CYzvkv6UspxYFGW5/rpc |
-+-------------------+----------------------------------------------------------------------------------------------------------------------------+
++---------------------------------------------------------------------------------------------------------------+
+|                                                  MYBLOCKCHAIN                                                 |
++---------------+-----------------------------------------------------------------------------------------------+
+| Name          | myblockchain                                                                                  |
++---------------+-----------------------------------------------------------------------------------------------+
+| VM ID         | qDNV9vtxZYYNqm7TN1mYBuaaknLdefDbFK8bFmMLTJQJKaWjV                                             |
++---------------+-----------------------------------------------------------------------------------------------+
+| VM Version    | v0.6.8                                                                                        |
++---------------+--------------------------+--------------------------------------------------------------------+
+| Local Network | ChainID                  | 9999                                                               |
+|               +--------------------------+--------------------------------------------------------------------+
+|               | SubnetID                 | 26eqgD4Kt1MvTKXC9BDjEwBAfhcBcHCKj2EXjR2UuFpSWoAHhw                 |
+|               +--------------------------+--------------------------------------------------------------------+
+|               | Owners (Threhold=1)      | P-custom18jma8ppw3nhx5r4ap8clazz0dps7rv5u9xde7p                    |
+|               +--------------------------+--------------------------------------------------------------------+
+|               | BlockchainID (CB58)      | 2B7uAsN3XhsjLMrLxbP65QmwiUxyY4Ge5xsReMMPKawABuXW1B                 |
+|               +--------------------------+--------------------------------------------------------------------+
+|               | BlockchainID (HEX)       | 0x9aac23fef6508687ff42bb779b3484a72ced0ac1fb07baefa7d5b6d6fdf9a46e |
++---------------+--------------------------+--------------------------------------------------------------------+
 
-+-------+------------------------------------------+-----------------------+--------------------------------------------------------------+
-|                                                                  Nodes                                                                  |
-+-------+------------------------------------------+-----------------------+--------------------------------------------------------------+
-| Name  | Node ID                                  | Localhost Endpoint    | Codespace Endpoint                                           |
-+-------+------------------------------------------+-----------------------+--------------------------------------------------------------+
-| node1 | NodeID-7Xhw2mDxuDS44j42TCB6U5579esbSt3Lg | http://127.0.0.1:9650 | https://ideal-funicular-g4qxwg9pqxxh9gr4-9650.app.github.dev |
-+-------+------------------------------------------+-----------------------+--------------------------------------------------------------+
-| node2 | NodeID-MFrZFVCXPv5iCn6M9K6XduxGTYp891xXZ | http://127.0.0.1:9652 | https://ideal-funicular-g4qxwg9pqxxh9gr4-9652.app.github.dev |
-+-------+------------------------------------------+-----------------------+--------------------------------------------------------------+
-| node3 | NodeID-NFBbbJ4qCmNaCzeW7sxErhvWqvEQMnYcN | http://127.0.0.1:9654 | https://ideal-funicular-g4qxwg9pqxxh9gr4-9654.app.github.dev |
-+-------+------------------------------------------+-----------------------+--------------------------------------------------------------+
-| node4 | NodeID-GWPcbFJZFfZreETSoWjPimr846mXEKCtu | http://127.0.0.1:9656 | https://ideal-funicular-g4qxwg9pqxxh9gr4-9656.app.github.dev |
-+-------+------------------------------------------+-----------------------+--------------------------------------------------------------+
-| node5 | NodeID-P7oB2McjBGgW2NXXWVYjV8JEDFoW9xDE5 | http://127.0.0.1:9658 | https://ideal-funicular-g4qxwg9pqxxh9gr4-9658.app.github.dev |
-+-------+------------------------------------------+-----------------------+--------------------------------------------------------------+
++-------------------------------------------------------------------------------------------+
+|                                         TELEPORTER                                        |
++---------------+------------------------------+--------------------------------------------+
+| Local Network | Teleporter Messenger Address | 0x253b2784c75e510dD0fF1da844684a1aC0aa5fcf |
+|               +------------------------------+--------------------------------------------+
+|               | Teleporter Registry Address  | 0x82EeEf8e31D4Bf95916219D7949D66c468Ac0681 |
++---------------+------------------------------+--------------------------------------------+
 
-Browser Extension connection details (any node URL from above works):
-RPC URL:           http://127.0.0.1:9650/ext/bc/2rrM1F6UNo6soe9UuyAHCHtUNLpGbHSrU4CYzvkv6UspxYFGW5/rpc
-Codespace RPC URL: https://ideal-funicular-g4qxwg9pqxxh9gr4-9650.app.github.dev/ext/bc/2rrM1F6UNo6soe9UuyAHCHtUNLpGbHSrU4CYzvkv6UspxYFGW5/rpc
-Funded address:    0x8db97C7cEcE249c2b98bDC0226Cc4C2A57BF52FC with 1000000 (10^18) - private key: 56289e99c94b6912bfc12adc093c9b51124f0dc54ac7a766b2bc5ccf558d8027
-Funded address:    0xD6Fb3Cb2170A973A84b900Dff2479D0c9e8597DB with 600 (10^18)
-Network name:      myblockchain
-Chain ID:          99999
-Currency Symbol:   TOK
++--------------------------+
+|           TOKEN          |
++--------------+-----------+
+| Token Name   | TOK Token |
++--------------+-----------+
+| Token Symbol | TOK       |
++--------------+-----------+
+
++------------------------------------------------------------------------------------------------------------------------------------------+
+|                                                         INITIAL TOKEN ALLOCATION                                                         |
++--------------------------+------------------------------------------------------------------+----------------+---------------------------+
+| DESCRIPTION              | ADDRESS AND PRIVATE KEY                                          | AMOUNT (10^18) | AMOUNT (WEI)              |
++--------------------------+------------------------------------------------------------------+----------------+---------------------------+
+| Main funded account EWOQ | 0x8db97C7cEcE249c2b98bDC0226Cc4C2A57BF52FC                       | 1000000        | 1000000000000000000000000 |
+|                          | 56289e99c94b6912bfc12adc093c9b51124f0dc54ac7a766b2bc5ccf558d8027 |                |                           |
++--------------------------+------------------------------------------------------------------+----------------+---------------------------+
+| cli-teleporter-deployer  | 0x9D6D757c9466C2c05aa5e5DDa98e019112a44c59                       | 600            | 600000000000000000000     |
+| Teleporter Deploys       | 86dbf5d3ebd8426f7fac2f83093310da978596290a77eecde31b981bd3089dfd |                |                           |
++--------------------------+------------------------------------------------------------------+----------------+---------------------------+
+
++----------------------------------------------------------------------+
+|                      INITIAL PRECOMPILE CONFIGS                      |
++------------+-----------------+-------------------+-------------------+
+| PRECOMPILE | ADMIN ADDRESSES | MANAGER ADDRESSES | ENABLED ADDRESSES |
++------------+-----------------+-------------------+-------------------+
+| Warp       | n/a             | n/a               | n/a               |
++------------+-----------------+-------------------+-------------------+
+
++---------------------------------------------------------------------------------------------------------------------------------------+
+|                                                         MYBLOCKCHAIN RPC URLS                                                         |
++-----------+---------------------------------------------------------------------------------------------------------------------------+
+| Localhost | http://127.0.0.1:9650/ext/bc/myblockchain/rpc                                                                             |
+|           +---------------------------------------------------------------------------------------------------------------------------+
+|           | http://127.0.0.1:9650/ext/bc/2B7uAsN3XhsjLMrLxbP65QmwiUxyY4Ge5xsReMMPKawABuXW1B/rpc                                       |
++-----------+---------------------------------------------------------------------------------------------------------------------------+
+| Codespace | https://humble-tribble-q7qvgwr6j44265v6-9650.app.github.dev/ext/bc/myblockchain/rpc                                       |
+|           +---------------------------------------------------------------------------------------------------------------------------+
+|           | https://humble-tribble-q7qvgwr6j44265v6-9650.app.github.dev/ext/bc/2B7uAsN3XhsjLMrLxbP65QmwiUxyY4Ge5xsReMMPKawABuXW1B/rpc |
++-----------+---------------------------------------------------------------------------------------------------------------------------+
+
++----------------------------------------------------------------------------------------------------------------------------------------+
+|                                                                  NODES                                                                 |
++-------+------------------------------------------+-----------------------+-------------------------------------------------------------+
+| NAME  | NODE ID                                  | LOCALHOST ENDPOINT    | CODESPACE ENDPOINT                                          |
++-------+------------------------------------------+-----------------------+-------------------------------------------------------------+
+| node1 | NodeID-7Xhw2mDxuDS44j42TCB6U5579esbSt3Lg | http://127.0.0.1:9650 | https://humble-tribble-q7qvgwr6j44265v6-9650.app.github.dev |
++-------+------------------------------------------+-----------------------+-------------------------------------------------------------+
+| node2 | NodeID-MFrZFVCXPv5iCn6M9K6XduxGTYp891xXZ | http://127.0.0.1:9652 | https://humble-tribble-q7qvgwr6j44265v6-9652.app.github.dev |
++-------+------------------------------------------+-----------------------+-------------------------------------------------------------+
+| node3 | NodeID-NFBbbJ4qCmNaCzeW7sxErhvWqvEQMnYcN | http://127.0.0.1:9654 | https://humble-tribble-q7qvgwr6j44265v6-9654.app.github.dev |
++-------+------------------------------------------+-----------------------+-------------------------------------------------------------+
+| node4 | NodeID-GWPcbFJZFfZreETSoWjPimr846mXEKCtu | http://127.0.0.1:9656 | https://humble-tribble-q7qvgwr6j44265v6-9656.app.github.dev |
++-------+------------------------------------------+-----------------------+-------------------------------------------------------------+
+| node5 | NodeID-P7oB2McjBGgW2NXXWVYjV8JEDFoW9xDE5 | http://127.0.0.1:9658 | https://humble-tribble-q7qvgwr6j44265v6-9658.app.github.dev |
++-------+------------------------------------------+-----------------------+-------------------------------------------------------------+
+
++-------------------------------------------------------------------------------------------------------+
+|                                           WALLET CONNECTION                                           |
++-----------------+-------------------------------------------------------------------------------------+
+| Network RPC URL | https://humble-tribble-q7qvgwr6j44265v6-9650.app.github.dev/ext/bc/myblockchain/rpc |
+|                 | Please make sure to set visibility of port 9650 to public                           |
++-----------------+-------------------------------------------------------------------------------------+
+| Network Name    | myblockchain                                                                        |
++-----------------+-------------------------------------------------------------------------------------+
+| Chain ID        | 9999                                                                                |
++-----------------+-------------------------------------------------------------------------------------+
+| Token Symbol    | TOK                                                                                 |
++-----------------+-------------------------------------------------------------------------------------+
+| Token Name      | TOK Token                                                                           |
++-----------------+-------------------------------------------------------------------------------------+
 ```
 
-This output includes the endpoints of your 5 nodes where you can connect to interact with your Avalanche L1. You're running a Avalanche L1-EVM, this means you can use those RPC URLs to connect to EVM compatible wallet or tools.
 
 ## Make RPC-Endpoint publicly accessible
+
+The final part of the output shows the wallet connection details. You can use these to connect your wallet like Core or Metasmask to you newly created Avalanche L1.
 
 import PublishPort from "@/content/common/codespaces/publish-port.mdx";
 

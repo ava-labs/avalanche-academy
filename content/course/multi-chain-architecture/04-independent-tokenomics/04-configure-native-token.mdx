@@ -6,19 +6,18 @@ authors: [usmaneth]
 icon: Terminal
 ---
 
-Let's create a new Avalanche L1 and spend some more attention on how we can configure our gas token: `avalanche blockchain create myblockchain2`
-
-Pick some ChainID different from your first subnet (e.g. 8888). Then choose a name for your native token.
+Let's create a new Avalanche L1 and spend some more attention on how we can configure our native token. So let's run again `avalanche blockchain create myblockchain2`. We will pick again `Subnet-EVM` as our Virtual Machine. However, this time we will not use the default settings:
 
 ```bash
-@martineckardt ➜ /workspaces/avalanche-starter-kit (main) $ avalanche blockchain create myblockchain2
-✔ Avalanche L1-EVM
-✔ Use latest release version
-creating genesis for subnet myblockchain2
-Enter your subnet's ChainId. It can be any positive integer.
-ChainId: 9999
-Select a symbol for your subnet's native token
-Token symbol: TOK
+? Do you want to use default values for the Blockchain configuration?: 
+    I want to use defaults for a test environment
+    I want to use defaults for a production environment
+  ▸ I don't want to use default values
+    Explain the difference
 ```
 
-Now, we have configured our own token. In the next step we will look at the fees.
+Choose to use the `latest version` of Subnet-EVM and pick a ChainID different from your first subnet (e.g. 8888). 
+
+Next you can select a custom token symbol.
+
+Now, we have configured our own token. In the next step we will look at the inital token allocation.
