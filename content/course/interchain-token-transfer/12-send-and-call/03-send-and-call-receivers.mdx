@@ -1,0 +1,39 @@
+---
+title: Send and Call Receivers
+description: Learn how tokens are received by the receivers.
+updated: 2024-08-15
+authors: [0xstt]
+icon: BookOpen
+---
+
+`IERC20SendAndCallReceiver` or `INativeSendAndCallReceiver` are used for contracts that handle receiving ERC20 or native tokens.
+
+Mock implementations are already available in the [Avalanche Interchain Token Transfer](https://github.com/ava-labs/avalanche-interchain-token-transfer) repository.
+
+What we are going to do is; simply deploy a new contract that implements the `IERC20SendAndCallReceiver` or `INativeSendAndCallReceiver` interfaces that has a capability to use received tokens.
+
+```bash
+/**
+ * @notice Interface for contracts that are called to receive token transfers.
+ */
+interface IERC20SendAndCallReceiver {
+    /**
+     * @notice Called to receive the amount of the given token
+     * @param sourceBlockchainID Blockchain ID that the transfer originated from
+     * @param originTokenTransferrerAddress Address of the token transferrer that initiated the Teleporter message
+     * @param originSenderAddress Address of the sender that sent the transfer. This value
+     * should only be trusted if {originTokenTransferrerAddress} is verified and known.
+     * @param token Address of the token to be received
+     * @param amount Amount of the token to be received
+     * @param payload Arbitrary data provided by the caller
+     */
+    function receiveTokens(
+        bytes32 sourceBlockchainID,
+        address originTokenTransferrerAddress,
+        address originSenderAddress,
+        address token,
+        uint256 amount,
+        bytes calldata payload
+    ) external;
+}
+```

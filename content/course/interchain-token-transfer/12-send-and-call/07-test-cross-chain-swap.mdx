@@ -1,0 +1,39 @@
+---
+title: Test Cross Chain Swap
+description: Trigger Cross Chain Swap from your L1.
+updated: 2024-08-15
+authors: [0xstt]
+icon: Terminal
+---
+
+Now that the wrapped exchange contract has been deployed, send an ERC20 token to execute a swap for WAVAX or AVAX from your Avalanche L1 to Fuji using the [`cast send`](https://book.getfoundry.sh/reference/cast/cast-send) command in foundry.
+
+```bash
+cast send --rpc-url myblockchain --private-key $PK $ERC20_HOME_TRANSFERER_C_CHAIN "sendAndCall((bytes32, address, address, bytes, uint256, uint256, address, address, address, uint256, uint256), uint256)" "(${C_CHAIN_BLOCKCHAIN_ID_HEX}, ${ERC20_TOKEN_REMOTE_SUBNET}, ${WRAPPED_EXCHANGE_ADDRESS}, 0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000, 2500000, 2000000, 0x0000000000000000000000000000000000000000, ${FUNDED_ADDRESS}, ${ERC20_HOME_TRANSFERER_C_CHAIN}, 0, 0)" 100000000000000000000
+```
+
+The ```payload``` parameter that we sent can be generated via following JavaScript file:
+
+```bash
+const { ethers } = require("ethers");
+
+function encode() {
+
+    const struct = {
+        tokenOut: "0xd00ae08403B9bbb9124bB305C09058E32C39A48c",
+        minAmountOut: 0
+    };
+
+    const types = ["address", "uint256"];
+    const encoded = ethers.AbiCoder.defaultAbiCoder().encode(types, [ struct.tokenOut, struct.minAmountOut ]);
+
+    console.log(encoded);
+
+}
+
+encode();
+```
+
+The transaction summary would look like this:
+
+![](/course-images/interchain-token-transfer/cross-chain-swap-tx-receipt.png)

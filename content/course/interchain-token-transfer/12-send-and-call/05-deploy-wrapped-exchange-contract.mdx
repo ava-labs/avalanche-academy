@@ -1,0 +1,23 @@
+---
+title: Deploy Wrapped Exchange Contract
+description: Deploy the DexERC20Wrapper on your own blockchain
+updated: 2024-08-15
+authors: [0xstt]
+icon: Terminal
+---
+
+While deploying the wrapped exchange contract, you will need to send two constructor arguments to the contract.
+
+- The first argument is the wrapped native token (WAVAX) address on the destination chain (Fuji), which is: [`0xd00ae08403B9bbb9124bB305C09058E32C39A48c`](https://testnet.snowtrace.io/address/0xd00ae08403B9bbb9124bB305C09058E32C39A48c).
+- The second argument is the Trader Joe's (or any other Uniswap V2-like dapp) Factory V1 contract address on the destination chain (Fuji), which is: [`0xF5c7d9733e5f53abCC1695820c4818C59B457C2C`](https://testnet.snowtrace.io/address/0xF5c7d9733e5f53abCC1695820c4818C59B457C2C). Deployed contracts of TraderJoe can be found [here](https://docs.traderjoexyz.com/deployment-addresses/fuji).
+
+```bash
+forge create --rpc-url https://api.avax-test.network/ext/bc/C/rpc --private-key $PK lib/{path}/DexERC20Wrapper.sol:DexERC20Wrapper --constructor-args 0xd00ae08403B9bbb9124bB305C09058E32C39A48c 0xF5c7d9733e5f53abCC1695820c4818C59B457C2C
+```
+
+Save the ```Deployed to``` address in an environment variable.
+
+
+```bash
+export WRAPPED_EXCHANGE_ADDRESS=<"Deployed to" address>
+```
