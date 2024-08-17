@@ -20,3 +20,42 @@ import SetUp from "@/content/common/avalanche-starter-kit/set-up.mdx";
 
 <SetUp />
 
+# Create a Smart Contract
+
+Create a new Solidity file in the `src` directory of your project. For example, `src/MyContract.sol`.
+
+```solidity
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+
+contract MyContract {
+    uint256 public myNumber;
+
+    function setNumber(uint256 _num) public {
+        myNumber = _num;
+    }
+}
+```
+
+# Create Deployment Address
+
+You can create a new wallet with the case command:
+
+```bash
+cast wallet new
+```
+
+# Fund Your Account
+
+Go the the faucet and fund the address with Fuji AVAX. You can use the code `avalanche-academy`:
+
+[Avalanche Testnet Faucet](https://core.app/tools/testnet-faucet/?subnet=c&token=c)
+
+# Deploy the Smart Contract
+
+With foundry's `forge` command, you can deploy your smart contract to the Fuji C-Chain.
+
+```shell
+forge create --rpc-url fuji-c --private-key <private-key> src/MyContract.sol:MyContract
+```
+
