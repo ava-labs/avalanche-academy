@@ -6,6 +6,7 @@ import { guide } from '@/utils/source';
 import { createMetadata } from '@/utils/metadata';
 import { buttonVariants } from '@/components/ui/button';
 import { ArrowUpRightIcon } from 'lucide-react';
+import { SiX } from '@icons-pack/react-simple-icons';
 //import { Control } from '@/app/(home)/blog/[slug]/page.client';
 
 interface Param {
@@ -62,20 +63,18 @@ export default function Page({
                             {page.data.authors.map(author => (
                                 <Link
                                     key={author}
-                                    href={`https://github.com/${author}`}
+                                    href={`https://x.com/${author}`}
+                                    target='_blank'
                                     className="text-foreground transition-colors flex flex-row items-center gap-2 group"
                                 >
-                                    <img
-                                        src={`https://github.com/${author}.png?size=16`}
-                                        className="w-4 h-4 rounded-full border border-background group-hover:border-muted-foreground transition-colors"
-                                    />
+                                    <SiX size={12} />
                                     <span className="flex-grow truncate">{author}</span>
                                 </Link>
                             ))}
                         </div>
                     </div>
                     <div>
-                        <p className="mb-1 text-sm text-muted-foreground">At</p>
+                        <p className="mb-1 text-sm text-muted-foreground">On</p>
                         <p className="font-medium">
                             {new Date(page.data.date ?? page.file.name).toDateString()}
                         </p>

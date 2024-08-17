@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { guide } from '@/utils/source';
 import { buttonVariants } from '@/components/ui/button';
+import { SiX } from '@icons-pack/react-simple-icons';
 
 export default function Page(): React.ReactElement {
     const guides = [...guide.getPages()].sort(
@@ -62,10 +63,7 @@ export default function Page(): React.ReactElement {
                                         key={author}
                                         className="text-sm text-muted-foreground transition-colors flex flex-row items-center gap-2 group"
                                     >
-                                        <img
-                                            src={`https://github.com/${author}.png?size=16`}
-                                            className="w-4 h-4 rounded-full border border-background group-hover:border-muted-foreground transition-colors"
-                                        />
+                                        <SiX size={12} />
                                         <span className="flex-grow truncate">{author}</span>
                                     </div>
                                 ))}
