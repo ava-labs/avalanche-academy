@@ -1,0 +1,22 @@
+---
+title: Upgradeability
+description: TBD
+updated: 2024-05-31
+authors: [martineckardt]
+icon: Book
+---
+
+The fundamental concept behind smart contracts is their immutability, meaning once deployed on the blockchain, their code cannot be altered. However, in real-world scenarios, the need for flexibility and bug fixes often clashes with this immutability.
+
+To tackle this challenge, developers have devised mechanisms that allow for smart contract upgrades under specific conditions. One common approach is through the use of upgradeable proxies. Instead of changing the actual contract code, developers create a proxy contract that can delegate calls to different logic contracts. This proxy acts as an intermediary, allowing for seamless updates without altering the contract's address.
+
+These upgrades can be tied to certain conditions, such as obtaining approval from a decentralized autonomous organization (DAO). This introduces a layer of governance, where token holders or stakeholders in the network collectively decide whether a proposed upgrade is accepted. It brings democracy to the codebase, making important decisions about the contract's future collectively.
+
+This upgradeability feature is critical, especially when it comes to fixing bugs in smart contracts. In the traditional software development world, bugs can be patched and updates can be released relatively easily. However, in the blockchain space, once a contract is deployed, fixing a bug becomes a significant challenge due to the immutable nature of the code. Upgradeability offers a solution to this dilemma, providing a way to address vulnerabilities and improve the contract's functionality over time.
+
+In essence, smart contract upgradeability strikes a delicate balance between maintaining the security and trust associated with immutable code while allowing for necessary improvements and bug fixes. It's a testament to the dynamic nature of blockchain technology and the constant evolution required to meet the ever-changing demands of the decentralized ecosystem.
+What you will learn
+In this section, you will go through the following topics:
+Proxy Pattern: How the Proxy pattern works
+Creating an upgradeable Contract: You will build a contract that can be upgraded after it has been deployed
+Upgrading the Contract: You will upgrade the contract you've built in the previous step
