@@ -64,3 +64,23 @@ Existing validators can continue operating as they have before, and do not requi
 Existing Avalanche L1s are not required to convert their pre-Etna validators to L1-only-validators; they will continue to operate as before.
 
 All L1s will still be able to interoperate using Avalanche Warp Messaging (Avalanche ICM) and Teleporter (Avalanche ICM Contracts), regardless of how or when they were created.
+
+## What Technical Changes Will be Included?
+
+### Avalanche Community Protocols
+
+While driven by ACP-77, this upgrade will include many other feature additions outlined thoroughly in the following Avalanche Community Protocols:
+
+**[ACP-77](https://github.com/avalanche-foundation/ACPs/blob/main/ACPs/77-reinventing-subnets/README.md)**: Outlines a new validator management framework for Avalanche L1s, creating low-cost, natively-interoperable blockchains.
+
+**[ACP-20](https://github.com/avalanche-foundation/ACPs/blob/main/ACPs/20-ed25519-p2p/README.md)**: Adds support for Ed25519 TLS certificates for p2p communications on the Avalanche network.
+
+**[ACP-103](https://github.com/avalanche-foundation/ACPs/pull/103)**: Introduces a dynamic fee mechanism to the X-Chain and the P-Chain, previewing a future transition to a multidimensional fee mechanism.
+
+**[ACP-113](https://github.com/avalanche-foundation/ACPs/discussions/112)**: Proposes a mechanism to generate verifiable, non-cryptographic random number seeds on the Avalanche platform.
+
+**[ACP-118](https://github.com/avalanche-foundation/ACPs/tree/main/ACPs/118-warp-signature-request)**: Proposes a standard `AppRequest` payload format type, simplifying potential AWM signature aggregation implementations.
+
+**[ACP-125](https://github.com/avalanche-foundation/ACPs/tree/main/ACPs/125-basefee-reduction)**: Reduces the minimum base fee on the Avalanche C-Chain from 25 nAVAX to 1 nAVAX.
+
+**[ACP-131](https://github.com/avalanche-foundation/ACPs/pull/131)**: Brings the EVM opcodes introduced by the Cancun Upgrade to the Avalanche C-Chain and Subnet-EVM.
