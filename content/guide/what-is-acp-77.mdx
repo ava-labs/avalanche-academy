@@ -2,7 +2,82 @@
 title: What is a ACP-77?
 description: Learn about the largest network upgrade of Avalanche, that will lower the barrier to launch a blockchain and enable permissionless vlaidation of L1s.
 date: 2024-08-15
-authors: [martineckardt]
+authors: [martineckardt, owenwahlgren]
 topics: [Avalanche]
 ---
+
+
+<YouTube id="eczkjrGG_As" />
+^^ placeholder
+
+## How Subnets Work Today
+
+![Subnets](/common-images/multi-chain-architecture/acp-77/subnets.png)
+
+The Avalanche network has a large set of validators who all participate in running and validating the Primary Network.
+
+The Primary Network consists of the C-Chain, P-Chain, and X-Chain, and is where most of the transactions on Avalanche are processed.
+
+In order to scale horizontally and offer more blockspace, a subset of validators can opt-in to validate an additional blockchain in parallel with the Primary Network, we call this a Subnet.
+
+
+### Current Economic Barriers
+
+![Staking Requirements](/common-images/multi-chain-architecture/acp-77/subnets-staking-requirements.png)
+The Primary Network currently has a staking requirement of 2,000 AVAX.
+
+If we assume a price of $20 per AVAX, this would be a $40,000 staking requirement per validator.
+
+To launch a Subnet today, validators must meet the staking requirement for each subsequent Subnet they choose to validate. This is typically a native token to the Subnet.
+This model can quickly lead to a high economic barrier of entry in creating new Subnets as validators must meet the 2,000 AVAX requirement in addition to the staking requirements of any Subnets they want to validate.
+
+### Current Compliance Barriers
+![Subnet Compliance](/common-images/multi-chain-architecture/acp-77/subnets-compliance.png)
+
+Many Institutions that want to adopt blockchain are struggling with exposure to public permissionless blockchains.
+The Primary Network is a public permissionless blockchain, and as such, it is not suitable to build on for many institutions.
+
+While institutions can launch their own Subnet as a private, proof of authority blockchain, they are still exposed to the Primary Network in some manner.
+
+This exposure can be circumvented by performing a partial sync of the Primary Network, but is an incomplete solution.
+
+### Fault Isolation Issues
+![Fault Isolation](/common-images/multi-chain-architecture/acp-77/subnets-primary-network-congestion.png)
+
+Currently, if there is high demand for the Primary Network, it can lead to congestion and higher gas fees. 
+Because Subnet validators must also validate the Primary Network, their machines are exposed to the same congestion which can have a consequential effects on Subnet performance.
+
+## ACP-77
+### Subnets -> L1s
+With ACP-77 Subnets will become their own Layer 1 blockchain.
+
+![L1s](/common-images/multi-chain-architecture/acp-77/l1s.png)
+
+Instead of using subsets of validators from the Primary Network - we now use a new distinct set of validators.
+
+This change maintains the short time of finality and high throughput Avalanche Subnets are known for while also enabling a new set of features with options for completely customizable staking options, gas tokens, and governance.
+
+
+### Lower Running Costs
+![L1 Staking Requirements](/common-images/multi-chain-architecture/acp-77/l1s-staking-requirement.png)
+
+This upgrade will remove the requirement to stake 2,000 AVAX on the Primary Network, and instead only require validators to stake on L1 with their native token.
+This will lower the economic barrier to entry, and enable more validators to participate in the network.
+
+### Better Institutional Compliance
+![L1 Compliance](/common-images/multi-chain-architecture/acp-77/l1s-compliance.png)
+ 
+Since validator sets of L1s are now distinct and seperate from the Primary Network, institutions can now launch their own L1s (be it public or private) without exposure to the public permissionless Primary Network.
+
+### Better Fault Isolation
+![L1s Fault Isolation](/common-images/multi-chain-architecture/acp-77/l1s-primary-network-faults.png)
+
+Because validator sets are now distinct, congestion on the Primary Network will not affect the performance of L1s and vice versa.
+
+### Conclusion
+
+ACP-77 is the largest network upgrade of Avalanche to date. This change will enable more developers to get inexpensive block space for their applications while also enabling institutions to launch their own L1s with better compliance and fault isolation.
+
+You can learn more in depth about ACP-77 by reading the [ACP-77 Proposal](https://github.com/avalanche-foundation/ACPs/blob/main/ACPs/77-reinventing-subnets/README.md)
+
 
