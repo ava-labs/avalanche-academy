@@ -11,7 +11,9 @@ Avalanche9000 will be the largest network upgrade of Avalanche to date. This upg
 <YouTube id="eczkjrGG_As" />
 ^^ placeholder
 
-## How Subnets Work Today
+## ACP-77
+
+### How Subnets Work Today
 
 ![Subnets](/common-images/multi-chain-architecture/acp-77/subnets.png)
 
@@ -20,6 +22,15 @@ The Avalanche network has a large set of validators who all participate in runni
 The Primary Network consists of the C-Chain, P-Chain, and X-Chain, and is where most of the transactions on Avalanche are processed.
 
 In order to scale horizontally and offer more blockspace, a subset of validators can opt-in to validate an additional blockchain in parallel with the Primary Network, we call this a Subnet.
+
+### Subnets -> L1s
+With ACP-77 Subnets will become their own Layer 1 blockchain.
+
+![L1s](/common-images/multi-chain-architecture/acp-77/l1s.png)
+
+Instead of using subsets of validators from the Primary Network - we now use a new distinct set of validators.
+
+This change maintains the short time of finality and high throughput Avalanche Subnets are known for while also enabling a new set of features with options for completely customizable staking options, gas tokens, and governance.
 
 
 ### Current Economic Barriers
@@ -32,6 +43,22 @@ If we assume a price of $20 per AVAX, this would be a $40,000 staking requiremen
 To launch a Subnet today, validators must meet the staking requirement for each subsequent Subnet they choose to validate. This is typically a native token to the Subnet.
 This model can quickly lead to a high economic barrier of entry in creating new Subnets as validators must meet the 2,000 AVAX requirement in addition to the staking requirements of any Subnets they want to validate.
 
+### Lowering Economic Barriers
+![L1 Staking Requirements](/common-images/multi-chain-architecture/acp-77/l1s-staking-requirement.png)
+
+This upgrade will remove the requirement to stake 2,000 AVAX on the Primary Network, and instead only require validators to stake on L1 with their native token.
+This will lower the economic barrier to entry, and enable more validators to participate in the network.
+
+
+### Current Running Costs
+![Subnet Running Cost](/common-images/multi-chain-architecture/acp-77/subnet-running-cost.png)
+
+Currently, validators must validate the Primary Network in addition to each Subnet they are validating. This can lead to higher running costs for validators as they must maintain machines that can handle the load of both networks.
+
+### Lower Running Costs
+![L1 Running Cost](/common-images/multi-chain-architecture/acp-77/l1-running-cost.png)
+With ACP-77, validators will only need to validate the L1. This will lead to lower running costs for validators as they will not need to maintain machines that can handle the load of both the Subnets and Primary Network.
+
 ### Current Compliance Barriers
 ![Subnet Compliance](/common-images/multi-chain-architecture/acp-77/subnets-compliance.png)
 
@@ -41,37 +68,19 @@ The Primary Network is a public permissionless blockchain, and as such, it is no
 While institutions can launch their own Subnet as a private, proof of authority blockchain, they are still exposed to the Primary Network in some manner.
 
 This exposure can be circumvented by performing a partial sync of the Primary Network, but is an incomplete solution.
-
-### Fault Isolation Issues
-![Fault Isolation](/common-images/multi-chain-architecture/acp-77/subnets-primary-network-congestion.png)
-
-Currently, if there is high demand for the Primary Network, it can lead to congestion and higher gas fees. 
-Because Subnet validators must also validate the Primary Network, their machines are exposed to the same congestion which can have a consequential effects on Subnet performance.
-
-## ACP-77
-
-### Subnets -> L1s
-With ACP-77 Subnets will become their own Layer 1 blockchain.
-
-![L1s](/common-images/multi-chain-architecture/acp-77/l1s.png)
-
-Instead of using subsets of validators from the Primary Network - we now use a new distinct set of validators.
-
-This change maintains the short time of finality and high throughput Avalanche Subnets are known for while also enabling a new set of features with options for completely customizable staking options, gas tokens, and governance.
-
-
-### Lower Running Costs
-![L1 Staking Requirements](/common-images/multi-chain-architecture/acp-77/l1s-staking-requirement.png)
-
-This upgrade will remove the requirement to stake 2,000 AVAX on the Primary Network, and instead only require validators to stake on L1 with their native token.
-This will lower the economic barrier to entry, and enable more validators to participate in the network.
-
 ### Better Institutional Compliance
 ![L1 Compliance](/common-images/multi-chain-architecture/acp-77/l1s-compliance.png)
  
 Since validator sets of L1s are now distinct and seperate from the Primary Network, institutions can now launch their own L1s (be it public or private) without exposure to the public permissionless Primary Network.
 
-### Better Fault Isolation
+### Current Fault Isolation
+![Fault Isolation](/common-images/multi-chain-architecture/acp-77/subnets-primary-network-congestion.png)
+
+Currently, if there is high demand for the Primary Network, it can lead to congestion and higher gas fees. 
+Because Subnet validators must also validate the Primary Network, their machines are exposed to the same congestion which can have a consequential effects on Subnet performance.
+
+
+### New Fault Isolation
 ![L1s Fault Isolation](/common-images/multi-chain-architecture/acp-77/l1s-primary-network-faults.png)
 
 Because validator sets are now distinct, congestion on the Primary Network will not affect the performance of L1s and vice versa.
