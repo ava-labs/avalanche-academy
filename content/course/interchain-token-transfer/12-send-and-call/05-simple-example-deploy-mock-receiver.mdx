@@ -1,0 +1,21 @@
+---
+title: Simple Example - Deploy a Mock Receiver
+description: Learn how to deploy a mock receiver contract.
+updated: 2024-08-23
+authors: [0xstt]
+icon: Terminal
+---
+
+In this section, you will deploy mock receiver contracts on the Avalanche L1. You can choose to deploy either the `MockERC20SendAndCallReceiver` or the `MockNativeSendAndCallReceiver` contract depending your token type.
+
+```bash
+forge create --rpc-url myblockchain --private-key $PK lib/avalanche-interchain-token-transfer/contracts/src/mocks/MockERC20SendAndCallReceiver.sol:MockERC20SendAndCallReceiver
+```
+
+After deployment, save the `Deployed to` address in an environment variable for future use.
+
+```bash
+export MOCK_RECEIVER_ADDRESS=<"Deployed to" address>
+```
+
+After successfully deploying the contract, move on to testing the mock receivers.

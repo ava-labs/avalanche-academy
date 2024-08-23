@@ -1,7 +1,7 @@
 ---
-title: Test Cross Chain Swap
+title: Advanced Example - Test Cross Chain Swap
 description: Trigger Cross Chain Swap from your L1.
-updated: 2024-08-15
+updated: 2024-08-23
 authors: [0xstt]
 icon: Terminal
 ---
@@ -14,7 +14,7 @@ cast send --rpc-url myblockchain --private-key $PK $ERC20_HOME_TRANSFERER_C_CHAI
 
 The ```payload``` parameter that we sent can be generated via following JavaScript file:
 
-```bash
+```typescript
 const { ethers } = require("ethers");
 
 function encode() {

@@ -1,16 +1,16 @@
 ---
-title: Wrap Exchange Contract
+title: Advanced Example - Wrap Exchange Contract
 description: Wrap the exchange contract to execute cross-chain swap operations.
-updated: 2024-08-15
+updated: 2024-08-23
 authors: [0xstt]
 icon: Terminal
 ---
 
-In this course, we will wrap Trader Joe's Factory contract to execute swap operations on the destination chain. Trader Joe's exchange contracts are already deployed on Fuji, which why we are choosing Fuji as the destination chain.
+In this example, we will wrap Trader Joe's Factory contract to execute swap operations on the destination chain. Trader Joe's exchange contracts are already deployed on Fuji, which why we are choosing Fuji as the destination chain.
 
 An example of the exchange wrapper code is provided below. This contract only allows swap operations on Trader Joe V1 pools or any other Uniswap V2-like contracts.
 
-Walkthrough:
+**Walkthrough**:
 
 - The wrapper contract receives the payload via the `receiveTokens` function.
 - The wrapper contract transfers the tokens to itself.
@@ -21,7 +21,7 @@ Walkthrough:
 
 _Disclaimer: The avalanche-interchain-token-transfer contracts used in this tutorial are under active development and are not yet intended for production deployments. Use at your own risk._
 
-```bash
+```solidity  title="src/interchain-token-transfer/4-send-and-call/DexERC20Wrapper.sol"
 // (c) 2024, Ava Labs, Inc. All rights reserved.
 // See the file LICENSE for licensing terms.
 

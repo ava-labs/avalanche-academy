@@ -1,7 +1,7 @@
 ---
 title: Send and Call Receivers
 description: Learn how tokens are received by the receivers.
-updated: 2024-08-15
+updated: 2024-08-23
 authors: [0xstt]
 icon: BookOpen
 ---
@@ -12,7 +12,7 @@ Mock implementations are already available in the [Avalanche Interchain Token Tr
 
 What we are going to do is; simply deploy a new contract that implements the `IERC20SendAndCallReceiver` or `INativeSendAndCallReceiver` interfaces that has a capability to use received tokens.
 
-```bash
+```solidity title="lib/avalanche-interchain-token-transfer/contracts/src/interfaces/IERC20SendAndCallReceiver.sol"
 /**
  * @notice Interface for contracts that are called to receive token transfers.
  */
@@ -35,5 +35,29 @@ interface IERC20SendAndCallReceiver {
         uint256 amount,
         bytes calldata payload
     ) external;
+}
+```
+
+```solidity title="lib/avalanche-interchain-token-transfer/contracts/src/interfaces/INativeSendAndCallReceiver.sol"
+/**
+ * @notice Interface for a contracts that are called to receive native tokens.
+ */
+interface INativeSendAndCallReceiver {
+    /**
+     * @notice Called to receive the amount of the native token. Implementations
+     * must properly handle the msg.value of the call in order to ensure it doesn't
+     * become improperly made inaccessible.
+     * @param sourceBlockchainID Blockchain ID that the transfer originated from
+     * @param originTokenTransferrerAddress Address of the token transferrer that initiated the Teleporter message
+     * @param originSenderAddress Address of the sender that sent the transfer. This value
+     * should only be trusted if {originTokenTransferrerAddress} is verified and known.
+     * @param payload Arbitrary data provided by the caller
+     */
+    function receiveTokens(
+        bytes32 sourceBlockchainID,
+        address originTokenTransferrerAddress,
+        address originSenderAddress,
+        bytes calldata payload
+    ) external payable;
 }
 ```
