@@ -111,7 +111,7 @@ export FUNDED_ADDRESS=<Funded Address (with 100 tokens)>
 First step is to deploy the ERC20 contract. We are using OZs example contract here and the contract is renamed to `ERC20.sol` for convenience. You can use any other pre deployed ERC20 contract or change the names according to your Avalanche L1 native token as well.
 
 ```bash
-forge create --rpc-url local-c --private-key $PK src/8-erc20-to-erc20-interchain-token-transfer/ERC20.sol:TOK
+forge create --rpc-url local-c --private-key $PK src/interchain-token-transfer/3-erc20-to-erc20-interchain-token-transfer/ERC20.sol:TOK
 ```
 
 Now, make sure to add the contract address in the environment variables.

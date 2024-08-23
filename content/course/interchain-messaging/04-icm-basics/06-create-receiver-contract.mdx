@@ -10,9 +10,9 @@ Now it's time to deploy our receiver contract on our Subnet. It will implement t
 
 ## Read the Receiver Contract
 
-The following contract is located inside `src/0-send-receive` directory. Read through the contract below and and understand what is happening:
+The following contract is located inside `src/interchain-messaging/0a-send-receive` directory. Read through the contract below and and understand what is happening:
 
-```solidity title="src/0-send-receive/receiverOnSubnet.sol"
+```solidity title="src/interchain-messaging/0a-send-receive/receiverOnSubnet.sol"
 // (c) 2023, Ava Labs, Inc. All rights reserved.
 // See the file LICENSE for licensing terms.
 
@@ -51,7 +51,7 @@ The key things to understand:
 To deploy a contract using Foundry use the following command:
 
 ```bash
-forge create --rpc-url myblockchain --private-key $PK src/0-send-receive/receiverOnSubnet.sol:ReceiverOnSubnet
+forge create --rpc-url myblockchain --private-key $PK src/interchain-messaging/0a-send-receive/receiverOnSubnet.sol:ReceiverOnSubnet
 ```
 Then save the receiver contract address in an environment variable:
 

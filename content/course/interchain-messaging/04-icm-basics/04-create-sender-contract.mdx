@@ -10,9 +10,9 @@ Lets start by deploying our sender contract on C-Chain. It will be responsible f
 
 ## Read the Sender Contract
 
-The following contract is located inside `src/0-send-receive` directory. Read through the contract below and and understand what is happening:
+The following contract is located inside `src/interchain-messaging/0a-send-receive` directory. Read through the contract below and and understand what is happening:
 
-```solidity title="src/0-send-receive/senderOnCChain.sol"
+```solidity title="src/interchain-messaging/0a-send-receive/senderOnCChain.sol"
 // (c) 2023, Ava Labs, Inc. All rights reserved.
 // See the file LICENSE for licensing terms.
 
@@ -107,7 +107,7 @@ Replace the destinationBlockchainID in your sender code.
 To deploy a contract using Foundry use the following command:
 
 ```bash
-forge create --rpc-url local-c --private-key $PK src/0-send-receive/senderOnCChain.sol:SenderOnCChain
+forge create --rpc-url local-c --private-key $PK src/interchain-messaging/0a-send-receive/senderOnCChain.sol:SenderOnCChain
 ```
 
 Then save the sender contract address in an environment variable:

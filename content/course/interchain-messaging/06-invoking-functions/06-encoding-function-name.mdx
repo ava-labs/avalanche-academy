@@ -16,7 +16,7 @@ For the add function we need to encode two numbers. For the concatenate function
 
 The first step is to create a `CalculatorAction` enum that specifies the different functions that can be called on the calculator. 
 
-```solidity title="src/2b-invoking-functions/CalculatorActions.sol"
+```solidity title="src/interchain-messaging/2b-invoking-functions/CalculatorActions.sol"
 pragma solidity ^0.8.18;
 
 enum CalculatorAction {
@@ -27,7 +27,7 @@ enum CalculatorAction {
 
 In the next step we can add this to our `encode helpers` in the sender contract:
 
-```solidity title="src/2b-invoking-functions/CalculatorSenderOnCChain.sol"
+```solidity title="src/interchain-messaging/2b-invoking-functions/CalculatorSenderOnCChain.sol"
 pragma solidity ^0.8.18;
 
 import "@teleporter/ITeleporterMessenger.sol";
@@ -83,7 +83,7 @@ As you can see here we are calling `abi.encode` twice in the encode helpers. The
 
 Let's now look at the receiver:
 
-```solidity title="src/2b-invoking-functions/CalculatorReceiverOnAvalanche L1.sol"
+```solidity title="src/interchain-messaging/2b-invoking-functions/CalculatorReceiverOnAvalanche L1.sol"
 pragma solidity ^0.8.18;
 
 import "@teleporter/ITeleporterMessenger.sol";
@@ -170,7 +170,7 @@ For the `add` function we decode two numbers and for the `concatenate` function 
 Deploy the sender and receiver contracts and try out the `add` and `concatenate` functions. 
 
 ```bash
-forge create --rpc-url local-c --private-key $PK src/2b-invoking-functions/CalculatorSenderOnCChain.sol:CalculatorSenderOnCChain
+forge create --rpc-url local-c --private-key $PK src/interchain-messaging/2b-invoking-functions/CalculatorSenderOnCChain.sol:CalculatorSenderOnCChain
 ```
 
 Save the sender address:
@@ -182,7 +182,7 @@ export SENDER_ADDRESS=0x123...
 Deploy the receiver contract:
 
 ```bash
-forge create --rpc-url myblockchain --private-key $PK src/2b-invoking-functions/CalculatorReceiverOnAvalanche L1.sol:CalculatorReceiverOnAvalanche L1
+forge create --rpc-url myblockchain --private-key $PK src/interchain-messaging/2b-invoking-functions/CalculatorReceiverOnAvalanche L1.sol:CalculatorReceiverOnAvalanche L1
 ```
 
 Save the receiver address:

@@ -12,7 +12,7 @@ icon: Book
 On your Avalanche L1, deploy a wrapped token contract for your native token. When we configured the Avalanche L1 earlier, we named the token `NATV`. This is reflected in line 19 of our [example wrapped token contract](./ExampleWNATV.sol).
 
 ```
-forge create --rpc-url myblockchain --private-key $PK src/5-native-to-erc20-token-bridge/ExampleWNATV.sol:WNATV
+forge create --rpc-url myblockchain --private-key $PK src/interchain-token-transfer/0-native-to-erc20-token-bridge/ExampleWNATV.sol:WNATV
 ```
 
 Export the "Deployed to" address as an environment variables.
