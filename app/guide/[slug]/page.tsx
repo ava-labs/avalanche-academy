@@ -53,7 +53,7 @@ export default function Page({
             </div>
             <article className="container grid grid-cols-1 px-0 py-8 lg:grid-cols-[2fr_1fr] lg:px-4">
                 <div className="prose p-4">
-                    <InlineTOC items={page.data.exports.toc} />
+                    {page.data.exports.toc.length > 0 ? <InlineTOC items={page.data.exports.toc} /> : null} 
                     <page.data.exports.default />
                 </div>
                 <div className="flex flex-col gap-4 border-l p-4 text-sm">
