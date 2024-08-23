@@ -1,13 +1,7 @@
 import Link from 'next/link';
-import { guide } from '@/utils/source';
 import { buttonVariants } from '@/components/ui/button';
 
 export default function Page(): React.ReactElement {
-    const guides = [...guide.getPages()].sort(
-        (a, b) =>
-            new Date(b.data.date ?? b.file.name).getTime() -
-            new Date(a.data.date ?? a.file.name).getTime(),
-    );
 
     return (
         <main className="py-12 sm:py-24">
