@@ -16,17 +16,11 @@ Privy is a simple tool to easily onboard all your users to web3, regardless of w
 
 Before we dive into the guide, let's first understand the terminology.
 
-### Social Login
-
-Social Login is a form of single sign-on (SSO) that allows users to log into a third-party website or app using their existing credentials from a social media platform, such as Google, X (formerly Twitter), or Apple. Instead of creating a new username and password, users can authenticate themselves through their social media accounts, streamlining the login process.
-
-### Magic Link
-
-A Magic Link is a form of passwordless authentication where users can log into an application or website by clicking a unique, time-sensitive link sent to their email address. This method eliminates the need for a traditional username and password combination, making the login process simpler and more user-friendly.
-
-### Next.js 
-
-Next.js’ Pages Router is a full-stack React framework. It’s versatile and lets you create React apps of any size—from a mostly static blog to a complex dynamic application.
+| Term | Meaning |
+| -------- | ------- |
+| Social Login | Social Login is a form of single sign-on (SSO) that allows users to log into a third-party website or app using their existing credentials from a social media platform, such as Google, X (formerly Twitter), or Apple. Instead of creating a new username and password, users can authenticate themselves through their social media accounts, streamlining the login process. |
+| Magic Link | A Magic Link is a form of passwordless authentication where users can log into an application or website by clicking a unique, time-sensitive link sent to their email address. This method eliminates the need for a traditional username and password combination, making the login process simpler and more user-friendly. |
+| Next.js  | Next.js’ Pages Router is a full-stack React framework. It’s versatile and lets you create React apps of any size—from a mostly static blog to a complex dynamic application. |
 
 ## Prerequisites and Recommended Knowledge
 
@@ -62,7 +56,7 @@ npm i ethers@latest
 
 ### Define Your Avalanche L1
 
-In this guide, we've used Echo as an example Avalanche L1. However, you can use any Avalanche L1 that has a public RPC URL, and an explorer page (optional).
+In this guide, we are using the `Echo L1` as an example Avalanche L1. However, you can use any Avalanche L1 that has a public RPC URL. If the L1 has an explorer page, you can see better what is happening, but it is not required.
 
 ```typescript
 export const echo = defineChain({
@@ -89,7 +83,7 @@ export const echo = defineChain({
 
 After the React project is created, navigate to `page.tsx`. Inside the `Home` function, wrap your content with `PrivyProvider`.
 
-```typescript
+```typescript title="page.tsx"
 export default function Home() {
 
   return (
@@ -124,7 +118,7 @@ Here is our walkthrough:
 
 - We will create a simple login flow.
 - We will create a welcome page for users who have logged in, showing their embedded wallet address and balance.
-- We will trigger a test ECH transfer via Privy.
+- We will trigger a test transfer of the `ECH` token via Privy.
 
 ### Login Flow
 
@@ -135,7 +129,7 @@ const { ready, authenticated } = usePrivy();
 const { login } = useLogin();
 ```
 
-It’s really that simple!
+It's really that simple!
 
 - `ready`: Checks whether the `PrivyProvider` is `ready` to be used.
 - `authenticated`: Returns `true` if the user is `authenticated`, `false` otherwise.
