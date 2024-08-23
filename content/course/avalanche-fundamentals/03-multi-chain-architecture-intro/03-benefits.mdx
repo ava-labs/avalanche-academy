@@ -10,11 +10,14 @@ Avalanche L1s are autonomous. Their creators can define their execution logic, s
 
 ## Scalability Through Multi-Chain Systems
 
-Scalability is a hallmark of multi-chain systems, achieved by operating chains in multiple independent threads. This parallel processing of transactions enhances scalability. One chain's congestion or increasing fees won't impact other chains.
 
-Going back to our highway analogy, we can think of the scaling through multiple chains as building many short highways in parallel.
+A blockchain has a limited capacity for computation and data storage. Therefore, the transactions it can process in a given time frame are limited. We can use the analogy of a highway to visualize this concept. A highway can only handle a certain number of cars at a time. If too many cars try to enter the highway at once, traffic congestion will occur and they have to wait to enter the highway.
+
+In order to scale horizontally and to offer more blockspace, a subset of validators can opt-in to validate an additional blockchain in parallel with the Primary Network: we call this an Avalanche L1. The idea is similiar to building many highways in parallel and create additional space for cars to drive on. This allows for more transactions to be processed in parallel, and therefore increases the overall throughput of the network.
 
 ![](/course-images/avalanche-fundamentals/11.png)
+
+This parallel processing of transactions enhances scalability. One chain's congestion or increasing fees won't impact other chains. Going back to our highway analogy, we can think of the scaling through multiple chains as building many short highways in parallel.
 
 The beauty of this approach is its simplicity. It doesn't require any new untested innovations. The challenge, rather, is optimizing how Avalanche L1s interoperate and making switching from one Avalanche L1 to the other easy.
 
