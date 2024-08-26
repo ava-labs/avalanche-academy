@@ -38,13 +38,13 @@ To verify, check if the **stringstore** directory is in your workspace and if th
 
 ## Start the Avalanche Network
 
-Use the Avalanche Network Runner to start the server and the network. Use the provided genesis file `stringstore.json` mentioned above when you start the network.
+Use the Avalanche-CLI to start the server and the network. Use the provided genesis file `stringstore.json` mentioned above when you start the network.
 
 If all goes well, you will have successfully deployed a blockchain containing both the StringStore and SHA256 precompile.
 
 ## Connecting Core
 
-Similar to previous chapters, navigate to the **Add Network** section in the Core Wallet. You can find the RPC URL in the Avalanche Network Runner logs or by executing the command: `avalanche-network-runner control list-rpcs`
+Similar to previous chapters, navigate to the **Add Network** section in the Core Wallet. You can find the RPC URL in the Avalanche-CLI logs or by executing the command: `avalanche blockchain list --deployed`
 
 Note: Make sure the RPC URL ends with **/rpc**. The RPC URL should look something like this: http://127.0.0.1:9650/ext/bc/P9nKPGPoAfFGkdvD3Ac6YxZieaG8ahpbR9xZosrWNPbJCzByu/rpc
 
