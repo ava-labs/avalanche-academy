@@ -52,3 +52,17 @@ With these parameters we can illustrate the consensus algorithm as pseudo code:
 In the common case when a transaction has no conflicts, finalization happens very quickly. When conflicts exist, honest validators quickly cluster around conflicting transactions, entering a positive feedback loop until all correct validators prefer that transaction. This leads to the acceptance of non-conflicting transactions and the rejection of conflicting transactions.
 
 Avalanche Consensus guarantees (with high probability based on system parameters) that if any honest validator accepts a transaction, all honest validators will come to the same conclusion.
+
+<Quiz
+  quizId="avalanche-fundamentals-1"
+  question="In the Avalanche Consensus protocol, what determines whether a validator changes its preference?"
+  options={[
+    "A simple majority of sampled validators",
+    "An α-majority of sampled validators",
+    "A unanimous decision from sampled validators",
+    "The validator's initial random choice"
+  ]}
+  correctAnswer="An α-majority of sampled validators"
+  hint="Think about the concept of 'α-majority' mentioned in the chapter."
+  explanation="Avalanche consensus dictates that a validator changes its preference if an α-majority of the sampled validators agrees on another option. The α-majority is a key concept in the protocol, allowing for flexible decision-making based on the sampled subset of validators."
+/>
