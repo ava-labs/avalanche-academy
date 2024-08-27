@@ -10,16 +10,25 @@ interface QuizProps {
   quizId: string;
   question: string;
   options: string[];
-  correctAnswer: string;
+  correctAnswers: string[];
   hint: string;
   explanation: string;
 }
 
-const Quiz: React.FC<QuizProps> = ({ quizId, question, options, correctAnswer, hint, explanation }) => {
-  const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
+const Quiz: React.FC<QuizProps> = ({ 
+  quizId, 
+  question, 
+  options, 
+  correctAnswers = [], // Provide a default empty array
+  hint, 
+  explanation 
+}) => {
+  const [selectedAnswers, setSelectedAnswers] = useState<string[]>([]);
   const [isAnswerChecked, setIsAnswerChecked] = useState<boolean>(false);
   const [isCorrect, setIsCorrect] = useState<boolean>(false);
   const [isClient, setIsClient] = useState(false);
+
+  const isSingleAnswer = correctAnswers.length === 1;
 
   useEffect(() => {
     setIsClient(true);
@@ -29,34 +38,45 @@ const Quiz: React.FC<QuizProps> = ({ quizId, question, options, correctAnswer, h
   const loadSavedResponse = async () => {
     const savedResponse = await getQuizResponse(quizId);
     if (savedResponse) {
-      setSelectedAnswer(savedResponse.selectedAnswer);
-      setIsAnswerChecked(savedResponse.isAnswerChecked);
-      setIsCorrect(savedResponse.isCorrect);
+      setSelectedAnswers(savedResponse.selectedAnswers || []);
+      setIsAnswerChecked(savedResponse.isAnswerChecked || false);
+      setIsCorrect(savedResponse.isCorrect || false);
     } else {
       resetQuizState();
     }
   };
 
   const resetQuizState = () => {
-    setSelectedAnswer(null);
+    setSelectedAnswers([]);
     setIsAnswerChecked(false);
     setIsCorrect(false);
   };
 
   const handleAnswerSelect = (answer: string) => {
     if (!isAnswerChecked) {
-      setSelectedAnswer(answer);
+      if (isSingleAnswer) {
+        setSelectedAnswers([answer]);
+      } else {
+        setSelectedAnswers(prev => 
+          prev.includes(answer) 
+            ? prev.filter(a => a !== answer) 
+            : [...prev, answer]
+        );
+      }
     }
   };
 
   const checkAnswer = async () => {
-    if (selectedAnswer !== null) {
-      const correct = selectedAnswer === correctAnswer;
+    if (selectedAnswers.length > 0 && correctAnswers.length > 0) {
+      const correct = isSingleAnswer
+        ? selectedAnswers[0] === correctAnswers[0]
+        : selectedAnswers.length === correctAnswers.length && 
+          selectedAnswers.every(answer => correctAnswers.includes(answer));
       setIsCorrect(correct);
       setIsAnswerChecked(true);
-      
+
       await saveQuizResponse(quizId, {
-        selectedAnswer,
+        selectedAnswers,
         isAnswerChecked: true,
         isCorrect: correct,
       });
@@ -103,6 +123,15 @@ const Quiz: React.FC<QuizProps> = ({ quizId, question, options, correctAnswer, h
     return <div>Loading...</div>;
   }
 
+  // If correctAnswers is undefined or empty, render an error message
+  if (!correctAnswers || correctAnswers.length === 0) {
+    return (
+      <div className="bg-red-50 dark:bg-red-900/30 p-4 rounded-lg">
+        <p className="text-red-800 dark:text-red-300">Error: No correct answers provided for this quiz.</p>
+      </div>
+    );
+  }
+
   return (
     <div className="bg-gray-50 dark:bg-black flex items-center justify-center p-4">
       <div className="w-full max-w-2xl bg-white dark:bg-black shadow-lg rounded-lg overflow-hidden">
@@ -119,7 +148,7 @@ const Quiz: React.FC<QuizProps> = ({ quizId, question, options, correctAnswer, h
           </div>
           <h4 className="font-normal" style={{marginTop: '0'}}>Time for a Quiz!</h4>
           <p className="text-sm text-gray-500 dark:text-gray-400">
-            Wolfie wants to test your knowledge.
+            Wolfie wants to test your knowledge. {isSingleAnswer ? "Select the correct answer." : "Select all correct answers."}
           </p>
         </div>
         <div className="px-6 py-4">
@@ -132,29 +161,31 @@ const Quiz: React.FC<QuizProps> = ({ quizId, question, options, correctAnswer, h
                 key={uuidv4()}
                 className={`flex items-center p-3 rounded-lg border transition-colors cursor-pointer ${
                   isAnswerChecked
-                    ? option === selectedAnswer
-                      ? isCorrect
+                    ? selectedAnswers.includes(option)
+                      ? correctAnswers.includes(option)
                         ? 'border-avax-green bg-green-50 dark:bg-green-900/30 dark:border-green-700'
                         : 'border-avax-red bg-red-50 dark:bg-red-900/30 dark:border-red-700'
                       : 'border-gray-200 bg-white dark:border-gray-700 dark:bg-black'
-                    : selectedAnswer === option
+                    : selectedAnswers.includes(option)
                       ? 'border-[#3752ac] bg-[#3752ac] bg-opacity-10 dark:bg-opacity-30'
                       : 'border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-900'
                 }`}
                 onClick={() => handleAnswerSelect(option)}
               >
-                <span className={`w-6 h-6 flex items-center justify-center rounded-full mr-3 text-sm ${
+                <span className={`w-6 h-6 flex items-center justify-center ${isSingleAnswer ? 'rounded-full' : 'rounded-md'} mr-3 text-sm ${
                   isAnswerChecked
-                    ? option === selectedAnswer
-                      ? isCorrect
+                    ? selectedAnswers.includes(option)
+                      ? correctAnswers.includes(option)
                         ? 'bg-avax-green text-white'
                         : 'bg-avax-red text-white'
                       : 'bg-gray-200 dark:bg-gray-700 text-gray-600 dark:text-gray-300'
-                    : selectedAnswer === option
+                    : selectedAnswers.includes(option)
                       ? 'bg-[#3752ac] text-white'
                       : 'bg-gray-200 dark:bg-gray-700 text-gray-600 dark:text-gray-300'
                 }`}>
-                  {String.fromCharCode(65 + index)}
+                  {isSingleAnswer 
+                    ? (selectedAnswers.includes(option) ? '●' : '')
+                    : (selectedAnswers.includes(option) ? '✓' : '')}
                 </span>
                 <span className="text-sm text-gray-600 dark:text-gray-300">{option}</span>
               </div>
@@ -169,7 +200,7 @@ const Quiz: React.FC<QuizProps> = ({ quizId, question, options, correctAnswer, h
                 buttonVariants({ variant: 'default'}),
                 )}
                 onClick={checkAnswer}
-                disabled={selectedAnswer === null}
+                disabled={selectedAnswers.length === 0}
             >
               Check Answer
             </button>
