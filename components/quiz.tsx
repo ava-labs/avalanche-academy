@@ -134,8 +134,8 @@ const Quiz: React.FC<QuizProps> = ({ quizId, question, options, correctAnswer, h
                   isAnswerChecked
                     ? option === selectedAnswer
                       ? isCorrect
-                        ? 'border-green-500 bg-green-50'
-                        : 'border-red-500 bg-red-50'
+                        ? 'border-avax-green bg-green-50'
+                        : 'border-avax-red bg-red-50'
                       : 'border-gray-200 bg-white'
                     : selectedAnswer === option
                       ? 'border-[#3752ac] bg-[#3752ac] bg-opacity-10'
@@ -147,8 +147,8 @@ const Quiz: React.FC<QuizProps> = ({ quizId, question, options, correctAnswer, h
                   isAnswerChecked
                     ? option === selectedAnswer
                       ? isCorrect
-                        ? 'bg-green-500 text-white'
-                        : 'bg-red-500 text-white'
+                        ? 'bg-avax-green text-white'
+                        : 'bg-avax-red text-white'
                       : 'bg-gray-200 text-gray-600'
                     : selectedAnswer === option
                       ? 'bg-[#3752ac] text-white'

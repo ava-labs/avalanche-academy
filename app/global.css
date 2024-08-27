@@ -4,7 +4,27 @@
 
 .prose {
   font-size: 18px;
-} 
+}
+
+.border-avax-red {
+  --tw-border-opacity: 1;
+  border-color: #e84142;
+}
+
+.bg-avax-red {
+  --tw-bg-opacity: 1;
+  background-color: #e84142;
+}
+
+.border-avax-green {
+  --tw-border-opacity: 1;
+  border-color: #0B7f54;
+}
+
+.bg-avax-green {
+  --tw-bg-opacity: 1;
+  background-color: #0B7f54;
+}
 
 /* List items in prose */
 .prose :where(ul > li):not(:where([class~="not-prose"],[class~="not-prose"] *))::marker {
