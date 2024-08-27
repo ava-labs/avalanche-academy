@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import { saveQuizResponse, getQuizResponse, resetQuizResponse } from '../utils/indexedDB';
+import Image from 'next/image';
 
 interface QuizProps {
   quizId: string;
@@ -76,7 +77,7 @@ const Quiz: React.FC<QuizProps> = ({ quizId, question, options, correctAnswer, h
               </svg>
               <span className="font-semibold">Correct</span>
             </div>
-            <p className="text-gray-600">{explanation}</p>
+            <p className="text-sm text-gray-600">{explanation}</p>
           </div>
         );
       } else {
@@ -88,7 +89,7 @@ const Quiz: React.FC<QuizProps> = ({ quizId, question, options, correctAnswer, h
               </svg>
               <span className="font-semibold">Not Quite</span>
             </div>
-            <p className="text-gray-600">Hint: {hint}</p>
+            <p className="text-sm text-gray-600">Hint: {hint}</p>
           </div>
         );
       }
@@ -101,65 +102,76 @@ const Quiz: React.FC<QuizProps> = ({ quizId, question, options, correctAnswer, h
   }
 
   return (
-    <div className="bg-white shadow-md rounded-lg p-6 max-w-2xl mx-auto my-8">
-      <div className="flex items-center justify-center mb-6">
-        <div className="bg-blue-500 rounded-full p-4">
-          <span className="text-white text-2xl font-bold">?</span>
+    <div className="min-h-screen bg-gray-50 flex items-center justify-center p-4">
+      <div className="w-full max-w-2xl bg-white shadow-lg rounded-lg overflow-hidden">
+        <div className="text-center p-6">
+          <div className="mx-auto bg-blue-400 rounded-full p-3 w-14 h-14 flex items-center justify-center mb-4">
+            <Image
+                src="/quiz.png"
+                alt="Quiz Icon"
+                layout="fill"
+                objectFit="contain"
+                style={{margin: '0em'}}
+            />
+          </div>
+          <h1 className="text-xl font-medium text-gray-700">It's time to take a quiz!</h1>
+          <p className="text-sm text-gray-500 mt-1">
+            Test your knowledge and see what you've just learned.
+          </p>
         </div>
-      </div>
-      <h2 className="text-2xl font-bold text-center mb-4">It's time to take a quiz!</h2>
-      <p className="text-center mb-6 text-gray-600">Test your knowledge and see what you've just learned.</p>
-      
-      <h3 className="text-xl font-semibold mb-4">{question}</h3>
-      
-      <div className="space-y-2">
-        {options.map((option, index) => (
-          <button
-            key={uuidv4()}
-            onClick={() => handleAnswerSelect(option)}
-            className={`w-full text-left p-3 rounded-lg border ${
-              selectedAnswer === option
-                ? isAnswerChecked
-                  ? isCorrect
-                    ? 'bg-green-100 border-green-500'
-                    : 'bg-red-100 border-red-500'
-                  : 'bg-blue-100 border-blue-500'
-                : 'bg-gray-50 border-gray-300 hover:bg-gray-100'
-            }`}
-            disabled={isAnswerChecked}
-          >
-            <span className="inline-block w-6 h-6 rounded-full bg-gray-200 text-gray-700 text-center mr-2">
-              {String.fromCharCode(65 + index)}
-            </span>
-            {option}
-          </button>
-        ))}
-      </div>
-      
-      {renderAnswerFeedback()}
-      
-      <div className="mt-6">
-        {!isAnswerChecked ? (
-          <button
-            onClick={checkAnswer}
-            className="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded"
-            disabled={selectedAnswer === null}
-          >
-            Check Answer
-          </button>
-        ) : (
-          !isCorrect && (
-            <button
-              onClick={handleTryAgain}
-              className="w-full bg-white border border-gray-300 text-gray-700 font-semibold py-2 px-4 rounded flex items-center justify-center"
+        <div className="px-6 py-8">
+          <div className="text-center mb-8">
+            <h2 className="text-lg font-medium text-gray-800">{question}</h2>
+          </div>
+          <div className="space-y-3">
+            {options.map((option) => (
+              <label 
+                key={uuidv4()}
+                className={`flex items-center space-x-2 p-3 rounded-lg border transition-colors cursor-pointer ${
+                  isAnswerChecked
+                    ? option === correctAnswer
+                      ? 'border-green-500 bg-green-50'
+                      : option === selectedAnswer
+                      ? 'border-red-500 bg-red-50'
+                      : 'border-gray-200 bg-white'
+                    : 'border-gray-200 hover:bg-gray-50'
+                }`}
+              >
+                <input
+                  type="radio"
+                  name="quiz-option"
+                  value={option}
+                  checked={selectedAnswer === option}
+                  onChange={() => handleAnswerSelect(option)}
+                  disabled={isAnswerChecked}
+                  className="form-radio text-gray-800 focus:ring-2 focus:ring-gray-800"
+                />
+                <span className="text-sm text-gray-600">{option}</span>
+              </label>
+            ))}
+          </div>
+          {renderAnswerFeedback()}
+        </div>
+        <div className="px-6 py-4 bg-gray-50 flex justify-center">
+          {!isAnswerChecked ? (
+            <button 
+              className="px-8 py-2 bg-gray-800 text-white rounded-md hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-600 focus:ring-opacity-50 transition-colors"
+              onClick={checkAnswer}
+              disabled={selectedAnswer === null}
             >
-              <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
-              </svg>
-              Try Again
+              Check Answer
             </button>
-          )
-        )}
+          ) : (
+            !isCorrect && (
+              <button 
+                className="px-8 py-2 bg-white text-gray-800 border border-gray-300 rounded-md hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-600 focus:ring-opacity-50 transition-colors"
+                onClick={handleTryAgain}
+              >
+                Try Again
+              </button>
+            )
+          )}
+        </div>
       </div>
     </div>
   );
