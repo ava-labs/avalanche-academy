@@ -1,13 +1,37 @@
-import { buttonVariants } from '@/components/ui/button';
-import { cn } from '@/utils/cn';
+import {GenerateKeysButton, SignMessageButton, AggregateSignaturesButton, AggregatePublicKeysButton, VerifyAggregateSignatureButton} from '@/components/multiSignatureSchemes';
 
-Check out this assignment
+Let's explore the use of a Multi-Signature Scheme. We'll take the following steps:
 
-<a
-    href="https://ava-labs.github.io/academy-bls-aggregation-demo/#/multi"
-    target='_blank'
-    className={cn(buttonVariants({ size: 'lg' }))}
->
-    Open the Demo
-</a>
+- **Generate Two Key Pairs**: We will generate two key pairs.
+- **Sign Message**: We create two Signatures of the same Message with the two Secret Keys.
+- **Aggregate Signatures**: We aggregate the two Signatures to a single Signature.
+- **Aggregate Public Keys**: We aggregate the two Public Keys to a single Public Key.
+- **Verify aggregated Signature**: We verify the Signature with the aggregated Public Key.
+
+## Generate Keys
+Start by generating two Key Pairs each consisting of a Public and Secret Key. In a real-world setting these key pairs would be created by independent actors, but for the sake of the exercise we will play multiple actors here.
+<GenerateKeysButton />
+
+## Sign
+Now use the generated Secret Keys to sign a Message. Make sure to pick exactly the same Message for both Signatures, e.g. "Per consensum ad astra".
+
+<SignMessageButton />
+
+## Aggregate Signatures
+We can now utilize the signature aggregation to create an aggregated Signature. In this exercise we are only aggregating two signatures, but we could do this with hundreds or thousands. Side fact: It does not matter in which order the signatures are aggrated.
+<AggregateSignaturesButton />
+
+## Aggregate Public Keys
+To verify an aggregated Signature, we need also need to aggregate the Public Keys that correspond to the Private Keys that were used to sign the message. Analogous to the signatures we can aggregate many more than just two Public Keys and also here the order does not matter.
+
+<AggregatePublicKeysButton />
+
+## Verify
+Anyone, that has access to the aggregated Public Key can now verify the Signature of the Message. Therefore, the Authenticity, Non-Repudiation and Integrity of the Message can be trusted in an efficient for a large number of signers.
+
+<VerifyAggregateSignatureButton />
+
+
+## Conclusion
+Congrats to going through the exercise and experiencing hands-on how we can utilize Siganture Aggregation. You will see in the next chapter about Avalanche Warp Messaging how Mutli-Signature schemes can enable secure and efficient cross-Subnet communication.
 
