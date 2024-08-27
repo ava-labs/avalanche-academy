@@ -131,7 +131,6 @@ export const VerifySignatureButton: React.FC = () => {
                 onClick={() => {
                     if (signature && pubKey && message) {
                         checkSig(signature, pubKey, message).then((res) => {
-                            console.log(res)
                             if (res) {
                                 setSignatureResult(res);
                             } else {
