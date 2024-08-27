@@ -184,7 +184,7 @@ const Quiz: React.FC<QuizProps> = ({
                       : 'bg-gray-200 dark:bg-gray-700 text-gray-600 dark:text-gray-300'
                 }`}>
                   {isSingleAnswer 
-                    ? (selectedAnswers.includes(option) ? '●' : '')
+                    ? String.fromCharCode(65 + index)  // A, B, C, D for single answer
                     : (selectedAnswers.includes(option) ? '✓' : '')}
                 </span>
                 <span className="text-sm text-gray-600 dark:text-gray-300">{option}</span>
