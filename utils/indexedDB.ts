@@ -4,7 +4,7 @@ interface QuizDB {
   quizResponses: {
     key: string;
     value: {
-      selectedAnswers: string[];
+      selectedAnswers: number[];
       isAnswerChecked: boolean;
       isCorrect: boolean;
     };
