@@ -1,6 +1,11 @@
 "use client";
 const bls = require("@noble/bls12-381");
 import React, { useState } from 'react';
+import {
+    CodeBlock, Pre
+  } from 'fumadocs-ui/components/codeblock';
+import { buttonVariants } from './ui/button';
+import { Input } from './ui/input';
 
 const bufferToHex = (buffer: ArrayBufferLike): string => {
     return [...new Uint8Array(buffer)]
@@ -31,37 +36,18 @@ export const GenerateKeysButton: React.FC = () => {
     };
 
     return (
-        <div style={{ textAlign: 'center' }}>
-            <button
-                className="btn btn-primary"
-                style={{
-                    backgroundColor: 'red',
-                    color: 'white',
-                    padding: '10px 20px',
-                    borderRadius: '5px',
-                    margin: '10px'
-                }}
-                onClick={generateKeys}
-            >
+        <div>
+            <button className={buttonVariants()} onClick={generateKeys}>
                 Generate Keys
             </button>
 
-            <div style={{padding: '10px' }}>
-                <p>🗝️Private Key: {privKey}</p>
-                <button
-                    onClick={() => copyToClipboard(privKey ? String(privKey) : '')}
-                    style={{ backgroundColor: 'red', color: 'white', padding: '10px 20px', borderRadius: '5px', border: 'none', marginRight: '5px' }}
-                >
-                    Copy Private Key
-                </button>
-                <p style={{overflowWrap: 'break-word' }}>🔑Public Key: {pubKey}</p>
-                <button
-                    onClick={() => copyToClipboard(pubKey ? String(pubKey) : '')}
-                    style={{ backgroundColor: 'red', color: 'white', padding: '10px 20px', borderRadius: '5px', border: 'none', marginRight: '5px' }}
-                >
-                    Copy Public Key
-                </button>
-            </div>
+            {privKey && <CodeBlock title="🗝️ Private Key" lang="bash" allowCopy={true}>
+                <Pre>{privKey}</Pre>
+            </CodeBlock>}
+
+            {pubKey && <CodeBlock title="🔑 Public Key:" lang="bash" allowCopy={true}>
+                <Pre>{pubKey}</Pre>
+            </CodeBlock>}
         </div>
     );
 }
@@ -71,38 +57,29 @@ export const SignMessageButton: React.FC = () => {
     const [privKey, setPrivKey] = useState<string | null>(null);
     const [message, setMessage] = useState<string | null>(null);
     const [signature, setSignature] = useState<string | null>(null);
-    const [showSignature, setShowSignature] = useState(false);
 
     const signMessage = async () => {
         if (!privKey || !message) {
             return;
         }
         setSignature(bufferToHex(await bls.sign(new TextEncoder().encode(message), privKey)));
-        setShowSignature(true);
     }
 
     return (
-        <div style={{ textAlign: 'center' }}>
+        <div>
             <p>🗝️Private Key</p>
-            <input type="text" id="privatekey" placeholder="Enter private key to sign message with" style={{ width: '100%', padding: '10px', marginBottom: '10px' }} onChange={(e) => setPrivKey(e.target.value)} />
+            <Input id="privatekey" placeholder="Enter private key to sign message with" onChange={(e) => setPrivKey(e.target.value)} />
             <br />
             <p>📝Message</p>
-            <input type="text" id="message" placeholder="Enter message to sign" style={{ width: '100%', padding: '10px', marginBottom: '10px' }} onChange={(e) => setMessage(e.target.value)} />
+            <Input id="message" placeholder="Enter message to sign" onChange={(e) => setMessage(e.target.value)} />
 
-            <button
-                className="btn btn-primary"
-                style={{ backgroundColor: 'red', color: 'white', padding: '10px 20px', borderRadius: '5px', margin: '10px' }}
-                onClick={signMessage}
-            >
+            <button className={buttonVariants()} onClick={signMessage} disabled={!privKey || !message}>
                 Sign Message
             </button>
 
-            {showSignature && (
-                <>
-                    <p>Signature:</p>
-                    <p style={{ overflowWrap: 'break-word' }}>{signature}</p>
-                </>
-            )}
+            {signature && <CodeBlock title="🔏 Signature:" lang="bash" allowCopy={true}>
+                <Pre>{signature}</Pre>
+            </CodeBlock>}
         </div>
     );
 }
@@ -112,44 +89,40 @@ export const VerifySignatureButton: React.FC = () => {
     const [pubKey, setPubKey] = useState<string | null>(null);
     const [message, setMessage] = useState<string | null>(null);
     const [signature, setSignature] = useState<string | null>(null);
-    const [signatureResult, setSignatureResult] = useState<boolean | null>(null);
+    const [isValid, setIsValid] = useState<boolean | null>(null);
+
+    const verifySignature = async () => {
+        if (signature && pubKey && message) {
+            checkSig(signature, pubKey, message).then((res) => {
+                console.log(res)
+                if (res) {
+                    setIsValid(res);
+                } else {
+                    setIsValid(false);
+                }
+            });
+        }
+    };
 
     return (
-        <div style={{ textAlign: 'center' }}>
+        <div>
             <p>🔑Public Key</p>
-            <input type="text" id="publickey" placeholder="Enter public key to verify signature with" style={{ width: '100%', padding: '10px', marginBottom: '10px' }} onChange={(e) => setPubKey(e.target.value)}/>
+            <Input id="publickey" placeholder="Enter public key to verify signature" onChange={(e) => setPubKey(e.target.value)} />
             <br />
             <p>📝Message</p>
-            <input type="text" id="message" placeholder="Enter message to verify" style={{ width: '100%', padding: '10px', marginBottom: '10px' }} onChange={(e) => setMessage(e.target.value)}/>
+            <Input id="message" placeholder="Enter message to verify" onChange={(e) => setMessage(e.target.value)} />
             <br />
             <p>🔏Signature</p>
-            <input type="text" id="signature" placeholder="Enter signature to verify" style={{ width: '100%', padding: '10px', marginBottom: '10px' }} onChange={(e) => setSignature(e.target.value)}/>
-            <br />
-            <button
-                className="btn btn-primary"
-                style={{ backgroundColor: 'red', color: 'white', padding: '10px 20px', borderRadius: '5px', margin: '10px' }}
-                onClick={() => {
-                    if (signature && pubKey && message) {
-                        checkSig(signature, pubKey, message).then((res) => {
-                            if (res) {
-                                setSignatureResult(res);
-                            } else {
-                                setSignatureResult(false);
-                            }
-                        });
-                    }
-                }}
-            >
+            <Input id="signature" placeholder="Enter signature to verify" onChange={(e) => setSignature(e.target.value)} />
+
+            <button className={buttonVariants()} onClick={verifySignature} disabled={!signature || !pubKey || !message}>
                 Verify Signature
             </button>
 
-            {signatureResult !== null && (
-                <>
-                    <p>Signature Result:</p>
-                    <p>{signatureResult ? 'Signature valid! The Signature of the Message was created with the Secret Key that corresponds to the provided Public Key.' : 'Signature invalid! Double check your inputs are correct'}</p>
-                </>
+            {isValid !== null && (
+                <p>{isValid ? '✅ Signature is valid!' : '❌ Signature is invalid!'}</p>
             )}
         </div>
-    )
+    );
 }
 
