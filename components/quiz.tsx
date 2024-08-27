@@ -4,13 +4,13 @@ import { v4 as uuidv4 } from 'uuid';
 import { saveQuizResponse, getQuizResponse, resetQuizResponse } from '@/utils/indexedDB';
 import Image from 'next/image';
 import { cn } from '@/utils/cn';
-import { buttonVariants } from '@/components/ui/button'
+import { buttonVariants } from '@/components/ui/button';
 
 interface QuizProps {
   quizId: string;
   question: string;
   options: string[];
-  correctAnswers: string[];
+  correctAnswers: number[]; // Changed to number[] to represent indices
   hint: string;
   explanation: string;
 }
@@ -19,11 +19,11 @@ const Quiz: React.FC<QuizProps> = ({
   quizId, 
   question, 
   options, 
-  correctAnswers = [], // Provide a default empty array
+  correctAnswers = [], 
   hint, 
   explanation 
 }) => {
-  const [selectedAnswers, setSelectedAnswers] = useState<string[]>([]);
+  const [selectedAnswers, setSelectedAnswers] = useState<number[]>([]); // Changed to number[]
   const [isAnswerChecked, setIsAnswerChecked] = useState<boolean>(false);
   const [isCorrect, setIsCorrect] = useState<boolean>(false);
   const [isClient, setIsClient] = useState(false);
@@ -52,15 +52,15 @@ const Quiz: React.FC<QuizProps> = ({
     setIsCorrect(false);
   };
 
-  const handleAnswerSelect = (answer: string) => {
+  const handleAnswerSelect = (index: number) => {
     if (!isAnswerChecked) {
       if (isSingleAnswer) {
-        setSelectedAnswers([answer]);
+        setSelectedAnswers([index]);
       } else {
         setSelectedAnswers(prev => 
-          prev.includes(answer) 
-            ? prev.filter(a => a !== answer) 
-            : [...prev, answer]
+          prev.includes(index) 
+            ? prev.filter(a => a !== index) 
+            : [...prev, index]
         );
       }
     }
@@ -123,8 +123,7 @@ const Quiz: React.FC<QuizProps> = ({
     return <div>Loading...</div>;
   }
 
-  // If correctAnswers is undefined or empty, render an error message
-  if (!correctAnswers || correctAnswers.length === 0) {
+  if (correctAnswers.length === 0) {
     return (
       <div className="bg-red-50 dark:bg-red-900/30 p-4 rounded-lg">
         <p className="text-red-800 dark:text-red-300">Error: No correct answers provided for this quiz.</p>
@@ -161,31 +160,31 @@ const Quiz: React.FC<QuizProps> = ({
                 key={uuidv4()}
                 className={`flex items-center p-3 rounded-lg border transition-colors cursor-pointer ${
                   isAnswerChecked
-                    ? selectedAnswers.includes(option)
-                      ? correctAnswers.includes(option)
+                    ? selectedAnswers.includes(index)
+                      ? correctAnswers.includes(index)
                         ? 'border-avax-green bg-green-50 dark:bg-green-900/30 dark:border-green-700'
                         : 'border-avax-red bg-red-50 dark:bg-red-900/30 dark:border-red-700'
                       : 'border-gray-200 bg-white dark:border-gray-700 dark:bg-black'
-                    : selectedAnswers.includes(option)
+                    : selectedAnswers.includes(index)
                       ? 'border-[#3752ac] bg-[#3752ac] bg-opacity-10 dark:bg-opacity-30'
                       : 'border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-900'
                 }`}
-                onClick={() => handleAnswerSelect(option)}
+                onClick={() => handleAnswerSelect(index)}
               >
                 <span className={`w-6 h-6 flex items-center justify-center ${isSingleAnswer ? 'rounded-full' : 'rounded-md'} mr-3 text-sm ${
                   isAnswerChecked
-                    ? selectedAnswers.includes(option)
-                      ? correctAnswers.includes(option)
+                    ? selectedAnswers.includes(index)
+                      ? correctAnswers.includes(index)
                         ? 'bg-avax-green text-white'
                         : 'bg-avax-red text-white'
                       : 'bg-gray-200 dark:bg-gray-700 text-gray-600 dark:text-gray-300'
-                    : selectedAnswers.includes(option)
+                    : selectedAnswers.includes(index)
                       ? 'bg-[#3752ac] text-white'
                       : 'bg-gray-200 dark:bg-gray-700 text-gray-600 dark:text-gray-300'
                 }`}>
                   {isSingleAnswer 
-                    ? String.fromCharCode(65 + index)  // A, B, C, D for single answer
-                    : (selectedAnswers.includes(option) ? '✓' : '')}
+                    ? String.fromCharCode(65 + index)
+                    : (selectedAnswers.includes(index) ? '✓' : '')}
                 </span>
                 <span className="text-sm text-gray-600 dark:text-gray-300">{option}</span>
               </div>
@@ -196,11 +195,11 @@ const Quiz: React.FC<QuizProps> = ({
         <div className="px-6 py-4 flex justify-center">
           {!isAnswerChecked ? (
             <button 
-                className={cn(
+              className={cn(
                 buttonVariants({ variant: 'default'}),
-                )}
-                onClick={checkAnswer}
-                disabled={selectedAnswers.length === 0}
+              )}
+              onClick={checkAnswer}
+              disabled={selectedAnswers.length === 0}
             >
               Check Answer
             </button>
@@ -208,7 +207,7 @@ const Quiz: React.FC<QuizProps> = ({
             !isCorrect && (
               <button
                 className={cn(
-                buttonVariants({ variant: 'secondary' }),
+                  buttonVariants({ variant: 'secondary' }),
                 )}
                 onClick={handleTryAgain}
               >
