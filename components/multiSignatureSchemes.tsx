@@ -1,6 +1,11 @@
 "use client";
 import React, { useState } from 'react';
 const bls = require("@noble/bls12-381");
+import {
+    CodeBlock, Pre
+  } from 'fumadocs-ui/components/codeblock';
+import { buttonVariants } from './ui/button';
+import { Input } from './ui/input';
 
 const bufferToHex = (buffer: ArrayBufferLike): string => {
     return [...new Uint8Array(buffer)]
@@ -44,71 +49,33 @@ export const GenerateKeysButton: React.FC = () => {
     };
 
     return (
-        <div style={{ display: 'flex', justifyContent: 'center' }}>
-            <div style={{ textAlign: 'center', marginRight: '20px' }}>
-                <button
-                    className="btn btn-primary"
-                    style={{
-                        backgroundColor: 'red',
-                        color: 'white',
-                        padding: '10px 20px',
-                        borderRadius: '5px',
-                        margin: '10px'
-                    }}
-                    onClick={generateKeys1}
-                >
-                    Generate Keys
+        <div>
+            <div style={{ textAlign: 'center', marginRight: '20px', marginBottom: '20px' }}>
+                <button className={buttonVariants()} onClick={generateKeys1}>
+                    Generate First Keypair
                 </button>
 
-                <div style={{ padding: '10px' }}>
-                    <p>🗝️Private Key: {privKey1?.substring(0, 6)}...</p>
-                    <button
-                        onClick={() => copyToClipboard(privKey1 ? String(privKey1) : '')}
-                        style={{ backgroundColor: 'red', color: 'white', padding: '10px 20px', borderRadius: '5px', border: 'none', marginRight: '5px' }}
-                    >
-                        Copy Private Key
-                    </button>
-                    <p style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>🔑Public Key: {pubKey1?.substring(0, 6)}...</p>
-                    <button
-                        onClick={() => copyToClipboard(pubKey1 ? String(pubKey1) : '')}
-                        style={{ backgroundColor: 'red', color: 'white', padding: '10px 20px', borderRadius: '5px', border: 'none', marginRight: '5px' }}
-                    >
-                        Copy Public Key
-                    </button>
-                </div>
+                {privKey1 && <CodeBlock title="🗝️ Private Key" lang="bash" allowCopy={true}>
+                    <Pre>{privKey1}</Pre>
+                </CodeBlock>}
+
+                {pubKey1 && <CodeBlock title="🔑 Public Key:" lang="bash" allowCopy={true}>
+                    <Pre>{pubKey1}</Pre>
+                </CodeBlock>}
             </div>
 
             <div style={{ textAlign: 'center' }}>
-                <button
-                    className="btn btn-primary"
-                    style={{
-                        backgroundColor: 'red',
-                        color: 'white',
-                        padding: '10px 20px',
-                        borderRadius: '5px',
-                        margin: '10px'
-                    }}
-                    onClick={generateKeys2}
-                >
-                    Generate Keys
+                <button className={buttonVariants()} onClick={generateKeys2}>
+                    Generate Second Keypair
                 </button>
 
-                <div style={{ padding: '10px' }}>
-                    <p>🗝️Private Key: {privKey2?.substring(0, 6)}...</p>
-                    <button
-                        onClick={() => copyToClipboard(privKey2 ? String(privKey2) : '')}
-                        style={{ backgroundColor: 'red', color: 'white', padding: '10px 20px', borderRadius: '5px', border: 'none', marginRight: '5px' }}
-                    >
-                        Copy Private Key
-                    </button>
-                    <p style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>🔑Public Key: {pubKey2?.substring(0, 6)}...</p>
-                    <button
-                        onClick={() => copyToClipboard(pubKey2 ? String(pubKey2) : '')}
-                        style={{ backgroundColor: 'red', color: 'white', padding: '10px 20px', borderRadius: '5px', border: 'none', marginRight: '5px' }}
-                    >
-                        Copy Public Key
-                    </button>
-                </div>
+                {privKey2 && <CodeBlock title="🗝️ Private Key" lang="bash" allowCopy={true}>
+                    <Pre>{privKey2}</Pre>
+                </CodeBlock>}
+
+                {pubKey2 && <CodeBlock title="🔑 Public Key:" lang="bash" allowCopy={true}>
+                    <Pre>{pubKey2}</Pre>
+                </CodeBlock>}
             </div>
         </div>
     );
@@ -146,46 +113,40 @@ export const SignMessageButton: React.FC = () => {
         <div style={{ display: 'flex', justifyContent: 'center' }}>
             <div style={{ textAlign: 'center', marginRight: '20px' }}>
                 <p>🗝️Private Key</p>
-                <input type="text" id="privatekey1" placeholder="Enter private key to sign message with" style={{ width: '100%', padding: '10px', marginBottom: '10px' }} onChange={(e) => setPrivKey1(e.target.value)} />
+                <Input id="privatekey1" placeholder="Enter private key to sign message with" onChange={(e) => setPrivKey1(e.target.value)} />
                 <br />
                 <p>📝Message</p>
-                <input type="text" id="message1" placeholder="Enter message to sign" style={{ width: '100%', padding: '10px', marginBottom: '10px' }} onChange={(e) => setMessage1(e.target.value)} />
+                <Input id="message1" placeholder="Enter message to sign" onChange={(e) => setMessage1(e.target.value)} />
 
-                <button
-                    className="btn btn-primary"
-                    style={{ backgroundColor: 'red', color: 'white', padding: '10px 20px', borderRadius: '5px', margin: '10px' }}
-                    onClick={signMessage1}
-                >
+                <button className={buttonVariants()} onClick={signMessage1}>
                     Sign Message
                 </button>
 
                 {showSignature1 && (
                     <>
-                        <p>Signature 1:</p>
-                        <p style={{ overflowWrap: 'break-word', wordBreak: 'break-all' }}>{signature1}</p>
+                         {signature1 && <CodeBlock title="🔏 Signature:" lang="bash" allowCopy={true} style={{ maxWidth: '350px', margin: '0 auto' }}>
+                            <Pre>{signature1}</Pre>
+                        </CodeBlock>}
                     </>
                 )}
             </div>
 
             <div style={{ textAlign: 'center' }}>
                 <p>🗝️Private Key</p>
-                <input type="text" id="privatekey2" placeholder="Enter private key to sign message with" style={{ width: '100%', padding: '10px', marginBottom: '10px' }} onChange={(e) => setPrivKey2(e.target.value)} />
+                <Input id="privatekey2" placeholder="Enter private key to sign message with" onChange={(e) => setPrivKey2(e.target.value)} />
                 <br />
                 <p>📝Message</p>
-                <input type="text" id="message2" placeholder="Enter message to sign" style={{ width: '100%', padding: '10px', marginBottom: '10px' }} onChange={(e) => setMessage2(e.target.value)} />
+                <Input id="message2" placeholder="Enter message to sign" onChange={(e) => setMessage2(e.target.value)} />
 
-                <button
-                    className="btn btn-primary"
-                    style={{ backgroundColor: 'red', color: 'white', padding: '10px 20px', borderRadius: '5px', margin: '10px' }}
-                    onClick={signMessage2}
-                >
+                <button className={buttonVariants()} onClick={signMessage2}>
                     Sign Message
                 </button>
 
                 {showSignature2 && (
                     <>
-                        <p>Signature 2:</p>
-                        <p style={{ overflowWrap: 'break-word', wordBreak: 'break-all' }}>{signature2}</p>
+                        {signature2 && <CodeBlock title="🔏 Signature:" lang="bash" allowCopy={true} style={{ maxWidth: '350px', margin: '0 auto' }}>
+                            <Pre>{signature2}</Pre>
+                        </CodeBlock>}
                     </>
                 )}
             </div>
@@ -202,42 +163,31 @@ export const AggregateSignaturesButton: React.FC = () => {
 
     return (
         <div style={{ textAlign: 'center' }}>
-            <input
-                type="text"
+            <Input
                 id="signature1"
                 placeholder="Enter signature 1"
-                style={{ width: '100%', padding: '10px', marginBottom: '10px' }}
                 onChange={(e) => setSignature1(e.target.value)}
             />
-            <input
-                type="text"
+            <Input
                 id="signature2"
                 placeholder="Enter signature 2"
-                style={{ width: '100%', padding: '10px', marginBottom: '10px' }}
                 onChange={(e) => setSignature2(e.target.value)}
             />
-            <button
-                style={{
-                    backgroundColor: 'red',
-                    color: 'white',
-                    padding: '10px 20px',
-                    borderRadius: '5px',
-                    border: 'none',
-                    marginRight: '5px',
-                }}
-                onClick={() => {
-                    if (signature1 && signature2) {
-                        setAggregatedSignature(bufferToHex(bls.aggregateSignatures([signature1, signature2])));
-                        setShowAggregatedSignature(true);
-                    }
-                }}>
+            <button className={buttonVariants()} onClick={() => {
+                 if (signature1 && signature2) {
+                    setAggregatedSignature(bufferToHex(bls.aggregateSignatures([signature1, signature2])));
+                    setShowAggregatedSignature(true);
+                }
+            }}>
                 Aggregate Signatures
             </button>
+            
 
             {showAggregatedSignature && (
                 <>
-                    <p>Aggregated Signature:</p>
-                    <p style={{ overflowWrap: 'break-word', wordBreak: 'break-all' }}>{aggregatedSignature}</p>
+                    {aggregatedSignature && <CodeBlock title="🔏 Signature:" lang="bash" allowCopy={true}>
+                            <Pre>{aggregatedSignature}</Pre>
+                    </CodeBlock>}
                 </>
             )}
         </div>
@@ -252,44 +202,33 @@ export const AggregatePublicKeysButton: React.FC = () => {
 
     return(
         <div style={{ textAlign: 'center' }}>
-            <input
-                type="text"
+            <Input
                 id="pubkey1"
                 placeholder="Enter public key 1"
-                style={{ width: '100%', padding: '10px', marginBottom: '10px' }}
                 onChange={(e) => setPubKey1(e.target.value)}
 
             />
-            <input
-                type="text"
+            <Input
                 id="pubkey2"
                 placeholder="Enter public key 2"
-                style={{ width: '100%', padding: '10px', marginBottom: '10px' }}
                 onChange={(e) => setPubKey2(e.target.value)}
 
             />
-            <button
-                style={{
-                    backgroundColor: 'red',
-                    color: 'white',
-                    padding: '10px 20px',
-                    borderRadius: '5px',
-                    border: 'none',
-                    marginRight: '5px',
-                }}
-                onClick={() => {
-                    if (pubKey1 && pubKey2) {
+
+                <button className={buttonVariants()} onClick={() => {
+                     if (pubKey1 && pubKey2) {
                         setAggregatedPubKey(bufferToHex(bls.aggregatePublicKeys([pubKey1, pubKey2])));
                         setShowAggregatedPubKey(true);
                     }
                 }}>
                 Aggregate Public Keys
-            </button>
+                </button>
 
             {showAggregatedPubKey && (
                 <>
-                    <p>Aggregated Public Key:</p>
-                    <p style={{ overflowWrap: 'break-word', wordBreak: 'break-all' }}>{aggregatedPubKey}</p>
+                    {aggregatedPubKey && <CodeBlock title="🔑 Public Key:" lang="bash" allowCopy={true}>
+                            <Pre>{aggregatedPubKey}</Pre>
+                    </CodeBlock>}
                 </>
             )}
         </div>
@@ -304,38 +243,32 @@ export const VerifyAggregateSignatureButton: React.FC = () => {
     return(
         <div style={{ textAlign: 'center' }}>
         <p>🔑Aggregated Public Key</p>
-        <input type="text" id="publickey" placeholder="Enter aggregated public key to verify with" style={{ width: '100%', padding: '10px', marginBottom: '10px' }} onChange={(e) => setPubKey(e.target.value)}/>
+        <Input id="publickey" placeholder="Enter aggregated public key to verify with" onChange={(e) => setPubKey(e.target.value)}/>
         <br />
         <p>🔏Aggregated Signature</p>
-        <input type="text" id="signature" placeholder="Enter aggregated signature to verify" style={{ width: '100%', padding: '10px', marginBottom: '10px' }} onChange={(e) => setSignature(e.target.value)}/>
+        <Input id="signature" placeholder="Enter aggregated signature to verify" onChange={(e) => setSignature(e.target.value)}/>
         <br />
         <p>📝Message</p>
-        <input type="text" id="message" placeholder="Enter message to verify" style={{ width: '100%', padding: '10px', marginBottom: '10px' }} onChange={(e) => setMessage(e.target.value)}/>
+        <Input id="message" placeholder="Enter message to verify" onChange={(e) => setMessage(e.target.value)}/>
         <br />
-        <button
-            className="btn btn-primary"
-            style={{ backgroundColor: 'red', color: 'white', padding: '10px 20px', borderRadius: '5px', margin: '10px' }}
-            onClick={() => {
-                if (signature && pubKey && message) {
-                    checkSig(signature, pubKey, message).then((res) => {
-                        if (res) {
-                            setSignatureResult(res);
-                        } else {
-                            setSignatureResult(false);
-                        }
-                    });
-                }
-            }}
-        >
-            Verify
+
+        <button className={buttonVariants()} onClick={() => {
+                     if (signature && pubKey && message) {
+                        checkSig(signature, pubKey, message).then((res) => {
+                            if (res) {
+                                setSignatureResult(res);
+                            } else {
+                                setSignatureResult(false);
+                            }
+                        });
+                    }
+                }}>
+                Verify        
         </button>
 
         {signatureResult !== null && (
-            <>
-                <p>Signature Result:</p>
-                <p>{signatureResult ? 'Aggregated Signature valid! The Aggregated Signature of the Message was created with the Secret Key that corresponds to the provided Public Key.' : 'Signature invalid! Double check your inputs are correct'}</p>
-            </>
-        )}
+                <p>{signatureResult ? '✅ Signature is valid!' : '❌ Signature is invalid!'}</p>
+            )}
     </div>
     )
 }
