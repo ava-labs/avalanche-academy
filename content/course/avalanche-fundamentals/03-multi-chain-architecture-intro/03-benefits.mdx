@@ -31,6 +31,18 @@ While the unified, or monolithic, blockchain design does offer certain advantage
 
 Coming back to our highway analogy, we can imagine a scenario where congestion build up on one highway. The other highways are not directly affected. Some cars may choose to take a different highway and the traffic bottleneck may decrease.
 
+<Quiz
+  quizId="multi-chain-architecture-benefits-03-1"
+  question="The addition of a new decentralized application (dApp) on a single-chain system causes more competition over the block space of that chain."
+  options={[
+    "True",
+    "False",
+  ]}
+  correctAnswers={[0]}
+  hint="Think about how each new dApp vies for the same block space in a single-chain system."
+  explanation="Each new dApp vies for the same block space in a single-chain system, leading to unnecessary overcrowding of the chain. Multi-chain systems alleviate this issue."
+/>
+
 ## Customizability
 
 The creator of an Avalanche L1 can customize it to meet their needs. This can happen in numerous ways, including introducing a custom own gas token, using a different Virtual Machine (e.g. a WASM or Move VM), or limiting access to the Avalanche L1. This is very hard to do in a single-chain system because it would require a majority of users to agree.
@@ -41,4 +53,16 @@ In our highway analogy, let's think of some travelers having a very unique requi
 
 ## Other Multi-Chain Systems
 
-Avalanche isn't alone in the multi-chain landscape. Other blockchain systems utilizing a similar architectural approach include Cosmos, Polkadot, and Polygon Supernets. 
+Avalanche isn't alone in the multi-chain landscape. Other blockchain systems utilizing a similar architectural approach include Cosmos, Polkadot, and Polygon CDK.
+
+<Quiz
+  quizId="multi-chain-architecture-benefits-03-2"
+  question="In case of a security breach on the Ethereum mainnet, all Layer 2 solutions are potentially affected."
+  options={[
+    "True",
+    "False",
+  ]}
+  correctAnswers={[0]}
+  hint="Think about how Layer 2 solutions delegate security to the Ethereum mainnet."
+  explanation="Layer 2 solutions delegate security to the Ethereum mainnet. Hence, a security breach on the mainnet could potentially affect all Layer 2 solutions."
+/>

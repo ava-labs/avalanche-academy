@@ -16,6 +16,20 @@ Consensus is needed to agree on the order of state changes in a blockchain. This
 
 ![](/course-images/avalanche-fundamentals/1.png)
 
+<Quiz
+  quizId="avalanche-fundamentals-02-1"
+  question="What is the role of validators in the event of conflicting transactions?"
+  options={[
+    "Validators choose the transaction that benefits them the most.",
+    "Validators automatically reject all conflicting transactions.",
+    "Validators collectively decide on which of the two conflicting transactions will be accepted by all validators and determine the next state.",
+    "Validators create a new transaction to resolve the conflict."
+  ]}
+  correctAnswers={[2]}
+  hint="Think about how validators resolve conflicts in a blockchain network."
+  explanation="In the event of conflicting transactions, validators have to collectively decide on which of the two conflicting transactions will be accepted by all validators and determine the next state. They do not act based on personal benefits, they don't reject all conflicting transactions, and they don't create new transactions to resolve conflicts."
+/>
+
 ## Double Spending Attack
 
 A Double Spending Attack is when a user attempts to spend more crypto that they own by creating multiple transactions that reference the same funds.
@@ -38,3 +52,17 @@ Each of the transaction in itself is valid. Alice owns 5 AVAX and should be able
 ![](/course-images/avalanche-fundamentals/4.png)
 
 Therefore, validators have to collectively come to consensus on which of the two conflicting transactions will be included in the blockchain first, and therefore be accepted by all validators as the next state. To illustrate, we will color the validators preferring Charlie yellow and the validators preferring Bob blue.
+
+<Quiz
+  quizId="avalanche-fundamentals-02-2"
+  question="What is a Double Spending Attack in the context of blockchain?"
+  options={[
+    "It is when a user attempts to spend more cryptocurrency than they own by creating multiple transactions that reference the same funds.",
+    "It is when a user tries to double the amount of cryptocurrency they own through fraudulent transactions.",
+    "It is when a user performs two transactions at the exact same time to exploit the system.",
+    "It is when a validator duplicates transactions to increase their validation rewards."
+  ]}
+  correctAnswers={[0]}
+  hint="Think about how a user would attempt to spend more funds than they hold."
+  explanation="A Double Spending Attack is when a user attempts to spend more cryptocurrency than they own by creating multiple transactions that reference the same funds. This kind of attack is a threat to the integrity of the blockchain system."
+/>
