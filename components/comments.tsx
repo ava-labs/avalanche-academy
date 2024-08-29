@@ -35,7 +35,7 @@ const Comments: React.FC = () => {
       script.src = "https://giscus.app/client.js";
       script.setAttribute('data-repo', "ava-labs/avalanche-academy");
       script.setAttribute('data-repo-id', "R_kgDOMDfRrg");
-      script.setAttribute('data-category', "Q&A");
+      script.setAttribute('data-category', "Discussions");
       script.setAttribute('data-category-id', "DIC_kwDOMDfRrs4CgFJQ");
       script.setAttribute('data-mapping', "title");
       script.setAttribute('data-strict', "0");
