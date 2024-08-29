@@ -28,6 +28,7 @@ const loaderOutput = loader({
             }
           }),
         authors: z.array(z.string()),
+        comments: z.boolean().default(false),
       }),
     },
   }),
@@ -42,6 +43,7 @@ export const guide = loader({
         authors: z.array(z.string()),
         topics: z.array(z.string()),
         date: z.string().date().or(z.date()).optional(),
+        comments: z.boolean().default(false),
       }),
     },
   }),
