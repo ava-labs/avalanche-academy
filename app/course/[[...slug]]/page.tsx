@@ -5,7 +5,9 @@ import { DocsPage, DocsBody } from 'fumadocs-ui/page';
 import { notFound } from 'next/navigation';
 import { getPage, getPages, type Page } from '@/utils/source';
 import { createMetadata } from '@/utils/metadata';
-import IndexedDBComponent from '../../tracker'
+import IndexedDBComponent from '@/components/tracker'
+import { Accordion, Accordions } from 'fumadocs-ui/components/accordion';
+import Comments from '@/components/comments';
 
 interface Param {
   slug: string[];
@@ -79,6 +81,13 @@ export default function Page({
           <page.data.exports.default />
         )}
       </DocsBody>
+      {page.data.comments && (
+          <Accordions type="single">
+          <Accordion title="Discussions">
+              <Comments />
+          </Accordion>
+          </Accordions>
+      )}
     </DocsPage>
   );
 }
