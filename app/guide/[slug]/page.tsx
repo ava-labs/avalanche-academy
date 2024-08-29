@@ -7,7 +7,8 @@ import { createMetadata } from '@/utils/metadata';
 import { buttonVariants } from '@/components/ui/button';
 import { ArrowUpRightIcon } from 'lucide-react';
 import { SiX } from '@icons-pack/react-simple-icons';
-//import { Control } from '@/app/(home)/blog/[slug]/page.client';
+import { Accordion, Accordions } from 'fumadocs-ui/components/accordion';
+import Comments from '@/components/comments';
 
 interface Param {
     slug: string;
@@ -104,6 +105,13 @@ export default function Page({
 
                     {/*<Control url={page.url} />*/}
                 </div>
+                {page.data.comments && (
+                    <Accordions type="single">
+                    <Accordion title="Discussions">
+                        <Comments />
+                    </Accordion>
+                    </Accordions>
+                )}
             </article>
         </>
     );
