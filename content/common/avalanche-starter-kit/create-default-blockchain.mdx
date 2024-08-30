@@ -1,6 +1,12 @@
-In the following commands, make sure to substitute the name of your Avalanche L1 for `<subnetName>` (including the `<>`). You can choose whatever name you want, but I recommend using `myblockchain` as the name to avoid the need for some manual configuration.
+import { Step, Steps } from 'fumadocs-ui/components/steps';
 
-To create an Avalanche L1 configuration run the following command
+> In the following commands, make sure to substitute the name of your Avalanche L1 for `<subnetName>` (including the `<>`). You can choose whatever name you want, but I recommend using `myblockchain` as the name to avoid the need for some manual configuration.
+
+<Steps>
+<Step>
+ 
+### Start Avalanche L1 Configuration
+To create an Avalanche L1 configuration run the following command:
 
 ```bash
 avalanche blockchain create <subnetName>
@@ -11,7 +17,12 @@ For example:
 ```bash
 avalanche blockchain create myblockchain
 ```
+ 
+</Step>
 
+<Step>
+ 
+### Select Virtual Machine
 You will be prompted a wizard to configure your Avalanche L1. In the first question, select `Subnet-EVM`:
 
 ```
@@ -20,7 +31,12 @@ You will be prompted a wizard to configure your Avalanche L1. In the first quest
     Custom VM
     Explain the difference
 ```
+ 
+</Step>
 
+<Step>
+ 
+### Select Default EVM Configuration
 In the second question, select `I want to use defaults for a test environment`:
 
 ```
@@ -52,9 +68,11 @@ This command creates the config files `genesis.json` and `sidecar.json` inside: 
 avalanche subnet describe <subnetName>
 ```
 
-## Deploy your Avalanche L1
+</Step>
 
-To deploy your Avalanche L1, run
+<Step>
+ 
+### To deploy your Avalanche L1, run
 
 ```bash
 avalanche blockchain deploy <subnetName>
@@ -204,11 +222,18 @@ Blockchain ready to use
 +-----------------+-------------------------------------------------------------------------------------+
 ```
 
+</Step>
 
-## Make RPC-Endpoint publicly accessible
-
+<Step>
+ 
+### Make RPC-Endpoint publicly accessible
 The final part of the output shows the wallet connection details. You can use these to connect your wallet like Core or Metasmask to you newly created Avalanche L1.
 
 import PublishPort from "@/content/common/codespaces/publish-port.mdx";
 
 <PublishPort />
+ 
+</Step>
+
+</Steps>
+
