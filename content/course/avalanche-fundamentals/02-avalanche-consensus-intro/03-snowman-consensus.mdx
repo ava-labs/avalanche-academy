@@ -24,6 +24,20 @@ Let's set the alpha value to 3 in our example, meaning that we change our prefer
 
 From now on you will respond with blue, when another validators queries you for your current preference. 
 
+<Quiz
+  quizId="snowman-consensus-03-1"
+  question="In the Avalanche Consensus protocol, what determines whether a validator changes its preference?"
+  options={[
+    "A simple majority of sampled validators",
+    "An α-majority of sampled validators",
+    "A unanimous decision from sampled validators",
+    "The validator's initial random choice"
+  ]}
+  correctAnswers={[1]}
+  hint="Think about the concept of 'α-majority' mentioned in the chapter."
+  explanation="Avalanche consensus dictates that a validator changes its preference if an α-majority of the sampled validators agrees on another option. The α-majority is a key concept in the protocol, allowing for flexible decision-making based on the sampled subset of validators."
+/>
+
 ## Consecutive Successes
 
 Avalanche Consensus does not run for a fixed number of rounds, but until a decision threshold is hit. This means the validator keep sampling until their preference is confirmed for beta (β) consecutive rounds.
@@ -47,6 +61,7 @@ With these parameters we can illustrate the consensus algorithm as pseudo code:
 
 ![](/course-images/avalanche-fundamentals/8.png)
 
+
 ## Finalization
 
 In the common case when a transaction has no conflicts, finalization happens very quickly. When conflicts exist, honest validators quickly cluster around conflicting transactions, entering a positive feedback loop until all correct validators prefer that transaction. This leads to the acceptance of non-conflicting transactions and the rejection of conflicting transactions.
@@ -54,15 +69,15 @@ In the common case when a transaction has no conflicts, finalization happens ver
 Avalanche Consensus guarantees (with high probability based on system parameters) that if any honest validator accepts a transaction, all honest validators will come to the same conclusion.
 
 <Quiz
-  quizId="avalanche-fundamentals-1"
-  question="In the Avalanche Consensus protocol, what determines whether a validator changes its preference?"
+  quizId="snowman-consensus-03-2"
+  question="When does a validator in Avalanche finalize it's decision?"
   options={[
-    "A simple majority of sampled validators",
-    "An α-majority of sampled validators",
-    "A unanimous decision from sampled validators",
-    "The validator's initial random choice"
+    "After a set number of rounds of querying and getting majority consensus.",
+    "After the preference is confirmed by the α-majority for β (Decision Threshold) consecutive rounds.",
+    "As soon as a conflict between transactions arises.",
+    "When all validators in the system have replied with their preference."
   ]}
   correctAnswers={[1]}
-  hint="Think about the concept of 'α-majority' mentioned in the chapter."
-  explanation="Avalanche consensus dictates that a validator changes its preference if an α-majority of the sampled validators agrees on another option. The α-majority is a key concept in the protocol, allowing for flexible decision-making based on the sampled subset of validators."
+  hint="Think about the process of finalizing a decision in Avalanche Consensus."
+  explanation="In Avalanche, a validator finalizes its decision after its preference is confirmed by the α-majority for β (Decision Threshold) consecutive rounds. It's not a single round process, it doesn't happen immediately when a conflict arises, and it doesn't require replies from all validators in the system."
 />
