@@ -171,7 +171,7 @@ const Quiz: React.FC<QuizProps> = ({
                 }`}
                 onClick={() => handleAnswerSelect(index)}
               >
-                <span className={`w-6 h-6 flex items-center justify-center ${isSingleAnswer ? 'rounded-full' : 'rounded-md'} mr-3 text-sm ${
+                <span className={`w-6 h-6 shrink-0 flex items-center justify-center ${isSingleAnswer ? 'rounded-full' : 'rounded-md'} mr-3 text-sm ${
                   isAnswerChecked
                     ? selectedAnswers.includes(index)
                       ? correctAnswers.includes(index)
