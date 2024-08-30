@@ -6,14 +6,36 @@ authors: [martineckardt]
 icon: Terminal
 ---
 
-Go ahead and deploy the contract:
+import { Step, Steps } from 'fumadocs-ui/components/steps';
+
+Go ahead and deploy the receiver contract:
+
+<Steps>
+<Step>
+
+### Adapt the Sender Contract
+
+Perform the changes described in the previous section.
+
+</Step>
+<Step>
+
+### Deploy the Receiver Contract
 
 ```bash
 forge create --rpc-url myblockchain --private-key $PK src/1-send-roundtrip/receiverOnAvalanche L1.sol:ReceiverOnAvalanche L1
 ```
+
+</Step>
+<Step>
+
+### Update the Receiver Address
 
 Then save the receiver contract address in an environment variable:
 
 ```bash
 export RECEIVER_ADDRESS="0x123..."
 ```
+
+</Step>
+</Steps> 
