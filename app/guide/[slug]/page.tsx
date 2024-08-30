@@ -5,9 +5,9 @@ import { InlineTOC } from 'fumadocs-ui/components/inline-toc';
 import { guide } from '@/utils/source';
 import { createMetadata } from '@/utils/metadata';
 import { buttonVariants } from '@/components/ui/button';
-import { ArrowUpRightIcon } from 'lucide-react';
+import { ArrowUpRightIcon, MessagesSquare } from 'lucide-react';
 import { SiX } from '@icons-pack/react-simple-icons';
-import { Accordion, Accordions } from 'fumadocs-ui/components/accordion';
+import { Callout } from 'fumadocs-ui/components/callout';
 import Comments from '@/components/comments';
 
 interface Param {
@@ -56,6 +56,9 @@ export default function Page({
                 <div className="prose p-4">
                     {page.data.exports.toc.length > 0 ? <InlineTOC items={page.data.exports.toc} /> : null} 
                     <page.data.exports.default />
+                    {page.data.comments && (
+                        <Callout title="" icon={<MessagesSquare stroke="#3752ac"/>}><Comments/></Callout>
+                    )}
                 </div>
                 <div className="flex flex-col gap-4 border-l p-4 text-sm">
                     <div>
@@ -105,13 +108,6 @@ export default function Page({
 
                     {/*<Control url={page.url} />*/}
                 </div>
-                {page.data.comments && (
-                    <Accordions type="single">
-                    <Accordion title="Discussions">
-                        <Comments />
-                    </Accordion>
-                    </Accordions>
-                )}
             </article>
         </>
     );
