@@ -64,7 +64,41 @@ svg.lucide {
 }
 
 .my-6 > svg.lucide {
-    color: #fff;
+  color: #fff;
+}
+
+#comment-box {
+  max-height: 60vh;
+  overflow-y: auto;
+}
+
+#comment-box::-webkit-scrollbar {
+  width: 1px;
+}
+
+#comment-box::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+#comment-box::-webkit-scrollbar-thumb {
+  background: #3752AC;
+  border-radius: 1px;
+}
+
+#comment-box::-webkit-scrollbar-thumb:hover {
+  background: #2a3f85;
+}
+
+@media screen and (max-width: 768px) {
+    #comment-box {
+        max-height: 250px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    #comment-box {
+        max-height: 200px;
+    }
 }
 
 .quiz-option-letter {

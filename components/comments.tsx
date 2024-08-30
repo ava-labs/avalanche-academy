@@ -36,7 +36,7 @@ const Comments: React.FC = () => {
       script.setAttribute('data-repo', "ava-labs/avalanche-academy");
       script.setAttribute('data-repo-id', "R_kgDOMDfRrg");
       script.setAttribute('data-category', "Discussions");
-      script.setAttribute('data-category-id', "DIC_kwDOMDfRrs4CgFJQ");
+      script.setAttribute('data-category-id', "DIC_kwDOMDfRrs4CiB5x");
       script.setAttribute('data-mapping', "title");
       script.setAttribute('data-strict', "0");
       script.setAttribute('data-reactions-enabled', "0");
@@ -62,7 +62,7 @@ const Comments: React.FC = () => {
     }
   }, [theme]);
 
-  return <div ref={giscusRef} />;
+  return <div id="comment-box" ref={giscusRef} />;
 };
 
 export default Comments;

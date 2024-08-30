@@ -1,4 +1,4 @@
-import { ArrowUpRightIcon } from '@heroicons/react/20/solid';
+import { ArrowUpRightIcon, MessagesSquare } from 'lucide-react';
 import type { Metadata } from 'next';
 import { Card, Cards } from 'fumadocs-ui/components/card';
 import { DocsPage, DocsBody } from 'fumadocs-ui/page';
@@ -6,7 +6,7 @@ import { notFound } from 'next/navigation';
 import { getPage, getPages, type Page } from '@/utils/source';
 import { createMetadata } from '@/utils/metadata';
 import IndexedDBComponent from '@/components/tracker'
-import { Accordion, Accordions } from 'fumadocs-ui/components/accordion';
+import { Callout } from 'fumadocs-ui/components/callout';
 import Comments from '@/components/comments';
 
 interface Param {
@@ -80,14 +80,10 @@ export default function Page({
         ) : (
           <page.data.exports.default />
         )}
+        {page.data.comments && (
+            <Callout title="" icon={<MessagesSquare stroke="#3752ac"/>}><Comments/></Callout>
+        )}
       </DocsBody>
-      {page.data.comments && (
-          <Accordions type="single">
-          <Accordion title="Discussions">
-              <Comments />
-          </Accordion>
-          </Accordions>
-      )}
     </DocsPage>
   );
 }
