@@ -5,73 +5,63 @@ updated: 2024-05-31
 authors: [ashucoder9]
 icon: Terminal
 ---
+import { Step, Steps } from 'fumadocs-ui/components/steps';
 
-In this exercise, you will learn how to transfer native tokens on your own L1 in the Avalanche network using Foundry, a powerful toolkit for EVM application development. 
+In this exercise, you will learn how to transfer native tokens on your own L1 in the Avalanche network using Foundry, a powerful toolkit for EVM application development. We will use the blockchain you have create in the last chapter.
 
-Start by creating and deploying a new blockchain using the Avalanche Starter Kit. With your chain up and running, let's transfer some native tokens from one account to another using Foundry
-
-## Create a blockchain with the following configuration
-
-```bash
-avalanche blockchain create myblockchain
-```
-
-```bash
-✔ Avalanche L1-EVM
-✔ Use latest release version
-✔ Yes
-✔ Yes
-Installing subnet-evm-v0.6.7...
-subnet-evm-v0.6.7 installation successful
-creating genesis for subnet myblockchain
-Enter your subnet's ChainId. It can be any positive integer.
-ChainId: 123
-Select a symbol for your subnet's native token
-Token symbol: NAT
-✔ Low disk use    / Low Throughput    1.5 mil gas/s (C-Chain's setting)
-✔ Airdrop 1 million tokens to the default ewoq address (do not use in production)
-prefunding address 0x8db97C7cEcE249c2b98bDC0226Cc4C2A57BF52FC with balance 1000000000000000000000000
-✔ No
-✓ Successfully created subnet configuration
-```
-
-## Deploy blockchain on Local network
-
-```
-avalanche subnet deploy myblockchain
-```
+<Steps>
+<Step>
 
 ## Create account
 ```bash
 avalanche key create myKey
 ```
 
+</Step>
+<Step>
+
+### Save the Key to an Environment Variable
+
 Retrieve the new address with and store it in an environment variable to match the following commands.
  
 ```bash
- avalanche key list -l --subnets myblockchain --keys myKey
+avalanche key list -l --subnets myblockchain --keys myKey
 ```
 
 ```bash
-export $MYKEY=0x...
+export $MYADDRESS=0x...
 ```
 
-## Check balances
+</Step>
+<Step>
+
+### Check the Balance
+
+Now we are checking the balance of that key on 
 
 ```bash
-cast balance $MYKEY --rpc-url myblockchain
+cast balance $MYADDRESS --rpc-url myblockchain
 ```
 
-## Transfer funds
+</Step>
+<Step>
 
-```
+### Transfer funds
+
+```bash
 cast send $MYKEY --value 200000  --private-key $PK --rpc-url myblockchain
 ```
 
-## Check balances to confirm transfer
+</Step>
+<Step>
+
+### Check balances to confirm transfer
 
 ```bash
-cast balance $MYKEY --rpc-url myblockchain
+cast balance $MYADDRESS --rpc-url myblockchain
 ```
+
+</Step>
+</Steps>
 
 As you saw, funds were transfered from one count to another within the same chain (myblockchain)

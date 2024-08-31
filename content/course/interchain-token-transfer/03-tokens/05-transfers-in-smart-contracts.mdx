@@ -5,6 +5,8 @@ updated: 2024-05-31
 authors: [ashucoder9]
 icon: BookOpen
 ---
+import { Step, Steps } from 'fumadocs-ui/components/steps';
+
 
 Now that you know how to transfer native assets between accounts, let's see how to to transfer those funds to the control of an smart contract. Payable smart contract functions are essential for this process, as they allow the contract to receive Native Tokens. A function marked as payable in Solidity signifies that the function can accept and process incoming funds. This is particularly useful for contracts that need to handle funds for instance any financial dApps, such as decentralized applications (dApps), automated market makers (AMMs), or transfering funds from one chain to another, like we do with Avalanche Interchain Token Transfer. 
 
@@ -29,35 +31,58 @@ contract PayableExample {
 ```
 In this example, the receiveNative function is marked as payable, enabling it to accept the Native Token. The msg.value variable is used to add the amount of native token sent to the amountReceived state variable. This is a basic illustration, but it underscores how the payable keyword facilitates the handling of native token transfers within smart contracts.
 
-### deploy smart contract with payable function
+<Steps>
+<Step>
+
+### Deploy Contract with Payable Function
 
 ```bash
 forge create --rpc-url myblockchain --private-key $PK src/ICTT/01-transfer-funds/01-payable-function.sol:PayableExample
 ```
 
-And save the Deployed to address in an environment variable 
+</Step>
+<Step>
+
+### Save the Contract Address
+
 ```bash
 export PAYABLE_CONTRACT=0X..
 
 ```
 
-### Check amountReceived
+</Step>
+<Step>
+
+### Check `amountReceived`
+
 ```bash
 cast call --rpc-url myblockchain $PAYABLE_CONTRACT "amountReceived()(uint)"
 ```
 
-### Transfer Native Token to a Smart Contract
+</Step>
+<Step>
+
+### Transfer Native Token to the Contract
 
 Now let's use solidity to transfer funds to our PayableExample contract
+
 ```bash
 cast send --rpc-url myblockchain --private-key $PK $PAYABLE_CONTRACT "receiveNative()" --value 100000
 ```
 
-### Check amountReceived
+</Step>
+<Step>
+
+### Check `amountReceived`
 ```bash
 cast call --rpc-url myblockchain $PAYABLE_CONTRACT "amountReceived()(uint)"
 ```
 
+</Step>
+</Steps>
+
 Well done! You transfer native tokens to a Smart Contract.
 
-It's important to understand the distinction between Native Tokens and ERC-20 tokens. Native tokens, such as AVAX, ETH or DEX, are transferred directly to payable functions within the smart contract. This process is straightforward and involves sending the tokens to the contract's address, invoking the payable function. On the other hand, ERC-20 tokens require a different approach due to their standardized interface. We will cover that in the following sections.
+It's important to understand the distinction between Native Tokens and ERC-20 tokens. Native tokens, such as `AVAX` or `ETH`, are transferred directly to payable functions within the smart contract. This process is straightforward and involves sending the tokens to the contract's address, invoking the payable function. 
+
+On the other hand, ERC-20 tokens require a different approach due to their standardized interface. We will cover that in the following sections.

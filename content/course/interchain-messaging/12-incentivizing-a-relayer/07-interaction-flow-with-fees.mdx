@@ -5,7 +5,7 @@ updated: 2024-06-09
 authors: [andyvargtz]
 icon: Terminal
 ---
-
+import { Step, Steps } from 'fumadocs-ui/components/steps';
 
 We have all the Smart Contract 📜 set we can start sending incentivized Cross-Chain messages. Now let complete the flow 
 
@@ -14,47 +14,73 @@ We have all the Smart Contract 📜 set we can start sending incentivized Cross-
 - Approve the sender contract to spend ERC20 funds from the message sender address
 - Send the message
 
-## Deploy Sender Contract 
+<Steps>
+<Step>
+
+### Deploy Sender Contract 
 
 To deploy the sender contract run:
 
 ```bash
 forge create --rpc-url myblockchain --private-key $PK src/9-incentivize-relayer/senderWithFees.sol:SenderWithFeesOnCChain
 ```
-Save the sender contract address to an enviroment variable
+
+</Step>
+<Step>
+### Save the Sender Contract Address
 
 ```bash
 export SENDER_ADDRESS=0x...
 ```
-## Deploy Receiver Contract
+
+</Step>
+<Step>
+
+### Deploy Receiver Contract
 
 Now, deploy the receiver contract.
 
 ```bash
 forge create --rpc-url myblockchain --private-key $PK src/9-incentivize-relayer/receiverWithFees.sol:receiverWithFeesOnCChain
 ```
-Save the receiver contract address to an enviroment variable
+
+</Step>
+<Step>
+
+### Save the Receiver Contract Address
 
 ```bash
 export RECEIVER_ADDRESS=0x...
 ```
 
-## Approve ERC20 token expense
+</Step>
+<Step>
+
+### Approve ERC20 Token Expense
 
 👩 The Message Sender (User) requires to approve the Cross-Avalanche L1 dApp as a spender on the ERC20 contract to be used as fee. To do that lets use the function "approve" on our deployed FEE contract.
 
 ```bash
-//APPROVE OUR USER TO SPEND ERC20 
 cast send --rpc-url local-c --private-key $PK ERC20_fee_address "approve(address,uint256)" SENDER_ADDRESS 500000000000000
 ```
 
-## Send an incentivized message
+</Step>
+<Step>
+
+### Send an incentivized message
 
 ```bash
 cast send --rpc-url local-c --private-key $PK SENDER_ADDRESS "sendMessage(address, string, address)" $RECEIVER_ADDRESS, "Hello", $ERC20_fee_address
 ```
-## Verify message was received on Avalanche L1 
+
+</Step>
+<Step>
+
+### Verify message was received on Avalanche L1 
 
 ```bash
 cast call --rpc-url local-c RECEIVER_ADDRESS "lastMessage()(string)"
 ```
+
+</Step>
+</Steps>
