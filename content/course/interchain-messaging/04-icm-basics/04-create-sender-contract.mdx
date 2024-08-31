@@ -5,10 +5,13 @@ updated: 2024-05-31
 authors: [martineckardt]
 icon: Terminal
 ---
+import { Step, Steps } from 'fumadocs-ui/components/steps';
 
 Lets start by deploying our sender contract on C-Chain. It will be responsible for calling the the TeleporterMessenger contract, encoding our message and sending it to the destination chain. 
 
-## Read the Sender Contract
+<Steps>
+<Step>
+### Read the Sender Contract
 
 The following contract is located inside `src/0-send-receive` directory. Read through the contract below and and understand what is happening:
 
@@ -52,7 +55,10 @@ The key things to understand:
 - **No fees (Line 25):** In this exercise we are not providing any fees to the relayer for relaying the message. This is only possible since the relayer we are running here is configured to pick up any message even if it does not provide any rewards.
 - **Encoding the Message (Line 31):** The TeleporterMessageInput defines a message as an array of bytes. For now we will just simply encode the string with abi.encode(). In the future activities, you will see how we can encode multiple values of any type in that message.
 
-## Get destinationBlockchainID
+</Step>
+<Step>
+
+### Get destinationBlockchainID
 
 To get the blockchainID on our Avalanche L1 let's use the Avalanche-CLI built in feature with the command:
 
@@ -100,9 +106,17 @@ In the Details section of the output you will find something like this:
 +--------------------------------+-------------------------------------------------------------------------------------+
 ```
 
+</Step>
+<Step>
+
+### Replace `destinationBlockchainID`
+
 Replace the destinationBlockchainID in your sender code.
 
-## Deploy Sender Contract
+</Step>
+<Step>
+
+### Deploy Sender Contract
 
 To deploy a contract using Foundry use the following command:
 
@@ -110,8 +124,16 @@ To deploy a contract using Foundry use the following command:
 forge create --rpc-url local-c --private-key $PK src/0-send-receive/senderOnCChain.sol:SenderOnCChain
 ```
 
+</Step>
+<Step>
+
+### Save Sender Address
+
 Then save the sender contract address in an environment variable:
 
 ```bash
 export SENDER_ADDRESS="0x123..."
 ```
+
+</Step>
+</Steps>

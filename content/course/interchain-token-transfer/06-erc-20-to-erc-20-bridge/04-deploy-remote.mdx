@@ -5,10 +5,15 @@ updated: 2024-05-31
 authors: [ashucoder9]
 icon: Terminal
 ---
+import { Step, Steps } from 'fumadocs-ui/components/steps';
 
-## ERC20 Remote
 
 To ensure the wrapped token is bridged into the destination chain (in this case, C-Chain) you'll need to deploy a _remote_ contract that implements the `IERC20Bridge` interface, as well as inheriting the properties of `TeleporterTokenRemote`. In order for the bridged tokens to have all the normal functionality of a locally deployed ERC20 token, this remote contract must also inherit the properties of a standard `ERC20` contract.
+
+<Steps>
+<Step>
+
+### Get the Source Blockchain ID
 
 First, get the `Source Blockchain ID` in hexidecimal format, which in this example is the BlockchainID of your Avalanche L1, run:
 
@@ -16,23 +21,42 @@ First, get the `Source Blockchain ID` in hexidecimal format, which in this examp
 avalanche subnet describe myblockchain
 ```
 
-```bash
-export SUBNET_BLOCKCHAIN_ID_HEX=0x4d569bf60a38e3ab3e92afd016fe37f7060d7d63c44e3378f42775bf82a7642d
-```
-
 `Source Blockchain ID` is in the field: `Local Network BlockchainID (HEX)`.
 
-Do the same for the C-Chain:
+</Step>
+<Step>
 
-```zsh
+### Save the Source Blockchain ID
+
+```bash
+export SOURCE_BLOCKCHAIN_ID_HEX=0x4d569bf60a38e3ab3e92afd016fe37f7060d7d63c44e3378f42775bf82a7642d
+```
+
+</Step>
+<Step>
+
+### Get the Destination Blockchain ID
+
+```bash
 avalanche primary describe
 ```
 
 `Destination Blockchain ID` is in the field: `BlockchainID (HEX)`.
 
+
+</Step>
+<Step>
+
+### Save the Destination Blockchain ID
+
 ```bash
 export C_CHAIN_BLOCKCHAIN_ID_HEX=0x55e1fcfdde01f9f6d4c16fa2ed89ce65a8669120a86f321eef121891cab61241
 ```
+
+</Step>
+<Step>
+
+### Deploy the Remote Contract
 
 Using the (`forge create`)[https://book.getfoundry.sh/reference/forge/forge-create) command, we will deploy the [ERC20Remote.sol](./NativeTokenHome.sol] contract, passing in the following constructor arguments:
 
@@ -49,19 +73,30 @@ forge create --rpc-url myblockchain --private-key $PK lib/teleporter-token-bridg
 --constructor-args "(${TELEPORTER_REGISTRY_SUBNET}, ${FUNDED_ADDRESS}, ${C_CHAIN_BLOCKCHAIN_ID_HEX}, ${ERC20_HOME_BRIDGE_C_CHAIN})" "TOK" "TOK" 18
 ```
 
+</Step>
+<Step>
+
+### Save the Remote Contract Address
+
 Note the address the remote contract was "Deployed to".
 
 ```bash
-export ERC20_TOKEN_REMOTE_SUBNET=<"Deployed to" address>
+export ERC20_TOKEN_REMOTE_L1=<"Deployed to" address>
 ```
 
-## Register Remote Bridge with Home Bridge
+</Step>
+<Step>
+
+### Register Remote Bridge with Home Bridge
 
 After deploying the bridge contracts, you'll need to register the remote bridge by sending a dummy message using the `registerWithHome` method. This message includes details which inform the Home Bridge about your destination blockchain and bridge settings, eg. `initialReserveImbalance`.
 
 ```bash
 cast send --rpc-url myblockchain --private-key $PK $ERC20_TOKEN_REMOTE_SUBNET "registerWithHome((address, uint256))" "(0x0000000000000000000000000000000000000000, 0)"
 ```
+
+</Step>
+<Step>
 
 ### Approve tokens for the Home Bridge contract
 
@@ -70,3 +105,6 @@ You can increase/decrease the numbers here as per your requirements. (All values
 ```bash
 cast send --rpc-url local-c --private-key $PK $ERC20_HOME_C_CHAIN "approve(address, uint256)" $ERC20_HOME_BRIDGE_C_CHAIN 2000000000000000000000
 ```
+
+</Step>
+</Steps>
