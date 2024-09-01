@@ -7,6 +7,7 @@ import {
 import { buttonVariants } from './ui/button';
 import { Input } from './ui/input';
 
+
 const bufferToHex = (buffer: ArrayBufferLike): string => {
     return [...new Uint8Array(buffer)]
       .map((b) => b.toString(16).padStart(2, "0"))
@@ -14,8 +15,14 @@ const bufferToHex = (buffer: ArrayBufferLike): string => {
 }
 
 const checkSig = async (signature: string, publicKey: string, message: string) => {
-    let res = await bls.verify(signature, new TextEncoder().encode(message), publicKey);
-    return res
+    try {
+        let res = await bls.verify(signature, new TextEncoder().encode(message), publicKey);
+        return res
+      } catch (error) {
+        console.error(error);
+        return false;
+      }
+    
 }
 
 export const GenerateKeysButton: React.FC = () => {
@@ -29,10 +36,6 @@ export const GenerateKeysButton: React.FC = () => {
         setPrivKey(bufferToHex(privKey));
         setPubKey(pubKey);
         return { privKey, pubKey };
-    };
-
-    const copyToClipboard = (text: string) => {
-        navigator.clipboard.writeText(text);
     };
 
     return (
@@ -67,11 +70,9 @@ export const SignMessageButton: React.FC = () => {
 
     return (
         <div>
-            <p>🗝️Private Key</p>
-            <Input id="privatekey" placeholder="Enter private key to sign message with" onChange={(e) => setPrivKey(e.target.value)} />
-            <br />
-            <p>📝Message</p>
-            <Input id="message" placeholder="Enter message to sign" onChange={(e) => setMessage(e.target.value)} />
+            <Input id="privatekey" label="🗝️ Private Key" description="Enter private key to sign message with" placeholder="3a408d0..." onChange={(e) => setPrivKey(e.target.value)} />
+
+            <Input id="message"  label="📝 Message" description="Enter any Message you want to sign with the Private Key" placeholder="Hello" onChange={(e) => setMessage(e.target.value)} />
 
             <button className={buttonVariants()} onClick={signMessage} disabled={!privKey || !message}>
                 Sign Message
@@ -84,7 +85,7 @@ export const SignMessageButton: React.FC = () => {
     );
 }
 
-export const VerifySignatureButton: React.FC = () => {
+export const VerifySignatureButton: React.FC<{ aggregated?: boolean }> = ({ aggregated }) => {
 
     const [pubKey, setPubKey] = useState<string | null>(null);
     const [message, setMessage] = useState<string | null>(null);
@@ -106,14 +107,29 @@ export const VerifySignatureButton: React.FC = () => {
 
     return (
         <div>
-            <p>🔑Public Key</p>
-            <Input id="publickey" placeholder="Enter public key to verify signature" onChange={(e) => setPubKey(e.target.value)} />
-            <br />
-            <p>📝Message</p>
-            <Input id="message" placeholder="Enter message to verify" onChange={(e) => setMessage(e.target.value)} />
-            <br />
-            <p>🔏Signature</p>
-            <Input id="signature" placeholder="Enter signature to verify" onChange={(e) => setSignature(e.target.value)} />
+            <Input 
+                id="pubKey" 
+                label={`🔑 ${aggregated ? "Aggregated " : ""}Public Key`} 
+                description="Enter the Public Key that signed the Message." 
+                placeholder="8f65ab..." 
+                onChange={(e) => setPubKey(e.target.value)} 
+            />
+
+            <Input 
+                id="message" 
+                label="📝 Message" 
+                description="Enter the Message that was signed." 
+                placeholder="Hello" 
+                onChange={(e) => setMessage(e.target.value)} 
+            />
+
+            <Input 
+                id="signature" 
+                label={`🔏 ${aggregated ? "Aggregated " : ""}Signature`}
+                description="Enter the Signature of the Message." 
+                placeholder="8495e11..." 
+                onChange={(e) => setSignature(e.target.value)} 
+            />
 
             <button className={buttonVariants()} onClick={verifySignature} disabled={!signature || !pubKey || !message}>
                 Verify Signature
@@ -124,5 +140,96 @@ export const VerifySignatureButton: React.FC = () => {
             )}
         </div>
     );
+}
+
+
+export const AggregateSignaturesButton: React.FC = () => {
+
+    const [signature1, setSignature1] = useState<string | null>(null);
+    const [signature2, setSignature2] = useState<string | null>(null);
+    const [aggregatedSignature, setAggregatedSignature] = useState<string | null>(null);
+    const [showAggregatedSignature, setShowAggregatedSignature] = useState(false);
+
+    return (
+        <div>
+            <Input 
+                id="signature" 
+                label="🔏 First Signature" 
+                description="Enter the first Signature of the Message." 
+                placeholder="8495e11..." 
+                onChange={(e) => setSignature1(e.target.value)} 
+            />
+            <Input 
+                id="signature2" 
+                label="🔏 Second Signature" 
+                description="Enter the second Signature of the Message." 
+                placeholder="a3d1e34..." 
+                onChange={(e) => setSignature2(e.target.value)} 
+            />
+            <button className={buttonVariants()} onClick={() => {
+                 if (signature1 && signature2) {
+                    setAggregatedSignature(bufferToHex(bls.aggregateSignatures([signature1, signature2])));
+                    setShowAggregatedSignature(true);
+                }
+            }}>
+                Aggregate Signatures
+            </button>
+            
+
+            {showAggregatedSignature && (
+                <>
+                    {aggregatedSignature && <CodeBlock title="🔏 Aggregated Signature:" lang="bash" allowCopy={true}>
+                            <Pre>{aggregatedSignature}</Pre>
+                    </CodeBlock>}
+                </>
+            )}
+        </div>
+    );
+}
+
+export const AggregatePublicKeysButton: React.FC = () => {
+
+    const [pubKey1, setPubKey1] = useState<string | null>(null);
+    const [pubKey2, setPubKey2] = useState<string | null>(null);
+    const [aggregatedPubKey, setAggregatedPubKey] = useState<string | null>(null);
+    const [showAggregatedPubKey, setShowAggregatedPubKey] = useState(false);
+
+    return(
+        <div>
+            <Input
+                id="pubkey1"
+                label="🔑 First Public Key"
+                description='Enter the first Public Key to aggregate.'
+                placeholder="04ae67..."
+                onChange={(e) => setPubKey1(e.target.value)}
+
+            />
+            <Input
+                id="pubkey2"
+                label="🔑 Second Public Key"
+                description='Enter the second Public Key to aggregate.'
+                placeholder="04ae67..."
+                onChange={(e) => setPubKey2(e.target.value)}
+
+            />
+
+                <button className={buttonVariants()} onClick={() => {
+                     if (pubKey1 && pubKey2) {
+                        setAggregatedPubKey(bufferToHex(bls.aggregatePublicKeys([pubKey1, pubKey2])));
+                        setShowAggregatedPubKey(true);
+                    }
+                }}>
+                Aggregate Public Keys
+                </button>
+
+            {showAggregatedPubKey && (
+                <>
+                    {aggregatedPubKey && <CodeBlock title="🔑 Aggregated Public Key:" lang="bash" allowCopy={true}>
+                            <Pre>{aggregatedPubKey}</Pre>
+                    </CodeBlock>}
+                </>
+            )}
+        </div>
+    )
 }
 
