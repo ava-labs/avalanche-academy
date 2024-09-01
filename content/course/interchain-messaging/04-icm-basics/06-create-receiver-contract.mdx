@@ -5,10 +5,14 @@ updated: 2024-05-31
 authors: [martineckardt]
 icon: Terminal
 ---
+import { Step, Steps } from 'fumadocs-ui/components/steps';
 
 Now it's time to deploy our receiver contract on our Subnet. It will implement the callback for the TeleporterMessenger contract when the message is received, decoding our message and storing the last received string. 
 
-## Read the Receiver Contract
+<Steps>
+<Step>
+
+### Read the Receiver Contract
 
 The following contract is located inside `src/0-send-receive` directory. Read through the contract below and and understand what is happening:
 
@@ -35,7 +39,8 @@ contract ReceiverOnSubnet is ITeleporterReceiver {
         // Store the message.
         lastMessage = abi.decode(message, (string));
     }
-}```
+}
+```
 
 The key things to understand:
 
@@ -46,15 +51,27 @@ The key things to understand:
 - **Implementing receiveTeleporterMessage (L16):** We implement the function that will be called when the message is received. Please note that we are not checking who calls that function for now. So anyone can pretend to deliver messages for now.
 - **Decode message (L21):** We decode the message using abi.decode(message, (string)), which takes the bytes array as the first input and a tupel of the types of the encoded data in the message. Since our message only contains a single value, the tupel only has one value.
 
-## Deploy Receiver Contract
+</Step>
+<Step>
+
+### Deploy Receiver Contract
 
 To deploy a contract using Foundry use the following command:
 
 ```bash
 forge create --rpc-url myblockchain --private-key $PK src/0-send-receive/receiverOnSubnet.sol:ReceiverOnSubnet
 ```
+
+<Step>
+</Step>
+
+### Save Receiver Contract Address
+
 Then save the receiver contract address in an environment variable:
 
 ```bash
 export RECEIVER_ADDRESS="0x123..."
 ```
+
+</Step>
+</Steps>

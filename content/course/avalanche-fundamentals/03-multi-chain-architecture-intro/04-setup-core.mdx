@@ -6,33 +6,48 @@ authors: [ashucoder9]
 icon: Terminal
 ---
 
-
+import { Step, Steps } from 'fumadocs-ui/components/steps';
 
 To grasp the concept of the Avalanche L1s better, interact with some chains. To do that, we will use Core. Core is an all-in-one command center built for multi-chain systems. It supports Avalanche, Bitcoin, Ethereum, and all EVM-compatible blockchains. Core has a browser extension, a web wallet, and a mobile app. It is optimized for multiple chains and makes navigating between them easy.
 
-## Install Core Extension
+<Steps>
+<Step>
+
+### Install Core Extension
 
 import InstallCoreExtension from "@/content/common/core-wallet/install.mdx"
 
 <InstallCoreExtension />
 
-## Create a Wallet
+</Step>
+<Step>
 
-<Callout type="warn">We recommend using a separate wallet for testing and keeping your actual crypto funds, just to be sure.</Callout>
+### Create a Wallet
 
-Follow the steps in Core to create a wallet. Since we will be handling only valueless testnet tokens, we do not need to use cold storage.
+import CreateWallet from "@/content/common/core-wallet/create-wallet.mdx"
 
-## Switch to Testnet
+<CreateWallet />
+
+</Step>
+<Step>
+
+### Switch to Testnet
 
 import TestnetMode from "@/content/common/core-wallet/testnet-mode.mdx"
 
 <TestnetMode />
 
-## Get Testnet Tokens
+</Step>
+<Step>
+
+### Get Testnet Tokens
 
 import Faucet from "@/content/common/core-wallet/faucet.mdx"
 
 <Faucet />
+
+</Step>
+</Steps>
 
 ## Managing MetaMask & Core Extensions
 

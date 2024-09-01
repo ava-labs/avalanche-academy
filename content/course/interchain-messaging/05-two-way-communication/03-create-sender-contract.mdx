@@ -6,14 +6,37 @@ authors: [martineckardt]
 icon: Terminal
 ---
 
+import { Step, Steps } from 'fumadocs-ui/components/steps';
+
 Go ahead and deploy the sender contract on the C-Chain. 
+
+<Steps>
+<Step>
+
+### Adapt the Sender Contract
+
+Perform the changes described in the previous section.
+
+<Callout type="warn" title="Don't forget to replace the destinationBlockchainID with the one from your Avalanche L1!" />
+
+</Step>
+<Step>
+
+### Deploy the Sender Contract
 
 ```bash
 forge create --rpc-url local-c --private-key $PK src/1-send-roundtrip/senderOnCChain.sol:SenderOnCChain
 ```
 
-Then save the sender contract address in an environment variable:
+</Step>
+<Step>
+
+### Update the Sender Address
+
+Then overwrite the sender contract address in the environment variable issue the following command with the new address:
 
 ```bash
 export SENDER_ADDRESS="0x123..."
 ```
+</Step>
+</Steps>

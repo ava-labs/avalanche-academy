@@ -1,11 +1,13 @@
-import { ArrowUpRightIcon } from '@heroicons/react/20/solid';
+import { ArrowUpRightIcon, MessagesSquare } from 'lucide-react';
 import type { Metadata } from 'next';
 import { Card, Cards } from 'fumadocs-ui/components/card';
 import { DocsPage, DocsBody } from 'fumadocs-ui/page';
 import { notFound } from 'next/navigation';
-import { utils, type Page } from '@/utils/source';
+import { getPage, getPages, type Page } from '@/utils/source';
 import { createMetadata } from '@/utils/metadata';
-import IndexedDBComponent from '../../tracker'
+import IndexedDBComponent from '@/components/tracker'
+import { Callout } from 'fumadocs-ui/components/callout';
+import Comments from '@/components/comments';
 
 interface Param {
   slug: string[];
@@ -27,7 +29,7 @@ export default function Page({
 }: {
   params: Param;
 }): React.ReactElement {
-  const page = utils.getPage(params.slug);
+  const page = getPage(params.slug);
 
   if (!page) notFound();
 
@@ -45,24 +47,6 @@ export default function Page({
         header: (
           <div className="flex flex-col gap-6">
             <div className="grid grid-cols-3 text-sm gap-y-4 text-muted-foreground">
-              {/* 
-              <div>Author{page.data.authors.length > 1 ? "s" : ""}:</div>
-              <div className="col-span-2 flex flex-col gap-2">
-                {page.data.authors.map(author => (
-                  <Link
-                    key={author}
-                    href={`https://github.com/${author}`}
-                    className="text-foreground transition-colors flex flex-row items-center gap-2 group"
-                  >
-                    <img
-                      src={`https://github.com/${author}.png?size=16`}
-                      className="w-4 h-4 rounded-full border border-background group-hover:border-muted-foreground transition-colors"
-                    />
-                    <span className="flex-grow truncate">{author}</span>
-                  </Link>
-                ))}
-              </div>
-              */}
               <div>Updated:</div>
               <time dateTime={updatedISO} title={updatedISO} className="col-span-2 text-foreground">
                 {updatedHuman}
@@ -73,7 +57,7 @@ export default function Page({
         enabled: page.data.toc,
         footer: (
           <a
-            href={`https://github.com/ava-labs/avalanche-academy/blob/main/${path}`}
+            href={`https://github.com/ava-labs/avalanche-academy/blob/dev/${path}`}
             target="_blank"
             rel="noreferrer noopener"
             className="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground"
@@ -96,14 +80,16 @@ export default function Page({
         ) : (
           <page.data.exports.default />
         )}
+        {page.data.comments && (
+            <Callout title="" icon={<MessagesSquare stroke="#3752ac"/>}><Comments/></Callout>
+        )}
       </DocsBody>
     </DocsPage>
   );
 }
 
 function Category({ page }: { page: Page }): React.ReactElement {
-  const filtered = utils
-    .getPages()
+  const filtered = getPages()
     .filter(
       (item) =>
         item.file.dirname === page.file.dirname && item.file.name !== 'index',
@@ -124,7 +110,7 @@ function Category({ page }: { page: Page }): React.ReactElement {
 }
 
 export function generateMetadata({ params }: { params: Param }): Metadata {
-  const page = utils.getPage(params.slug);
+  const page = getPage(params.slug);
 
   if (!page) notFound();
 
@@ -146,7 +132,7 @@ export function generateMetadata({ params }: { params: Param }): Metadata {
     title: page.data.title,
     description,
     openGraph: {
-      url: `/docs/${page.slugs.join('/')}`,
+      url: `/course/${page.slugs.join('/')}`,
       images: image,
     },
     twitter: {
@@ -156,7 +142,7 @@ export function generateMetadata({ params }: { params: Param }): Metadata {
 }
 
 export function generateStaticParams(): Param[] {
-  return utils.getPages().map<Param>((page) => ({
+  return getPages().map<Param>((page) => ({
     slug: page.slugs,
   }));
 }

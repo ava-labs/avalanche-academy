@@ -6,16 +6,31 @@ authors: [martineckardt]
 icon: Terminal
 ---
 
+import { Step, Steps } from 'fumadocs-ui/components/steps';
+
 Alright, now let's call our Calculators:
+
+<Steps>
+<Step>
+
+### Call the Sender Contract
 
 ```bash 
 cast send --rpc-url local-c --private-key $PK $SENDER_ADDRESS "sendAddMessage(address, uint256, uint256)" $RECEIVER_ADDRESS 2 3
 ```
 
-## Verify Message Receipt
+We need to call the `sendAddMessage` function on the sender contract with the address of the receiver contract and the two numbers we want to add.
 
-To check wether the message has been received, we can call the `result_num()` function on the sender contract. 
+</Step>
+<Step>
+
+### Verify Message Receipt
 
 ```bash
 cast call --rpc-url myblockchain $RECEIVER_ADDRESS "result_num()(uint)"
 ```
+
+To check wether the message has been received, we can call the `result_num()` function on the sender contract. 
+
+</Step>
+</Steps>

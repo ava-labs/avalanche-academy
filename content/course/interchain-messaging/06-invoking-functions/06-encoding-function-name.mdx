@@ -5,6 +5,7 @@ updated: 2024-05-31
 authors: [martineckardt]
 icon: BookOpen
 ---
+import { Step, Steps } from 'fumadocs-ui/components/steps';
 
 Great work. We can now pack multiple values into a message. In this section, we will learn how to encode the function name and depending on that its parameters in the message. Let's imagine a more advanced calculator that not only has a single `add` function but also a `concatenate` function, that lets you concatenate two strings. 
 
@@ -165,33 +166,50 @@ if (actionType == CalculatorAction.add) {
 
 For the `add` function we decode two numbers and for the `concatenate` function we decode two strings. After the decoding we call the appropriate internal function.
 
-## Deploy the Contracts
+## Try it Out
 
 Deploy the sender and receiver contracts and try out the `add` and `concatenate` functions. 
+
+<Steps>
+<Step>
+
+### Deploy the Sender Contract
 
 ```bash
 forge create --rpc-url local-c --private-key $PK src/2b-invoking-functions/CalculatorSenderOnCChain.sol:CalculatorSenderOnCChain
 ```
 
-Save the sender address:
+</Step>
+<Step>
+
+### Save the Sender Address:
 
 ```bash
 export SENDER_ADDRESS=0x123...
 ```
 
-Deploy the receiver contract:
+</Step>
+<Step>
+
+### Deploy the Receiver Contract:
 
 ```bash
 forge create --rpc-url myblockchain --private-key $PK src/2b-invoking-functions/CalculatorReceiverOnAvalanche L1.sol:CalculatorReceiverOnAvalanche L1
 ```
 
-Save the receiver address:
+</Step>
+<Step>
+
+### Save the Receiver address:
 
 ```bash
 export RECEIVER_ADDRESS=0x123...
 ```
 
-## Call the Functions
+</Step>
+<Step>
+
+### Call the Functions
 
 Now you can call the `sendAddMessage` and `sendConcatenateMessage` functions on the sender contract and see the results on the receiver contract. 
 
@@ -199,8 +217,14 @@ Now you can call the `sendAddMessage` and `sendConcatenateMessage` functions on 
 cast send --rpc-url local-c --private-key $PK $SENDER_ADDRESS "sendAddMessage(uint, uint)" 1 2
 ```
 
-And verify the result:
+</Step>
+<Step>
+
+### Verify the Result:
 
 ```bash
 cast call --rpc-url myblockchain $RECEIVER_ADDRESS "result_num()(uint)"
 ```
+
+</Step>
+</Steps>

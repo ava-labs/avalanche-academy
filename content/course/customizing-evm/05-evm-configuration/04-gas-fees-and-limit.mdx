@@ -20,7 +20,9 @@ The main goal of setting and enforcing computational cost via the gas, is to pre
 
 ## Gas Price and Gas Limit
 
-**Gas Price:** Each transaction specifies the gas price and gas limit. The gas price is the amount of the Avalanche L1's Native Token that the sender is willing to spend on each unit of gas, usually denoted in 'gwei' (1 Native Token = 1,000,000,000 gwei). A sucessful, well designed gas mechanism, will adapt the gas price according to the network activity in order to actually protect the network from spam.
+Each transaction specifies the gas price and gas limit.
+
+**Gas Price:** The gas price is the amount of the Avalanche L1's Native Token that the sender is willing to spend on each unit of gas, usually denoted in 'gwei' (1 Native Token = 1,000,000,000 gwei). A sucessful, well designed gas mechanism, will adapt the gas price according to the network activity in order to actually protect the network from spam.
 
 **Gas Limit:** The gas limit is the maximum amount of gas the sender is willing to use in the transaction. A primary reason for introducing the gas limit was to prevent infinite loops in contract execution. In a Turing-complete language like Solidity (main programming language in EVM), it's entirely possible to write a contract with an infinite loop, either accidentally or intentionally. In a traditional computing environment, an infinite loop might be a nuisance, but in a decentralized blockchain, it could have disastrous consequences, essentially causing the entire network to hang as it attempts to process a never-ending transaction. The gas limit prevents this. When the gas consumed by a transaction reaches the gas limit, execution stops.
 

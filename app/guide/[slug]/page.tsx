@@ -5,8 +5,10 @@ import { InlineTOC } from 'fumadocs-ui/components/inline-toc';
 import { guide } from '@/utils/source';
 import { createMetadata } from '@/utils/metadata';
 import { buttonVariants } from '@/components/ui/button';
-import { ArrowUpRightIcon } from 'lucide-react';
-//import { Control } from '@/app/(home)/blog/[slug]/page.client';
+import { ArrowUpRightIcon, MessagesSquare } from 'lucide-react';
+import { SiX } from '@icons-pack/react-simple-icons';
+import { Callout } from 'fumadocs-ui/components/callout';
+import Comments from '@/components/comments';
 
 interface Param {
     slug: string;
@@ -52,8 +54,11 @@ export default function Page({
             </div>
             <article className="container grid grid-cols-1 px-0 py-8 lg:grid-cols-[2fr_1fr] lg:px-4">
                 <div className="prose p-4">
-                    <InlineTOC items={page.data.exports.toc} />
+                    {page.data.exports.toc.length > 0 ? <InlineTOC items={page.data.exports.toc} /> : null} 
                     <page.data.exports.default />
+                    {page.data.comments && (
+                        <Callout title="" icon={<MessagesSquare stroke="#3752ac"/>}><Comments/></Callout>
+                    )}
                 </div>
                 <div className="flex flex-col gap-4 border-l p-4 text-sm">
                     <div>
@@ -62,20 +67,18 @@ export default function Page({
                             {page.data.authors.map(author => (
                                 <Link
                                     key={author}
-                                    href={`https://github.com/${author}`}
+                                    href={`https://x.com/${author}`}
+                                    target='_blank'
                                     className="text-foreground transition-colors flex flex-row items-center gap-2 group"
                                 >
-                                    <img
-                                        src={`https://github.com/${author}.png?size=16`}
-                                        className="w-4 h-4 rounded-full border border-background group-hover:border-muted-foreground transition-colors"
-                                    />
+                                    <SiX size={12} />
                                     <span className="flex-grow truncate">{author}</span>
                                 </Link>
                             ))}
                         </div>
                     </div>
                     <div>
-                        <p className="mb-1 text-sm text-muted-foreground">At</p>
+                        <p className="mb-1 text-sm text-muted-foreground">On</p>
                         <p className="font-medium">
                             {new Date(page.data.date ?? page.file.name).toDateString()}
                         </p>
