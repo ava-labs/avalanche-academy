@@ -2,9 +2,7 @@
   "title": "customizing-evm",
   "root": true,
   "pages": [
-    "---Customizing the EVM---",
     "index",
-    "...01-intro",
     "---Intro to EVM & Precompiles---",
     "...02-intro-to-evm",
     "---Development Environment Setup---",
