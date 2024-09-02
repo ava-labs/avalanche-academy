@@ -2,7 +2,7 @@ import { type BaseLayoutProps, type DocsLayoutProps } from 'fumadocs-ui/layout';
 import { pageTree } from '@/utils/source';
 import { RootToggle } from 'fumadocs-ui/components/layout/root-toggle';
 import { Title } from '@/app/layout.client';
-import { BlocksIcon, MailIcon, SproutIcon, SquareStackIcon, ArrowLeftRight } from 'lucide-react';
+import { MailIcon, SquareStackIcon, ArrowLeftRight, SquareIcon, SquareCode, Triangle } from 'lucide-react';
 
 export const baseOptions: BaseLayoutProps = {
   githubUrl: 'https://github.com/ava-labs/avalanche-academy',
@@ -38,9 +38,15 @@ export const docsOptions: DocsLayoutProps = {
       <RootToggle
         options={[
           {
+            title: 'Blockchain Fundamentals',
+            description: '',
+            icon: <SquareIcon />,
+            url: '/course/blockchain-fundamentals',
+          },
+          {
             title: 'Avalanche Fundamentals',
             description: '',
-            icon: <SproutIcon />,
+            icon: <Triangle />,
             url: '/course/avalanche-fundamentals',
           },
           {
@@ -64,7 +70,7 @@ export const docsOptions: DocsLayoutProps = {
           {
             title: 'Customizing EVM',
             description: '',
-            icon: <BlocksIcon />,
+            icon: <SquareCode />,
             url: '/course/customizing-evm',
           },
         ]}

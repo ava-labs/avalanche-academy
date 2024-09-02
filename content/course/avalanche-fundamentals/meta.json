@@ -2,9 +2,7 @@
   "title": "avalanche-fundamentals",
   "root": true,
   "pages": [
-    "---Avalanche Fundamentals---",
     "index",
-    "...01-intro",
     "---Primer on Avalanche Consensus---",
     "...02-avalanche-consensus-intro",
     "---Multi-Chain Architecture---",

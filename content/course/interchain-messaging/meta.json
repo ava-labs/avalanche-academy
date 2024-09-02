@@ -2,9 +2,7 @@
   "title": "Interchain Messaging",
   "root": true,
   "pages": [
-    "---Interchain Messaging---",
     "index",
-    "...01-intro",
     "---Interoperability between Blockchains---",
     "...02-interoperability",
     "---Avalanche Starter Kit---",
