@@ -8,6 +8,10 @@ import { createMetadata } from '@/utils/metadata';
 import IndexedDBComponent from '@/components/tracker'
 import { Callout } from 'fumadocs-ui/components/callout';
 import Comments from '@/components/comments';
+import Instructors from '@/components/instructor';
+import Link from 'next/link';
+import { buttonVariants } from '@/components/ui/button';
+import { cn } from '@/utils/cn';
 
 interface Param {
   slug: string[];
@@ -44,26 +48,38 @@ export default function Page({
       toc={page.data.exports.toc}
       lastUpdate={page.data.exports.lastModified}
       tableOfContent={{
-        header: (
+        enabled: true,
+        footer: (
           <div className="flex flex-col gap-6">
+            <div className='flex flex-col gap-y-4 text-sm text-muted-foreground'>
+              <div>Instructors:</div>
+              <Instructors names={["Martin Eckardt", "Andrea Vargas", "Ash"]}/>
+            </div>
+
+            <Link href="https://t.me/avalancheacademy"
+              target='_blank'
+              className={cn(buttonVariants({ size: 'lg', variant: 'secondary' }))}
+            >
+              Join Telegram Course Chat
+            </Link>
+            
             <div className="grid grid-cols-3 text-sm gap-y-4 text-muted-foreground">
               <div>Updated:</div>
               <time dateTime={updatedISO} title={updatedISO} className="col-span-2 text-foreground">
                 {updatedHuman}
               </time>
             </div>
-          </div>
-        ),
-        enabled: page.data.toc,
-        footer: (
-          <a
+
+            <a
             href={`https://github.com/ava-labs/avalanche-academy/blob/dev/${path}`}
             target="_blank"
             rel="noreferrer noopener"
             className="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground"
-          >
-            Edit on Github <ArrowUpRightIcon className="size-5" />
-          </a>
+            >
+              Edit on Github <ArrowUpRightIcon className="size-5" />
+            </a>
+          </div>
+
         ),
       }}
     >

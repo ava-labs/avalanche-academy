@@ -18,7 +18,7 @@ const instructors: Instructor[] = [
     },
     {
         name: "Andrea Vargas",
-        title: "Senior Developer Relations Engineer",
+        title: "Sr. Developer Relations Engineer",
 
         twitter: "https://x.com/Andyvargtz",
         linkedin: "https://www.linkedin.com/in/andyvargtz/",
@@ -34,7 +34,7 @@ const instructors: Instructor[] = [
     }
 ];
 
-function getInstructors(names:string[]) {
+export function getInstructorsByNames(names:string[]) : Instructor[] {
     return instructors.filter((instructor) => names.includes(instructor.name));
 }
 
