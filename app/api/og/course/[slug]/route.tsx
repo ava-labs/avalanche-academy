@@ -41,6 +41,13 @@ function OG({
   description: string;
   course: Course;
 }): React.ReactElement {
+  const truncateText: React.CSSProperties = {
+    overflow: 'hidden',
+    textOverflow: 'ellipsis',
+    display: '-webkit-box',
+    WebkitBoxOrient: 'vertical',
+  };
+  
   return (
     <div
       style={{
@@ -78,7 +85,7 @@ function OG({
       <div
         style={{
           display: 'flex',
-          flexWrap: 'wrap',
+          flexDirection: 'column',
           padding: '20px 50px',
           margin: '0 42px',
           fontSize: 20,
@@ -87,10 +94,11 @@ function OG({
           backgroundColor: 'black',
           color: '#737373',
           lineHeight: 1.4,
+          overflow: 'hidden',
         }}
       >
-        <span style={{ margin: '0 0 20px 0', color: '#fff', fontSize: 26, }}>{title}</span>
-        {description}
+        <span style={{ ...truncateText, WebkitLineClamp: 2, margin: '0 0 20px 0', color: '#fff', fontSize: 26, }}>{title}</span>
+        <span style={{ ...truncateText, WebkitLineClamp: 3}}>{description}</span>
         <br />
       </div>
     </div>
