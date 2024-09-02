@@ -2,9 +2,7 @@
   "title": "blockchain-fundamentals",
   "root": true,
   "pages": [
-    "---Blockchain Fundamentals---",
     "index",
-    "...01-intro",
     "---What is a Blockchain?---",
     "...02-what-is-a-blockchain",
     "---Payments---",
