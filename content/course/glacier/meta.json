@@ -1,0 +1,16 @@
+{
+    "title": "Glacier",
+    "root": true,
+    "pages": [
+      "index",
+     "---Glacier Overview---",
+     "...02-glacier-overview",
+     "---Environment Setup---",
+      "...03-environment-setup",
+     "---Build an ERC-20 Token Balance App---",
+     "---Build a Basic Wallet---",
+     "---Build a Basic Block Explorer---"
+
+    ]
+  }
+  

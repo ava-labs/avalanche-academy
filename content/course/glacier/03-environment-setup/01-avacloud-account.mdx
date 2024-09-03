@@ -1,0 +1,48 @@
+---
+title: Create a Glacier API Key
+description: Learn about the Glacier API and SDK.
+updated: 2024-09-03
+authors: [owenwahlgren]
+icon: Book
+---
+import { Step, Steps } from 'fumadocs-ui/components/steps';
+
+
+## Get a Glacier API Key
+
+In order to utilize your accounts rate limits, you will need to make API requests with an API key. You can generate API Keys from the [AvaCloud portal](https://app.avacloud.io/glacier-api/).
+
+<Steps>
+
+<Step>
+Create an account on [AvaCloud](https://avacloud.io).
+</Step>
+
+<Step>
+Click on the **["Web3 Data API" tab](https://app.avacloud.io/glacier-api/)**.
+![](/course-images/glacier/create-api-key.png)
+</Step>
+
+<Step>
+Click **"+ Add API Key"** and create a new name for your API key.
+![](/course-images/glacier/name-api-key.png)
+</Step>
+
+<Step>
+**Save your API key** in a secure location. We will need it later
+![](/course-images/glacier/grab-api-key.png)
+</Step>
+
+</Steps>
+
+After generating the API keys the AvaCloud page should look like this:
+![](/course-images/glacier/final-api-key.png)
+
+Once you've created and retrieved that, you will be able to make authenticated queries by passing in your API key in the x-glacier-api-key header of your HTTP request.
+
+An example curl request can be found below:
+
+```bash
+curl -H "Content-Type: Application/json" -H "x-glacier-api-key: your_api_key" \
+  "https://glacier-api.avax.network/v1/chains"
+```

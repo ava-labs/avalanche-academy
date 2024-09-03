@@ -53,7 +53,7 @@ export default function Page({
           <div className="flex flex-col gap-6">
             <div className='flex flex-col gap-y-4 text-sm text-muted-foreground'>
               <div>Instructors:</div>
-              <Instructors names={["Martin Eckardt", "Andrea Vargas", "Ash"]}/>
+              <Instructors names={["Martin Eckardt", "Andrea Vargas", "Ash", "Owen Wahlgren"]}/>
             </div>
 
             <Link href="https://t.me/avalancheacademy"

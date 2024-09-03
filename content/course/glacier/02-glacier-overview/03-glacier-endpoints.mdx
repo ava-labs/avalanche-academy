@@ -1,0 +1,366 @@
+---
+title: Glacier API Endpoints
+description: Learn the different API endpoints of Glacier
+updated: 2024-09-03
+authors: [owenwahlgren]
+icon: Book
+---
+
+
+### EVM Endpoints
+
+<Accordions>
+<Accordion title="Chains">
+- [List All Chains](https://glacier.docs.avacloud.io/reference/supportedchains)
+```bash
+curl --request GET \
+     --url https://glacier-api.avax.network/v1/chains \
+     --header 'accept: application/json'
+```
+- [Get Chain Information](https://glacier.docs.avacloud.io/reference/getchaininfo)
+```bash
+curl --request GET \
+     --url https://glacier-api.avax.network/v1/chains/{chainId} \
+     --header 'accept: application/json'
+```
+</Accordion>
+
+<Accordion title="Blocks">
+- [List Latest Blocks](https://glacier.docs.avacloud.io/reference/getlatestblocks)
+```bash
+curl --request GET \
+     --url https://glacier-api.avax.network/v1/chains/{chainId}/blocks \
+     --header 'accept: application/json'
+```
+- [Get Block Information](https://glacier.docs.avacloud.io/reference/getblock)
+```bash
+curl --request GET \
+     --url https://glacier-api.avax.network/v1/chains/{chainId}/blocks/{blockId} \
+     --header 'accept: application/json'
+``` 
+
+</Accordion>
+
+<Accordion title="Transactions">
+- [Get Deployment Transaction](https://glacier.docs.avacloud.io/reference/getdeploymenttransaction)
+```bash
+curl --request GET \
+     --url https://glacier-api.avax.network/v1/chains/{chainId}/contracts/{address}/transactions:getDeployment \
+     --header 'accept: application/json'
+```
+- [List Deployed Contracts](https://glacier.docs.avacloud.io/reference/listcontractdeployments)
+```bash
+curl --request GET \
+     --url https://glacier-api.avax.network/v1/chains/{chainId}/contracts/{address}/deployments \
+     --header 'accept: application/json'
+```
+- [List ERC Transfers](https://glacier.docs.avacloud.io/reference/listtransfers)
+```bash
+curl --request GET \
+     --url https://glacier-api.avax.network/v1/chains/{chainId}/tokens/{address}/transfers \
+     --header 'accept: application/json'
+```
+
+- [List Transactions](https://glacier.docs.avacloud.io/reference/listtransactions)
+```bash
+curl --request GET \
+     --url https://glacier-api.avax.network/v1/chains/{chainId}/addresses/{address}/transactions \
+     --header 'accept: application/json'
+```
+
+- [List Native Transactions](https://glacier.docs.avacloud.io/reference/listnativetransactions)
+```bash
+curl --request GET \
+     --url https://glacier-api.avax.network/v1/chains/{chainId}/addresses/{address}/transactions:listNative \
+     --header 'accept: application/json'
+```
+
+- [List ERC-20 Transfers](https://glacier.docs.avacloud.io/reference/listerc20transactions)
+```bash
+curl --request GET \
+     --url https://glacier-api.avax.network/v1/chains/{chainId}/addresses/{address}/transactions:listErc20 \
+     --header 'accept: application/json'
+```
+
+- [List ERC-721 Transfers](https://glacier.docs.avacloud.io/reference/listerc721transactions)
+```bash
+curl --request GET \
+     --url https://glacier-api.avax.network/v1/chains/{chainId}/addresses/{address}/transactions:listErc721 \
+     --header 'accept: application/json'
+```
+
+- [List ERC-1155 Transfers](https://glacier.docs.avacloud.io/reference/listerc1155transactions)
+```bash
+curl --request GET \
+     --url https://glacier-api.avax.network/v1/chains/{chainId}/addresses/{address}/transactions:listErc1155 \
+     --header 'accept: application/json'
+```
+- [List Internal Transactions](https://glacier.docs.avacloud.io/reference/listinternaltransactions)
+```bash
+curl --request GET \
+     --url https://glacier-api.avax.network/v1/chains/{chainId}/addresses/{address}/transactions:listInternals \
+     --header 'accept: application/json'
+```
+
+- [Get Transaction](https://glacier.docs.avacloud.io/reference/gettransaction)
+```bash
+curl --request GET \
+     --url https://glacier-api.avax.network/v1/chains/{chainId}/transactions/{txHash} \
+     --header 'accept: application/json'
+```
+
+- [List Transactions For a Block](https://glacier.docs.avacloud.io/reference/gettransactionsforblock)
+```bash
+curl --request GET \
+     --url https://glacier-api.avax.network/v1/chains/{chainId}/blocks/{blockId}/transactions \
+     --header 'accept: application/json'
+```
+
+- [List Latest Transactions](https://glacier.docs.avacloud.io/reference/listlatesttransactions)
+```bash
+curl --request GET \
+     --url https://glacier-api.avax.network/v1/chains/{chainId}/transactions \
+     --header 'accept: application/json'
+```
+</Accordion>
+
+<Accordion title="Balances">
+- [Get Native Token Balance](https://glacier.docs.avacloud.io/reference/getnativebalance)
+```bash
+curl --request GET \
+     --url https://glacier-api.avax.network/v1/chains/{chainId}/addresses/{address}/balances:getNative \
+     --header 'accept: application/json'
+```
+- [List ERC-20 Balances](https://glacier.docs.avacloud.io/reference/listerc20balances)
+```bash
+curl --request GET \
+     --url https://glacier-api.avax.network/v1/chains/{chainId}/addresses/{address}/balances:listErc20 \
+     --header 'accept: application/json'
+```
+- [List ERC-721 Balances](https://glacier.docs.avacloud.io/reference/listerc721balances)
+```bash
+curl --request GET \
+     --url https://glacier-api.avax.network/v1/chains/{chainId}/addresses/{address}/balances:listErc721 \
+     --header 'accept: application/json'
+```
+- [List ERC-1155 Balances](https://glacier.docs.avacloud.io/reference/listerc1155balances)
+```bash
+curl --request GET \
+     --url https://glacier-api.avax.network/v1/chains/{chainId}/addresses/{address}/balances:listErc1155 \
+     --header 'accept: application/json'
+```
+- [List Collectible (ERC-721 and ERC-1155) Balances](https://glacier.docs.avacloud.io/reference/listcollectiblebalances)
+```bash
+curl --request GET \
+     --url https://glacier-api.avax.network/v1/chains/{chainId}/addresses/{address}/balances:listCollectibles \
+     --header 'accept: application/json'
+```
+</Accordion>
+
+<Accordion title="Contracts">
+- [Get Contract Metadata](https://glacier.docs.avacloud.io/reference/getcontractmetadata)
+```bash
+curl --request GET \
+     --url https://glacier-api.avax.network/v1/chains/{chainId}/addresses/{address} \
+     --header 'accept: application/json'
+```
+</Accordion>
+
+<Accordion title="NFTs">
+- [Reindex NFT Metadata](https://glacier.docs.avacloud.io/reference/reindexnft)
+```bash
+curl --request POST \
+     --url https://glacier-api.avax.network/v1/chains/{chainId}/nfts/collections/{address}/tokens/tokenId:reindex \
+     --header 'accept: application/json'
+```
+- [List Tokens](https://glacier.docs.avacloud.io/reference/listtokens)
+```bash
+curl --request GET \
+     --url https://glacier-api.avax.network/v1/chains/{chainId}/nfts/collections/{address}/tokens \
+     --header 'accept: application/json'
+```
+- [Get Token Details](https://glacier.docs.avacloud.io/reference/gettokendetails)
+```bash
+curl --request GET \
+     --url https://glacier-api.avax.network/v1/chains/{chainId}/nfts/collections/{address}/tokens/tokenId \
+     --header 'accept: application/json'
+```
+
+</Accordion>
+
+</Accordions>
+
+
+
+### Avalanche Primary Network Endpoints
+
+<Accordions>
+<Accordion title="Network, Chains, and L1s">
+- [Get Chain Interactions for Addresses](https://glacier.docs.avacloud.io/reference/getchainidsforaddresses)
+```bash
+curl --request GET \
+     --url https://glacier-api.avax.network/v1/networks/{network}/addresses:listChainIds \
+     --header 'accept: application/json'
+```
+
+- [Get Network Details](https://glacier.docs.avacloud.io/reference/getnetworkdetails)
+```bash
+curl --request GET \
+     --url https://glacier-api.avax.network/v1/networks/{network} \
+     --header 'accept: application/json'
+```
+- [List Blockchains](https://glacier.docs.avacloud.io/reference/listblockchains)
+```bash
+curl --request GET \
+     --url https://glacier-api.avax.network/v1/networks/{network}/blockchains \
+     --header 'accept: application/json'
+```
+
+- [List Subnets](https://glacier.docs.avacloud.io/reference/listsubnets)
+```bash
+curl --request GET \
+     --url https://glacier-api.avax.network/v1/networks/mainnet/subnets \
+     --header 'accept: application/json'
+```
+- [Get Subnet Details by ID](https://glacier.docs.avacloud.io/reference/getsubnetbyid)
+```bash
+curl --request GET \
+     --url https://glacier-api.avax.network/v1/networks/mainnet/subnets/{subnetId} \
+     --header 'accept: application/json'
+```
+</Accordion>
+
+<Accordion title="Validators and Delegators">
+- [List Validators](https://glacier.docs.avacloud.io/reference/listvalidators)
+```bash
+curl --request GET \
+     --url https://glacier-api.avax.network/v1/networks/mainnet/validators \
+     --header 'accept: application/json'
+```
+- [Get Single Validator Details](https://glacier.docs.avacloud.io/reference/getsinglevalidatordetails)
+```bash
+curl --request GET \
+     --url https://glacier-api.avax.network/v1/networks/mainnet/validators/{nodeId} \
+     --header 'accept: application/json'
+```
+- [List Delegators](https://glacier.docs.avacloud.io/reference/listdelegators)
+```bash
+curl --request GET \
+     --url https://glacier-api.avax.network/v1/networks/mainnet/delegators \
+     --header 'accept: application/json'
+```
+</Accordion>
+
+<Accordion title="Blocks">
+- [Get Block](https://glacier.docs.avacloud.io/reference/getblockbyid)
+```bash
+curl --request GET \
+     --url https://glacier-api.avax.network/v1/networks/mainnet/blockchains/11111111111111111111111111111111LpoYY/blocks/{blockId} \
+     --header 'accept: application/json'
+```
+- [List Blocks Proposed by Node](https://glacier.docs.avacloud.io/reference/listprimarynetworkblocksbynodeid)
+```bash
+curl --request GET \
+     --url https://glacier-api.avax.network/v1/networks/mainnet/blockchains/11111111111111111111111111111111LpoYY/nodes/{nodeId}/blocks \
+     --header 'accept: application/json'
+```
+
+- [List Latest Blocks](https://glacier.docs.avacloud.io/reference/listlatestprimarynetworkblocks)
+```bash
+curl --request GET \
+     --url https://glacier-api.avax.network/v1/networks/mainnet/blockchains/11111111111111111111111111111111LpoYY/blocks \
+     --header 'accept: application/json'
+```
+</Accordion>
+
+<Accordion title="Vertices">
+- [List Vertices](https://glacier.docs.avacloud.io/reference/listlatestxchainvertices)
+```bash
+curl --request GET \
+     --url https://glacier-api.avax.network/v1/networks/mainnet/blockchains/2oYMBNV4eNHyqk2fjjV5nVQLDbtmNJzq5s3qs3Lo6ftnC6FByM/vertices \
+     --header 'accept: application/json'
+```
+- [Get Vertex](https://glacier.docs.avacloud.io/reference/getvertexbyhash)
+```bash
+curl --request GET \
+     --url https://glacier-api.avax.network/v1/networks/mainnet/blockchains/2oYMBNV4eNHyqk2fjjV5nVQLDbtmNJzq5s3qs3Lo6ftnC6FByM/vertices/vertexHash \
+     --header 'accept: application/json'
+```
+- [List Vertices by Height](https://glacier.docs.avacloud.io/reference/getvertexbyheight)
+```bash
+curl --request GET \
+     --url https://glacier-api.avax.network/v1/networks/mainnet/blockchains/2oYMBNV4eNHyqk2fjjV5nVQLDbtmNJzq5s3qs3Lo6ftnC6FByM/vertices:listByHeight \
+     --header 'accept: application/json'
+```
+</Accordion>
+
+<Accordion title="Transactions">
+- [Get Transaction](https://glacier.docs.avacloud.io/reference/gettxbyhash)
+```bash
+curl --request GET \
+     --url https://glacier-api.avax.network/v1/networks/{network}/blockchains/{blockchainId}/transactions/{txHash} \
+     --header 'accept: application/json'
+```
+- [List Latest Transactions](https://glacier.docs.avacloud.io/reference/listlatestprimarynetworktransactions)
+```bash
+curl --request GET \
+     --url https://glacier-api.avax.network/v1/networks/{network}/blockchains/{blockchainId}/transactions \
+     --header 'accept: application/json'
+```
+- [List Staking Transactions](https://glacier.docs.avacloud.io/reference/listactiveprimarynetworkstakingtransactions)
+```bash
+curl --request GET \
+     --url https://glacier-api.avax.network/v1/networks/mainnet/blockchains/11111111111111111111111111111111LpoYY/transactions:listStaking \
+     --header 'accept: application/json'
+```
+
+- [List Asset Transactions](https://glacier.docs.avacloud.io/reference/listassettransactions)
+```bash
+curl --request GET \
+     --url https://glacier-api.avax.network/v1/networks/mainnet/blockchains/2oYMBNV4eNHyqk2fjjV5nVQLDbtmNJzq5s3qs3Lo6ftnC6FByM/assets/{assetId}/transactions \
+     --header 'accept: application/json'
+```
+
+</Accordion>
+
+<Accordion title="Balances and UTXOs">
+- [List UTXOs](https://glacier.docs.avacloud.io/reference/getutxosbyaddresses)
+```bash
+curl --request GET \
+     --url https://glacier-api.avax.network/v1/networks/mainnet/blockchains/11111111111111111111111111111111LpoYY/utxos \
+     --header 'accept: application/json'
+```
+- [Get Balances](https://glacier.docs.avacloud.io/reference/getbalancesbyaddresses)
+```bash
+curl --request GET \
+     --url https://glacier-api.avax.network/v1/networks/mainnet/blockchains/11111111111111111111111111111111LpoYY/balances \
+     --header 'accept: application/json'
+```
+</Accordion>
+
+<Accordion title="Rewards">
+- [List Pending Rewards](https://glacier.docs.avacloud.io/reference/listpendingprimarynetworkrewards)
+```bash
+curl --request GET \
+     --url https://glacier-api.avax.network/v1/networks/mainnet/rewards:listPending \
+     --header 'accept: application/json'
+```
+- [List Historical Rewards](https://glacier.docs.avacloud.io/reference/listhistoricalprimarynetworkrewards)
+```bash
+curl --request GET \
+     --url https://glacier-api.avax.network/v1/networks/mainnet/rewards \
+     --header 'accept: application/json'
+```
+</Accordion>
+
+<Accordion title="Assets">
+- [Get Asset Details](https://glacier.docs.avacloud.io/reference/getassetdetails)
+```bash
+curl --request GET \
+     --url https://glacier-api.avax.network/v1/networks/mainnet/blockchains/2oYMBNV4eNHyqk2fjjV5nVQLDbtmNJzq5s3qs3Lo6ftnC6FByM/assets/{assetId} \
+     --header 'accept: application/json'
+```
+</Accordion>
+
+
+</Accordions>
