@@ -1,7 +1,80 @@
 ---
-title: Setup Starter Kit
-description: Learn about the Glacier API and SDK.
+title: Setup Glacier Starter Kit
+description: Set up the Glacier Starter Kit in a hosted environment on Github
 updated: 2024-09-03
 authors: [owenwahlgren]
 icon: Book
 ---
+import Link from 'next/link';
+import { cn } from '@/utils/cn';
+import { buttonVariants } from '@/components/ui/button.tsx'
+import { Step, Steps } from 'fumadocs-ui/components/steps';
+
+
+**IMAGES NEED UPDATE FOR GLACIER CODESPACE**
+
+
+The Glacier Starter Kit contains everything you need to get started quickly with Glacier. 
+
+In this course we will run the Glacier Starter Kit in a hosted environment on Github. This is the most quick way to get started.
+
+<Steps>
+<Step>
+
+### Open the Glacier Starter Kit Github Repository:
+
+<Link
+    href="https://github.com/ava-labs/glacier-starter-kit"
+    className={cn(
+    buttonVariants({ variant: 'default', className: 'mt-4' }),
+    )}
+    target='_blank'
+>Open Glacier Starter Kit</Link>
+
+</Step>
+<Step>
+
+### Create a Codespace
+- Click the green **Code** button
+- Switch to the **Codespaces** tab
+- Click **Create Codespace on main** or if you already have a Codespace click the plus (**+**) button
+
+The Codespace will open in a new tab. Wait a few minutes until it's fully built.
+
+</Step>
+<Step>
+
+### Verify everything is working correctly
+
+Open the terminal with `` Ctrl + ` `` or by opening it through the menu:
+
+![](/common-images/avalanche-starter-kit/new-terminal.png)
+
+
+Now install the yarn packages:
+
+```bash
+yarn install
+```
+
+Now we can run the NextJS app in hot reload mode:
+    
+```bash
+yarn dev
+```
+
+</Step>
+<Step>
+
+
+
+### Optional: Open Codespace locally in Visual Studio Code
+
+You can switch any time from the browser IDE to Visual Studio Code:
+
+![](/course-images/codespaces/open-locally.png)
+
+The first time you switch, you will be asked to install the [Codespaces extension](https://marketplace.visualstudio.com/items?itemName=GitHub.codespaces) and connect VS Code to you GitHub account, if it is not already connceted.
+
+</Step>
+</Steps>
