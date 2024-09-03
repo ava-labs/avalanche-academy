@@ -64,7 +64,7 @@ prefunding address 0x8db97C7cEcE249c2b98bDC0226Cc4C2A57BF52FC with balance 10000
 Finally, deploy your Avalanche L1:
 
 ```bash
-avalanche subnet deploy myblockchain
+avalanche blockchain deploy myblockchain
 ```
 
 ```bash
@@ -163,7 +163,7 @@ export ERC20_REMOTE_SUBNET=<"Remote address">
 Before transfering some funds Cross-Chain, check the current balances of both the ERC20 Home token and the Remote one. 
 
 ```bash
-avalanche key list --local --keys ewoq  --subnets c,myblockchain --tokens $ERC20_HOME_C_CHAIN,$ERC20_REMOTE_SUBNET
+avalanche key list --local --keys ewoq  --blockchains c,myblockchain --tokens $ERC20_HOME_C_CHAIN,$ERC20_REMOTE_SUBNET
 ```
 
 ```bash
