@@ -20,3 +20,12 @@ When `sendAndCall` function is triggered, the following actions are taken;
 - The Transferrer Contract retrieves the remaining allowance to check if there are any unspent tokens exists.
 - The Transferrer Contract removes the allowance for the destination contract.
 - The Transferrer Contract sends the remaining tokens to the fallback recipient. If the destination contract fails to execute the function, the full amount will be sent to the fallback recipient.
+
+## Prerequisites
+
+The following prerequisites were covered in previous sections, so you should have already deployed the following contracts before starting this chapter:
+
+- Base ERC20 Token on L1
+- Home Transferrer Contract on L1
+- Remote Transferrer Contract on Fuji
+- A Running AWM-relayer from your L1 to Fuji

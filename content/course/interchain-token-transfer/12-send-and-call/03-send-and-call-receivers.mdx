@@ -6,11 +6,11 @@ authors: [0xstt]
 icon: BookOpen
 ---
 
-`IERC20SendAndCallReceiver` or `INativeSendAndCallReceiver` are used for contracts that handle receiving ERC20 or native tokens.
+The interfaces `IERC20SendAndCallReceiver` or `INativeSendAndCallReceiver` are used for contracts that handle receiving ERC20 or native tokens of the Interchain Token Transfer protocol. They are similar to the `ITeleporterReceiver` interface, but they are specifically designed to handle token transfers.
 
-Mock implementations are already available in the [Avalanche Interchain Token Transfer](https://github.com/ava-labs/avalanche-interchain-token-transfer) repository.
+### IERC20SendAndCallReceiver
 
-What we are going to do is; simply deploy a new contract that implements the `IERC20SendAndCallReceiver` or `INativeSendAndCallReceiver` interfaces that has a capability to use received tokens.
+The `receiveTokens` function will be called by the Transferrer bridge contract. The contract must implement this function to receive the tokens and can retrieve all the information about the origin of the tokens, the token, the bridge used, and the amount of tokens transferred from the parameters.
 
 ```solidity title="lib/avalanche-interchain-token-transfer/contracts/src/interfaces/IERC20SendAndCallReceiver.sol"
 /**
@@ -37,6 +37,10 @@ interface IERC20SendAndCallReceiver {
     ) external;
 }
 ```
+
+### INativeSendAndCallReceiver
+
+The `INativeSendAndCallReceiver` interface is used for contracts that handle receiving native tokens of the Interchain Token Transfer protocol. It is similar to the `IERC20SendAndCallReceiver` interface, but does not include the `token` and `amount` parameters. The `receiveTokens` is now `payable`. There is only a single native token on each chain, so the address is not needed. The amount can be determined from calling `msg.value`.
 
 ```solidity title="lib/avalanche-interchain-token-transfer/contracts/src/interfaces/INativeSendAndCallReceiver.sol"
 /**
