@@ -1,0 +1,87 @@
+---
+title: Create a Telegram Mini-App using ThirdWeb
+description: This guide shows how to build a Telegram Mini-App using the ThirdWeb SDK on the Avalanche Fuji Network.
+date: 2024-09-04
+authors: [owenwahlgren]
+topics: [solidity, foundry, telegram, ThirdWeb]
+---
+import { Step, Steps } from 'fumadocs-ui/components/steps';
+
+Telegram Mini-Apps are a new way to build and deploy applications and games embedded in the Telegram platform. They are built using ThirdWeb, a platform that allows developers to connect and utilize both external and in-app wallets on the Avalanche network.
+
+## Recommended Knowledge
+
+- Basic understanding of Solidity and Typescript.
+- Basic understanding of Telegram Bots and the Telegram API.
+- Basic understanding of the Avalanche Fuji Testnet.
+
+## Getting started
+
+<Steps>
+<Step>
+Create a template from [ThirdWeb Telegram Mini-App Starter Kit](https://github.com/ava-labs/telegram-webapp-avalanche) by clicking the `"Use this template"` button.
+
+**IMPORTANT!!** mark "Include all branches", otherwise Github pages deployment will not work.
+
+</Step>
+<Step>
+Install the dependencies
+```bash
+cd my-telegram-mini-app
+yarn install
+```
+</Step>
+
+<Step>
+Get the `clientID` from your ThirdWeb account on the [ThirdWeb Dashboard](https://thirdweb.com/dashboard)
+</Step>
+
+<Step>
+Create a `.env` file in the root of the project and add the following:
+```bash
+VITE_THIRDWEB_CLIENT_ID=YOUR_CLIENT_ID
+```
+</Step>
+
+<Step>
+Run the project in development mode
+```bash
+yarn dev
+```
+</Step>
+</Steps>
+
+On `git push` to the `main` branch, the project will be automatically deployed to Github Pages.
+
+Follow the section below to link your Telegram Bot to the webapp.
+
+## Integrating with Telegram Bots
+<Steps>
+<Step>
+Create a new Telegram Bot using [BotFather](https://t.me/botfather)
+<Steps>
+    <Step>
+    Type `/newbot`
+    </Step>
+    <Step>
+    Choose a name for your bot, e.g. `My Avalanche TWA`
+    </Step>
+    <Step>
+    Choose a username for your bot, e.g. `my_avalanche_twa_482765_bot`
+    </Step>
+    <Step>
+    Take note of the access token, e.g. 5712441624:AAHmiHvwrrju1F3h29rlVOZLRLnv-B8ZZZ
+    </Step>
+    </Steps>
+</Step>
+ <Step>
+    Run `yarn configbot` to link your bot to the webapp
+    </Step>
+</Steps>
+
+
+## Points of Interest
+
+`src/App.tsx`
+`src/components/TransferAvax.tsx`
+`src/components/Counter.tsx`
