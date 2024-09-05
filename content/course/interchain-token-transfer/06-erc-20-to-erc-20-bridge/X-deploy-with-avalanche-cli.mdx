@@ -5,6 +5,8 @@ updated: 2024-05-31
 authors: [ashucoder9]
 icon: Terminal
 ---
+import { Step, Steps } from 'fumadocs-ui/components/steps';
+
 
 ## Transfer an ERC-20 Token to an Avalanche L1 as an ERC-20 Token
 
@@ -36,6 +38,9 @@ For convenience the private key `56289e99c94b6912bfc12adc093c9b51124f0dc54ac7a76
 
 Furthermore, the RPC url for the C-Chain `local-c` and Avalanche L1 created with the name `myblockchain` on the local network is set in `foundry.toml`.
 
+<Steps>
+
+<Step>
 ## Configuration and Deployment
 
 To get started, create an Avalanche L1 configuration named "myblockchain":
@@ -85,8 +90,9 @@ From this output, take note of the Funded Address (with 100 tokens) and set the 
 ```bash
 export FUNDED_ADDRESS=0x8db97C7cEcE249c2b98bDC0226Cc4C2A57BF52FC
 ```
-
-## Deploy ERC20 Contract on C-chain
+</Step>
+<Step>
+## Deploy ERC-20 Contract on C-chain
 
 Now we will deploy an ERC-20 contract. We are using OpenZeppelin's example contract which has been renamed to `ERC20.sol` for convenience.
 
@@ -106,6 +112,8 @@ cast call --rpc-url local-c --private-key $PK $ERC20_C_CHAIN "balanceOf(address)
 ```
 100,000 tokens should be returned.
 
+</Step>
+<Step>
 ## Deploy Avalanche Interchain Token Transfer Contracts
 
 Next we will deploy two Interchain Token Transfer contracts. One for the source chain (C-Chain) and another on the destination chain (myblockchain).
@@ -133,7 +141,8 @@ Save the Remote contract address in the environment variables.
 ```bash
 export ERC20_REMOTE_L1=<"Remote address">
 ```
-
+</Step>
+<Step>
 ## Get Balances
 
 Before transfering some funds Cross-Chain, check the current balances of both the ERC20 Home token and the Remote one. 
@@ -151,7 +160,8 @@ avalanche key list --local --keys ewoq  --blockchains c,myblockchain --tokens $E
 |        |      | C-Chain  | 0x8db97C7cEcE249c2b98bDC0226Cc4C2A57BF52FC | TOK (0x5DB9.)| 100000.000000000 | Local Network |
 +--------+------+----------+--------------------------------------------+---------------+-----------------+---------------+
 ```
-
+</Step>
+<Step>
 ## Transfer the Token Cross-chain
 
 Now that the Avalanche Interchain Token Transfer contracts have been deployed, transfer some ERC20 tokens `TOK` from C-Chain to _myblockchain_
@@ -171,10 +181,11 @@ Enter the address of the Token Transferrer on myblockchain: 0x0D189a705c1FFe77F1
 ✔ ewoq
 Amount to send (TOKEN units): 100
 ```
-
+</Step>
+<Step>
 ## Check Balances
 
-Now we can check the balances of both the ERC20 Home token and the Remote one. 
+Now we can check the balances of both the ERC-20 Home token and the Remote one. 
 
 ```bash
 avalanche key list --local --keys ewoq  --blockchains c,myblockchain --tokens $ERC20_C_CHAIN,$ERC20_REMOTE_L1
@@ -191,3 +202,6 @@ avalanche key list --local --keys ewoq  --blockchains c,myblockchain --tokens $E
 ```
 
 Successfully we have transferred 100 tokens from C-Chain to myblockchain using the Avalanche CLI.
+</Step>
+
+</Steps>
