@@ -6,7 +6,7 @@ authors: [ashucoder9]
 icon: Book
 ---
 
-import ICTTsetup from "@/content/common/avalanche-ictt/setup-manual.mdx";
+import ICTTsetup from "@/content/common/avalanche-starter-kit/create-default-blockchain.mdx";
 
 ## Transfer an ERC-20 Token &rarr; Avalanche L1 as an ERC-20 Token
 
@@ -28,4 +28,21 @@ _Disclaimer: The avalanche-interchain-token-transfer contracts used in this tuto
 4. Register Remote Token contract with the Home Transferer contract
 5. Add Collateral and Start Sending Tokens
 
+## Setup
+
 <ICTTsetup />
+From this output, take note of the following parameters
+
+- Main funded account EWOQ (with 100 tokens),
+- Interchain Messaging Registry on C-chain, and
+- Interchain Messaging Registry on Avalanche L1
+
+**IMPORTANT!** Set these parameters from the deployment output as environment variables so that we can manage them easily and use them in commands later.
+
+```bash
+export FUNDED_ADDRESS=<Funded Address (with 100 tokens)>
+export TELEPORTER_REGISTRY_C_CHAIN=<Interchain Messaging Registry on C-chain>
+export TELEPORTER_REGISTRY_L1=<Interchain Messaging Registry on Avalanche L1>
+```
+
+
