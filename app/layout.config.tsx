@@ -1,5 +1,5 @@
 import { type BaseLayoutProps, type DocsLayoutProps } from 'fumadocs-ui/layout';
-import { pageTree } from '@/utils/source';
+import { coursePageTree } from '@/utils/course-loader';
 import { RootToggle } from 'fumadocs-ui/components/layout/root-toggle';
 import { Title } from '@/app/layout.client';
 import { MailIcon, SquareStackIcon, ArrowLeftRight, SquareIcon, SquareCode, Triangle } from 'lucide-react';
@@ -31,7 +31,7 @@ export const baseOptions: BaseLayoutProps = {
 
 export const docsOptions: DocsLayoutProps = {
   ...baseOptions,
-  tree: pageTree,
+  tree: coursePageTree,
   sidebar: {
     defaultOpenLevel: 0,
     banner: (
