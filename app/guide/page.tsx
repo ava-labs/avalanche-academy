@@ -1,10 +1,10 @@
 import Link from 'next/link';
-import { guide } from '@/utils/source';
+import { getGuidePages } from '@/utils/guide-loader';
 import { buttonVariants } from '@/components/ui/button';
 import { SiX } from '@icons-pack/react-simple-icons';
 
 export default function Page(): React.ReactElement {
-    const guides = [...guide.getPages()].sort(
+    const guides = [...getGuidePages()].sort(
         (a, b) =>
             new Date(b.data.date ?? b.file.name).getTime() -
             new Date(a.data.date ?? a.file.name).getTime(),
