@@ -8,24 +8,24 @@ icon: Book
 
 import ICTTsetup from "@/content/common/avalanche-ictt/setup-manual.mdx";
 
-## Transfer an ERC20 Token &rarr; Avalanche L1 as an ERC-20 Token
+## Transfer an ERC-20 Token &rarr; Avalanche L1 as an ERC-20 Token
 
-The following example will show you how to send an ERC20 Token on C-chain to an Avalanche L1 using Interchain Messaging and Foundry. This demo is conducted on a local network, but can be applied to Fuji Testnet and Avalanche Mainnet directly.
+This chapter will show you how to send an ERC-20 Token on C-chain to an Avalanche L1 using Interchain Messaging and Foundry. This demo is conducted on a local network, but can be applied to Fuji Testnet and Avalanche Mainnet directly.
 
-**All Avalanche Interchain Token Transfer contracts and interfaces implemented in this example implementation are maintained in the [avalanche-interchain-token-transfer](https://github.com/ava-labs/avalanche-interchain-token-transfer/tree/main/contracts/src) repository.**
+**All Avalanche Interchain Token Transfer contracts and interfaces implemented in this chapter implementation are maintained in the [avalanche-interchain-token-transfer](https://github.com/ava-labs/avalanche-interchain-token-transfer/tree/main/contracts/src) repository.**
 
-If you prefer full end-to-end testing written in Golang for bridging ERC20s, native tokens, or any combination of the two, you can view the test workflows directly in the [avalanche-interchain-token-transfer](https://github.com/ava-labs/avalanche-interchain-token-transfer/tree/main/tests/flows) repository.
+If you prefer full end-to-end testing written in Golang for bridging ERC-20s, native tokens, or any combination of the two, you can view the test workflows directly in the [avalanche-interchain-token-transfer](https://github.com/ava-labs/avalanche-interchain-token-transfer/tree/main/tests/flows) repository.
 
 Deep dives on each template interface can be found [here](https://github.com/ava-labs/avalanche-interchain-token-transfer/blob/main/contracts/README.md).
 
 _Disclaimer: The avalanche-interchain-token-transfer contracts used in this tutorial are under active development and are not yet intended for production deployments. Use at your own risk._
 
-## What we have to do
+## Chapter Outline
 
-1. Create an Avalanche L1 and Deploy on Local Network
-2. Deploy an ERC20 Contract on C-chain
-3. Deploy the Interchain Token Transferer Contracts on C-chain and Avalanche L1
-4. Register Remote Token with Home Transferer
+1. Deploy an Avalanche L1 on local network
+2. Deploy an ERC-20 Contract on C-Chain
+3. Deploy the Interchain Token Transferer Contracts on C-Chain and Avalanche L1
+4. Register Remote Token contract with the Home Transferer contract
 5. Add Collateral and Start Sending Tokens
 
 <ICTTsetup />

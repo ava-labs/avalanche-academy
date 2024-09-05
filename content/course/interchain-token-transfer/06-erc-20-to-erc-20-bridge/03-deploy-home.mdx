@@ -16,7 +16,7 @@ We will deploy two Avalanche Interchain Token Transfer contracts. One of the sou
 ### Deploy ERC20Home Contract
 
 ```bash
-forge create --rpc-url local-c --private-key $PK lib/avalanche-interchain-token-transfer/contracts/src/TokenHome/ERC20TokenHome.sol:ERC20TokenHome --constructor-args $TELEPORTER_REGISTRY_C_CHAIN $FUNDED_ADDRESS $ERC20_HOME_C_CHAIN 18
+forge create --rpc-url local-c --private-key $PK lib/avalanche-interchain-token-transfer/contracts/src/TokenHome/ERC20TokenHome.sol:ERC20TokenHome --constructor-args $TELEPORTER_REGISTRY_C_CHAIN $FUNDED_ADDRESS $ERC20_C_CHAIN 18
 ```
 
 </Step>
@@ -25,7 +25,7 @@ forge create --rpc-url local-c --private-key $PK lib/avalanche-interchain-token-
 ### Save the ERC-20 Home Address
 
 ```bash
-export ERC20_HOME_TRANSFERER_C_CHAIN=<"Deployed to" address>
+export ERC20_HOME_C_CHAIN=<"Deployed to" address>
 ```
 
 </Step>

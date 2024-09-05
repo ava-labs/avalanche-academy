@@ -33,10 +33,10 @@ _Note: If you have created your Avalanche L1 using AvaCloud, you can add Remote 
 ✔ Use latest release version
 ✔ Yes
 ✔ Yes
-creating genesis for subnet myblockchain
-Enter your subnet's ChainId. It can be any positive integer.
+creating genesis for blockchain myblockchain
+Enter your L1's ChainId. It can be any positive integer.
 ChainId: 123
-Select a symbol for your subnet's native token
+Select a symbol for your L1's native token
 Token symbol: NAT
 ✔ Low disk use    / Low Throughput    1.5 mil gas/s (C-Chain's setting)
 ✔ Customize your airdrop
@@ -51,10 +51,10 @@ Enter Address : 0x8db97C7cEcE249c2b98bDC0226Cc4C2A57BF52FC
 ✔ Done
 ✔ Done
 ✔ No
-✓ Successfully created subnet configuration
+✓ Successfully created L1 configuration
 ```
 
-Finally, deploy your Avalanche L1:
+Next, deploy your Avalanche L1:
 
 ```bash
 avalanche blockchain deploy myblockchain
@@ -94,15 +94,15 @@ Currency Symbol:   NAT
 
 From this output, take note of the following parameters
 
-- Funded Address (with 100 tokens),
+- Main funded account EWOQ (with 100 tokens),
 - Interchain Messaging Registry on C-chain, and
 - Interchain Messaging Registry on Avalanche L1
 
-Set these parameters as environment variables so that we can manage them easily and also use them in the commands later.
+**IMPORTANT!** Set these parameters as environment variables so that we can manage them easily and use them in commands later.
 
 ```bash
 export FUNDED_ADDRESS=<Funded Address (with 100 tokens)>
 export TELEPORTER_REGISTRY_C_CHAIN=<Interchain Messaging Registry on C-chain>
-export TELEPORTER_REGISTRY_SUBNET=<Interchain Messaging Registry on Avalanche L1>
+export TELEPORTER_REGISTRY_L1=<Interchain Messaging Registry on Avalanche L1>
 ```
 
