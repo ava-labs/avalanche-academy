@@ -56,14 +56,14 @@ export SOURCE_BLOCKCHAIN_ID_HEX=<BlockchainID (HEX)>
 
 ### Deploy the Remote Contract
 
-Using the [`forge create`](https://book.getfoundry.sh/reference/forge/forge-create) command, we will deploy the `ERC20Remote.sol` contract, passing in the following constructor arguments:
+Using the [`forge create`](https://book.getfoundry.sh/reference/forge/forge-create) command, we will deploy the `ERC20TokenRemote.sol` contract, passing in the following constructor arguments:
 
 - Interchain Messaging Registry Address **(for C-Chain)**
 - Interchain Messaging Manager (our funded address)
 - Source Blockchain ID (hexidecimal representation of our Avalanche L1's Blockchain ID)
-- Token Home Address (address of `ERC20TokenHome.sol` deployed on Avalanche L1 in the last step)
-- Token Name (input in the constructor of the [wrapped token contract](./ExampleWNATV.sol))
-- Token Symbol (input in the constructor of the [wrapped token contract](./ExampleWNATV.sol))
+- Token Home Address (address of NativeTokenHome.sol deployed on Avalanche L1 in the last step)
+- Token Name (input in the constructor of the [wrapped token contract](https://github.com/ava-labs/avalanche-interchain-token-transfer/blob/main/contracts/src/WrappedNativeToken.sol))
+- Token Symbol (input in the constructor of the [wrapped token contract](https://github.com/ava-labs/avalanche-interchain-token-transfer/blob/main/contracts/src/WrappedNativeToken.sol))
 - Token Decimals (uint8 integer representing number of decimal places for the ERC20 token being created. Most ERC20 tokens follow the Ethereum standard, which defines 18 decimal places.)
 
 ```bash

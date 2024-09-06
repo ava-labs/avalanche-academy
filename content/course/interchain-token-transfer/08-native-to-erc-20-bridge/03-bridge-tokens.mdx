@@ -30,7 +30,7 @@ cast send --rpc-url myblockchain --private-key $PK <TokenHomeAddress> \
 --value <amountOfTokensToSend>
 ```
 
-In line 60 of [`NativeTokenHome`](./NativeTokenHome.sol) is the send function we will call to send the tokens:
+In [`NativeTokenHome`](https://github.com/ava-labs/avalanche-interchain-token-transfer/blob/main/contracts/src/TokenHome/NativeTokenHome.sol) is the send function we will call to send the tokens:
 
 ```solidity
 function send(SendTokensInput calldata input) external payable {
@@ -38,7 +38,7 @@ function send(SendTokensInput calldata input) external payable {
     }
 ```
 
-The function parameters are defined by the `SendTokensInput` struct defined in line 26 of [`ITeleporterTokenBridge`](./interfaces/ITeleporterTokenBridge.sol).
+The function parameters are defined by the `SendTokensInput` struct defined in [`ITokenTransferrer.sol`](https://github.com/ava-labs/avalanche-interchain-token-transfer/blob/main/contracts/src/interfaces/ITokenTransferrer.sol).
 
 ```solidity
 struct SendTokensInput {
