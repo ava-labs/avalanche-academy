@@ -25,7 +25,7 @@ forge create --rpc-url local-c --private-key $PK src/8-erc20-to-erc20-interchain
 ### Save the ERC-20 Address 
 
 ```bash
-export ERC20_HOME_C_CHAIN=<"Deployed to" address>
+export ERC20_C_CHAIN=<"Deployed to" address>
 ```
 
 </Step>
@@ -36,7 +36,7 @@ export ERC20_HOME_C_CHAIN=<"Deployed to" address>
 If you deployed the above example contract, you should see a balance of 100,000 tokens when you run the below command:
 
 ```bash
-cast call --rpc-url local-c --private-key $PK $ERC20_HOME_C_CHAIN "balanceOf(address)(uint)" $FUNDED_ADDRESS
+cast call --rpc-url local-c --private-key $PK $ERC20_C_CHAIN "balanceOf(address)(uint)" $FUNDED_ADDRESS
 ```
 
 </Step>
