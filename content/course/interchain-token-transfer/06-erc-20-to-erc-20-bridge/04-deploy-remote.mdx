@@ -20,37 +20,35 @@ First, get the `Source Blockchain ID` in hexidecimal format, which in this examp
 ```bash
 avalanche blockchain describe myblockchain
 ```
+```bash
++---------------------------------------------------------------------------------------------------------------+
+|                                                  MYBLOCKCHAIN                                                 |
++---------------+-----------------------------------------------------------------------------------------------+
+| Name          | myblockchain                                                                                  |
++---------------+-----------------------------------------------------------------------------------------------+
+| VM ID         | qDNV9vtxZYYNqm7TN1mYBuaaknLdefDbFK8bFmMLTJQJKaWjV                                             |
++---------------+-----------------------------------------------------------------------------------------------+
+| VM Version    | v0.6.9                                                                                        |
++---------------+--------------------------+--------------------------------------------------------------------+
+| Local Network | ChainID                  | 1                                                                  |
+|               +--------------------------+--------------------------------------------------------------------+
+|               | SubnetID                 | 2AKbBT8jFUfUsUJ2hhRiDUnAAajJdNhTKeNgEe3q77spMj1N8F                 |
+|               +--------------------------+--------------------------------------------------------------------+
+|               | Owners (Threhold=1)      | P-custom18jma8ppw3nhx5r4ap8clazz0dps7rv5u9xde7p                    |
+|               +--------------------------+--------------------------------------------------------------------+
+|               | BlockchainID (CB58)      | 2EzvQgth5D5aZ81gmF13TsA61c2zduHWqszYPVvzzvRWZXcQgA                 |
+|               +--------------------------+--------------------------------------------------------------------+
+|               | BlockchainID (HEX)       | 0xa37b5143f12ecf020ec893e4a8f48159e470b47fd9ff293ab0a808be47a4f67c |
++---------------+--------------------------+--------------------------------------------------------------------+
 
-`Source Blockchain ID` is in the field: `Local Network BlockchainID (HEX)`.
-
+```
 </Step>
 <Step>
 
 ### Save the Source Blockchain ID
 
 ```bash
-export SOURCE_BLOCKCHAIN_ID_HEX=0x4d569bf60a38e3ab3e92afd016fe37f7060d7d63c44e3378f42775bf82a7642d
-```
-
-</Step>
-<Step>
-
-### Get the Destination Blockchain ID
-
-```bash
-avalanche primary describe
-```
-
-`Destination Blockchain ID` is in the field: `BlockchainID (HEX)`.
-
-
-</Step>
-<Step>
-
-### Save the Destination Blockchain ID
-
-```bash
-export C_CHAIN_BLOCKCHAIN_ID_HEX=0x55e1fcfdde01f9f6d4c16fa2ed89ce65a8669120a86f321eef121891cab61241
+export SOURCE_BLOCKCHAIN_ID_HEX=<BlockchainID (HEX)>
 ```
 
 </Step>
@@ -58,7 +56,7 @@ export C_CHAIN_BLOCKCHAIN_ID_HEX=0x55e1fcfdde01f9f6d4c16fa2ed89ce65a8669120a86f3
 
 ### Deploy the Remote Contract
 
-Using the [`forge create`](https://book.getfoundry.sh/reference/forge/forge-create) command, we will deploy the [ERC20Remote.sol](./NativeTokenHome.sol] contract, passing in the following constructor arguments:
+Using the [`forge create`](https://book.getfoundry.sh/reference/forge/forge-create) command, we will deploy the `ERC20TokenRemote.sol` contract, passing in the following constructor arguments:
 
 - Interchain Messaging Registry Address **(for C-Chain)**
 - Interchain Messaging Manager (our funded address)
@@ -69,8 +67,8 @@ Using the [`forge create`](https://book.getfoundry.sh/reference/forge/forge-crea
 - Token Decimals (uint8 integer representing number of decimal places for the ERC20 token being created. Most ERC20 tokens follow the Ethereum standard, which defines 18 decimal places.)
 
 ```bash
-forge create --rpc-url myblockchain --private-key $PK lib/teleporter-token-bridge/contracts/src/TokenRemote/ERC20TokenRemote.sol:ERC20TokenRemote \
---constructor-args "(${TELEPORTER_REGISTRY_SUBNET}, ${FUNDED_ADDRESS}, ${C_CHAIN_BLOCKCHAIN_ID_HEX}, ${ERC20_HOME_BRIDGE_C_CHAIN})" "TOK" "TOK" 18
+forge create --rpc-url myblockchain --private-key $PK lib/avalanche-interchain-token-transfer/contracts/src/TokenRemote/ERC20TokenRemote.sol:ERC20TokenRemote \
+--constructor-args "(${TELEPORTER_REGISTRY_L1}, ${FUNDED_ADDRESS}, ${C_CHAIN_BLOCKCHAIN_ID_HEX}, ${ERC20_HOME_C_CHAIN}, 18)" "TOK" "TOK" 18
 ```
 
 </Step>
@@ -92,7 +90,7 @@ export ERC20_TOKEN_REMOTE_L1=<"Deployed to" address>
 After deploying the bridge contracts, you'll need to register the remote bridge by sending a dummy message using the `registerWithHome` method. This message includes details which inform the Home Bridge about your destination blockchain and bridge settings, eg. `initialReserveImbalance`.
 
 ```bash
-cast send --rpc-url myblockchain --private-key $PK $ERC20_TOKEN_REMOTE_SUBNET "registerWithHome((address, uint256))" "(0x0000000000000000000000000000000000000000, 0)"
+cast send --rpc-url myblockchain --private-key $PK $ERC20_TOKEN_REMOTE_L1 "registerWithHome((address, uint256))" "(0x0000000000000000000000000000000000000000, 0)"
 ```
 
 </Step>
@@ -103,7 +101,7 @@ cast send --rpc-url myblockchain --private-key $PK $ERC20_TOKEN_REMOTE_SUBNET "r
 You can increase/decrease the numbers here as per your requirements. (All values are mentioned in wei)
 
 ```bash
-cast send --rpc-url local-c --private-key $PK $ERC20_HOME_C_CHAIN "approve(address, uint256)" $ERC20_HOME_BRIDGE_C_CHAIN 2000000000000000000000
+cast send --rpc-url local-c --private-key $PK $ERC20_C_CHAIN "approve(address, uint256)" $ERC20_HOME_C_CHAIN 2000000000000000000000
 ```
 
 </Step>

@@ -51,7 +51,7 @@ const IndexedDBComponent: React.FC = () => {
       getAllRequest.onsuccess = function (event: any) {
         const paths = event.target.result as { path: string }[];
         paths.forEach(item => {
-          const sidebarItem = document.querySelector(`a[href="${item.path}"]`);
+          const sidebarItem = document.querySelector(`aside a[href="${item.path}"]`);
           
           if (sidebarItem) {
             // Check if a checkmark already exists
