@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 import { Card, Cards } from 'fumadocs-ui/components/card';
 import { DocsPage, DocsBody } from 'fumadocs-ui/page';
 import { notFound } from 'next/navigation';
-import { getPage, getPages, type Page } from '@/utils/source';
+import { getCoursePage, getCoursePages, type Page } from '@/utils/course-loader';
 import { createMetadata } from '@/utils/metadata';
 import IndexedDBComponent from '@/components/tracker'
 import { Callout } from 'fumadocs-ui/components/callout';
@@ -33,7 +33,7 @@ export default function Page({
 }: {
   params: Param;
 }): React.ReactElement {
-  const page = getPage(params.slug);
+  const page = getCoursePage(params.slug);
 
   if (!page) notFound();
 
@@ -105,7 +105,7 @@ export default function Page({
 }
 
 function Category({ page }: { page: Page }): React.ReactElement {
-  const filtered = getPages()
+  const filtered = getCoursePages()
     .filter(
       (item) =>
         item.file.dirname === page.file.dirname && item.file.name !== 'index',
@@ -126,7 +126,7 @@ function Category({ page }: { page: Page }): React.ReactElement {
 }
 
 export function generateMetadata({ params }: { params: Param }): Metadata {
-  const page = getPage(params.slug);
+  const page = getCoursePage(params.slug);
 
   if (!page) notFound();
 
@@ -158,7 +158,7 @@ export function generateMetadata({ params }: { params: Param }): Metadata {
 }
 
 export function generateStaticParams(): Param[] {
-  return getPages().map<Param>((page) => ({
+  return getCoursePages().map<Param>((page) => ({
     slug: page.slugs,
   }));
 }

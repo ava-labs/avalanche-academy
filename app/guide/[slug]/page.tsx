@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { InlineTOC } from 'fumadocs-ui/components/inline-toc';
-import { guide } from '@/utils/source';
+import { getGuidePage, getGuidePages } from '@/utils/guide-loader';
 import { createMetadata } from '@/utils/metadata';
 import { buttonVariants } from '@/components/ui/button';
 import { ArrowUpRightIcon, MessagesSquare } from 'lucide-react';
@@ -21,7 +21,7 @@ export default function Page({
 }: {
     params: Param;
 }): React.ReactElement {
-    const page = guide.getPage([params.slug]);
+    const page = getGuidePage([params.slug]);
 
     if (!page) notFound();
 
@@ -114,7 +114,7 @@ export default function Page({
 }
 
 export function generateMetadata({ params }: { params: Param }): Metadata {
-  const page = guide.getPage([params.slug]);
+  const page = getGuidePage([params.slug]);
 
   if (!page) notFound();
 
@@ -147,7 +147,7 @@ export function generateMetadata({ params }: { params: Param }): Metadata {
 
 
 export function generateStaticParams(): Param[] {
-    return guide.getPages().map<Param>((page) => ({
+    return getGuidePages().map<Param>((page) => ({
         slug: page.slugs[0],
     }));
 }
