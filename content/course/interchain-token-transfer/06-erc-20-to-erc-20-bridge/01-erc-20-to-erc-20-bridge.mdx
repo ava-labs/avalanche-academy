@@ -5,8 +5,10 @@ updated: 2024-05-31
 authors: [ashucoder9]
 icon: Book
 ---
-
-import ICTTsetup from "@/content/common/avalanche-starter-kit/create-default-blockchain.mdx";
+import { Step, Steps } from 'fumadocs-ui/components/steps';
+import Link from 'next/link';
+import { cn } from '@/utils/cn';
+import { buttonVariants } from '@/components/ui/button.tsx'
 
 ## Transfer an ERC-20 Token &rarr; Avalanche L1 as an ERC-20 Token
 
@@ -18,29 +20,57 @@ Deep dives on each template interface can be found [here](https://github.com/ava
 
 _Disclaimer: The avalanche-interchain-token-transfer contracts used in this tutorial are under active development and are not yet intended for production deployments. Use at your own risk._
 
-## Chapter Outline
+## What we will do
 
-1. Deploy an Avalanche L1 on local network
-2. Deploy an ERC-20 Contract on C-Chain
-3. Deploy the Interchain Token Transferer Contracts on C-Chain and Avalanche L1
-4. Register Remote Token contract with the Home Transferer contract
-5. Add Collateral and Start Sending Tokens
+1. Deploy an ERC-20 Contract on C-Chain
+2. Deploy the Interchain Token Transferer Contracts on C-Chain and Avalanche L1
+3. Register Remote Token contract with the Home Transferer contract
+4. Add Collateral and Start Sending Tokens
 
 ## Setup
+<Steps>
+<Step>
+## Configuration and Deployment
+### Run on Github Codespace
 
-<ICTTsetup />
-From this output, take note of the following parameters
+The best way to follow along is using Github Codespaces. Click on the button below to open the repository in a Codespace.
 
-- Main funded account EWOQ (with 100 tokens),
-- Interchain Messaging Registry on C-chain, and
-- Interchain Messaging Registry on Avalanche L1
+<Link
+    href="https://github.com/ava-labs/avalanche-starter-kit"
+    className={cn(
+    buttonVariants({ variant: 'default', className: 'mt-4' }),
+    )}
+    target='_blank'
+>Open Avalanche Starter Kit</Link>
 
-**IMPORTANT!** Set these parameters from the deployment output as environment variables so that we can manage them easily and use them in commands later.
+This ensures that all the dependencies are pre-installed and the environment is ready to use.
+Ensure your blockchain is spun up and running. If not, [follow the create blockchain documentation.](/course/interchain-token-transfer/02-avalanche-starter-kit/03-create-blockchain)
+</Step>
+<Step>
+### Fetch the `Teleporter Registry` address from the Avalanche L1 and set it as an environment variable. 
 
 ```bash
-export FUNDED_ADDRESS=<Funded Address (with 100 tokens)>
-export TELEPORTER_REGISTRY_C_CHAIN=<Interchain Messaging Registry on C-chain>
-export TELEPORTER_REGISTRY_L1=<Interchain Messaging Registry on Avalanche L1>
+avalanche blockchain describe myblockchain
 ```
+
+```bash
++-------------------------------------------------------------------------------------------+
+|                                         TELEPORTER                                        |
++---------------+------------------------------+--------------------------------------------+
+| Local Network | Teleporter Messenger Address | 0x253b2784c75e510dD0fF1da844684a1aC0aa5fcf |
+|               +------------------------------+--------------------------------------------+
+|               | Teleporter Registry Address  | 0x82EeEf8e31D4Bf95916219D7949D66c468Ac0681 |
++---------------+------------------------------+--------------------------------------------+
+```
+</Step>
+<Step>
+### Export `Teleporter Registry Address` as environment variable.
+
+Most other environment variables we will need are already set in the devcontainer.
+```bash
+export TELEPORTER_REGISTRY_L1=0x82EeEf8e31D4Bf95916219D7949D66c468Ac0681
+```
+</Step>
+</Steps>
 
 

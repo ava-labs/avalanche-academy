@@ -6,6 +6,10 @@ authors: [ashucoder9]
 icon: Terminal
 ---
 import { Step, Steps } from 'fumadocs-ui/components/steps';
+import Link from 'next/link';
+import { cn } from '@/utils/cn';
+import { buttonVariants } from '@/components/ui/button.tsx'
+
 
 
 ## Transfer an ERC-20 Token to an Avalanche L1 as an ERC-20 Token
@@ -14,84 +18,36 @@ In the previous sections of this chapter we manually deployed and interacted wit
 
 ## What we will do
 
-1. Environment Setup
 2. Create an Avalanche L1 and Deploy on Local Network
 3. Deploy an ERC-20 Contract on C-chain
 4. Deploy the Avalanche Interchain Token Transfer Contracts on C-chain and Avalanche L1
 5. Start Sending Tokens
 
-## Environment Setup
-
-### Run on Github Codespace
-
-You can run them directly on Github by clicking **Code**, switching to the **Codespaces** tab and clicking **Create codespace on main**. A new window will open that loads the codespace. Afterwards you will see a browser version of VS code with all the dependencies installed. Codespace time out after some time of inactivity, but can be restarted.
-
-### Local Network Environment
-
-Open the `avalanche-starter-kit` repository in VS Code.
-
-You should be prompted to open the repository in a devcontainer. Click on **Reopen in Container**.
-
-The dev container environment comes preconfigured with dependencies such as Avalanche CLI, Foundry, and other tools.
-
-For convenience the private key `56289e99c94b6912bfc12adc093c9b51124f0dc54ac7a766b2bc5ccf558d8027` of the default airdrop address is stored in the environment variable `$PK` in `.devcontainer/devcontainer.json`. 
-
-Furthermore, the RPC url for the C-Chain `local-c` and Avalanche L1 created with the name `myblockchain` on the local network is set in `foundry.toml`.
-
 <Steps>
 
 <Step>
 ## Configuration and Deployment
+### Run on Github Codespace
 
-To get started, create an Avalanche L1 configuration named "myblockchain":
+The best way to follow along is using Github Codespaces. Click on the button below to open the repository in a Codespace.
 
-```bash
-avalanche blockchain create myblockchain
-```
-```bash
-✔ Subnet-EVM
-✔ I want to use defaults for a test environment
-```
+<Link
+    href="https://github.com/ava-labs/avalanche-starter-kit"
+    className={cn(
+    buttonVariants({ variant: 'default', className: 'mt-4' }),
+    )}
+    target='_blank'
+>Open Avalanche Starter Kit</Link>
 
-Deploy the Avalanche L1:
+This ensures that all the dependencies are pre-installed and the environment is ready to use.
 
-```bash
-avalanche blockchain deploy myblockchain
-```
-```bash
-✔ Local Network
-```
+Ensure your blockchain is spun up and running. If not, [follow the create blockchain documentation.](/course/interchain-token-transfer/02-avalanche-starter-kit/03-create-blockchain)
 
-The CLI will output addresses and information that will be important for the rest of the tutorial:
 
-```bash
-Deploying Blockchain. Wait until network acknowledges...
 
-Teleporter Messenger successfully deployed to c-chain (0x253b2784c75e510dD0fF1da844684a1aC0aa5fcf)
-Interchain Messaging Registry successfully deployed to c-chain (0x17aB05351fC94a1a67Bf3f56DdbB941aE6c63E25)
-
-Teleporter Messenger successfully deployed to myblockchain (0x253b2784c75e510dD0fF1da844684a1aC0aa5fcf)
-Interchain Messaging Registry successfully deployed to myblockchain (0x73b1dB7E9923c9d8fd643ff381e74dd9618EA1a5)
-
-...
-
-Browser Extension connection details (any node URL from above works):
-RPC URL:           http://127.0.0.1:9650/ext/bc/2u9Hu7Noja3Z1kbZyrztTMZcDeqb6acwyPyqP4BbVDjoT8ZaYc/rpc
-Codespace RPC URL: https://organic-palm-tree-ppr5xxg7xvv2974r-9650.app.github.dev/ext/bc/2u9Hu7Noja3Z1kbZyrztTMZcDeqb6acwyPyqP4BbVDjoT8ZaYc/rpc
-Funded address:    0x69AD03393144008463beD1DcB3FD33eb9A7081ba with 600 (10^18)
-Funded address:    0x8db97C7cEcE249c2b98bDC0226Cc4C2A57BF52FC with 1000000 (10^18) - private key: 56289e99c94b6912bfc12adc093c9b51124f0dc54ac7a766b2bc5ccf558d8027
-Network name:      myblockchain
-Chain ID:          123
-Currency Symbol:   NAT
-```
-
-From this output, take note of the Funded Address (with 100 tokens) and set the address as an environment variable:
-
-```bash
-export FUNDED_ADDRESS=0x8db97C7cEcE249c2b98bDC0226Cc4C2A57BF52FC
-```
 </Step>
 <Step>
+
 ## Deploy ERC-20 Contract on C-chain
 
 Now we will deploy an ERC-20 contract. We are using OpenZeppelin's example contract which has been renamed to `ERC20.sol` for convenience.
@@ -201,7 +157,7 @@ avalanche key list --local --keys ewoq  --blockchains c,myblockchain --tokens $E
 +--------+------+----------+--------------------------------------------+---------------+-----------------+---------------+
 ```
 
-Successfully we have transferred 100 tokens from C-Chain to myblockchain using the Avalanche CLI.
 </Step>
-
 </Steps>
+
+**Success!** We have transferred 100 tokens from C-Chain to myblockchain using the Avalanche CLI.

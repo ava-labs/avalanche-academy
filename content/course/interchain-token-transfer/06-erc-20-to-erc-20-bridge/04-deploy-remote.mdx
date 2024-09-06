@@ -20,37 +20,35 @@ First, get the `Source Blockchain ID` in hexidecimal format, which in this examp
 ```bash
 avalanche blockchain describe myblockchain
 ```
+```bash
++---------------------------------------------------------------------------------------------------------------+
+|                                                  MYBLOCKCHAIN                                                 |
++---------------+-----------------------------------------------------------------------------------------------+
+| Name          | myblockchain                                                                                  |
++---------------+-----------------------------------------------------------------------------------------------+
+| VM ID         | qDNV9vtxZYYNqm7TN1mYBuaaknLdefDbFK8bFmMLTJQJKaWjV                                             |
++---------------+-----------------------------------------------------------------------------------------------+
+| VM Version    | v0.6.9                                                                                        |
++---------------+--------------------------+--------------------------------------------------------------------+
+| Local Network | ChainID                  | 1                                                                  |
+|               +--------------------------+--------------------------------------------------------------------+
+|               | SubnetID                 | 2AKbBT8jFUfUsUJ2hhRiDUnAAajJdNhTKeNgEe3q77spMj1N8F                 |
+|               +--------------------------+--------------------------------------------------------------------+
+|               | Owners (Threhold=1)      | P-custom18jma8ppw3nhx5r4ap8clazz0dps7rv5u9xde7p                    |
+|               +--------------------------+--------------------------------------------------------------------+
+|               | BlockchainID (CB58)      | 2EzvQgth5D5aZ81gmF13TsA61c2zduHWqszYPVvzzvRWZXcQgA                 |
+|               +--------------------------+--------------------------------------------------------------------+
+|               | BlockchainID (HEX)       | 0xa37b5143f12ecf020ec893e4a8f48159e470b47fd9ff293ab0a808be47a4f67c |
++---------------+--------------------------+--------------------------------------------------------------------+
 
-`Source Blockchain ID` is in the field: `Local Network BlockchainID (HEX)`.
-
+```
 </Step>
 <Step>
 
 ### Save the Source Blockchain ID
 
 ```bash
-export SOURCE_BLOCKCHAIN_ID_HEX=0x4d569bf60a38e3ab3e92afd016fe37f7060d7d63c44e3378f42775bf82a7642d
-```
-
-</Step>
-<Step>
-
-### Get the Destination Blockchain ID
-
-```bash
-avalanche primary describe
-```
-
-`Destination Blockchain ID` is in the field: `BlockchainID (HEX)`.
-
-
-</Step>
-<Step>
-
-### Save the Destination Blockchain ID
-
-```bash
-export C_CHAIN_BLOCKCHAIN_ID_HEX=0x55e1fcfdde01f9f6d4c16fa2ed89ce65a8669120a86f321eef121891cab61241
+export SOURCE_BLOCKCHAIN_ID_HEX=<BlockchainID (HEX)>
 ```
 
 </Step>
