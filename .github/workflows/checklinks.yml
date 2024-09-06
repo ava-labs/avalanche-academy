@@ -1,9 +1,6 @@
 name: Check MDX Links
 
 on:
-  push:
-    paths:
-      - '**/*.mdx'
   pull_request:
     paths:
       - '**/*.mdx'
