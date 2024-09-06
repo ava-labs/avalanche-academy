@@ -3,6 +3,8 @@ import { readFileSync } from 'fs';
 import { load } from 'cheerio';
 import { sync as globSync } from 'glob';
 
+const baseUrl = 'https://academy.avax.network';
+
 interface LinkCheckResult {
   file: string;
   link: string;
@@ -10,12 +12,19 @@ interface LinkCheckResult {
   isValid: boolean;
 }
 
-function isValidURL(url: string): boolean {
+function isValidURLOrPath(url: string): boolean {
   try {
-    new URL(url);
-    return true;
+    new URL(url)
+    return true
   } catch {
-    return false;
+    if (url.startsWith("{") && url.endsWith("}")) { // is a a JSX component
+      return false;
+    }
+    else if (url.indexOf('.') > -1) { // is a url or misconfigured path
+      return true;
+    }
+    // where all our content lives
+    return url.startsWith("/guide/") || url.startsWith("/common/") || url.startsWith("/course/") || url.startsWith("/common-images/")|| url.startsWith("/course-banner/") || url.startsWith("/course-images/") || url.startsWith("/guide-images/");
   }
 }
 
@@ -36,7 +45,7 @@ function extractLinksWithLineNumbers(mdxContent: string): { link: string; line: 
     const $ = load(`<div>${line}</div>`);
     $('a').each((i, elem) => {
       const href = $(elem).attr('href');
-      if (href && isValidURL(href)) {
+      if (href && isValidURLOrPath(href)) {
         links.push({ link: href, line: index + 1 });
       }
     });
@@ -45,7 +54,7 @@ function extractLinksWithLineNumbers(mdxContent: string): { link: string; line: 
     let match;
     while ((match = markdownLinkRegex.exec(line)) !== null) {
       const link = match[1];
-      if (isValidURL(link)) {
+      if (isValidURLOrPath(link)) {
         links.push({ link, line: index + 1 });
       }
     }
@@ -66,10 +75,21 @@ async function checkAllMdxFiles(): Promise<void> {
     const content = readFileSync(file, 'utf-8');
     const links = extractLinksWithLineNumbers(content);
 
+    const cache: { [link: string]: boolean } = {};
+    let isValid: boolean;
+
     for (const { link, line } of links) {
       console.log(`Checking link: ${link} in file: ${file} (line ${line})`);
 
-      const isValid = await checkLink(link);
+      if (cache[link]) {
+        isValid = cache[link];
+      } else {
+        isValid = await checkLink(link); // check the link
+        if (!isValid) {
+          isValid = await checkLink(baseUrl + link); // if link failed check first time, try adding the base url (for internal relative links)
+        }
+        cache[link] = isValid;
+      }
       results.push({ file, link, line, isValid });
 
       if (!isValid) {
