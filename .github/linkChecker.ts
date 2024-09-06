@@ -5,6 +5,9 @@ import { sync as globSync } from 'glob';
 
 const baseUrl = 'https://academy.avax.network';
 
+const whitelist = [] // some websites return 404 for head requests, so we need to whitelist them, (fix: pass header -H 'Accept: text/html' and parse text/html)
+                                // see https://github.com/rust-lang/crates.io/issues/788
+
 interface LinkCheckResult {
   file: string;
   link: string;
@@ -17,20 +20,29 @@ function isValidURLOrPath(url: string): boolean {
     new URL(url)
     return true
   } catch {
-    if (url.startsWith("{") && url.endsWith("}")) { // is a a JSX component
+    if (url.startsWith("{") && url.endsWith("}")) { // is a a JSX component, ignore
       return false;
     }
     else if (url.indexOf('.') > -1) { // is a url or misconfigured path
       return true;
     }
     // where all our content lives
-    return url.startsWith("/guide/") || url.startsWith("/common/") || url.startsWith("/course/") || url.startsWith("/common-images/")|| url.startsWith("/course-banner/") || url.startsWith("/course-images/") || url.startsWith("/guide-images/");
+    return url.startsWith("/");
   }
 }
 
 async function checkLink(url: string): Promise<boolean> {
   try {
-    const response = await get(url);
+    const response = await get(url, {
+      timeout: 10000, // timeout to 10 seconds
+      maxRedirects: 5, // handle up to 5 redirects
+      validateStatus: function (status) {
+        return status >= 200 && status < 400; // resolve only if the status code is less than 400
+      },
+      headers: {
+        'User-Agent': 'Mozilla/5.0 (compatible; LinkChecker/1.0)', // Custom User-Agent
+      }
+    });
     return response.status === 200;
   } catch {
     return false;
@@ -87,6 +99,12 @@ async function checkAllMdxFiles(): Promise<void> {
         isValid = await checkLink(link); // check the link
         if (!isValid) {
           isValid = await checkLink(baseUrl + link); // if link failed check first time, try adding the base url (for internal relative links)
+        }
+        for (const wl of whitelist) {
+          if (link.includes(wl)) {
+            isValid = true;
+            break;
+          }
         }
         cache[link] = isValid;
       }
