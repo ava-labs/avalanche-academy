@@ -56,7 +56,7 @@ const officialCourses: Course[] = [
         duration: "3 hours",
         tools: ["Avalanche-CLI"],
         languages: ["Solidity"],
-        instructors: ["Martin Eckardt", "Andrea Vargas"] // + Usman
+        instructors: ["Martin Eckardt", "Andrea Vargas", "Ash"] // + Usman
      },
      {
         name:"Interchain Token Transfer",
@@ -67,7 +67,7 @@ const officialCourses: Course[] = [
         duration: "2.5 hours",
         tools: ["Telepoter", "Foundry"],
         languages: ["Solidity"],
-        instructors: ["Martin Eckardt", "Ash"] // + Owen
+        instructors: ["Martin Eckardt", "Andrea Vargas", "Ash"] // + Owen
      },
      /*{
         name:"Chainlink VRF with Interchain Messaging ",
