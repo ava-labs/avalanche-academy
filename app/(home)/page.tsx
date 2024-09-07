@@ -29,7 +29,7 @@ export default function HomePage(): React.ReactElement {
     <>
       <main className="container relative">
         <Hero />
-        <Courses title="Explore our Courses" description="We offer fundamental courses specifically designed for individuals who are new to the Avalanche ecosystem, and advanced courses for those who wish to master the art of configuring, modifying, or even creating entirely new Virtual Machines from scratch." courses={COURSES.official} />
+        <Courses title="Explore our Courses" description="We offer fundamental courses specifically designed for individuals who are new to the Avalanche ecosystem, and advanced courses for those who wish to master the art of configuring, modifying, or even creating entirely new Virtual Machines from scratch." courses={COURSES.official_featured} />
 
         {COURSES.ecosystem.length > 0 && <Courses title="Ecosystem Courses" description="Check out the courses provided by our ecosystem partners." courses={COURSES.ecosystem} />}
 

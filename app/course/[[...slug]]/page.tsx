@@ -12,6 +12,7 @@ import Instructors from '@/components/instructor';
 import Link from 'next/link';
 import { buttonVariants } from '@/components/ui/button';
 import { cn } from '@/utils/cn';
+import COURSES from '@/content/courses';
 
 interface Param {
   slug: string[];
@@ -43,6 +44,8 @@ export default function Page({
   const updated = new Date(page.data.updated);
   const [updatedISO, updatedHuman] = [updated.toISOString(), formatDate(updated)];
 
+  const course = COURSES.official.find(c => c.slug === page.slugs[0]);
+
   return (
     <DocsPage
       toc={page.data.exports.toc}
@@ -53,7 +56,7 @@ export default function Page({
           <div className="flex flex-col gap-6">
             <div className='flex flex-col gap-y-4 text-sm text-muted-foreground'>
               <div>Instructors:</div>
-              <Instructors names={["Martin Eckardt", "Andrea Vargas", "Ash"]}/>
+              <Instructors names={course?.instructors || []} />
             </div>
 
             <Link href="https://t.me/avalancheacademy"
