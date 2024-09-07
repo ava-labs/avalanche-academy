@@ -5,29 +5,79 @@ updated: 2024-05-31
 authors: [ashucoder9]
 icon: Book
 ---
+import { Step, Steps } from 'fumadocs-ui/components/steps';
+import Link from 'next/link';
+import { cn } from '@/utils/cn';
+import { buttonVariants } from '@/components/ui/button.tsx'
 
+## Transfer an ERC-20 Token &rarr; Avalanche L1 as an ERC-20 Token
 
-import ICTTsetup from "@/content/common/avalanche-ictt/setup-manual.mdx";
+This chapter will show you how to send an ERC-20 Token on C-Chain to an Avalanche L1 using Interchain Messaging and Foundry. This demo is conducted on a local network, but can be applied to Fuji Testnet and Avalanche Mainnet directly.
 
-
-## Transfer an ERC20 Token &rarr; Avalanche L1 as Native Token
-
-The following example will show you how to send an ERC20 Token on C-chain to an Avalanche L1 as a native token using Interchain Messaging and Foundry. This demo is conducted on a local network, but can be applied to Fuji Testnet and Avalanche Mainnet directly.
-
-**All Avalanche Interchain Token Transfer contracts and interfaces implemented in this example implementation are maintained in the [avalanche-interchain-token-transfer](https://github.com/ava-labs/avalanche-interchain-token-transfer/tree/main/contracts/src) repository.**
-
-If you prefer full end-to-end testing written in Golang for bridging ERC20s, native tokens, or any combination of the two, you can view the test workflows directly in the [avalanche-interchain-token-transfer](https://github.com/ava-labs/avalanche-interchain-token-transfer/tree/main/tests/flows) repository.
+**All Avalanche Interchain Token Transfer contracts and interfaces implemented in this chapter implementation are maintained in the [`avalanche-interchain-token-transfer`](https://github.com/ava-labs/avalanche-interchain-token-transfer/tree/main/contracts/src) repository.**
 
 Deep dives on each template interface can be found [here](https://github.com/ava-labs/avalanche-interchain-token-transfer/blob/main/contracts/README.md).
 
 _Disclaimer: The avalanche-interchain-token-transfer contracts used in this tutorial are under active development and are not yet intended for production deployments. Use at your own risk._
 
-## What we have to do
+## What we will do
 
-1. Create an Avalanche L1 and Deploy on Local Network
-2. Deploy an ERC20 Contract on C-chain
-3. Deploy the Interchain Token Transferer Contracts on C-chain and Avalanche L1
-4. Register Remote Token with Home Transferer
-5. Add Collateral and Start Sending Tokens
+1. Deploy an ERC-20 Contract on C-Chain
+2. Deploy the Interchain Token Transferer Contracts on C-Chain and Avalanche L1
+3. Register Remote Token contract with the Home Transferer contract
+4. Add Collateral and Start Sending Tokens
 
-<ICTTsetup />
+## Setup
+<Steps>
+<Step>
+## Configuration and Deployment
+### Run on Github Codespace
+
+The best way to follow along is using Github Codespaces. Click on the button below to open the repository in a Codespace.
+
+<Link
+    href="https://github.com/ava-labs/avalanche-starter-kit"
+    className={cn(
+    buttonVariants({ variant: 'default', className: 'mt-4' }),
+    )}
+    target='_blank'
+>Open Avalanche Starter Kit</Link>
+
+### Create a Codespace
+- Click the green **Code** button
+- Switch to the **Codespaces** tab
+- Click **Create Codespace on main** or if you already have a Codespace click the plus (**+**) button
+
+The Codespace will open in a new tab. Wait a few minutes until it's fully built.
+
+This ensures that all the dependencies are pre-installed and the environment is ready to use.
+Ensure your blockchain is spun up and running. If not, [follow the create blockchain documentation.](/course/interchain-token-transfer/02-avalanche-starter-kit/03-create-blockchain)
+</Step>
+<Step>
+### Fetch the `Teleporter Registry` address from the Avalanche L1 and set it as an environment variable. 
+
+```bash
+avalanche blockchain describe myblockchain
+```
+
+```bash
++-------------------------------------------------------------------------------------------+
+|                                         TELEPORTER                                        |
++---------------+------------------------------+--------------------------------------------+
+| Local Network | Teleporter Messenger Address | 0x253b2784c75e510dD0fF1da844684a1aC0aa5fcf |
+|               +------------------------------+--------------------------------------------+
+|               | Teleporter Registry Address  | 0x82EeEf8e31D4Bf95916219D7949D66c468Ac0681 |
++---------------+------------------------------+--------------------------------------------+
+```
+</Step>
+<Step>
+### Export `Teleporter Registry Address` as environment variable.
+
+Most other environment variables we will need are already set in the devcontainer.
+```bash
+export TELEPORTER_REGISTRY_L1=0x82EeEf8e31D4Bf95916219D7949D66c468Ac0681
+```
+</Step>
+</Steps>
+
+

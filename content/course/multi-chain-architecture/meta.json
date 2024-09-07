@@ -2,9 +2,7 @@
   "title": "subnet-architecture",
   "root": true,
   "pages": [
-    "---Multi-Chain Architecture---",
     "index",
-    "...01-intro",
     "---Custom Blockchains---",
     "...02-custom-blockchains",
     "---Avalanche Starter Kit---",

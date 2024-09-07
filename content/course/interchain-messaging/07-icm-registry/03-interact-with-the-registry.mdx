@@ -5,23 +5,59 @@ updated: 2024-05-31
 authors: [martineckardt]
 icon: Terminal
 ---
+import { Step, Steps } from 'fumadocs-ui/components/steps';
 
-Let's start by interacting the registry. Registry is deployed on specific addresses depending the chain you're operating and the status of the network at the deployment time. For your local network you can find it out with the following command:
+
+Let's start by interacting with the registry. Registry is deployed on specific addresses depending the chain you're operating and the status of the network at the deployment time. For your local network you can find it out with the following command:
+
+<Steps>
+<Step>
+
+### Get C-Chain Registry Address
 
 ```bash
 avalanche primary describe
-avalanche subnet describe myblockchain
 ``` 
+
+</Step>
+<Step>
+
+### Save C-Chain Registry Address
 
 Let's put the address of the registry in an environment variable:
 
 ```bash
 export C_CHAIN_REGISTRY_ADDRESS=0x1234...
+```
+
+</Step>
+<Step>
+
+### Get L1 Registry Address
+
+```bash
+avalanche subnet describe myblockchain
+```
+
+</Step>
+<Step>
+
+### Save L1 Registry Address
+
+```bash
 export MYBLOCKCHAIN_REGISTRY_ADDRESS=0x5678...
 ```
+
+</Step>
+<Step>
+
+### Retrieve Latest ICM Messenger Version:
 
 Let's interact with the Registry by getting the latest version of the Interchain Messaging Messenger deployed on C-Chain:
 
 ```bash
-cast call --rpc-url local-c --private-key $PK $C_CHAIN_REGISTRY_ADDRESS "latestVersion()(uint256)" 
+cast call --rpc-url local-c $C_CHAIN_REGISTRY_ADDRESS "latestVersion()(uint256)" 
 ```
+
+</Step>
+</Steps>

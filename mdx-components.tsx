@@ -10,6 +10,7 @@ import {
   Pre,
 } from 'fumadocs-ui/components/codeblock';
 import type { ReactNode } from 'react';
+import Quiz from '@/components/quiz'
 import { Popup, PopupContent, PopupTrigger } from 'fumadocs-ui/twoslash/popup';
 import YouTube from '@/components/youtube';
 import Gallery from '@/components/gallery';
@@ -34,6 +35,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     Accordions,
     YouTube,
     Gallery,
+    Quiz,
     InstallTabs: ({
       items,
       children,

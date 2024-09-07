@@ -9,7 +9,7 @@ icon: Book
 
 ## Wrapped Native Token
 
-On your Avalanche L1, deploy a wrapped token contract for your native token. When we configured the Avalanche L1 earlier, we named the token `NATV`. This is reflected in line 19 of our [example wrapped token contract](./ExampleWNATV.sol).
+On your Avalanche L1, deploy a wrapped token contract for your native token. When we configured the Avalanche L1 earlier, we named the token `NATV`. This is reflected in line 19 of our [example wrapped token contract](https://github.com/ava-labs/avalanche-interchain-token-transfer/blob/main/contracts/src/WrappedNativeToken.sol).
 
 ```
 forge create --rpc-url myblockchain --private-key $PK src/5-native-to-erc20-token-bridge/ExampleWNATV.sol:WNATV
@@ -35,7 +35,7 @@ Transaction hash: 0x054e7b46b221c30f400b81df0fa2601668ae832054cf8e8b873f4ba615fa
 
 To bridge the token out of your Avalanche L1, you'll need to first deploy a _home_ contract on your Avalanche L1 that implements the `INativeTokenBridge` interface, and inherits the properties of the `TeleporterTokenHome` contract standard.
 
-Using the [`forge create`](https://book.getfoundry.sh/reference/forge/forge-create) command, we will deploy the [NativeTokenHome.sol](./NativeTokenHome.sol) contract, passing in the following constructor arguments:
+Using the [`forge create`](https://book.getfoundry.sh/reference/forge/forge-create) command, we will deploy the [NativeTokenHome.sol](https://github.com/ava-labs/avalanche-interchain-token-transfer/blob/main/contracts/src/TokenHome/NativeTokenHome.sol) contract, passing in the following constructor arguments:
 
 ```bash
 forge create --rpc-url myblockchain --private-key $PK lib/teleporter-token-bridge/contracts/src/TokenHome/NativeTokenHome.sol:NativeTokenHome --constructor-args $TELEPORTER_REGISTRY_SUBNET $FUNDED_ADDRESS $WRAPPED_ERC20_HOME_SUBNET
@@ -73,7 +73,7 @@ export SUBNET_BLOCKCHAIN_ID_HEX=0x4d569bf60a38e3ab3e92afd016fe37f7060d7d63c44e33
 
 `Source Blockchain ID` is in the field: `Local Network BlockchainID (HEX)`.
 
-Using the [`forge create`](https://book.getfoundry.sh/reference/forge/forge-create) command, we will deploy the [ERC20Remote.sol](./NativeTokenHome.sol) contract, passing in the following constructor arguments:
+Using the [`forge create`](https://book.getfoundry.sh/reference/forge/forge-create) command, we will deploy the [ERC20RTokenRemote.sol](https://github.com/ava-labs/avalanche-interchain-token-transfer/blob/main/contracts/src/TokenRemote/ERC20TokenRemote.sol) contract, passing in the following constructor arguments:
 
 ```bash
 forge create --rpc-url local-c --private-key $PK lib/teleporter-token-bridge/contracts/src/TokenRemote/ERC20TokenRemote.sol:ERC20TokenRemote --constructor-args "(${TELEPORTER_REGISTRY_C_CHAIN}, ${FUNDED_ADDRESS}, ${SUBNET_BLOCKCHAIN_ID_HEX}, ${ERC20_HOME_BRIDGE_SUBNET})" "Wrapped NATV" "WNATV" 18
@@ -83,8 +83,8 @@ forge create --rpc-url local-c --private-key $PK lib/teleporter-token-bridge/con
 - Interchain Messaging Manager (our funded address)
 - Source Blockchain ID (hexidecimal representation of our Avalanche L1's Blockchain ID)
 - Token Home Address (address of NativeTokenHome.sol deployed on Avalanche L1 in the last step)
-- Token Name (input in the constructor of the [wrapped token contract](./ExampleWNATV.sol))
-- Token Symbol (input in the constructor of the [wrapped token contract](./ExampleWNATV.sol))
+- Token Name (input in the constructor of the [wrapped token contract](https://github.com/ava-labs/avalanche-interchain-token-transfer/blob/main/contracts/src/WrappedNativeToken.sol))
+- Token Symbol (input in the constructor of the [wrapped token contract](https://github.com/ava-labs/avalanche-interchain-token-transfer/blob/main/contracts/src/WrappedNativeToken.sol))
 - Token Decimals (uint8 integer representing number of decimal places for the ERC20 token being created. Most ERC20 tokens follow the Ethereum standard, which defines 18 decimal places.)
 
 For example, this contract deployment could be entered into your terminal as:

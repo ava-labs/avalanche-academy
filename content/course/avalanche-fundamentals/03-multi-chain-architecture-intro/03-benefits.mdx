@@ -10,11 +10,14 @@ Avalanche L1s are autonomous. Their creators can define their execution logic, s
 
 ## Scalability Through Multi-Chain Systems
 
-Scalability is a hallmark of multi-chain systems, achieved by operating chains in multiple independent threads. This parallel processing of transactions enhances scalability. One chain's congestion or increasing fees won't impact other chains.
 
-Going back to our highway analogy, we can think of the scaling through multiple chains as building many short highways in parallel.
+A blockchain has a limited capacity for computation and data storage. Therefore, the transactions it can process in a given time frame are limited. We can use the analogy of a highway to visualize this concept. A highway can only handle a certain number of cars at a time. If too many cars try to enter the highway at once, traffic congestion will occur and they have to wait to enter the highway.
+
+In order to scale horizontally and to offer more blockspace, a subset of validators can opt-in to validate an additional blockchain in parallel with the Primary Network: we call this an Avalanche L1. The idea is similiar to building many highways in parallel and create additional space for cars to drive on. This allows for more transactions to be processed in parallel, and therefore increases the overall throughput of the network.
 
 ![](/course-images/avalanche-fundamentals/11.png)
+
+This parallel processing of transactions enhances scalability. One chain's congestion or increasing fees won't impact other chains. Going back to our highway analogy, we can think of the scaling through multiple chains as building many short highways in parallel.
 
 The beauty of this approach is its simplicity. It doesn't require any new untested innovations. The challenge, rather, is optimizing how Avalanche L1s interoperate and making switching from one Avalanche L1 to the other easy.
 
@@ -28,6 +31,18 @@ While the unified, or monolithic, blockchain design does offer certain advantage
 
 Coming back to our highway analogy, we can imagine a scenario where congestion build up on one highway. The other highways are not directly affected. Some cars may choose to take a different highway and the traffic bottleneck may decrease.
 
+<Quiz
+  quizId="multi-chain-architecture-benefits-03-1"
+  question="The addition of a new decentralized application (dApp) on a single-chain system causes more competition over the block space of that chain."
+  options={[
+    "True",
+    "False",
+  ]}
+  correctAnswers={[0]}
+  hint="Think about how each new dApp vies for the same block space in a single-chain system."
+  explanation="Each new dApp vies for the same block space in a single-chain system, leading to unnecessary overcrowding of the chain. Multi-chain systems alleviate this issue."
+/>
+
 ## Customizability
 
 The creator of an Avalanche L1 can customize it to meet their needs. This can happen in numerous ways, including introducing a custom own gas token, using a different Virtual Machine (e.g. a WASM or Move VM), or limiting access to the Avalanche L1. This is very hard to do in a single-chain system because it would require a majority of users to agree.
@@ -38,4 +53,16 @@ In our highway analogy, let's think of some travelers having a very unique requi
 
 ## Other Multi-Chain Systems
 
-Avalanche isn't alone in the multi-chain landscape. Other blockchain systems utilizing a similar architectural approach include Cosmos, Polkadot, and Polygon Supernets. 
+Avalanche isn't alone in the multi-chain landscape. Other blockchain systems utilizing a similar architectural approach include Cosmos, Polkadot, and Polygon CDK.
+
+<Quiz
+  quizId="multi-chain-architecture-benefits-03-2"
+  question="In case of a security breach on the Ethereum mainnet, all Layer 2 solutions are potentially affected."
+  options={[
+    "True",
+    "False",
+  ]}
+  correctAnswers={[0]}
+  hint="Think about how Layer 2 solutions delegate security to the Ethereum mainnet."
+  explanation="Layer 2 solutions delegate security to the Ethereum mainnet. Hence, a security breach on the mainnet could potentially affect all Layer 2 solutions."
+/>

@@ -1,9 +1,15 @@
-In the following commands, make sure to substitute the name of your Avalanche L1 for `<subnetName>` (including the `<>`). You can choose whatever name you want, but I recommend using `myblockchain` as the name to avoid the need for some manual configuration.
+import { Step, Steps } from 'fumadocs-ui/components/steps';
 
-To create an Avalanche L1 configuration run the following command
+> In the following commands, make sure to substitute the name of your Avalanche L1 for `<name>` (including the `<>`). You can choose whatever name you want, but I recommend using `myblockchain` as the name to avoid the need for some manual configuration.
+
+<Steps>
+<Step>
+ 
+### Start Avalanche L1 Configuration
+To create an Avalanche L1 configuration run the following command:
 
 ```bash
-avalanche blockchain create <subnetName>
+avalanche blockchain create <name>
 ```
 
 For example:
@@ -11,7 +17,12 @@ For example:
 ```bash
 avalanche blockchain create myblockchain
 ```
+ 
+</Step>
 
+<Step>
+ 
+### Select Virtual Machine
 You will be prompted a wizard to configure your Avalanche L1. In the first question, select `Subnet-EVM`:
 
 ```
@@ -20,7 +31,12 @@ You will be prompted a wizard to configure your Avalanche L1. In the first quest
     Custom VM
     Explain the difference
 ```
+ 
+</Step>
 
+<Step>
+ 
+### Select Default EVM Configuration
 In the second question, select `I want to use defaults for a test environment`:
 
 ```
@@ -46,18 +62,20 @@ subnet-evm-v0.6.8 installation successful
 ✓ Successfully created blockchain configuration
 ```
 
-This command creates the config files `genesis.json` and `sidecar.json` inside: `~/.avalanche-cli/subnets/<subnetName>`. If you want, you can retrieve the current config with the following command:
+This command creates the config files `genesis.json` and `sidecar.json` inside: `~/.avalanche-cli/subnets/<name>`. If you want, you can retrieve the current config with the following command:
 
 ```bash
-avalanche subnet describe <subnetName>
+avalanche blockchain describe <name>
 ```
 
-## Deploy your Avalanche L1
+</Step>
 
-To deploy your Avalanche L1, run
+<Step>
+ 
+### To deploy your Avalanche L1, run
 
 ```bash
-avalanche blockchain deploy <subnetName>
+avalanche blockchain deploy <name>
 ```
 
 So in our case:
@@ -79,7 +97,7 @@ When prompted select `Local Network` to deploy on.
 After the deployment your should see something like this:
 
 ```
-@martineckardt ➜ /workspaces/avalanche-starter-kit (main) $ avalanche subnet deploy myblockchain
+@martineckardt ➜ /workspaces/avalanche-starter-kit (main) $ avalanche blockchain deploy myblockchain
 ✔ Local Network
 Deploying [myblockchain] to Local Network
 Backend controller started, pid: 5317, output at: /home/vscode/.avalanche-cli/runs/server_20240808_164902/avalanche-cli-backend.log
@@ -204,11 +222,19 @@ Blockchain ready to use
 +-----------------+-------------------------------------------------------------------------------------+
 ```
 
+</Step>
 
-## Make RPC-Endpoint publicly accessible
+<Step>
+ 
+### Make RPC-Endpoint publicly accessible
 
 The final part of the output shows the wallet connection details. You can use these to connect your wallet like Core or Metasmask to you newly created Avalanche L1.
 
 import PublishPort from "@/content/common/codespaces/publish-port.mdx";
 
 <PublishPort />
+ 
+</Step>
+
+</Steps>
+

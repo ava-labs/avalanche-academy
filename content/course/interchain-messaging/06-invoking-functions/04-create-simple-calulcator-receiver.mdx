@@ -6,7 +6,14 @@ authors: [martineckardt]
 icon: Terminal
 ---
 
+import { Step, Steps } from 'fumadocs-ui/components/steps';
+
 On our Avalanche L1, we need to create the receiver part of our cross-chain calculator. It will receive two numbers and store the result. 
+
+<Steps>
+<Step>
+
+### Create Receiver Contract
 
 ```solidity title="src/02a-encoding-multiple-paramters/SimpleCalculatorReceiverOnAvalanche L1.sol"
 pragma solidity ^0.8.18;
@@ -37,7 +44,10 @@ contract SimpleCalculatorReceiverOnAvalanche L1 is ITeleporterReceiver {
 
 ```
 
-## Deploy the Receiver Contract
+</Step>
+<Step>
+
+### Deploy the Receiver Contract
 
 Deploy the receiver contract on your Avalanche L1:
 
@@ -45,8 +55,15 @@ Deploy the receiver contract on your Avalanche L1:
 forge create --rpc-url myblockchain --private-key $PK src/2a-invoking-functions/SimpleCalculatorReceiverOnAvalanche L1.sol:SimpleCalculatorReceiverOnAvalanche L1
 ```
 
+</Step>
+<Step>
+
+### Save the Receiver Contract Address
+
 Then save the sender contract address (displayed in `Deployed To:`) in an environment variable:
 
 ```bash
 export RECEIVER_ADDRESS=0x123...
 ```
+</Step>
+</Steps>

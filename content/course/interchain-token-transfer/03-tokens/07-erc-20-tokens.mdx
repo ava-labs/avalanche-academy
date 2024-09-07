@@ -55,15 +55,19 @@ Click [here](https://eips.ethereum.org/EIPS/eip-20) to review the ERC20 standard
 ## Transfer Tokens
 
 Transferring ERC-20 tokens between accounts involves calling the 'transfer' function, specifying the recipient’s address and the amount to transfer. 
-To facilitate more complex interactions, such as those involving smart contracts, the ERC-20 standard includes the approve() and transferFrom() functions. We will check how to implement those so smart contracts can use funds according to its code.
 
-### approve()
+To facilitate more complex interactions, such as those involving smart contracts, the ERC-20 standard includes the `approve()` and `transferFrom()` functions. We will check how to implement those so smart contracts can use funds according to its code.
+
+### `approve()`
+
 Since all balances are just a mapping of amount values to addresses, the owner of each address can 'approve' some other account as a _spender of their funds up to some limit determined by the approved _amount. The spender then will be able to withdraw from your account multiple times, up to the value set in amount.
 
-### allowance()
+### `allowance()`
+
 Returns the amount which _spender is still allowed to withdraw from _owner.
 
-### transferFrom()
+### `transferFrom()`
+
 Transfers _value amount of tokens from address _from to address _to
 
 

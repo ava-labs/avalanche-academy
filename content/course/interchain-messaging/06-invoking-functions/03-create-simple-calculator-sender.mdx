@@ -6,9 +6,14 @@ authors: [martineckardt]
 icon: Terminal
 ---
 
+import { Step, Steps } from 'fumadocs-ui/components/steps';
+
 Now, our goal is to create a dApp that works as a cross-Avalanche L1 Calculator, receiving multiple parameters and using those for a calculation. For now our calculator will only have the Sum function.
 
-## Create Sender Contract
+<Steps>
+<Step>
+
+### Create Sender Contract
 
 On the Local C-Chain, we need to create the sender part of our cross-chain calculator. This will send two numbers (uint) to the receiver contract on your Avalanche L1. 
 
@@ -44,11 +49,18 @@ contract SimpleCalculatorSenderOnCChain {
 
 ```
 
-<Callout type="warn" title="Don't forget to replace the destinationBlockchainID with the one from your Avalanche L1!" />
-
 To increase the readability of the code, we have created a helper function `encodeAddData` that encodes the two numbers into a single byte array.
 
-## Deploy the Sender Contract
+</Step>
+<Step>
+
+### Replace `destinationBlockchainID`
+<Callout type="warn" title="Don't forget to replace the destinationBlockchainID with the one from your Avalanche L1!" />
+
+</Step>
+<Step>
+
+### Deploy the Sender Contract
 
 Deploy the sender contract on the Local C-Chain:
 
@@ -56,8 +68,16 @@ Deploy the sender contract on the Local C-Chain:
 forge create --rpc-url local-c --private-key $PK src/2a-invoking-functions/SimpleCalculatorSenderOnCChain.sol:SimpleCalculatorSenderOnCChain
 ```
 
+</Step>
+<Step>
+
+### Save the Sender Contract Address
+
 Then save the sender contract address (displayed in `Deployed To:`) in an environment variable:
 
 ```bash
 export SENDER_ADDRESS=0x123...
 ```
+
+</Step>
+</Steps>
