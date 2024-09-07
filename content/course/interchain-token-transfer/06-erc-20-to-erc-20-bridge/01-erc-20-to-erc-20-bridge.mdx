@@ -27,57 +27,6 @@ _Disclaimer: The avalanche-interchain-token-transfer contracts used in this tuto
 3. Register Remote Token contract with the Home Transferer contract
 4. Add Collateral and Start Sending Tokens
 
-## Setup
-<Steps>
-<Step>
-## Configuration and Deployment
-### Run on Github Codespace
 
-The best way to follow along is using Github Codespaces. Click on the button below to open the repository in a Codespace.
-
-<Link
-    href="https://github.com/ava-labs/avalanche-starter-kit"
-    className={cn(
-    buttonVariants({ variant: 'default', className: 'mt-4' }),
-    )}
-    target='_blank'
->Open Avalanche Starter Kit</Link>
-
-### Create a Codespace
-- Click the green **Code** button
-- Switch to the **Codespaces** tab
-- Click **Create Codespace on main** or if you already have a Codespace click the plus (**+**) button
-
-The Codespace will open in a new tab. Wait a few minutes until it's fully built.
-
-This ensures that all the dependencies are pre-installed and the environment is ready to use.
-Ensure your blockchain is spun up and running. If not, [follow the create blockchain documentation.](/course/interchain-token-transfer/02-avalanche-starter-kit/03-create-blockchain)
-</Step>
-<Step>
-### Fetch the `Teleporter Registry` address from the Avalanche L1 and set it as an environment variable. 
-
-```bash
-avalanche blockchain describe myblockchain
-```
-
-```bash
-+-------------------------------------------------------------------------------------------+
-|                                         TELEPORTER                                        |
-+---------------+------------------------------+--------------------------------------------+
-| Local Network | Teleporter Messenger Address | 0x253b2784c75e510dD0fF1da844684a1aC0aa5fcf |
-|               +------------------------------+--------------------------------------------+
-|               | Teleporter Registry Address  | 0x82EeEf8e31D4Bf95916219D7949D66c468Ac0681 |
-+---------------+------------------------------+--------------------------------------------+
-```
-</Step>
-<Step>
-### Export `Teleporter Registry Address` as environment variable.
-
-Most other environment variables we will need are already set in the devcontainer.
-```bash
-export TELEPORTER_REGISTRY_L1=0x82EeEf8e31D4Bf95916219D7949D66c468Ac0681
-```
-</Step>
-</Steps>
 
 
