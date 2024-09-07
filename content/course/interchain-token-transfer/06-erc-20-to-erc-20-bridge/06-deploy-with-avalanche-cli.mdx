@@ -22,31 +22,15 @@ In the previous sections of this chapter we manually deployed and interacted wit
 <Steps>
 <Step>
 
-### Deploy ERC-20 Contract on C-chain
-
-Now we will deploy an ERC-20 contract. We are using OpenZeppelin's example contract which has been renamed to `ERC20.sol` for convenience.
-
-```bash
-forge create --rpc-url local-c --private-key $PK src/8-erc20-to-erc20-interchain-token-transfer/ERC20.sol:TOK
-```
-
-Add the contract address in the environment variables.
-
-```bash
-export ERC20_C_CHAIN=<"Deployed to" address>
-```
-
-Check your balance using the command below:
-```bash
-cast call --rpc-url local-c --private-key $PK $ERC20_C_CHAIN "balanceOf(address)(uint)" $FUNDED_ADDRESS
-```
-100,000 tokens should be returned.
-
-</Step>
-<Step>
 ### Deploy Avalanche Interchain Token Transfer Contracts
 
-Next we will deploy two Interchain Token Transfer contracts. One for the source chain (C-Chain) and another on the destination chain (myblockchain).
+First retrieve the address of the ERC-20 token on C-Chain.
+
+```bash
+echo $ERC20_C_CHAIN
+```
+    
+Next we will deploy two Interchain Token Transfer contracts using the Avalanche CLI. It will deploy the contracts on the source chain (C-Chain) and on the destination chain (myblockchain) for us. 
 
 ```bash
 avalanche interchain tokenTransferrer deploy
