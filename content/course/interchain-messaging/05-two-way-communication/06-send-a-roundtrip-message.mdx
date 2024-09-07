@@ -22,7 +22,7 @@ cast send --rpc-url local-c --private-key $PK $SENDER_ADDRESS "sendMessage(addre
 
 ### Verify Message Receipt
 
-To check wether the message has been received, we can call the `roundtripMessage()` function on the sender contract. 
+To check whether the message has been received, we can call the `roundtripMessage()` function on the sender contract. 
 
 ```bash
 cast call --rpc-url local-c $SENDER_ADDRESS "roundtripMessage()(string)"
