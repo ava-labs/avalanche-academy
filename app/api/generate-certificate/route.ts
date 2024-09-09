@@ -14,7 +14,10 @@ export async function POST(req: NextRequest) {
     const { courseId, userName } = await req.json();
     if (!courseId || !userName) { return NextResponse.json({ error: 'Missing required fields' }, { status: 400 }); }
     const courseName = getCourseName(courseId);
-    const templateUrl = 'http://localhost:3000/certificates/AvalancheAcademy_Certificate.pdf';
+    const protocol = req.headers.get('x-forwarded-proto') || 'http';
+    const host = req.headers.get('host') || 'localhost:3000';
+    const serverUrl = `${protocol}://${host}`;
+    const templateUrl = `${serverUrl}/certificates/AvalancheAcademy_Certificate.pdf`;
     const templateResponse = await fetch(templateUrl);
 
     if (!templateResponse.ok) { throw new Error(`Failed to fetch template`); }
