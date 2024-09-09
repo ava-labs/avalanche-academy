@@ -89,7 +89,7 @@ const CertificatePage: React.FC<CertificatePageProps> = ({ courseId }) => {
             <h3 className="text-xl font-medium mb-4">{chapter}</h3>
             <ul>
               {getQuizzesForChapter(courseId, chapter).map((quizId) => (
-                <li key={quizId} className="flex bg-card transition-colors hover:bg-accent/80 hover:text-accent-foreground items-center p-4 border rounded-md">
+                <li key={quizId} className="flex bg-card transition-colors hover:bg-accent/80 hover:text-accent-foreground items-center p-4 border rounded-md shadow-sm">
                   <span className={`w-4 h-4 mr-2 rounded-full ${completedQuizzes.includes(quizId) ? 'bg-green-500' : 'bg-muted-foreground/20'}`}></span>
                   <span className="grow">Quiz {quizId}:</span>
                   {completedQuizzes.includes(quizId) || (
