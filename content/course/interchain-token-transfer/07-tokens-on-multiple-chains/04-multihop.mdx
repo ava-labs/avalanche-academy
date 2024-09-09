@@ -28,7 +28,7 @@ cast send --rpc-url myblockchain --private-key $PK $ERC20_TOKEN_REMOTE_L1 \
 
 ### Check Balance
 
-To confirm the token was bridged from C-Chain to a Avalanche L1, we will check the recipient's balance of wrapped tokens on the Avalanche L1 with the [`cast call`](https://book.getfoundry.sh/reference/cast/cast-call?highlight=cast%20call#cast-call) foundry command:
+To confirm the token was bridged from `myblockchain1` to `myblockchain2` via the C-Chain, we will check the recipient's balance on `myblockchain2` with the [`cast call`](https://book.getfoundry.sh/reference/cast/cast-call?highlight=cast%20call#cast-call) foundry command:
 
 ```bash
 cast call --rpc-url myblockchain2 $ERC20_TOKEN_REMOTE_CHAIN2 "balanceOf(address)(uint)" $FUNDED_ADDRESS
