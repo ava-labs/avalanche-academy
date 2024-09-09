@@ -82,22 +82,19 @@ const CertificatePage: React.FC<CertificatePageProps> = ({ courseId }) => {
   }
 
   return (
-    <div className="max-w-2xl mx-auto mt-8 p-6 bg-white dark:bg-gray-800 rounded-lg shadow-md">
-      <h1 className="text-2xl font-bold mb-4 text-center">Course Completion Certificate</h1>
+    <div className="">
       <div className="mb-6">
-        <h2 className="text-xl font-semibold mb-2">Progress:</h2>
         {chapters.map((chapter) => (
-          <div key={chapter} className="mb-4">
-            <h3 className="text-lg font-medium mb-2">{chapter}</h3>
+          <div key={chapter} className="mb-12">
+            <h3 className="text-xl font-medium mb-4">{chapter}</h3>
             <ul>
               {getQuizzesForChapter(courseId, chapter).map((quizId) => (
-                <li key={quizId} className="flex items-center mb-2">
-                  <span className={`w-4 h-4 mr-2 rounded-full ${completedQuizzes.includes(quizId) ? 'bg-green-500' : 'bg-red-500'}`}></span>
-                  {completedQuizzes.includes(quizId) ? (
-                    <span>Quiz {quizId}: Completed</span>
-                  ) : (
-                    <Link href={getChapterUrlForQuiz(quizId)} className="text-blue-500 hover:underline">
-                      Quiz {quizId}: Not completed - Click to go to quiz
+                <li key={quizId} className="flex bg-card transition-colors hover:bg-accent/80 hover:text-accent-foreground items-center p-4 border rounded-md">
+                  <span className={`w-4 h-4 mr-2 rounded-full ${completedQuizzes.includes(quizId) ? 'bg-green-500' : 'bg-muted-foreground/20'}`}></span>
+                  <span className="grow">Quiz {quizId}:</span>
+                  {completedQuizzes.includes(quizId) || (
+                    <Link href={getChapterUrlForQuiz(quizId)} className={buttonVariants({ size: 'lg' })}>
+                      Go to quiz
                     </Link>
                   )}
                 </li>
