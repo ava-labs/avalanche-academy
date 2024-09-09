@@ -11,7 +11,7 @@ import { Step, Steps } from 'fumadocs-ui/components/steps';
 <Step>
 ### Transfer the L1's Native Token to the C-Chain
 
-Now that all the bridge contracts have been deployed and configured, send a native token from your Avalanche L1 to C-Chain with the [`cast send`](https://book.getfoundry.sh/reference/cast/cast-send) foundry command.
+Now that all the bridge contracts have been deployed and configured, send a some native tokens from your Avalanche L1 to C-Chain with the [`cast send`](https://book.getfoundry.sh/reference/cast/cast-send) foundry command.
 
 ```bash
 cast send --rpc-url myblockchain --private-key $PK $ERC20_HOME_BRIDGE_L1 \
@@ -31,6 +31,6 @@ cast call --rpc-url local-c $ERC20_TOKEN_REMOTE_C_CHAIN "balanceOf(address)(uint
 ```bash
 1000000000000000000
 ```
-**Success!** Our balance of native wrapped tokens on the C-Chain is 1 token!
+**Success!** We have bridged 1 native token from our Avalanche L1 to the C-Chain as an ERC-20 token.
 </Step>
 </Steps>
