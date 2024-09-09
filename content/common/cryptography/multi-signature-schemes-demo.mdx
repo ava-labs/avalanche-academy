@@ -57,7 +57,7 @@ We can now utilize the signature aggregation to create an aggregated Signature. 
 <Step>
 
 ### Aggregate Public Keys
-To verify an aggregated Signature, we need also need to aggregate the Public Keys that correspond to the Private Keys that were used to sign the message. Analogous to the signatures we can aggregate many more than just two Public Keys and also here the order does not matter.
+To verify an aggregated Signature, we also need to aggregate the Public Keys that correspond to the Private Keys that were used to sign the message. Analogous to the signatures we can aggregate many more than just two Public Keys and also here the order does not matter.
 
 <AggregatePublicKeysButton />
 
@@ -66,12 +66,12 @@ To verify an aggregated Signature, we need also need to aggregate the Public Key
 
 ### Verify the Aggregated Signature
 
-Anyone, that has access to the aggregated Public Key can now verify the Signature of the Message. Therefore, the Authenticity, Non-Repudiation and Integrity of the Message can be trusted in an efficient for a large number of signers.
+Anyone, that has access to the aggregated Public Key can now verify the Signature of the Message. Therefore, the Authenticity, Non-Repudiation and Integrity of the Message can be trusted in an efficient way for a large number of signers.
 
 <VerifySignatureButton aggregated={true} />
 
 </Step>
 </Steps>
 
-Congrats to going through the exercise and experiencing hands-on how we can utilize Siganture Aggregation. You will see in the next chapter about Avalanche Warp Messaging how Mutli-Signature schemes can enable secure and efficient cross-Subnet communication.
+Congrats on going through the exercise and experiencing hands-on how we can utilize Signature Aggregation. You will see in the next chapter about Avalanche Warp Messaging; how Mutli-Signature schemes can enable secure and efficient cross-Subnet communication.
 
