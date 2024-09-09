@@ -1,6 +1,6 @@
 "use client";
 import React, { useState, useEffect } from 'react';
-import { getQuizProgress, isEligibleForCertificate } from '../utils/quizProgress';
+import { getQuizProgress, isEligibleForCertificate } from '@/utils/quizProgress';
 
 interface QuizProgressProps {
   quizIds: string[];
