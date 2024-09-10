@@ -10,19 +10,7 @@ Let’s look at how VMs work in blockchain. Each validator operates an instance 
 
 When a user wishes to execute an operation on this distributed soda dispenser, they transmit the transaction to the network. The validators then reach consensus on the sequence in which transactions are carried out. In Avalanche, validators use Avalanche Consensus, which we talked about earlier.
 
-<Quiz
-  quizId="vms-and-blockchains-03-1"
-  question="In blockchain systems, what role do validators play? (Select all that apply)"
-  options={[
-    "They reach consensus on the sequence in which transactions are carried out",
-    "They determine the prices of the digital assets",
-    "They regulate the blockchain's electricity usage",
-    "They operate one or more instances of the virtual machines"
-  ]}
-  correctAnswers={[0, 3]}
-  hint="Think about the role validators play in maintaining the blockchain's integrity."
-  explanation="Validators in blockchain systems operate one or more instances of virtual machines and reach consensus on the sequence in which transactions are carried out."
-/>
+<Quiz quizId="112"/>
 
 Next, each validator executes the operation on their instance of the VM independently. Because each instance of our Virtual Machine behaves identically, validators maintain a uniform view of the machine’s state, so they balance and the number of available soda per flavor.
 
@@ -40,14 +28,4 @@ Each of the validators executes the operations on their own machine. After the f
 
 This is the fundamental principle of Blockchains in Avalanche: A collective of validators operate identical virtual machines, come to consensus on the order of transactions, execute them, and have a uniform view on the machine's current state.
 
-<Quiz
-  quizId="vms-and-blockchains-03-2"
-  question="How do the validators make sure that they all have the same view on the state?"
-  options={[
-    "By assigning each validator a unique part of the blockchain to monitor",
-    "Through the execution of operations on the local instance of the VM by all validators in the same order",
-    "Through the manual checking of each transaction by a centralized authority",
-  ]}
-  correctAnswers={[1]}
-    hint="Think about how validators ensure that they all have the same view of the blockchain's state."
-/>
+<Quiz quizId="113"/>
