@@ -131,8 +131,13 @@ const CertificatePage: React.FC<CertificatePageProps> = ({ courseId }) => {
   }, {} as Record<string, QuizInfo[]>);
 
   const shareOnLinkedIn = () => {
-    const url = `https://www.linkedin.com/in/eckardt/edit/forms/certification/new/?isFromA2p=true&name=Avalanche%20Fundamentals&organizationId=19104188&organizationName=Avalanche`;
-    window.open(url, '_blank');
+    const organizationName = 'Avalanche';
+    const organizationId = 19104188;
+    const certificationName = encodeURIComponent(quizData.courses[courseId].title);
+    const issuedMonth = new Date().getMonth() + 1;
+    const issuedYear = new Date().getFullYear();
+
+    return `https://www.linkedin.com/profile/add?startTask=CERTIFICATION_NAME&name=${certificationName}&organizationId=${organizationId}&issueMonth=${issuedMonth}&issueYear=${issuedYear}&organizationName=${organizationName}`;
   };
 
   const shareOnTwitter = () => {
@@ -204,16 +209,16 @@ const CertificatePage: React.FC<CertificatePageProps> = ({ courseId }) => {
               Share your achievement:
             </p>
             <div className="flex justify-center space-x-4">
-              <button
+              <a href={shareOnLinkedIn()} target="_blank" rel="noopener noreferrer"
+                style={{ textDecoration: 'none' }}
                 className={cn(
                   buttonVariants({ variant: 'secondary' }),
                   'flex items-center px-4 py-2'
                 )}
-                onClick={shareOnLinkedIn}
               >
                 <Linkedin className="mr-2 h-5 w-5" />
-                LinkedIn
-              </button>
+                Add to LinkedIn
+              </a>
               <button
                 className={cn(
                   buttonVariants({ variant: 'secondary' }),
