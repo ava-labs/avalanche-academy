@@ -176,7 +176,7 @@ const CertificatePage: React.FC<CertificatePageProps> = ({ courseId }) => {
         <div className="mt-12 bg-white dark:bg-gray-800 rounded-lg shadow-lg p-8">
           <div className="flex items-center justify-center mb-6">
             <Award className="w-16 h-16 text-green-500 mr-4" />
-            <h2 className="text-3xl font-bold text-gray-800 dark:text-white">Congratulations!</h2>
+            <h2 className="text-3xl font-bold text-gray-800 dark:text-white" style={{ fontSize: '2rem', marginTop: '1em'}}>Congratulations!</h2>
           </div>
           <p className="text-center text-gray-600 dark:text-gray-300 mb-8">
             You've completed all quizzes for the {quizData.courses[courseId].title} course. Claim your certificate now!
