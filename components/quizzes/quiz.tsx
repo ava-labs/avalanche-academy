@@ -124,8 +124,9 @@ const Quiz: React.FC<QuizProps> = ({ quizId }) => {
   }
 
   return (
-    <div className="w-full bg-card m-4 max-w-2xl shadow-lg rounded-lg overflow-hidden">
-      <div className="text-center p-4">
+    <div className="bg-gray-50 dark:bg-black flex items-center justify-center p-4">
+      <div className="w-full max-w-2xl bg-white dark:bg-black shadow-lg rounded-lg overflow-hidden">
+        <div className="text-center p-4">
         <div className="mx-auto flex items-center justify-center mb-4 overflow-hidden">
           <Image
             src="/wolfie-check.png"
@@ -207,6 +208,7 @@ const Quiz: React.FC<QuizProps> = ({ quizId }) => {
           )
         )}
       </div>
+    </div>
     </div>
   );
 };
