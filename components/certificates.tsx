@@ -131,8 +131,13 @@ const CertificatePage: React.FC<CertificatePageProps> = ({ courseId }) => {
   }, {} as Record<string, QuizInfo[]>);
 
   const shareOnLinkedIn = () => {
-    const url = `https://www.linkedin.com/in/eckardt/edit/forms/certification/new/?isFromA2p=true&name=Avalanche%20Fundamentals&organizationId=19104188&organizationName=Avalanche`;
-    window.open(url, '_blank');
+    const organizationName = 'Avalanche';
+    const organizationId = 19104188;
+    const certificationName = encodeURIComponent(quizData.courses[courseId].title);
+    const issuedMonth = new Date().getMonth() + 1;
+    const issuedYear = new Date().getFullYear();
+
+    return `https://www.linkedin.com/profile/add?startTask=CERTIFICATION_NAME&name=${certificationName}&organizationId=${organizationId}&issueMonth=${issuedMonth}&issueYear=${issuedYear}&organizationName=${organizationName}`;
   };
 
   const shareOnTwitter = () => {
@@ -171,7 +176,7 @@ const CertificatePage: React.FC<CertificatePageProps> = ({ courseId }) => {
         <div className="mt-12 bg-white dark:bg-gray-800 rounded-lg shadow-lg p-8">
           <div className="flex items-center justify-center mb-6">
             <Award className="w-16 h-16 text-green-500 mr-4" />
-            <h2 className="text-3xl font-bold text-gray-800 dark:text-white">Congratulations!</h2>
+            <h2 className="text-3xl font-bold text-gray-800 dark:text-white" style={{ fontSize: '2rem', marginTop: '1em'}}>Congratulations!</h2>
           </div>
           <p className="text-center text-gray-600 dark:text-gray-300 mb-8">
             You've completed all quizzes for the {quizData.courses[courseId].title} course. Claim your certificate now!
@@ -204,16 +209,16 @@ const CertificatePage: React.FC<CertificatePageProps> = ({ courseId }) => {
               Share your achievement:
             </p>
             <div className="flex justify-center space-x-4">
-              <button
+              <a href={shareOnLinkedIn()} target="_blank" rel="noopener noreferrer"
+                style={{ textDecoration: 'none' }}
                 className={cn(
                   buttonVariants({ variant: 'secondary' }),
                   'flex items-center px-4 py-2'
                 )}
-                onClick={shareOnLinkedIn}
               >
                 <Linkedin className="mr-2 h-5 w-5" />
-                LinkedIn
-              </button>
+                Add to LinkedIn
+              </a>
               <button
                 className={cn(
                   buttonVariants({ variant: 'secondary' }),
