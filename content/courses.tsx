@@ -45,7 +45,7 @@ const officialCourses: Course[] = [
         duration: "1.5 hours",
         languages: [],
         tools: ["Avalanche-CLI"],
-        instructors: ["Martin Eckardt", "Ash"] // + Usman + Owen
+        instructors: ["Martin Eckardt", "Ash", "Owen Wahlgren"] // + Usman
     },
     {
         name:"Avalanche Interchain Messaging",
@@ -67,7 +67,7 @@ const officialCourses: Course[] = [
         duration: "2.5 hours",
         tools: ["Telepoter", "Foundry"],
         languages: ["Solidity"],
-        instructors: ["Martin Eckardt", "Andrea Vargas", "Ash"] // + Owen
+        instructors: ["Martin Eckardt", "Andrea Vargas", "Ash", "Owen Wahlgren"]
      },
      /*{
         name:"Chainlink VRF with Interchain Messaging ",
