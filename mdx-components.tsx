@@ -10,7 +10,7 @@ import {
   Pre,
 } from 'fumadocs-ui/components/codeblock';
 import type { ReactNode } from 'react';
-import Quiz from '@/components/quiz/quiz'
+import Quiz from '@/components/quizzes/quiz'
 import { Popup, PopupContent, PopupTrigger } from 'fumadocs-ui/twoslash/popup';
 import YouTube from '@/components/youtube';
 import Gallery from '@/components/gallery';
