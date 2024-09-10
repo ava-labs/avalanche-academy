@@ -15,6 +15,7 @@ interface CertificatePageProps {
 interface QuizInfo {
   id: string;
   chapter: string;
+  question: string;
 }
 
 interface QuizData {
@@ -54,7 +55,8 @@ const CertificatePage: React.FC<CertificatePageProps> = ({ courseId }) => {
       const courseQuizzes = quizData.courses[courseId]?.quizzes || [];
       const quizzesWithChapters = courseQuizzes.map(quizId => ({
         id: quizId,
-        chapter: quizData.quizzes[quizId]?.chapter || 'Unknown Chapter'
+        chapter: quizData.quizzes[quizId]?.chapter || 'Unknown Chapter',
+        question: quizData.quizzes[quizId]?.question || ''
       }));
       setQuizzes(quizzesWithChapters);
     };
@@ -156,7 +158,7 @@ const CertificatePage: React.FC<CertificatePageProps> = ({ courseId }) => {
             <h3 className="text-xl font-medium mb-4">{chapter}</h3>
             <Accordions type="single" collapsible>
               {incompleteQuizzes.map((quiz) => (
-                <Accordion key={quiz.id} title={`Quiz ${quiz.id}`}>
+                <Accordion key={quiz.id} title={`${quiz.question}`}>
                   <Quiz quizId={quiz.id} />
                 </Accordion>
               ))}
@@ -227,7 +229,7 @@ const CertificatePage: React.FC<CertificatePageProps> = ({ courseId }) => {
         </div>
       )}
       {!allQuizzesCompleted && (
-        <div className="mt-8 text-center text-gray-600 dark:text-gray-400 bg-yellow-50 dark:bg-yellow-900/30 p-4 rounded-lg">
+        <div className="mt-12 bg-muted rounded-lg shadow-lg p-8">
           <Share2 className="w-8 h-8 mx-auto mb-2 text-yellow-500" />
           Complete all quizzes to unlock your certificate and share your achievement!
         </div>
