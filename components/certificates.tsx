@@ -47,7 +47,6 @@ const CertificatePage: React.FC<CertificatePageProps> = ({ courseId }) => {
   const [userName, setUserName] = useState('');
   const [isGenerating, setIsGenerating] = useState(false);
   const [quizzes, setQuizzes] = useState<QuizInfo[]>([]);
-  const [selectedQuiz, setSelectedQuiz] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchQuizzes = () => {
@@ -134,7 +133,6 @@ const CertificatePage: React.FC<CertificatePageProps> = ({ courseId }) => {
 
   return (
     <div className="max-w-4xl mx-auto p-4">
-      <h2 className="text-2xl font-bold mb-6">Course Progress</h2>
       {chapters.map((chapter) => {
         const chapterQuizzes = quizzesByChapter[chapter];
         const incompleteQuizzes = chapterQuizzes.filter(quiz => !completedQuizzes.includes(quiz.id));
