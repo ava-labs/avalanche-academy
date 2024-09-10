@@ -1,35 +1,41 @@
 "use client";
 import React, { useState, useEffect } from 'react';
-import { getQuizProgress, isEligibleForCertificate } from '../utils/quizProgress';
+import { getQuizResponse } from '@/utils/indexedDB';
+import quizData from './quizData.json';
 
-interface QuizProgressProps {
-  quizIds: string[];
-}
-
-const QuizProgress: React.FC<QuizProgressProps> = ({ quizIds }) => {
+const QuizProgress: React.FC = () => {
   const [progress, setProgress] = useState<{ [quizId: string]: boolean }>({});
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     async function loadProgress() {
-      const quizProgress = await getQuizProgress(quizIds);
+      const quizIds = Object.keys(quizData.quizzes);
+      const quizProgress: { [quizId: string]: boolean } = {};
+      
+      for (const quizId of quizIds) {
+        const response = await getQuizResponse(quizId);
+        quizProgress[quizId] = response ? response.isCorrect : false;
+      }
+      
       setProgress(quizProgress);
       setIsLoading(false);
     }
     loadProgress();
-  }, [quizIds]);
+  }, []);
 
   if (isLoading) {
     return <div>Loading progress...</div>;
   }
 
-  const eligibleForCertificate = isEligibleForCertificate(progress);
+  const totalQuizzes = Object.keys(quizData.quizzes).length;
+  const completedQuizzes = Object.values(progress).filter(Boolean).length;
+  const eligibleForCertificate = completedQuizzes === totalQuizzes;
 
   return (
     <div className="mt-8 p-6 bg-white shadow-md rounded-lg">
       <h2 className="text-2xl font-bold mb-4">Quiz Progress</h2>
       <ul className="mb-4">
-        {quizIds.map((quizId) => (
+        {Object.entries(quizData.quizzes).map(([quizId, quizInfo]) => (
           <li key={quizId} className="flex items-center mb-2">
             <span className={`w-4 h-4 rounded-full mr-2 ${progress[quizId] ? 'bg-green-500' : 'bg-red-500'}`}></span>
             Quiz {quizId}: {progress[quizId] ? 'Completed' : 'Not completed'}
