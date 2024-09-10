@@ -6,6 +6,7 @@ import { cn } from '@/utils/cn';
 import quizDataImport from '@/components/quizzes/quizData.json';
 import Quiz from '@/components/quizzes/quiz';
 import { Accordion, Accordions } from 'fumadocs-ui/components/accordion';
+import { Linkedin, Twitter } from 'lucide-react';
 
 interface CertificatePageProps {
   courseId: string;
@@ -131,6 +132,17 @@ const CertificatePage: React.FC<CertificatePageProps> = ({ courseId }) => {
     return <div>Loading...</div>;
   }
 
+  const shareOnLinkedIn = () => {
+    const url = `https://www.linkedin.com/in/eckardt/edit/forms/certification/new/?isFromA2p=true&name=Avalanche%20Fundamentals&organizationId=19104188&organizationName=Avalanche`;
+    window.open(url, '_blank');
+  };
+
+  const shareOnTwitter = () => {
+    const text = `I just completed the ${quizData.courses[courseId].title} course on Avalanche Academy!`;
+    const url = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(window.location.href)}`;
+    window.open(url, '_blank');
+  };
+
   return (
     <div className="max-w-4xl mx-auto p-4">
       {chapters.map((chapter) => {
@@ -170,13 +182,35 @@ const CertificatePage: React.FC<CertificatePageProps> = ({ courseId }) => {
           <button
             className={cn(
               buttonVariants({ variant: 'default' }),
-              'w-full'
+              'w-full mb-4'
             )}
             onClick={generateCertificate}
             disabled={isGenerating}
           >
             {isGenerating ? 'Generating Certificate...' : 'Generate Certificate'}
           </button>
+          <div className="flex justify-center space-x-4">
+            <button
+              className={cn(
+                buttonVariants({ variant: 'secondary' }),
+                'flex items-center'
+              )}
+              onClick={shareOnLinkedIn}
+            >
+              <Linkedin className="mr-2 h-4 w-4" />
+              Share on LinkedIn
+            </button>
+            <button
+              className={cn(
+                buttonVariants({ variant: 'secondary' }),
+                'flex items-center'
+              )}
+              onClick={shareOnTwitter}
+            >
+              <Twitter className="mr-2 h-4 w-4" />
+              Share on Twitter
+            </button>
+          </div>
         </div>
       )}
       {!allQuizzesCompleted && (
