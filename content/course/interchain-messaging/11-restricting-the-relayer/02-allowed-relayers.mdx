@@ -6,11 +6,11 @@ authors: [martineckardt]
 icon: BookOpen
 ---
 
-In this segment, we'll delve into the mechanisms of restricting relayers for transmitting messages across Subnets. While the security in AWM and Interchain Messaging doesn't rely at all on the Relayer, there might be some reasons why you would want to restrict the delivery of the message to certain Relayers. 
+In this segment, we'll delve into the mechanisms of restricting relayers for transmitting messages across Avalanche L1s. While the security in AWM and Interchain Messaging doesn't rely at all on the Relayer, there might be some reasons why you would want to restrict the delivery of the message to certain Relayers. 
 
 The more obvious one is when you run your own Relayer, and don't want to incentivize any other to ensure your message gets to the destination. On following sections you will learn how to run your own Relayer so you can restrict the messages to your own.
 
-Let's look at the TeleporterMessageInput structure included when we call the sendCrossChainMessage one more time.
+Let's look at the `TeleporterMessageInput` structure included when we call the `sendCrossChainMessage` one more time.
 
 ```solidity
 struct TeleporterMessageInput {
@@ -29,7 +29,7 @@ interface ITeleporterMessenger {
 }
 ```
 
-As you can see the `TeleporterMessageInput` allows you to specify an array of addresses for the allowed relayers. Previously we have set that do an empty array, which means that any relayer can pick up the message.
+As you can see the `TeleporterMessageInput` allows you to specify an array of addresses for the allowed relayers. Previously we have set that to an empty array, which means that any relayer can pick up the message.
 
 ```solidity
 messenger.sendCrossChainMessage( 
