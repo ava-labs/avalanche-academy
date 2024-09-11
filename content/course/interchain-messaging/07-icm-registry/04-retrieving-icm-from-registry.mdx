@@ -6,7 +6,7 @@ authors: [martineckardt]
 icon: BookOpen
 ---
 
-Alright, so let's now integrate the registry into a smart contract. Let's go back to the very simple string sending contract from the beginning:
+Let's now integrate the registry into a smart contract. Let's go back to the very simple string sending contract from the beginning:
 
 ```solidity title="src/3-registry/SenderOnCChainWithRegistry.sol"
 pragma solidity ^0.8.18;
@@ -39,10 +39,10 @@ contract SenderOnCChain {
 }
 ```
 
-<Callout type="warn" title="Don't forget to replace the destinationBlockchainID with the one from your Avalanche L1!" />
+<Callout type="warn" title="Don't forget to replace the destinationBlockchainID with Blockchain ID (HEX) from your Avalanche L1!" />
 
 The key things to understand:
 
-- We are also importing the ITeleporterRegistry.sol
+- We are importing the `ITeleporterRegistry.sol` interface
 - We have a variable for the registry address instead of the messenger address
 - Before sending the message we get the latest version from the registry
