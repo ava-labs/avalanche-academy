@@ -31,7 +31,7 @@ contract TeleporterRegistry {
    // ...
 }
 ```
-In the TeleporterRegistry contract, the latestVersion state variable returns the highest version number that has been registered in the registry. The getLatestTeleporter function returns the ITeleporterMessenger that is registered with the corresponding version. Version zero is an invalid version, and is used to indicate that a TeleporterMessenger contract has not been registered yet.
+In the `TeleporterRegistry` contract, the `latestVersion` state variable returns the highest version number that has been registered in the registry. The `getLatestTeleporter` function returns the `ITeleporterMessenger` that is registered with the corresponding version. Version zero is an invalid version, and is used to indicate that a `TeleporterMessenger` contract has not been registered yet.
 
 ```solidity title="/lib/teleporter/contracts/src/Teleporter/upgrades/TeleporterRegistry.sol"
 contract TeleporterRegistry {
@@ -58,7 +58,7 @@ contract TeleporterRegistry {
 }
 ```
 
-If a cross-Avalanche L1 dApps prefers a specific version, it can also call directly the getAddressFromVersion function:
+If a cross-Avalanche L1 dApps prefers a specific version, it can also call directly the `getAddressFromVersion` function:
 
 ```solidity title="/lib/teleporter/contracts/src/Teleporter/upgrades/TeleporterRegistry.sol"
 contract TeleporterRegistry {
