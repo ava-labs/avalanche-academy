@@ -55,6 +55,7 @@ contract CalculatorSenderOnCChain {
     function sendConcatenateMessage(address destinationAddress, string memory text1, string memory text2) external {
         teleporterMessenger.sendCrossChainMessage(
             TeleporterMessageInput({
+                // Replace with chain id of your Avalanche L1 (see instructions in Readme)
                 destinationBlockchainID: 0x382d2a20c299b03b638dd4d42b96e7401f6c3e88209b764abce83cf71c0c30cd,
                 destinationAddress: destinationAddress,
                 feeInfo: TeleporterFeeInfo({feeTokenAddress: address(0), amount: 0}),
@@ -84,14 +85,14 @@ As you can see here we are calling `abi.encode` twice in the encode helpers. The
 
 Let's now look at the receiver:
 
-```solidity title="src/2b-invoking-functions/CalculatorReceiverOnAvalanche L1.sol"
+```solidity title="src/2b-invoking-functions/CalculatorReceiverOnSubnet.sol"
 pragma solidity ^0.8.18;
 
 import "@teleporter/ITeleporterMessenger.sol";
 import "@teleporter/ITeleporterReceiver.sol";
 import "./CalculatorActions.sol";
 
-contract CalculatorReceiverOnAvalanche L1 is ITeleporterReceiver {
+contract CalculatorReceiverOnSubnet is ITeleporterReceiver {
     ITeleporterMessenger public immutable teleporterMessenger =
         ITeleporterMessenger(0x253b2784c75e510dD0fF1da844684a1aC0aa5fcf);
     uint256 public result_num;
@@ -100,7 +101,7 @@ contract CalculatorReceiverOnAvalanche L1 is ITeleporterReceiver {
     function receiveTeleporterMessage(bytes32, address, bytes calldata message) external {
         // Only the Interchain Messaging receiver can deliver a message.
         require(
-            msg.sender == address(teleporterMessenger), "CalculatorReceiverOnAvalanche L1: unauthorized TeleporterMessenger"
+            msg.sender == address(teleporterMessenger), "CalculatorReceiverOnSubnet: unauthorized TeleporterMessenger"
         );
 
         // Decoding the Action type: // [!code highlight:2]
@@ -114,7 +115,7 @@ contract CalculatorReceiverOnAvalanche L1 is ITeleporterReceiver {
             (string memory text1, string memory text2) = abi.decode(paramsData, (string, string));
             _calculatorConcatenateStrings(text1, text2);
         } else {
-            revert("CalculatorReceiverOnAvalanche L1: invalid action");
+            revert("CalculatorReceiverOnSubnet: invalid action");
         }
     }
 
@@ -160,7 +161,7 @@ if (actionType == CalculatorAction.add) {
     (string memory text1, string memory text2) = abi.decode(paramsData, (string, string)); // [!code highlight]
     _calculatorConcatenateStrings(text1, text2);
 } else {
-    revert("CalculatorReceiverOnAvalanche L1: invalid action");
+    revert("CalculatorReceiverOnSubnet: invalid action");
 }
 ```
 
@@ -175,8 +176,19 @@ Deploy the sender and receiver contracts and try out the `add` and `concatenate`
 
 ### Deploy the Sender Contract
 
+<Callout type="warn" title="Don't forget to replace BOTH destinationBlockchainIDs in CalculatorSenderOnCChain with the Blockchain ID (HEX) from your Avalanche L1!" />
+
 ```bash
 forge create --rpc-url local-c --private-key $PK src/2b-invoking-functions/CalculatorSenderOnCChain.sol:CalculatorSenderOnCChain
+```
+```
+[⠃] Compiling...
+[⠆] Compiling 2 files with Solc 0.8.18
+[⠰] Solc 0.8.18 finished in 240.23ms
+Compiler run successful!
+Deployer: 0x8db97C7cEcE249c2b98bDC0226Cc4C2A57BF52FC
+Deployed to: 0x8B3BC4270BE2abbB25BC04717830bd1Cc493a461 // [!code highlight]
+Transaction hash: 0xf9cce28a714764bb265bba7522bfd10d620fa0cb0f5dae26de2ac773b0a878ee
 ```
 
 </Step>
@@ -185,7 +197,7 @@ forge create --rpc-url local-c --private-key $PK src/2b-invoking-functions/Calcu
 ### Save the Sender Address:
 
 ```bash
-export SENDER_ADDRESS=0x123...
+export SENDER_ADDRESS=0x8B3BC4270BE2abbB25BC04717830bd1Cc493a461
 ```
 
 </Step>
@@ -194,16 +206,24 @@ export SENDER_ADDRESS=0x123...
 ### Deploy the Receiver Contract:
 
 ```bash
-forge create --rpc-url myblockchain --private-key $PK src/2b-invoking-functions/CalculatorReceiverOnAvalanche L1.sol:CalculatorReceiverOnAvalanche L1
+forge create --rpc-url myblockchain --private-key $PK src/2b-invoking-functions/CalculatorReceiverOnSubnet.sol:CalculatorReceiverOnSubnet
 ```
-
+```
+[⠊] Compiling...
+[⠢] Compiling 1 files with Solc 0.8.18
+[⠆] Solc 0.8.18 finished in 148.40ms
+Compiler run successful!
+Deployer: 0x8db97C7cEcE249c2b98bDC0226Cc4C2A57BF52FC
+Deployed to: 0x5DB9A7629912EBF95876228C24A848de0bfB43A9 // [!code highlight]
+Transaction hash: 0xa8efb88abfef486d2caba30cb4146b1dc56a0ee88c7fb4c46adccdf1414ae39e
+```
 </Step>
 <Step>
 
 ### Save the Receiver address:
 
 ```bash
-export RECEIVER_ADDRESS=0x123...
+export RECEIVER_ADDRESS=0x5DB9A7629912EBF95876228C24A848de0bfB43A9
 ```
 
 </Step>
@@ -214,7 +234,7 @@ export RECEIVER_ADDRESS=0x123...
 Now you can call the `sendAddMessage` and `sendConcatenateMessage` functions on the sender contract and see the results on the receiver contract. 
 
 ```bash
-cast send --rpc-url local-c --private-key $PK $SENDER_ADDRESS "sendAddMessage(uint, uint)" 1 2
+cast send --rpc-url local-c --private-key $PK $SENDER_ADDRESS "sendAddMessage(address, uint, uint)" $RECEIVER_ADDRESS 1 2
 ```
 
 </Step>
