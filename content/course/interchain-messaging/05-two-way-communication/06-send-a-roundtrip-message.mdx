@@ -27,6 +27,10 @@ To check whether the message has been received, we can call the `roundtripMessag
 ```bash
 cast call --rpc-url local-c $SENDER_ADDRESS "roundtripMessage()(string)"
 ```
+If successful, you should see the following output:
+```bash
+"Hello World!"
+```
 
 </Step>
 <Step>
@@ -38,6 +42,7 @@ To understand in more detail what happened, check out the relayer logs:
 ```bash
 avalanche teleporter relayer logs
 ```
+
 
 </Step>
 </Steps>

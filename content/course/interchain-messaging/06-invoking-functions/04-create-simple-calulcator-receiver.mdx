@@ -15,13 +15,13 @@ On our Avalanche L1, we need to create the receiver part of our cross-chain calc
 
 ### Create Receiver Contract
 
-```solidity title="src/02a-encoding-multiple-paramters/SimpleCalculatorReceiverOnAvalanche L1.sol"
+```solidity title="src/02a-encoding-multiple-paramters/SimpleCalculatorReceiverOnSubnet.sol"
 pragma solidity ^0.8.18;
 
 import "@teleporter/ITeleporterMessenger.sol";
 import "@teleporter/ITeleporterReceiver.sol";
 
-contract SimpleCalculatorReceiverOnAvalanche L1 is ITeleporterReceiver {
+contract SimpleCalculatorReceiverOnSubnet is ITeleporterReceiver {
     ITeleporterMessenger public immutable teleporterMessenger =
         ITeleporterMessenger(0x253b2784c75e510dD0fF1da844684a1aC0aa5fcf);
 
@@ -30,7 +30,7 @@ contract SimpleCalculatorReceiverOnAvalanche L1 is ITeleporterReceiver {
     function receiveTeleporterMessage(bytes32, address, bytes calldata message) external {
         // Only the Interchain Messaging receiver can deliver a message.
         require(
-            msg.sender == address(teleporterMessenger), "CalculatorReceiverOnAvalanche L1: unauthorized TeleporterMessenger"
+            msg.sender == address(teleporterMessenger), "CalculatorReceiverOnSubnet: unauthorized TeleporterMessenger"
         );
 
         (uint256 a, uint256 b) = abi.decode(message, (uint256, uint256)); // [!code highlight:2]
@@ -52,7 +52,17 @@ contract SimpleCalculatorReceiverOnAvalanche L1 is ITeleporterReceiver {
 Deploy the receiver contract on your Avalanche L1:
 
 ```bash
-forge create --rpc-url myblockchain --private-key $PK src/2a-invoking-functions/SimpleCalculatorReceiverOnAvalanche L1.sol:SimpleCalculatorReceiverOnAvalanche L1
+forge create --rpc-url myblockchain --private-key $PK src/2a-invoking-functions/SimpleCalculatorReceiverOnSubnet.sol:SimpleCalculatorReceiverOnSubnet
+```
+
+```
+[⠊] Compiling...
+[⠒] Compiling 1 files with Solc 0.8.18
+[⠢] Solc 0.8.18 finished in 44.12ms
+Compiler run successful!
+Deployer: 0x8db97C7cEcE249c2b98bDC0226Cc4C2A57BF52FC
+Deployed to: 0x5aa01B3b5877255cE50cc55e8986a7a5fe29C70e // [!code highlight]
+Transaction hash: 0x2d40c53b493556463a28c458e40bc455a248df69a10679bef84145974b7424f3
 ```
 
 </Step>
@@ -60,10 +70,10 @@ forge create --rpc-url myblockchain --private-key $PK src/2a-invoking-functions/
 
 ### Save the Receiver Contract Address
 
-Then save the sender contract address (displayed in `Deployed To:`) in an environment variable:
+Overwrite the `RECEIVER_ADDRESS` environment variable with the new address:
 
 ```bash
-export RECEIVER_ADDRESS=0x123...
+export RECEIVER_ADDRESS=0x5aa01B3b5877255cE50cc55e8986a7a5fe29C70e
 ```
 </Step>
 </Steps>
