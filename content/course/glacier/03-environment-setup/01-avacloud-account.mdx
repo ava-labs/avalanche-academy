@@ -40,9 +40,9 @@ After generating the API keys the AvaCloud page should look like this:
 
 Once you've created and retrieved that, you will be able to make authenticated queries by passing in your API key in the x-glacier-api-key header of your HTTP request.
 
-An example curl request can be found below:
+An example curl request to Glacier Data API:
 
 ```bash
-curl -H "Content-Type: Application/json" -H "x-glacier-api-key: your_api_key" \
+curl -H "Content-Type: Application/json" -H "x-glacier-api-key: <your_api_key>" \
   "https://glacier-api.avax.network/v1/chains"
 ```
