@@ -1,6 +1,6 @@
 ---
 title: What is Glacier?
-description: Learn about the Glacier API and SDK.
+description: Learn about Glacier and the AvaCloud SDK.
 updated: 2024-09-03
 authors: [owenwahlgren]
 icon: Book
@@ -8,11 +8,25 @@ icon: Book
 
 ## What is the Glacier API?
 
-The Glacier API provides web3 application developers with multi-chain data related to Avalanche's primary network, Avalanche Subnets, and Ethereum. With Glacier, you can easily build products that leverage real-time and historical transaction and transfer history, native and token balances, and various types of token metadata. The API is in Beta and may be subject to change.
+The Glacier API provides Web3 developers with multi-chain data from Avalanche's primary network and Avalanche L1s. With Glacier, you can easily build products that leverage real-time and historical transaction data, transfer history, native and token balances, and various types of token metadata. The API is currently in Beta and may be subject to changes.
 
 ### API Features
-- **Transactions** and UTXOs - easily retrieve details related to transactions, UTXOs, and token transfers from Avalanche EVMs, Ethereum, and Avalanche's Primary Network - the P-Chain, X-Chain and C-Chain.
-- **Blocks** - retrieve latest blocks and block details
-- **Balances** - fetch balances of native, ERC-20, ERC-721, and ERC-1155 tokens along with relevant metadata.
-- **Tokens** - augment your user experience with asset details.
-- **Staking** - get staking related data for active and historical validations.
+- **Transactions and UTXOs** - Easily retrieve details related to transactions, UTXOs, and token transfers from Avalanche's EVM chains, including the P-Chain, X-Chain, and C-Chain.
+- **Blocks** - Retrieve the latest blocks and block details.
+- **Balances** - Fetch balances of native, ERC-20, ERC-721, and ERC-1155 tokens along with relevant metadata.
+- **Tokens** - Augment your user experience with detailed asset information.
+- **Staking** - Get staking-related data for active and historical validators.
+
+## AvaCloud SDK Integration
+
+The [AvaCloud SDK](https://developers.avacloud.io/avacloud-sdk/getting-started) simplifies interactions with the Glacier API, enabling developers to easily integrate multi-chain data into their applications.
+
+The AvaCloud SDK is currently available in _TypeScript_.
+
+### How It Works
+- **API Access**: By using the AvaCloud SDK, you can directly interact with Glacier’s API endpoints to fetch real-time data like transaction histories, token balances, and asset metadata.
+- **TypeScript Integration**: The SDK is designed to work seamlessly with TypeScript, providing strong typing and ease of use when making API calls.
+- **Efficient Data Retrieval**: With just a few lines of code, you can fetch complex data structures, such as block details, staking information, and transfer records, simplifying the process of integrating blockchain data into your apps.
+- **Error Handling and Security**: The SDK includes built-in error handling and optimizes security protocols, helping developers build robust applications on top of Avalanche's Primary Network and L1s.
+
+Using the AvaCloud SDK, developers can accelerate their development process while building advanced Web3 applications that utilize multi-chain data from the Glacier API.
