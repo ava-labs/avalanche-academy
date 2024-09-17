@@ -1,5 +1,5 @@
 
-import { ArrowLeftRight, Blocks, CoinsIcon, Dice3, Dice3Icon, Mail, Sprout, SquareStack } from 'lucide-react';
+import { ArrowLeftRight, MailIcon, SquareCode, SquareIcon, SquareStackIcon, Triangle } from 'lucide-react';
 
 export type Course = {
     name: string;
@@ -10,48 +10,64 @@ export type Course = {
     duration?: string;
     languages: string[];
     tools: string[];
+    instructors: string[];
 };
 
 const officialCourses: Course[] = [
     {
+        name: "Blockchain Fundamentals",
+        description: "Gain a comprehensive understanding of fundamental blockchain concepts, including how they work, and key components",
+        slug: "blockchain-fundamentals",
+        icon: <SquareIcon />,
+        featured: false,
+        duration: "1 hour",
+        languages: [],
+        tools: [],
+        instructors: ["Martin Eckardt", "Ash"]
+    },
+    {
         name: "Avalanche Fundamentals",
         description: "Get a high level overview of Avalanche Consensus, L1s and VMs",
         slug: "avalanche-fundamentals",
-        icon: Sprout,
+        icon: <Triangle />,
         featured: true,
         duration: "1 hour",
         languages: [],
-        tools: ["AvaCloud"]
+        tools: ["AvaCloud"],
+        instructors: ["Martin Eckardt", "Ash"]
     },
     {
         name: "Multi-Chain Architecture",
         description: "Dive deeper into the Multi-Chain Architecture and deploy your own Blockchain",
         slug: "multi-chain-architecture",
-        icon: SquareStack,
+        icon: <SquareStackIcon />,
         featured: true,
         duration: "1.5 hours",
         languages: [],
-        tools: ["Avalanche-CLI"]
+        tools: ["Avalanche-CLI"],
+        instructors: ["Martin Eckardt", "Ash", "Owen Wahlgren"] // + Usman
     },
     {
         name:"Avalanche Interchain Messaging",
         description:"Utilize Avalanche Interchain Messaging to build cross-chain dApps in the Avalanche network",
         slug:"interchain-messaging",
-        icon: Mail,
+        icon: <MailIcon />,
         featured: true,
         duration: "3 hours",
         tools: ["Avalanche-CLI"],
-        languages: ["Solidity"]
+        languages: ["Solidity"],
+        instructors: ["Martin Eckardt", "Andrea Vargas", "Ash"] // + Usman
      },
      {
         name:"Interchain Token Transfer",
         description:"Deploy Avalanche Interchain Token Transfer to transfer assets between Avalanche blockchains",
         slug:"interchain-token-transfer",
-        icon: ArrowLeftRight,
+        icon: <ArrowLeftRight />,
         featured: true,
         duration: "2.5 hours",
         tools: ["Telepoter", "Foundry"],
-        languages: ["Solidity"]
+        languages: ["Solidity"],
+        instructors: ["Martin Eckardt", "Andrea Vargas", "Ash", "Owen Wahlgren"]
      },
      /*{
         name:"Chainlink VRF with Interchain Messaging ",
@@ -76,12 +92,13 @@ const officialCourses: Course[] = [
         name:"Customizing the EVM",
         description:"Learn how to customize the EVM and add your own custom precompiles",
         slug:"customizing-evm",
-        icon: Blocks,
+        icon: <SquareCode />,
         duration: "4 hours",
         featured: true,
         tools: ["Avalanche-CLI"],
-        languages: ["Go"]
-     },
+        languages: ["Go"],
+        instructors: ["Martin Eckardt", "Ash"] // + Usman
+     }
 ];
 
 const ecosystemCourses: Course[] = [
@@ -107,11 +124,12 @@ const ecosystemCourses: Course[] = [
         name:"Glacier Starter Kit",
         description:"Learn how to leverage the AvaCloudSDK to build web apps on Avalanche",
         slug:"glacier",
-        icon: Blocks,
+        icon: <SquareCode />,
         duration: "1 hour",
         featured: true,
         tools: ["AvaCloudSDK"],
-        languages: ["Typescript"]
+        languages: ["Typescript"],
+        instructors: ["Owen Wahlgren"]
     }
 ];
 

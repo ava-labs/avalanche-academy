@@ -22,7 +22,7 @@ We need a smart contract that will receive the tokens:
 ```solidity 
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
-import {IERC20} from "@openzeppelin/contracts@4/token/ERC20/IERC20.sol"; //[!code highlight]
+import "@openzeppelin/contracts@4.8.1/token/ERC20/IERC20.sol";
 
 contract TokenReceiver {
     IERC20 public token;
@@ -32,12 +32,14 @@ contract TokenReceiver {
     }
 
     function receiveTokens(address from, uint256 amount) public {
-        require(token.transferFrom(from, address(this), amount), "Transfer failed"); //[!code highlight]
+        require(token.transferFrom(from, address(this), amount), "Transfer failed");
     }
 }
 ```
 
-In this contract, the receiveTokens function allows the contract to receive tokens from a specified address. It uses the transferFrom function of the ERC-20 token standard.
+In this contract, the `receiveTokens` function allows the contract to receive tokens from a specified address. It uses the transferFrom function of the ERC-20 token standard.
+
+Copy this code into a new file `src/my-contracts/TokenReceiver.sol`
 
 </Step>
 <Step>
@@ -46,7 +48,7 @@ In this contract, the receiveTokens function allows the contract to receive toke
 Let's deploy this ERC20receiver contract
 
 ```bash
-forge create --rpc-url local-c --private-key $PK src/ICTT/01-tokens/02-erc20-receiver.sol:TokenReceiver --constructor-args $ERC20_CONTRACT_SUBNET
+forge create --rpc-url myblockchain --private-key $PK src/my-contracts/TokenReceiver.sol:TokenReceiver --constructor-args $ERC20_CONTRACT_L1
 ```
 
 </Step>
@@ -55,7 +57,7 @@ forge create --rpc-url local-c --private-key $PK src/ICTT/01-tokens/02-erc20-rec
 ### Save Receiver Address
 
 ```
-export ERC20_RECEIVER_SUBNET=0x...
+export ERC20_RECEIVER_L1=0x...
 ```
 
 </Step>
@@ -66,7 +68,7 @@ export ERC20_RECEIVER_SUBNET=0x...
 Now to send Tokens to that contract, the Receiver contracts needs to be allowed to take funds on behalf of the user. Therefore, we need to allow our receiver contract as spender on the TOK interface.
 
 ```bash
-cast send $ERC20_CONTRACT_SUBNET --private-key $PK "approve(address,uint256)" $ERC20_RECEIVER_SUBNET 20ether --rpc-url myblockchain
+cast send $ERC20_CONTRACT_L1 --private-key $PK "approve(address,uint256)" $ERC20_RECEIVER_L1 20ether --rpc-url myblockchain
 ```
 
 </Step>
@@ -77,7 +79,7 @@ cast send $ERC20_CONTRACT_SUBNET --private-key $PK "approve(address,uint256)" $E
 Finally let's transfer tokens to this contract
 
 ```bash
-cast send $ERC20_RECEIVER_SUBNET --private-key $PK "receiveTokens(address,uint256)" $EWOQ 2ether --rpc-url myblockchain
+cast send $ERC20_RECEIVER_L1 --private-key $PK "receiveTokens(address,uint256)" $EWOQ 2ether --rpc-url myblockchain
 ```
 
 </Step>
@@ -86,7 +88,7 @@ cast send $ERC20_RECEIVER_SUBNET --private-key $PK "receiveTokens(address,uint25
 ### Confirm transfer
 
 ```bash
-cast call $ERC20_CONTRACT_SUBNET "balanceOf(address)(uint256)" $ERC20_RECEIVER_SUBNET --rpc-url myblockchain
+cast call $ERC20_CONTRACT_L1 "balanceOf(address)(uint256)" $ERC20_RECEIVER_L1 --rpc-url myblockchain
 ```
 
 </Step>

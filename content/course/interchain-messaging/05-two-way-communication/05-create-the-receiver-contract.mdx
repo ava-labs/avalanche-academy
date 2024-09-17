@@ -13,17 +13,19 @@ Go ahead and deploy the receiver contract:
 <Steps>
 <Step>
 
-### Adapt the Sender Contract
-
-Perform the changes described in the previous section.
-
-</Step>
-<Step>
-
 ### Deploy the Receiver Contract
 
 ```bash
-forge create --rpc-url myblockchain --private-key $PK src/1-send-roundtrip/receiverOnAvalanche L1.sol:ReceiverOnAvalanche L1
+forge create --rpc-url myblockchain --private-key $PK src/1-send-roundtrip/receiverOnSubnet.sol:ReceiverOnSubnet
+```
+```
+[⠊] Compiling...
+[⠢] Compiling 1 files with Solc 0.8.18
+[⠆] Solc 0.8.18 finished in 101.71ms
+Compiler run successful!
+Deployer: 0x8db97C7cEcE249c2b98bDC0226Cc4C2A57BF52FC
+Deployed to: 0x17aB05351fC94a1a67Bf3f56DdbB941aE6c63E25 // [!code highlight]
+Transaction hash: 0x11df9e14bdae4af60a618a900faa955d75e0ce7dd0f2ccc1ea6a764c149ef805
 ```
 
 </Step>
@@ -31,10 +33,9 @@ forge create --rpc-url myblockchain --private-key $PK src/1-send-roundtrip/recei
 
 ### Update the Receiver Address
 
-Then save the receiver contract address in an environment variable:
-
+Update the `RECEIVER_ADDRESS` environment variable with the new address:
 ```bash
-export RECEIVER_ADDRESS="0x123..."
+export RECEIVER_ADDRESS=0x17aB05351fC94a1a67Bf3f56DdbB941aE6c63E25
 ```
 
 </Step>

@@ -1,8 +1,9 @@
 import { type BaseLayoutProps, type DocsLayoutProps } from 'fumadocs-ui/layout';
-import { pageTree } from '@/utils/source';
+import { coursePageTree } from '@/utils/course-loader';
 import { RootToggle } from 'fumadocs-ui/components/layout/root-toggle';
 import { Title } from '@/app/layout.client';
 import { MailIcon, SquareStackIcon, ArrowLeftRight, SquareIcon, SquareCode, Triangle } from 'lucide-react';
+import COURSES from '@/content/courses';
 
 export const baseOptions: BaseLayoutProps = {
   githubUrl: 'https://github.com/ava-labs/avalanche-academy',
@@ -31,49 +32,21 @@ export const baseOptions: BaseLayoutProps = {
 
 export const docsOptions: DocsLayoutProps = {
   ...baseOptions,
-  tree: pageTree,
+  tree: coursePageTree,
   sidebar: {
     defaultOpenLevel: 0,
     banner: (
       <RootToggle
-        options={[
-          {
-            title: 'Blockchain Fundamentals',
-            description: '',
-            icon: <SquareIcon />,
-            url: '/course/blockchain-fundamentals',
-          },
-          {
-            title: 'Avalanche Fundamentals',
-            description: '',
-            icon: <Triangle />,
-            url: '/course/avalanche-fundamentals',
-          },
-          {
-            title: 'Multi-Chain Architecture',
-            description: '',
-            icon: <SquareStackIcon />,
-            url: '/course/multi-chain-architecture',
-          },
-          {
-            title: 'Interchain Messaging',
-            description: '',
-            icon: <MailIcon />,
-            url: '/course/interchain-messaging',
-          },
-          {
-            title: 'Interchain Token Transfer',
-            description: '',
-            icon: <ArrowLeftRight />,
-            url: '/course/interchain-token-transfer',
-          },
-          {
-            title: 'Customizing EVM',
-            description: '',
-            icon: <SquareCode />,
-            url: '/course/customizing-evm',
-          },
-        ]}
+        options={
+          COURSES.official.map(c => {
+            return {
+              title: c.name,
+              description: '',
+              icon: c.icon,
+              url: `/course/${c.slug}`
+            }
+          })
+        }
       />
     ),
   }

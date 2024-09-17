@@ -1,0 +1,222 @@
+{
+  "courses": {
+    "avalanche-fundamentals": {
+      "title": "Avalanche Fundamentals",
+      "quizzes": ["101", "102", "103", "104", "105", "106", "107", "108", "109", "110", "111", "112", "113", "114", "115", "116", "117"]
+    }
+  },
+  "quizzes": {
+    "101": {
+      "question": "What is the underlying principle of the Avalanche Consensus family?",
+      "options": [
+        "Repeated Sub-Sampling",
+        "Centralized Election",
+        "Randomly choosing a Validator that decides on the next State",
+        "Proof of Work"
+      ],
+      "correctAnswers": [0],
+      "hint": "Think about how Avalanche Consensus achieves consensus.",
+      "explanation": "The underlying principle of the Avalanche Consensus family is Repeated Sub-Sampling. This means that validators repeatedly sample the network to reach consensus.",
+      "chapter": "Primer on Avalanche Consensus"
+    },
+    "102": {
+      "question": "What is the role of validators in the event of conflicting transactions?",
+      "options": [
+        "Validators choose the transaction that benefits them the most.",
+        "Validators automatically reject all conflicting transactions.",
+        "Validators collectively decide on which of the two conflicting transactions will be accepted by all validators and determine the next state.",
+        "Validators create a new transaction to resolve the conflict."
+      ],
+      "correctAnswers": [2],
+      "hint": "Think about how validators resolve conflicts in a blockchain network.",
+      "explanation": "In the event of conflicting transactions, validators have to collectively decide on which of the two conflicting transactions will be accepted by all validators and determine the next state. They do not act based on personal benefits, they don't reject all conflicting transactions, and they don't create new transactions to resolve conflicts.",
+      "chapter": "Primer on Avalanche Consensus"
+    },
+    "103": {
+      "question": "What is a Double Spending Attack in the context of blockchain?",
+      "options": [
+        "It is when a user attempts to spend more cryptocurrency than they own by creating multiple transactions that reference the same funds.",
+        "It is when a user tries to double the amount of cryptocurrency they own through fraudulent transactions.",
+        "It is when a user performs two transactions at the exact same time to exploit the system.",
+        "It is when a validator duplicates transactions to increase their validation rewards."
+      ],
+      "correctAnswers": [0],
+      "hint": "Think about how a user would attempt to spend more funds than they hold.",
+      "explanation": "A Double Spending Attack is when a user attempts to spend more cryptocurrency than they own by creating multiple transactions that reference the same funds. This kind of attack is a threat to the integrity of the blockchain system.",
+      "chapter": "Primer on Avalanche Consensus"
+    },
+    "104": {
+      "question": "In the Avalanche Consensus protocol, what determines whether a validator changes its preference?",
+      "options": [
+        "A simple majority of sampled validators",
+        "An α-majority of sampled validators",
+        "A unanimous decision from sampled validators",
+        "The validator's initial random choice"
+      ],
+      "correctAnswers": [1],
+      "hint": "Think about the concept of 'α-majority' mentioned in the chapter.",
+      "explanation": "Avalanche consensus dictates that a validator changes its preference if an α-majority of the sampled validators agrees on another option. The α-majority is a key concept in the protocol, allowing for flexible decision-making based on the sampled subset of validators.",
+      "chapter": "Primer on Avalanche Consensus"
+    },
+    "105": {
+      "question": "When does a validator in Avalanche finalize its decision?",
+      "options": [
+        "After a set number of rounds of querying and getting majority consensus.",
+        "After the preference is confirmed by the α-majority for β (Decision Threshold) consecutive rounds.",
+        "As soon as a conflict between transactions arises.",
+        "When all validators in the system have replied with their preference."
+      ],
+      "correctAnswers": [1],
+      "hint": "Think about the process of finalizing a decision in Avalanche Consensus.",
+      "explanation": "In Avalanche, a validator finalizes its decision after its preference is confirmed by the α-majority for β (Decision Threshold) consecutive rounds. It's not a single round process, it doesn't happen immediately when a conflict arises, and it doesn't require replies from all validators in the system.",
+      "chapter": "Primer on Avalanche Consensus"
+    },
+    "106": {
+      "question": "What is the primary purpose of an L1 within the Avalanche network?",
+      "options": [
+        "Increasing token value",
+        "Mining cryptocurrency",
+        "Enabling specialized blockchain use cases"
+      ],
+      "correctAnswers": [2],
+      "hint": "Think about how L1s are designed to be customizable and optimized for specific use cases.",
+      "explanation": "The primary purpose of an L1 within the Avalanche network is to enable specialized blockchain use cases. Each L1 is designed to be optimized for specific use cases, thereby boosting the network's overall performance.",
+      "chapter": "Multi-Chain Architecture"
+    },
+    "107": {
+      "question": "The addition of a new decentralized application (dApp) on a single-chain system causes more competition over the block space of that chain.",
+      "options": [
+        "True",
+        "False"
+      ],
+      "correctAnswers": [0],
+      "hint": "Think about how each new dApp vies for the same block space in a single-chain system.",
+      "explanation": "Each new dApp vies for the same block space in a single-chain system, leading to unnecessary overcrowding of the chain. Multi-chain systems alleviate this issue.",
+      "chapter": "Multi-Chain Architecture"
+    },
+    "108": {
+      "question": "In case of a security breach on the Ethereum mainnet, all Layer 2 solutions are potentially affected.",
+      "options": [
+        "True",
+        "False"
+      ],
+      "correctAnswers": [0],
+      "hint": "Think about how Layer 2 solutions delegate security to the Ethereum mainnet.",
+      "explanation": "Layer 2 solutions delegate security to the Ethereum mainnet. Hence, a security breach on the mainnet could potentially affect all Layer 2 solutions.",
+      "chapter": "Multi-Chain Architecture"
+    },
+    "109": {
+      "question": "In the soda dispenser analogy, what does the 'state' of the machine represent? (Select all that apply)",
+      "options": [
+        "The soda flavors",
+        "The current balance",
+        "The number of cans available per flavor",
+        "The location of the machine"
+      ],
+      "correctAnswers": [1, 2],
+      "hint": "Think about what information the machine needs to keep track of to function properly.",
+      "explanation": "In the soda dispenser analogy, the 'state' of the machine represents the current balance, total revenue, and the number of cans available per brand.",
+      "chapter": "Virtual Machines & Blockchains"
+    },
+    "110": {
+      "question": "In the soda dispenser analogy, what of the following are operations of the machine? (Select all that apply)",
+      "options": [
+        "Inserting coins",
+        "The current balance",
+        "The location of the machine",
+        "Selecting a soda flavour"
+      ],
+      "correctAnswers": [0, 3],
+      "hint": "Think about what actions a user can take when interacting with the machine.",
+      "explanation": "In the soda dispenser analogy, the operations of the machine include inserting coins and selecting a soda flavor.",
+      "chapter": "Virtual Machines & Blockchains"
+    },
+    "111": {
+      "question": "What are the advantages of implementing state machines? (Select all that apply)",
+      "options": [
+        "Increased network speed",
+        "Decreased transaction costs",
+        "Reproducibility",
+        "Clear interface"
+      ],
+      "correctAnswers": [2, 3],
+      "hint": "Think about how state machines simplify interactions and ensure consistency.",
+      "explanation": "State machines, like the virtual machines in a blockchain, have a clear interface that makes it straightforward to interact with them. They are also reproducible, meaning multiple identical instances can be created.",
+      "chapter": "Virtual Machines & Blockchains"
+    },
+    "112": {
+      "question": "In blockchain systems, what role do validators play? (Select all that apply)",
+      "options": [
+        "They reach consensus on the sequence in which transactions are carried out",
+        "They determine the prices of the digital assets",
+        "They regulate the blockchain's electricity usage",
+        "They operate one or more instances of the virtual machines"
+      ],
+      "correctAnswers": [0, 3],
+      "hint": "Think about the role validators play in maintaining the blockchain's integrity.",
+      "explanation": "Validators in blockchain systems operate one or more instances of virtual machines and reach consensus on the sequence in which transactions are carried out.",
+      "chapter": "Virtual Machines & Blockchains"
+    },
+    "113": {
+      "question": "How do the validators make sure that they all have the same view on the state?",
+      "options": [
+        "By assigning each validator a unique part of the blockchain to monitor",
+        "Through the execution of operations on the local instance of the VM by all validators in the same order",
+        "Through the manual checking of each transaction by a centralized authority"
+      ],
+      "correctAnswers": [1],
+      "hint": "Think about how validators ensure that they all have the same view of the blockchain's state.",
+      "explanation": "Validators ensure they all have the same view on the state by executing operations on their local instance of the VM in the same order. This ensures consistency across the network.",
+      "chapter": "Virtual Machines & Blockchains"
+    },
+    "114": {
+      "question": "What is a Virtual Machine (VM) in the context of blockchain?",
+      "options": [
+        "A decentralized computer that can execute a program in a controlled environment",
+        "A physical machine that runs a blockchain network",
+        "A machine that dispenses soda"
+      ],
+      "correctAnswers": [0],
+      "hint": "Think about how a VM operates in a blockchain system.",
+      "explanation": "A Virtual Machine (VM) in the context of blockchain is like a decentralized computer that can execute a program in a controlled environment. It defines the application-level logic of a blockchain.",
+      "chapter": "Virtual Machines & Blockchains"
+    },
+    "115": {
+      "question": "How many VMs can Avalanche run?",
+      "options": [
+        "Only the Avalanche Virtual Machine",
+        "EVM and AVM",
+        "There is no limit to how many virtual machines can run on Avalanche. Everyone can create a modified VM catering best to their needs"
+      ],
+      "correctAnswers": [2],
+      "hint": "Think about the flexibility of Avalanche's architecture.",
+      "explanation": "Avalanche is designed to be highly flexible, allowing for an unlimited number of custom Virtual Machines to be created and run on the network.",
+      "chapter": "Virtual Machine Customization"
+    },
+    "116": {
+      "question": "Can a Virtual Machine (VM) be used to create multiple blockchains?",
+      "options": [
+        "Yes, the same VM can be used to create multiple blockchains",
+        "No, each blockchain requires a unique VM",
+        "Yes, but only if the blockchains are part of different networks"
+      ],
+      "correctAnswers": [0],
+      "hint": "Think about how a VM can be customized to create different blockchains.",
+      "explanation": "You can think of a Virtual Machine (VM) as a blueprint for a blockchain, where the same VM can be used to create multiple blockchains. Each of these blockchains adheres to the same rules but remains logically independent from the others.",
+      "chapter": "Virtual Machine Customization"
+    },
+    "117": {
+      "question": "How does Avalanche handle the modification of Virtual Machines (VMs)?",
+      "options": [
+        "Customization is challenging and requires a wide consensus among network participants.",
+        "Customization is not allowed as it can compromise the security of the blockchain.",
+        "Avalanche offers an easy API for VM developers.",
+        "Avalanche does not support customization of VMs."
+      ],
+      "correctAnswers": [2],
+      "hint": "Think about how Avalanche allows developers to modify Virtual Machines.",
+      "explanation": "Unlike one-chain-fits all systems, which requires a wide consensus to make changes, Avalanche allows for straightforward customization of Virtual Machines, making it more adaptable to unique use cases.",
+      "chapter": "Virtual Machine Customization"
+    }
+  }
+}
