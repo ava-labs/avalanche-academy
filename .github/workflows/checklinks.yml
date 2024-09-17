@@ -4,6 +4,7 @@ on:
   pull_request:
     paths:
       - '**/*.mdx'
+    branches: [dev]
 
 jobs:
   check-links:
@@ -16,6 +17,14 @@ jobs:
       - name: Install dependencies
         run: |
           yarn install --frozen-lockfile
-          yarn global add tsx
+          yarn global add tsx wait-on
+      - name: Start Dev Server in Background
+        run: |
+          yarn dev &
+      - name: Wait for Dev Server to be Ready
+        run: |
+          wait-on http://localhost:3000
       - name: Check links
         run: yarn check-links
+      - name: Stop Dev Server
+        run: kill $(jobs -p) || true
