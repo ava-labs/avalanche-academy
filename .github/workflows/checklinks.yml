@@ -2,6 +2,8 @@ name: Check MDX Links
 
 on:
   pull_request:
+    paths:
+      - '**/*.mdx'
     branches: [dev]
 
 jobs:
