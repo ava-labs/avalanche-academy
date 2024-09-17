@@ -81,7 +81,7 @@ const officialCourses: Course[] = [
         featured: true,
         tools: ["Avalanche-CLI"],
         languages: ["Go"]
-     }
+     },
 ];
 
 const ecosystemCourses: Course[] = [
@@ -103,6 +103,16 @@ const ecosystemCourses: Course[] = [
         tools: ["Avalanche-CLI"],
         languages: ["Go"]
    }*/
+    {
+        name:"Glacier Starter Kit",
+        description:"Learn how to leverage the AvaCloudSDK to build web apps on Avalanche",
+        slug:"glacier",
+        icon: Blocks,
+        duration: "1 hour",
+        featured: true,
+        tools: ["AvaCloudSDK"],
+        languages: ["Typescript"]
+    }
 ];
 
 export default {

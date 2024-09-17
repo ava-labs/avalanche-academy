@@ -65,6 +65,9 @@ Now we will modify the frontend to make calls to our backend.
 <Step>
 First we will implement the `fetchERC20Balances` function. The goal of this function is to make a call to our backend to get the user's ERC-20 token balances.
 <Accordions>
+<Accordion title="Hint">
+Make a call to our backend first for the most recent block height, then our `listErc20Balances` API. Finally return the results.
+</Accordion>
 <Accordion title="Solution">
 ```tsx title="src/app/balance-app/page.tsx"
 const fetchERC20Balances = async (address: string) => {
@@ -81,6 +84,9 @@ const fetchERC20Balances = async (address: string) => {
 <Step>
 Next we will implement the `handleSetAddress` function. The goal of this function is to set the address in the state and fetch the ERC-20 token balances for that address using our `fetchERC20Balances` function.
 <Accordions>
+<Accordion title="Hint">
+First make sure the address is valid, then update the state for `Address` and `Balances`
+</Accordion>
 <Accordion title="Solution">
 ```tsx title="src/app/balance-app/page.tsx"
 const handleSetAddress = async () => {
