@@ -15,12 +15,14 @@ jobs:
       - name: Install dependencies
         run: |
           yarn install --frozen-lockfile
-          yarn global add tsx
-      - name: Start Dev Server
+          yarn global add tsx wait-on
+      - name: Start Dev Server in Background
         run: |
           yarn dev &
-          sleep 15
+      - name: Wait for Dev Server to be Ready
+        run: |
+          wait-on http://localhost:3000
       - name: Check links
         run: yarn check-links
       - name: Stop Dev Server
-        run: kill $(jobs -p) || true # Ensures that the dev server process is killed
+        run: kill $(jobs -p) || true
