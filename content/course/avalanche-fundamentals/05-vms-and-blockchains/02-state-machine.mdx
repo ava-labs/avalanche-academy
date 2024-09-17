@@ -20,19 +20,7 @@ For optimal functionality, this machine must **consistently monitor its state**.
 
 ![](/course-images/avalanche-fundamentals/28.png)
 
-<Quiz
-  quizId="vms-and-blockchains-state-machine-02-1"
-  question="In the soda dispenser analogy, what does the 'state' of the machine represent? (Select all that apply)"
-  options={[
-    "The soda flavors",
-    "The current balance",
-    "The number of cans available per flavor",
-    "The location of the machine"
-  ]}
-  correctAnswers={[1,2]}
-  hint="Think about what information the machine needs to keep track of to function properly."
-  explanation="In the soda dispenser analogy, the 'state' of the machine represents the current balance, total revenue, and the number of cans available per brand. "
-/>
+<Quiz quizId="109"/>
 
 This dispenser permits several **operations**, such as:
 - Inserting coins
@@ -40,19 +28,7 @@ This dispenser permits several **operations**, such as:
 
 User operations trigger **state transitions**. For example, when a user inserts a coin, the balance increases. Selecting a soda brand leads to a decrease of the balance by the soda's price and reduces the quantity of that specific brand by one. 
 
-<Quiz
-  quizId="vms-and-blockchains-state-machine-02-2"
-  question="In the soda dispenser analogy, what of the following are operations of the machine? (Select all that apply)"
-  options={[
-    "Inserting coins",
-    "The current balance",
-    "The location of the machine",
-    "Selecting a soda flavour"
-  ]}
-  correctAnswers={[0, 3]}
-  hint="Think about what actions a user can take when interacting with the machine."
-  explanation="In the soda dispenser analogy, the operations of the machine include inserting coins and selecting a soda flavor."
-/>
+<Quiz quizId="110"/>
 
 Additionally, certain logic might be incorporated to dictate various operational outcomes based on the current state. For example, the machine checks if the balance is sufficient when a user chooses a soda brand. As a result, the outcome could be different in cases where the balance is adequate compared to instances where it isn't.
 
@@ -65,16 +41,4 @@ Implementing state machines comes with several advantages:
 
 **Reproducibility:** With a Virtual Machine blueprint, one can create multiple identical instances. These behave consistently, implying that if you conduct the same operations in the same sequence on two different machines, the state will remain identical.
 
-<Quiz
-  quizId="vms-and-blockchains-state-machine-02-3"
-  question="What are the advantages of implementing state machines? (Select all that apply)"
-  options={[
-    "Increased network speed",
-    "Decreased transaction costs",
-    "Reproducibility",
-    "Clear interface"
-  ]}
-  correctAnswers={[2, 3]}
-  hint="Think about how state machines simplify interactions and ensure consistency."
-  explanation="State machines, like the virtual machines in a blockchain, have a clear interface that makes it straightforward to interact with them. They are also reproducible, meaning multiple identical instances can be created."
-/>
+<Quiz quizId="111"/>

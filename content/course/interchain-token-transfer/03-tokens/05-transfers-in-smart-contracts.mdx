@@ -32,12 +32,25 @@ contract PayableExample {
 In this example, the receiveNative function is marked as payable, enabling it to accept the Native Token. The msg.value variable is used to add the amount of native token sent to the amountReceived state variable. This is a basic illustration, but it underscores how the payable keyword facilitates the handling of native token transfers within smart contracts.
 
 <Steps>
+
+<Step>
+### Create the working directory to store new contracts
+
+```bash
+mkdir -p src/my-contracts
+```
+</Step>
+
+<Step>
+### Copy the above example contract into `/src/my-contracts/PayableExample.sol`
+</Step>
+
 <Step>
 
 ### Deploy Contract with Payable Function
 
 ```bash
-forge create --rpc-url myblockchain --private-key $PK src/ICTT/01-transfer-funds/01-payable-function.sol:PayableExample
+forge create --rpc-url myblockchain --private-key $PK src/my-contracts/PayableExample.sol:PayableExample
 ```
 
 </Step>
@@ -81,7 +94,7 @@ cast call --rpc-url myblockchain $PAYABLE_CONTRACT "amountReceived()(uint)"
 </Step>
 </Steps>
 
-Well done! You transfer native tokens to a Smart Contract.
+Well done! You transferred native tokens to a Smart Contract.
 
 It's important to understand the distinction between Native Tokens and ERC-20 tokens. Native tokens, such as `AVAX` or `ETH`, are transferred directly to payable functions within the smart contract. This process is straightforward and involves sending the tokens to the contract's address, invoking the payable function. 
 

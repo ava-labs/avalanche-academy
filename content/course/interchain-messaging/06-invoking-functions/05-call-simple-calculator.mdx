@@ -19,18 +19,24 @@ Alright, now let's call our Calculators:
 cast send --rpc-url local-c --private-key $PK $SENDER_ADDRESS "sendAddMessage(address, uint256, uint256)" $RECEIVER_ADDRESS 2 3
 ```
 
-We need to call the `sendAddMessage` function on the sender contract with the address of the receiver contract and the two numbers we want to add.
+We need to call the `sendAddMessage` function on the sender contract with the address of the receiver contract and the two numbers we want to add. 
+
+For this example we will add 2 + 3.
 
 </Step>
 <Step>
 
 ### Verify Message Receipt
 
+To check wether the message has been received, we can call the `result_num()` function on the `Receiver` contract. 
+
 ```bash
 cast call --rpc-url myblockchain $RECEIVER_ADDRESS "result_num()(uint)"
 ```
 
-To check wether the message has been received, we can call the `result_num()` function on the sender contract. 
-
+```bash
+5
+```
+2 + 3 = 5. Our cross-chain calculation was successful!
 </Step>
 </Steps>
