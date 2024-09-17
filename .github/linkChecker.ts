@@ -34,7 +34,7 @@ function isValidURLOrPath(url: string): boolean {
 async function checkLink(url: string): Promise<boolean> {
   try {
     const response = await get(url, {
-      timeout: 10000, // timeout to 10 seconds
+      timeout: 20000, // timeout to 20 seconds
       maxRedirects: 5, // handle up to 5 redirects
       validateStatus: function (status) {
         return status >= 200 && status < 400; // resolve only if the status code is less than 400
