@@ -2,7 +2,7 @@ name: Check MDX Links
 
 on:
   pull_request:
-    branches: [main]
+    branches: [dev]
 
 
 jobs:
