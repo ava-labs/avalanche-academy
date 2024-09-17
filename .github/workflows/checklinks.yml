@@ -17,5 +17,11 @@ jobs:
         run: |
           yarn install --frozen-lockfile
           yarn global add tsx
+      - name: Start Dev Server (Optional)
+        run: |
+          yarn dev &
+          sleep 5 # Adjust the time as necessary to allow the server to start
       - name: Check links
         run: yarn check-links
+      - name: Stop Dev Server
+        run: kill $(jobs -p) || true # Ensures that the dev server process is killed

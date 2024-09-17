@@ -3,7 +3,7 @@ import { readFileSync } from 'fs';
 import { load } from 'cheerio';
 import { sync as globSync } from 'glob';
 
-const baseUrl = 'https://academy.avax.network';
+const baseUrl = 'http://localhost:3000'; // base url of the website
 
 const whitelist = [] // some websites return 404 for head requests, so we need to whitelist them, (fix: pass header -H 'Accept: text/html' and parse text/html)
                                 // see https://github.com/rust-lang/crates.io/issues/788
