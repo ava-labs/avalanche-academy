@@ -100,8 +100,8 @@ const officialCourses: Course[] = [
         instructors: ["Martin Eckardt", "Ash"] // + Usman
      },
      {
-        name:"AvaCloudSDK Starter Kit",
-        description:"Learn how to leverage the AvaCloudSDK to build web apps on Avalanche",
+        name:"AvaCloud APIs",
+        description:"Learn how to leverage AvaCloud APIs to build web apps on Avalanche",
         slug:"avacloudsdk",
         icon: <SquareCode />,
         duration: "1 hour",
