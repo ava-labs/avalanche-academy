@@ -13,7 +13,7 @@ There will be two main files that we will be working with in this section.
 <Step>
 
 ### `Page.tsx`
-This is the code that will be rendered on the client side, as distinguished by `"use client";` at the top of the file. It contains the React components that will be displayed to the user and is responsible for making the API calls to our backend, which in turn calls the Glacier Data API.
+This is the code that will be rendered on the client side, as distinguished by `"use client";` at the top of the file. It contains the React components that will be displayed to the user and is responsible for making the API calls to our backend, which in turn calls the Data API.
 
 It is important to understand that when you `"use client"` in a NextJS project, it will be rendered on the client side. This means that the code will be executed in the user's browser and not on the server. This is important to keep in mind when working with sensitive data or when you want to keep your API keys secure.
 
@@ -51,7 +51,7 @@ const fetchERC20Balances = async (address: string) => {
 <Step>
 
 ### `Route.ts`
-This code will be executed on the server side, as distinguished by `"use server";` at the top of the file. It contains the code that will be executed on the server side and is responsible for making the API calls to the Glacier Data API.
+This code will be executed on the server side, as distinguished by `"use server";` at the top of the file. It contains the code that will be executed on the server side and is responsible for making the API calls to the Data API.
 
 There are a few key components to understand in this file:
 
@@ -60,12 +60,12 @@ There are a few key components to understand in this file:
 ```tsx title="src/app/api/balance/route.ts"
 import { AvaCloudSDK } from "@avalabs/avacloud-sdk";
 const avaCloudSDK = new AvaCloudSDK({
-  apiKey: process.env.GLACIER_API_KEY,
+  apiKey: process.env.AVACLOUD_API_KEY,
   chainId: "43114", // Avalanche Mainnet
   network: "mainnet",
 });
 ```
-Here we initialize the `AvaCloudSDK` with our Glacier API key and the chainId of `43114` for the Avalanche Mainnet. This will allow us to make calls to the Glacier Data API.
+Here we initialize the `AvaCloudSDK` with our AvaCloud API key and the chainId of `43114` for the Avalanche Mainnet. This will allow us to make calls to the Data API.
 </Step>
 <Step>
 
@@ -93,7 +93,7 @@ export async function GET(request: Request) {
   }
 }
 ```
-Here we define the internal API methods for our backend. We have two methods that we will be working with in this section: `getBlockHeight` and `listErc20Balances`. We create both of these methods internally, then forward the request to the Glacier Data API. We then return the result to the client.
+Here we define the internal API methods for our backend. We have two methods that we will be working with in this section: `getBlockHeight` and `listErc20Balances`. We create both of these methods internally, then forward the request to the Data API. We then return the result to the client.
 </Step>
 <Step>
 ```tsx title="src/app/api/balance/route.ts"
@@ -108,7 +108,7 @@ async function listErc20Balances(address: string, blockNumber: string) {
    //
 }
 ```
-In the next section, we will implement the `listErc20Balances` and `getBlockHeight` function to call the Glacier Data API through the AvaCloudSDK.
+In the next section, we will implement the `listErc20Balances` and `getBlockHeight` function to call the Data API through the AvaCloudSDK.
 </Step>
 </Steps>
 </Step> 

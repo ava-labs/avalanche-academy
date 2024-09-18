@@ -1,21 +1,18 @@
 ---
 title: Modifying the Code
-description: Lets modify the code to implement the Glacier Data API.
+description: Lets modify the code to implement the Data API.
 updated: 2024-09-13
 authors: [owenwahlgren]
 icon: Book
 ---
 import { Step, Steps } from 'fumadocs-ui/components/steps';
 
-In this section, we will modify the code to implement the Glacier Data API. We will be working with two main files:
+In this section, we will modify the code to implement the Data API. 
 
+### Modify Backend `src/app/api/wallet/route.ts`
 <Steps>
 <Step>
-### Modify `src/app/api/wallet/route.ts`
-First we will implement our backend code to make calls to the Glacier Data API.
-</Step>
-<Step>
-First we will implement the `getBlockHeight` function. This function is the same as the one in ERC20 Balance App, but we will repeat it for the sake of the tutorial. The goal of this function is to fetch recent blocks from the Glacier Data API then to return the highest block in the first position.
+First we will implement the `getBlockHeight` function. This function is the same as the one in ERC20 Balance App, but we will repeat it for the sake of the tutorial. The goal of this function is to fetch recent blocks from the Data API then to return the highest block in the first position.
 
 <Accordions>
 <Accordion title="Hint">
@@ -161,10 +158,10 @@ const listRecentTransactions = async (address: string) => {
 
 
 </Steps>
+### Modify Frontend `src/app/basic-wallet/page.tsx`
+Now we will modify the frontend to make calls to our backend.
 <Steps>
 <Step>
-### Modify `src/app/basic-wallet/page.tsx`
-Now we will modify the frontend to make calls to our backend.
 </Step>
 <Step>
 First we will implement the `fetchERC20Balances` function. The goal of this function is to make a call to our backend to get the user's ERC-20 token balances.

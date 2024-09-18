@@ -1,6 +1,6 @@
 ---
-title: Setup Glacier Starter Kit
-description: Set up the Glacier Starter Kit in a hosted environment on Github
+title: Setup AvaCloudSDK Starter Kit
+description: Set up the AvaCloudSDK Starter Kit in a GitHub Codespace
 updated: 2024-09-03
 authors: [owenwahlgren]
 icon: Book
@@ -10,15 +10,14 @@ import { cn } from '@/utils/cn';
 import { buttonVariants } from '@/components/ui/button.tsx'
 import { Step, Steps } from 'fumadocs-ui/components/steps';
 
+In this course we will run the AvaCloudSDK Starter Kit in a Github Codepsace. This is the quickest way to get started.
 
-The Glacier Starter Kit contains everything you need to get started quickly with Glacier. 
-
-In this course we will run the Glacier Starter Kit in a hosted environment on Github. This is the most quick way to get started.
+The `AvaCloudSDK Starter Kit` contains everything we need to get started quickly with the AvaCloud API. 
 
 <Steps>
 <Step>
 
-### Open the Glacier Starter Kit Github Repository:
+### Open the AvaCloudSDK Starter Kit Github Repository:
 **Make sure you are on the `follow-along` branch!**
 
 <Link
@@ -27,7 +26,7 @@ In this course we will run the Glacier Starter Kit in a hosted environment on Gi
     buttonVariants({ variant: 'default', className: 'mt-4' }),
     )}
     target='_blank'
->Open Glacier Starter Kit</Link>
+>Open AvaCloudSDK Starter Kit</Link>
 
 </Step>
 <Step>
@@ -50,11 +49,12 @@ Open the terminal with `` Ctrl + ` `` or by opening it through the menu:
 
 </Step>
 <Step>
-### Set your `GLACIER_API_KEY` environment variable
-Create a `.env` file in the root of the project and add your Glacier API key from [the previous step](/course/glacier/03-environment-setup/01-avacloud-account):
+
+### Set the `AVACLOUD_API_KEY` environment variable
+Create a `.env` file in the root of the project and add your API key from [the previous step](/course/avacloudsdk/03-environment-setup/01-avacloud-account):
 
 ```bash
-GLACIER_API_KEY=ac_rGIKESl9_9DWuLfJJQLSV5nlzbKR7eHxym6XW3XEQJeNBDRxI...
+AVACLOUD_API_KEY=ac_rGIKESl9_9DWuLfJJQLSV5nlzbKR7eHxym6XW3XEQJeNBDRxI...
 ```
 
 </Step>
@@ -67,7 +67,7 @@ yarn dev
 ```
 
 It should preview within the Codespace:
-![](/course-images/glacier/site-running.png)
+![](/course-images/avacloudsdk/site-running.png)
 
 </Step>
 <Step>

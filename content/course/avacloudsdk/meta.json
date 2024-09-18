@@ -3,7 +3,7 @@
     "root": true,
     "pages": [
       "index",
-     "---Glacier Overview---",
+     "---AvaCloud API Overview---",
      "...02-glacier-overview",
      "---Environment Setup---",
       "...03-environment-setup",

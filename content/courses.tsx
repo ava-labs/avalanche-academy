@@ -100,13 +100,13 @@ const officialCourses: Course[] = [
         instructors: ["Martin Eckardt", "Ash"] // + Usman
      },
      {
-        name:"Glacier Starter Kit",
+        name:"AvaCloudSDK Starter Kit",
         description:"Learn how to leverage the AvaCloudSDK to build web apps on Avalanche",
-        slug:"glacier",
+        slug:"avacloudsdk",
         icon: <SquareCode />,
         duration: "1 hour",
         featured: true,
-        tools: ["AvaCloudSDK"],
+        tools: ["AvaCloudSDK", "AvaCloud API"],
         languages: ["Typescript"],
         instructors: ["Owen Wahlgren"]
     }
