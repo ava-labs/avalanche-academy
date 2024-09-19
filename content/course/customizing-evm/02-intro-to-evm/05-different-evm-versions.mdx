@@ -1,6 +1,6 @@
 ---
 title: Different Versions of EVM
-description: Learn about the different versions of Ethereum Virtual Machine (EVM) in Avalanche ecosystem.
+description: Learn about the different versions of the Ethereum Virtual Machine (EVM) in the Avalanche ecosystem.
 updated: 2024-05-31
 authors: [ashucoder9]
 icon: BookOpen
@@ -8,24 +8,24 @@ icon: BookOpen
 
 ## Geth
 
-Geth (or go-ethereum) is the official implementation of an Ethereum client, written in the Go programming language. It is one of the original and most popular Ethereum clients used today. It is responsible for handling transactions, the deployment and execution of smart contracts and contains the Ethereum Virtual Machine.
+Geth (or [go-ethereum](https://github.com/ethereum/go-ethereum)) is the official implementation of an Ethereum client, written in the Go programming language. It is one of the original and most widely used Ethereum clients today. Geth handles transactions, deploys and executes smart contracts, and contains the Ethereum Virtual Machine.
 
 ## Coreth
 
-Coreth is a fork of Geth maintained by the Ava Labs team that implements the Virtual Machine of the C-Chain. It has been adapted to work with Avalanche Consensus.
+[Coreth](https://github.com/ava-labs/coreth) is a fork of Geth maintained by Ava Labs that implements the Virtual Machine for the C-Chain. It has been adapted to work with Avalanche Consensus.
 
-## Avalanche L1-EVM
+## Subnet-EVM
 
-Avalanche L1-EVM is a fork of Coreth that has been altered to make it easy to launch customized EVM-based blockchains on a Avalanche L1. It differs from Coreth in the following ways:
+[Subnet-EVM](https://github.com/ava-labs/subnet-evm) is a fork of Coreth designed to make it easy to launch customized EVM-based blockchains on an Avalanche L1. It differs from Coreth in the following ways:
 
-&rarr; Configurable fees and gas limits were added in genesis
+&rarr; **Configurable fees and gas limits added in the genesis file**
 
-&rarr; Avalanche hardforks were merged into the single "Avalanche L1 EVM" hardfork
+&rarr; **Avalanche hardforks merged into a single "Subnet-EVM" hardfork**
 
-&rarr; Atomic Txs and Shared Memory were removed
+&rarr; **Atomic transactions and shared memory removed**
 
-&rarr; Multicoin Contract and State were removed
+&rarr; **Multicoin contracts and state removed**
 
 ## Precompile-EVM
 
-Precompile-EVM enables registering precompiles to Avalanche L1-EVM without forking the Avalanche L1-EVM codebase. It makes the most common customization of Avalanche L1-EVM easier and more approachable. Also it makes it easier to keep Avalanche L1-EVM up-do-date. 
+Precompile-EVM allows precompiles to be registered with Subnet-EVM without forking the Subnet-EVM codebase. This simplifies common customizations to Subnet-EVM, making them more accessible and easier to maintain. It also streamlines updates for Subnet-EVM.
