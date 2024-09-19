@@ -10,44 +10,43 @@ import { Callout } from 'fumadocs-ui/components/callout';
 
 ## Background
 
-Alloc defines the initial balances of addresses at the time of the chain creation. This should be changed accordingly for each chain.
+`Alloc` defines the initial balances of addresses at the time of chain creation. This field should be modified according to the specific requirements of each chain.
 
-If you don't provide any genesis allocation, you won't be able to interact with your new chain, since all transactions require a fee to be paid from the sender's balance. If there is no initial allocation, there are no funds to pay for any transactions
+If no genesis allocation is provided, you won't be able to interact with your new chain, as all transactions require a fee to be paid from the sender's balance. Without an initial allocation, there will be no funds available to cover transaction fees.
 
 ## Format
 
-The alloc field expects key-value pairs. Keys of each entry must be a valid address. The balance field in the value can be either a hexadecimal or number to indicate initial balance of the address. 
+The `alloc` field expects key-value pairs. Keys must be valid addresses, and the balance field in each value can be either a hexadecimal or decimal number representing the initial balance of the address.
 
 ```json
 {
   "config": {
     // ...
   },
-  "alloc": {
+  "alloc": { // [!code highlight]
     "8db97C7cEcE249c2b98bDC0226Cc4C2A57BF52FC": {
-      "balance": "0x295BE96E64066972000000"
+      "balance": "0x295BE96E64066972000000" // 50,000,000 tokens
     }
   },
   // ...
 }
 ```
 
-The keys in the allocation are hex addresses without the canonical 0x prefix. The balances are denominated in Wei (10^18 Wei = 1 Whole Unit of the native token of the chain) and expressed as hex strings with the canonical 0x prefix. You can use this converter to translate between decimal and hex numbers: [RapidTables Number to HEX](https://www.rapidtables.com/convert/number/hex-to-decimal.html)
+Keys in the allocation are hex addresses without the canonical 0x prefix. Balances are denominated in `Wei` (10^18 `Wei` = 1 Whole Unit of the native token of the chain) and expressed as hex strings with the canonical 0x prefix. Use [this converter](https://www.rapidtables.com/convert/number/hex-to-decimal.html) for translating between decimal and hex numbers.
 
-The default configuration for testing purposes contains configures plenty of tokens to a the address `8db97C7cEcE249c2b98bDC0226Cc4C2A57BF52FC`. The private key for this address is: `56289e99c94b6912bfc12adc093c9b51124f0dc54ac7a766b2bc5ccf558d8027`
+The default configuration for testing purposes allocates a significant number of tokens to the address `8db97C7cEcE249c2b98bDC0226Cc4C2A57BF52FC`. 
 
-<Callout title="Warning" type="warn">
-Never use the address or the private key for anything but testing on a local test network. The private key is publicly known and any real funds transferred to the associated address are most likely going to be stolen.
-</Callout>
+The private key for this address is: `56289e99c94b6912bfc12adc093c9b51124f0dc54ac7a766b2bc5ccf558d8027`.
+
+<Callout title="Warning" type="warn"> Never use this address or private key for anything other than testing on a local test network. The private key is publicly known, and any real funds transferred to this address are likely to be stolen. </Callout>
+
 
 ## Configure
 
 Allocate tokens to two addresses:
 
-1. The well-known test address `8db97C7cEcE249c2b98bDC0226Cc4C2A57BF52FC`
-2. Another test address you have created (do not use an address you use for real funds)
-
-### Example Code
+- The well-known test address `8db97C7cEcE249c2b98bDC0226Cc4C2A57BF52FC`.
+- Another test address that you have created (avoid using addresses associated with real funds).
 
 ```json
 {
@@ -55,13 +54,14 @@ Allocate tokens to two addresses:
     // ...
   },
   "alloc": {
-    "8db97C7cEcE249c2b98bDC0226Cc4C2A57BF52FC": {
-      "balance": "0x295BE96E64066972000000"
+    "8db97C7cEcE249c2b98bDC0226Cc4C2A57BF52FC": { // [!code highlight]
+      "balance": "0x295BE96E64066972000000" // 50,000,000 tokens
     },
-    "<your_address>": {
-      "balance": "0x295BE96E64066972000000"
+    "<your_address>": { // [!code highlight]
+      "balance": "0x295BE96E64066972000000" // 50,000,000 tokens
     }
   },
   // ...
 }
+
 ```

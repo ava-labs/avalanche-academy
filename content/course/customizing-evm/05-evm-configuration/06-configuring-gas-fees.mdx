@@ -29,20 +29,26 @@ You can take these numbers below as a benchmark:
 
 ### `gasLimit`
 
-In previous lessons, you learned that gas limits works as a restriction, capping on the amount of computation that can be done in a single block, hence will also cap the maximum transaction size, since the whole transaction needs to be processed in the same block.
+As previously discussed, the `gasLimit` acts as a restriction on the amount of computation that can be executed in a single block, and hence caps the maximum transaction size, as the entire transaction needs to be processed within the same block.
 
-Each of the values you choose, will depend in the use case you are addressing and how computational intensive it is. There are some reasons why you may want to increase or decrease the gas limit. 
+Your choice of `gasLimit` values should depend on the specific use case and computational demands of your application. Here are some considerations:
 
-**High Throughput:** If your application requires a high volume of transactions to be performed, then you would want to allow for more transactions (i.e more computation) be packed in a single block. 
+**High Throughput:** If your application requires a high volume of transactions, you might want to allow for more transactions (i.e., more computation) to be packed into a single block. This increases the block capacity and enables handling a higher transaction load.
 
-**Heavy Transactions:** One kind of transaction that tend to use high amounts of gas, is contract deployments. If your application requires the deployment of really heave contracts or to perform complex transactions, then you need to make sure that your `gasLimit` allows for the full execution of the deployment or heavy transaction.
+**Heavy Transactions:** Transactions that involve deploying large contracts or executing complex operations tend to consume more gas. If your application involves such operations, ensure that your `gasLimit` accommodates the full execution of these heavy transactions or contract deployments.
 
-Beware that higher computational allowance per block, could translate on higher demand on the hardware your blockchain is running. To make sure you have the best performance, keep this number according to your use case and the infra requirements you're setting for your validators, and don't choose a really big number "just in case". For reference, consider a single native token transaction cost around 21,000 gas units, and C-chain has this value set to 15,000,000.
+Be cautious with setting excessively high `gasLimit` values. Larger computational allowances per block can translate to increased hardware requirements for your blockchain. Therefore, align the `gasLimit` with your use case and infrastructure requirements for validators. Avoid setting an unusually large value "just in case." For reference, consider that a typical native token transaction costs around 21,000 gas units, and the C-Chain `gasLimit` is set to 15,000,000.
 
 ### Gas Price Parameters
 
-[`minBaseFee`, `targetGas`, `baseFee`, `minBlockGasCost`, `maxBlockGasCost`, `targetBlockRate`, `blockGasCostStep`]
+The following parameters affect the gas pricing and dynamic adjustments in your network:
 
-These parameters are chosen in terms of how stable is the gas usage in your network. Remember that gas is here to protect the network from spam, the difficult part, is that the network is not smart enough to know wether a transaction is just regular activity or someone is trying to perform an attack.
+- **`minBaseFee`**: Sets the minimum base fee per unit of gas, establishing the lower bound for transaction costs in a block.
+- **`targetGas`**: Defines the target amount of gas to be consumed within a rolling 10-second window. Adjust this based on the expected network activity under normal conditions.
+- **`baseFeeChangeDenominator`**: Controls how quickly the base fee adjusts in response to fluctuations in gas usage. A smaller denominator allows for faster adjustments.
+- **`minBlockGasCost`**: Specifies the minimum gas cost for producing a block.
+- **`maxBlockGasCost`**: Sets the maximum gas cost for producing a block.
+- **`targetBlockRate`**: Determines the desired block production rate in seconds. Choose this based on your expected block issuance frequency.
+- **`blockGasCostStep`**: Adjusts the block gas cost based on the deviation from the target block rate. A higher step value increases the block gas cost more rapidly with deviations.
 
-The cost of transacting needs to dynamically adjust increasing during irregular activity timeframes. `targetGas` and `targetBlockRate` must be chosen according to the expected behavior of your use case in normal activity. 
+These parameters should be selected based on the stability of gas usage in your network. Since gas fees are crucial for protecting against spam and abuse, carefully consider how these parameters will adapt to changes in network activity. The goal is to dynamically adjust transaction costs during irregular activity periods while maintaining stability under normal conditions.

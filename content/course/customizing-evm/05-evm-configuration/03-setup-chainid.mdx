@@ -8,12 +8,12 @@ icon: Terminal
 
 ## What is ChainID?
 
-The ChainID of an Ethereum Virtual Machine (EVM) blockchain is a unique identifier distinguishing Ethereum chains from one another. This mechanism was introduced in Ethereum Improvement Proposal (EIP) 155 to prevent transaction replay attacks, which could occur when the same transaction is valid across multiple different chains.
+The `ChainID` of an Ethereum Virtual Machine (EVM) blockchain is a unique identifier that distinguishes Ethereum chains from one another. Introduced in Ethereum Improvement Proposal (EIP) 155, this mechanism prevents transaction replay attacks, which could occur when the same transaction is valid across multiple chains.
 
 ## Setting the ChainID
 
-Set the ChainID at the top of you genesis JSON to 99999.
+To set the `ChainID` for your blockchain, configure it in the `genesis` JSON file at the top level with the value `99999`.
 
-If you want to set a custom ChainID, you can check chainlist.org to confirm your proposed chain ID is NOT in use by any other network. Make sure to cross check with Testnets as well.
+If you wish to use a custom `ChainID`, check [chainlist.org](https://chainlist.org) to ensure your proposed `ChainID` is not in use by any other network. Be sure to cross-check with Testnets as well!
 
 ![](/course-images/customizing-evm/28.png)

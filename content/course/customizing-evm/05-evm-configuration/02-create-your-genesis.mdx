@@ -10,9 +10,11 @@ import { Callout } from 'fumadocs-ui/components/callout';
 
 ## Create File
 
-In your Precompile-EVM project, create a file called evm-configuration-genesis.json in the directory tests/precompile/genesis/ and open it. You can use the command below as a shorthand:
+In your Precompile-EVM project, create a file called `evm-configuration-genesis.json` in the directory `tests/precompile/genesis/` and open it. You can use the command below as a shortcut to open the file in VSCode:
 
-```code ./tests/precompile/genesis/evm-configuration-genesis.json```
+```bash
+code ./tests/precompile/genesis/evm-configuration-genesis.json
+```
 
 ## Fill with template
 
@@ -63,8 +65,8 @@ Paste the following template in the new file:
   }
 ```
 
-<Callout title="Warning Regarding gasLimit" type="warn">
-If you do decide to set your own gasLimit, please set all 'gasLimit' keys equal to the same value! 
+<Callout title="Warning about gasLimit" type="warn">
+If you do decide to set your own gasLimit, please set all gasLimit keys equal to the same value! 
 
 If you set the 'gasLimit' keys to different values, you will still be able to deploy a blockchain, but it will halt during initialization!
 </Callout>
