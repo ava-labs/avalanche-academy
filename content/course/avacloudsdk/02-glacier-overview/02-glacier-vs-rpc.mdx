@@ -33,7 +33,34 @@ While it may seem simple in theory, this process can be time-consuming and error
 With the AvaCloud Data API, you could simply use a dedicated endpoint such as: 
 ```bash
 curl --request GET \
-  --url https://glacier-api.avax.network/v1/chains/{chainId}/addresses/{address}/balances:listErc721 \
+  --url https://glacier-api.avax.network/v1/chains/{chainId}/addresses/{address}/balances:listErc20 \
   --header 'x-glacier-api-key: <api-key>'
-``` 
+```
+
 to get a neatly formatted response with the user's ERC-20 portfolio, significantly reducing development time and complexity.
+
+```json
+{
+  "nextPageToken": "<string>",
+  "erc20TokenBalances": [
+    {
+      "address": "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
+      "name": "Wrapped AVAX",
+      "symbol": "WAVAX",
+      "decimals": 18,
+      "logoUri": "https://images.ctfassets.net/gcj8jwzm6086/5VHupNKwnDYJvqMENeV7iJ/fdd6326b7a82c8388e4ee9d4be7062d4/avalanche-avax-logo.svg",
+      "ercType": "ERC-20",
+      "price": {
+        "currencyCode": "usd",
+        "value": "42.42"
+      },
+      "chainId": "43114",
+      "balance": "2000000000000000000",
+      "balanceValue": {
+        "currencyCode": "usd",
+        "value": "42.42"
+      }
+    }
+  ]
+}
+```
