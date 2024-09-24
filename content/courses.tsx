@@ -102,7 +102,7 @@ const officialCourses: Course[] = [
      {
         name:"AvaCloud APIs",
         description:"Learn how to leverage AvaCloud APIs to build web apps on Avalanche",
-        slug:"avacloudsdk",
+        slug:"avacloudapis",
         icon: <SquareCode />,
         duration: "1 hour",
         featured: true,

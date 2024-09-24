@@ -1,10 +1,10 @@
 {
-    "title": "Glacier",
+    "title": "AvaCloud APIs",
     "root": true,
     "pages": [
       "index",
      "---AvaCloud API Overview---",
-     "...02-glacier-overview",
+     "...02-overview",
      "---Environment Setup---",
       "...03-environment-setup",
      "---Build an ERC-20 Balance App---",
