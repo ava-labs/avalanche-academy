@@ -1,8 +1,8 @@
 ---
 title: Different Versions of EVM
-description: Learn about the different versions of the Ethereum Virtual Machine (EVM) in the Avalanche ecosystem.
-updated: 2024-05-31
-authors: [ashucoder9]
+description: Learn about the different versions of the Ethereum Virtual Machine in the Avalanche ecosystem.
+updated: 2024-09-27
+authors: [ashucoder9, owenwahlgren]
 icon: BookOpen
 ---
 
@@ -12,20 +12,17 @@ Geth (or [go-ethereum](https://github.com/ethereum/go-ethereum)) is the official
 
 ## Coreth
 
-[Coreth](https://github.com/ava-labs/coreth) is a fork of Geth maintained by Ava Labs that implements the Virtual Machine for the C-Chain. It has been adapted to work with Avalanche Consensus.
+[Coreth](https://github.com/ava-labs/coreth) is a fork of Geth maintained by Ava Labs. It implements the EVM for the C-Chain and has been adapted to work with Avalanche Consensus.
 
 ## Subnet-EVM
 
-[Subnet-EVM](https://github.com/ava-labs/subnet-evm) is a fork of Coreth designed to make it easy to launch customized EVM-based blockchains on an Avalanche L1. It differs from Coreth in the following ways:
+[Subnet-EVM](https://github.com/ava-labs/subnet-evm) is a fork of Coreth designed to facilitate launching customized EVM-based blockchains on an Avalanche L1. It differs from Coreth in the following ways:
 
-&rarr; **Configurable fees and gas limits added in the genesis file**
-
-&rarr; **Avalanche hardforks merged into a single "Subnet-EVM" hardfork**
-
-&rarr; **Atomic transactions and shared memory removed**
-
-&rarr; **Multicoin contracts and state removed**
+- **Configurable Fees and Gas Limits**: Customizable fees and gas limits can be set in the genesis file.
+- **Unified Subnet-EVM Hardfork**: All Avalanche hardforks are merged into a single "Subnet-EVM" hardfork.
+- **Atomic Transactions and Shared Memory Removed**: Support for atomic transactions and shared memory has been removed.
+- **Multicoin Contracts and State Removed**: Multicoin contracts and state tracking are no longer supported.
 
 ## Precompile-EVM
 
-Precompile-EVM allows precompiles to be registered with Subnet-EVM without forking the Subnet-EVM codebase. This simplifies common customizations to Subnet-EVM, making them more accessible and easier to maintain. It also streamlines updates for Subnet-EVM.
+Precompile-EVM allows precompiles to be registered with Subnet-EVM without needing to fork the Subnet-EVM codebase. This simplifies common customizations to Subnet-EVM, making them more accessible and easier to maintain. It also streamlines updates for Subnet-EVM.

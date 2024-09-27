@@ -1,20 +1,20 @@
 ---
 title: Genesis Block
 description: Learn about the Genesis Block.
-updated: 2024-05-31
+updated: 2024-09-27
 authors: [ashucoder9]
 icon: BookOpen
 ---
 
 ## Background
 
-Each blockchain starts with a genesis state when it is created. For example, the Ethereum mainnet genesis block included the addresses and balances of participants from the Ethereum pre-sale, marking the initial distribution of ether. 
+Each blockchain begins with a genesis state when it is created. For instance, the Ethereum mainnet genesis block included the addresses and balances from the Ethereum pre-sale, marking the initial distribution of ether.
 
-For Subnet-EVM and Precompile-EVM, the genesis block includes additional parameters that allow us to configure the behavior of our customized EVM to meet specific requirements. Since each blockchain has its own genesis block, you can create two blockchains with the same VM but different genesis blocks.
+For Subnet-EVM and Precompile-EVM, the genesis block contains additional parameters that allow us to configure the behavior of our customized EVM to meet specific requirements. Since each blockchain has its own genesis block, you can create two blockchains with the same VM but different genesis blocks.
 
 ## Format
 
-Here is an example of a genesis block:
+Here’s an example of a genesis block:
 
 ```json
 {
@@ -66,5 +66,6 @@ Here is an example of a genesis block:
   "parentHash": "0x0000000000000000000000000000000000000000000000000000000000000000"
 }
 ```
-
 We will explore the relevant configurable parameters in the upcoming activities. Some parameters (e.g., `eip150Block`, `byzantiumBlock`) are omitted here as they are not relevant for most use cases.
+
+This version provides a clean and concise explanation of the genesis block and its structure, keeping the focus on what's essential.

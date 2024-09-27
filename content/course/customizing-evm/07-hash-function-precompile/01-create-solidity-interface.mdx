@@ -58,7 +58,7 @@ interface IMD5 {
 Now that we have an interface of our precompile, let's create an ABI of our Solidity interface. Open the integrated VS Code terminal (control + \`), and change to the `/contracts` directory.
 
 ```bash
-cd $GOPATH/src/github.com/ava-labs/precompile-evm/contracts
+cd contracts
 ```
 
 Run the command to compile the solidity interface to the ABI:
@@ -67,7 +67,7 @@ Run the command to compile the solidity interface to the ABI:
 npx solc@latest --abi ./contracts/interfaces/IMD5.sol -o ./abis --base-path . --include-path ./node_modules
 ```
 
-Now rename the file:
+Rename the file:
 
 ```bash
 mv ./abis/contracts_interfaces_IMD5_sol_IMD5.abi ./abis/IMD5.abi
