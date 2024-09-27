@@ -17,6 +17,11 @@ const config = {
         destination: '/course/interchain-messaging',
         permanent: true,
       },
+      {
+        source: '/start',
+        destination: '/',
+        permanent: true,
+      },
     ]
   },
 };

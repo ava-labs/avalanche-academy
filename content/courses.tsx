@@ -98,7 +98,18 @@ const officialCourses: Course[] = [
         tools: ["Avalanche-CLI"],
         languages: ["Go"],
         instructors: ["Martin Eckardt", "Ash"] // + Usman
-     }
+     },
+     {
+        name:"AvaCloud APIs",
+        description:"Learn how to leverage AvaCloud APIs to build web apps on Avalanche",
+        slug:"avacloudapis",
+        icon: <SquareCode />,
+        duration: "1 hour",
+        featured: true,
+        tools: ["AvaCloudSDK", "AvaCloud API"],
+        languages: ["Typescript"],
+        instructors: ["Owen Wahlgren"]
+    }
 ];
 
 const ecosystemCourses: Course[] = [
