@@ -1,37 +1,37 @@
 ---
 title: Transactions and Blocks
 description: Learn about another fundamental aspect of the Ethereum ecosystem - Transactions and Blocks.
-updated: 2024-05-31
-authors: [ashucoder9]
+updated: 2024-09-27
+authors: [ashucoder9, owenwahlgren]
 icon: BookOpen
 ---
 
 ## Transactions
 
-In the EVM, a transaction is the smallest piece of work that can be included in a block. It represents a state transition, changing the data of accounts and moving Ether around the network.
+In the EVM, a transaction is the smallest unit of work that can be included in a block. It represents a **state transition**, modifying account data and transferring Ether across the network.
 
-Transactions can be Ether transfers or smart contract calls. Each transaction includes the following components:
+Transactions can either transfer Ether or invoke smart contracts. Each transaction includes the following components:
 
-- Nonce: A value set by the sender to ensure each transaction can only be processed once and to prevent replay attacks
-- Gas Price: How much the sender is willing to pay per unit of gas. Usually, gas is denominated in terms of nanoAvax (or nAvax). Note that 1 nAvax = 1/(10^9) Avax. This is comprised of three components:
-- Base Gas Fee: The minimum nAvax a sender must pay for each unit of gas
-- Maximum Priority Gas Fee: Given that all transactions will pay at least the base gas fee, the maximum priority gas fee is a field which specifies how much additional nAvax a sender is willing to spend per unit of gas.
-- Maximum Total Gas Fee: Specifies the maximum amount of nAvax a sender is willing to spend per unit of gas. The gas price a spender pays is equal to the maximum total gas fee if base gas fee + maximum priority gas fee > maximum total gas fee.
-- Gas Limit: The maximum amount of gas units the sender is willing to pay for the execution of this transaction. When the gas limit is reached, the transaction fails. This prevents transactions from running indefinitely.
-- To: The Ethereum address of the recipient or the smart contract the transaction is directed towards.
-- V, R, S: Cryptographic data used to generate the sender's signature.
+- **Nonce**: A unique value set by the sender to ensure the transaction is processed only once, preventing replay attacks.
+- **Gas Price**: The amount the sender is willing to pay per unit of gas, typically measured in `nanoAvax` (1 `nAvax` = 1/(10^9) Avax). It consists of three parts:
+  - **Base Gas Fee**: The minimum `nAvax` required per unit of gas.
+  - **Maximum Priority Gas Fee**: Additional `nAvax` the sender is willing to pay on top of the base fee.
+  - **Maximum Total Gas Fee**: The maximum `nAvax` the sender is willing to spend per unit of gas. If the sum of the base gas fee and the priority gas fee exceeds this amount, the gas price paid will be capped at the maximum total gas fee.
+- **Gas Limit**: The maximum amount of gas units the sender is willing to pay for executing the transaction. If this limit is reached, the transaction fails, preventing indefinite execution.
+- **To**: The recipient's Ethereum address or the target smart contract.
+- **V, R, S**: Cryptographic data used to create the sender's signature.
 
 ## Blocks
 
-A block in the EVM contains a series of transactions that have been validated by miners, bundled together, and linked to the previous block. Each block includes:
+A block in the EVM is a bundle of validated transactions, grouped together and linked to the previous block. Each block contains:
 
-- Block Number: If we think of the blockchain as a linked-list, this is the index of the block in a zero-indexed linked-list.
-- Timestamp: The time when the block was mined.
-- Transactions Root: The merkle root of all transactions included in the block.
-- Receipts Root: The merkle root of all transaction receipts.
-- State Root: A hash of the entire Ethereum state after all transactions in the block have been executed.
-- Parent Hash: The hash of the parent block.
-- Gas Limit: The maximum amount of gas all transactions in the block can consume.
-- Gas Used: The total gas used by all transactions in the block.
-- Extra Data: An optional field that can include any data up to 32 bytes.
-- Validator: The address of the node who proposed the block.
+- **Block Number**: The index of the block, representing its position in a zero-indexed linked list.
+- **Timestamp**: The time the block was mined.
+- **Transactions Root**: The Merkle root of all transactions within the block.
+- **Receipts Root**: The Merkle root of all transaction receipts.
+- **State Root**: A hash of the entire Ethereum state after executing all transactions in the block.
+- **Parent Hash**: The hash of the previous (parent) block.
+- **Gas Limit**: The maximum gas all transactions in the block can consume.
+- **Gas Used**: The total gas consumed by all transactions in the block.
+- **Extra Data**: An optional field for including arbitrary data up to 32 bytes.
+- **Validator**: The address of the node that proposed the block.
