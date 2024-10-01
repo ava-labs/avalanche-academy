@@ -100,7 +100,7 @@ const officialCourses: Course[] = [
         instructors: ["Martin Eckardt", "Ash"] // + Usman
      },
     {
-       name:"L1 Tokenomics",
+       name:"Layer 1 Tokenomics",
        description:"Learn how to design and deploy tokenomics for your Avalanche L1",
        slug:"l1-tokenomics",
        icon: <Coins />,
