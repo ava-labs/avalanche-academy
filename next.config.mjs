@@ -8,6 +8,17 @@ const config = {
   async redirects() {
     return [
       {
+        source: '/:path*',
+        has: [
+          {
+            type: 'host',
+            value: 'academy.avax.com',
+          },
+        ],
+        destination: 'https://academy.avax.network/:path*',
+        permanent: true,
+      },
+      {
         source: '/course/subnet-architecture',
         destination: '/course/multi-chain-architecture',
         permanent: true,
