@@ -1,0 +1,137 @@
+{
+    "201": {
+        "question": "Which function is used to allow another account to transfer tokens on your behalf?",
+        "options": [
+            "transfer()",
+            "approve()",
+            "transferFrom()",
+            "allowance()"
+        ],
+        "correctAnswers": [
+            1
+        ],
+        "hint": "This function sets an approval limit for token transfers by a third party.",
+        "explanation": "The approve() function allows another account to spend tokens on your behalf up to a specified amount.",
+        "chapter": "ERC-20 Tokens"
+    },
+    "202": {
+        "question": "What is the primary purpose of wrapping a native token into an ERC-20 token?",
+        "options": [
+            "To increase its supply",
+            "To burn the native token",
+            "To make the native token compatible with the ERC-20 standard",
+            "To mint more native tokens"
+        ],
+        "correctAnswers": [
+            2
+        ],
+        "hint": "Wrapping allows the native token to be used in decentralized applications that require ERC-20 tokens.",
+        "explanation": "The wrapping process makes native tokens (like ETH, AVAX) compatible with the ERC-20 standard, enabling their use in dApps and DeFi protocols.",
+        "chapter": "Wrapped Native Tokens"
+    },
+    "203": {
+        "question": "What is the primary advantage of using a custom native token in a blockchain?",
+        "options": [
+            "It automatically increases in value over time",
+            "It can only be used for test environments",
+            "It eliminates the need for validators",
+            "It allows for more control over transaction fees and tokenomics"
+        ],
+        "correctAnswers": [
+            3
+        ],
+        "hint": "Custom native tokens give developers flexibility in managing blockchain economics.",
+        "explanation": "A custom native token allows developers to control transaction fees, design tokenomics, and tailor the blockchain’s fee structure to meet specific needs.",
+        "chapter": "Custom Native Tokens"
+    },
+    "204": {
+        "question": "What is the AllowList used for when configuring the Native Minter Precompile?",
+        "options": [
+            "To set transaction fees for using the native token",
+            "To control which addresses are allowed to mint native tokens",
+            "To limit the total number of native tokens that can be minted",
+            "To freeze minting of native tokens"
+        ],
+        "correctAnswers": [
+            1
+        ],
+        "hint": "The allow list determines which addresses have permission to interact with the precompiled contract.",
+        "explanation": "The AllowList is used to specify which addresses have the permission to mint native tokens or manage the minting process.",
+        "chapter": "Activating Native Minter Precompile"
+    },
+    "205": {
+        "question": "What is the main advantage of a multi-chain ecosystem?",
+        "options": [
+            "It reduces the security of the blockchain.",
+            "It increases the gas fees.",
+            "It enables tokens and assets to be transferred across multiple blockchains.",
+            "It restricts interoperability between different blockchains."
+        ],
+        "correctAnswers": [
+            2
+        ],
+        "hint": "Think about the ability of assets and tokens to move freely across multiple chains.",
+        "explanation": "The key benefit of a multi-chain ecosystem is that it allows tokens, assets, and data to be transferred between different blockchains, promoting interoperability.",
+        "chapter": "Cross-Chain Ecosystems"
+    },
+    "206": {
+        "question": "What role does Avalanche play in enabling multi-chain ecosystems?",
+        "options": [
+            "It provides a single-chain environment for transactions.",
+            "It limits token usage to the native chain.",
+            "It supports seamless cross-chain communication with tools like L1s and ICTT.",
+            "It prevents interoperability between its L1s and other chains."
+        ],
+        "correctAnswers": [
+            2
+        ],
+        "hint": "Avalanche is known for its ability to support cross-chain communication and interoperability through its architecture.",
+        "explanation": "Avalanche's architecture, including its L1s and Interchain Token Transfers (ICTT), is designed to support seamless cross-chain communication and interoperability between different blockchain networks.",
+        "chapter": "Cross-Chain Ecosystems"
+    },
+    "207": {
+        "question": "Which contract must be granted minting rights for the ERC-20 token to be used as a native token on a new L1 chain?",
+        "options": [
+            "NativeTokenRemote contract",
+            "ERC-20 Home contract",
+            "ERC-712 contract",
+            "L1 governance contract"
+        ],
+        "correctAnswers": [
+            0
+        ],
+        "hint": "This contract mints native tokens on the destination chain after ERC-20 tokens are transferred.",
+        "explanation": "The NativeTokenRemote contract must be granted minting rights to allow the native token to be minted on the new L1 after ERC-20 tokens are transferred from the source chain.",
+        "chapter": "Use ERC-20 as Native Token"
+    },
+    "208": {
+        "question": "Why is collateralization important in transferring native tokens between L1 chains?",
+        "options": [
+            "It increases the supply of tokens on the C-Chain.",
+            "It ensures the total supply of tokens remains balanced across both chains.",
+            "It burns the tokens on the remote chain.",
+            "It locks the token permanently on the C-Chain."
+        ],
+        "correctAnswers": [
+            1
+        ],
+        "hint": "Collateralization ensures balance across chains during token transfers.",
+        "explanation": "Collateralization locks the transferred tokens on the source chain, ensuring that the minted tokens on the destination chain have an equivalent backing.",
+        "chapter": "Use ERC-20 as Native Token"
+    },
+    "209": {
+        "question": "What is the purpose of wrapping a native token on the C-Chain before transferring it to a new L1?",
+        "options": [
+            "To convert it into an ERC-721 token.",
+            "To prepare it for cross-chain transfer as an ERC-20 token.",
+            "To lock it in a smart contract and mint its representation on the new L1.",
+            "To burn the token and reduce its total supply."
+        ],
+        "correctAnswers": [
+            2
+        ],
+        "hint": "Wrapping a token creates a compatible version of it for cross-chain transfers.",
+        "explanation": "Wrapping the native token locks it on the C-Chain, allowing a compatible version of the token to be minted on the new L1, ensuring the cross-chain token transfer process.",
+        "chapter": "Use ERC-20 as Native Token"
+    }
+}
