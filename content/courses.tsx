@@ -1,5 +1,5 @@
 
-import { ArrowLeftRight, MailIcon, SquareCode, SquareIcon, SquareStackIcon, Triangle } from 'lucide-react';
+import { ArrowLeftRight, Coins, MailIcon, SquareCode, SquareIcon, SquareStackIcon, Triangle } from 'lucide-react';
 
 export type Course = {
     name: string;
@@ -65,9 +65,9 @@ const officialCourses: Course[] = [
         icon: <ArrowLeftRight />,
         featured: true,
         duration: "2.5 hours",
-        tools: ["Telepoter", "Foundry"],
+        tools: ["ICM", "Foundry"],
         languages: ["Solidity"],
-        instructors: ["Martin Eckardt", "Andrea Vargas", "Ash", "Owen Wahlgren"]
+        instructors: ["Martin Eckardt", "Andrea Vargas", "Ash", "Owen Wahlgren", "Sarp"]
      },
      /*{
         name:"Chainlink VRF with Interchain Messaging ",
@@ -99,7 +99,18 @@ const officialCourses: Course[] = [
         languages: ["Go"],
         instructors: ["Martin Eckardt", "Ash"] // + Usman
      },
-     {
+    {
+       name:"Layer 1 Tokenomics",
+       description:"Learn how to design and deploy tokenomics for your Avalanche L1",
+       slug:"l1-tokenomics",
+       icon: <Coins />,
+       duration: "2 hours",
+       featured: true,
+       tools: ["Avalanche-CLI", "ICM"],
+       languages: ["Solidity"],
+       instructors: ["Sarp"]
+   },
+   {
         name:"AvaCloud APIs",
         description:"Learn how to leverage AvaCloud APIs to build web apps on Avalanche",
         slug:"avacloudapis",
