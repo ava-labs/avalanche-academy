@@ -18,6 +18,8 @@ Use the `avalanche` CLI to create a new blockchain where you will deploy the ERC
 
 ```bash
 avalanche blockchain create myblockchain  
+```
+```bash
 avalanche blockchain deploy myblockchain
 ```
 
@@ -49,7 +51,7 @@ Now, deploy the Interchain Token Transfer contracts on both the `C-Chain` and th
 forge create --rpc-url local-c --private-key $PK lib/avalanche-interchain-token-transfer/contracts/src/TokenHome/NativeTokenHome.sol:NativeTokenHome --constructor-args $TELEPORTER_REGISTRY_C_CHAIN $FUNDED_ADDRESS $WRAPPED_NATIVE_C_CHAIN
 ```
 
-- `NativeTokenRemote` Contract on C-Chain  
+- `NativeTokenRemote` Contract on `myblockchain`
 
 ```bash
 forge create --rpc-url myblockchain --private-key $PK lib/avalanche-interchain-token-transfer/contracts/src/TokenRemote/NativeTokenRemote.sol:NativeTokenRemote --constructor-args "(${TELEPORTER_REGISTRY_L1}, ${FUNDED_ADDRESS}, ${C_CHAIN_BLOCKCHAIN_ID_HEX}, ${NATIVE_HOME_TRANSFERER_C_CHAIN})" "NATV" 700000000000000000000 0 false 0
@@ -67,7 +69,7 @@ export NATIVE_TOKEN_REMOTE_L1=<"Deployed to" address>
 <Step>
 ### Grant Native Minting Rights to NativeTokenRemote
 
-To ensure that the `NativeTokenRemote` contract can mint native tokens on the L1 when ERC-20 tokens are transferred from the `C-Chain`, the contract must be granted **minting rights**. This is done by adding the `NativeTokenRemote contract` address to the `Native Minter Precompile`.
+To ensure that the `NativeTokenRemote` contract can mint native tokens on the L1 when ERC-20 tokens are transferred from the `C-Chain`, the contract must be granted **minting rights**. This is done by adding the `NativeTokenRemote` contract address to the `Native Minter Precompile`.
 
 1. You will need to interact with the `Native Minter Precompile`, which resides at a fixed address on all Avalanche L1s:  
 **Native Minter Precompile Address**: `0x0200000000000000000000000000000000000001`
@@ -111,10 +113,11 @@ cast send --rpc-url local-c --private-key $PK $ERC20_HOME_C_CHAIN "approve(addre
 ```
 
 - **Add Collateral and Send Tokens**  
-Add collateral to the transferer contract and send the tokens to the L1.
+Add collateral to the transferer contract.
 ```bash 
 cast send --rpc-url local-c --private-key $PK $ERC20_HOME_TRANSFERER_C_CHAIN "addCollateral(bytes32, address, uint256)" $L1_BLOCKCHAIN_ID_HEX $NATIVE_TOKEN_REMOTE_L1 100000000000000000000
 ```
+Send tokens to the L1.
 ```bash 
 cast send --rpc-url local-c --private-key $PK $ERC20_HOME_TRANSFERER_C_CHAIN "send((bytes32, address, address, address, uint256, uint256, uint256, address), uint256)" "(${L1_BLOCKCHAIN_ID_HEX}, ${NATIVE_TOKEN_REMOTE_L1}, ${FUNDED_ADDRESS}, ${ERC20_HOME_C_CHAIN}, 0, 0, 250000, 0x0000000000000000000000000000000000000000)" 1000000000000000000000
 ```

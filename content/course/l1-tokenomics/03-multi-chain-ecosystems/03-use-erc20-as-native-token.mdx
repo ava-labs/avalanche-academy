@@ -14,18 +14,20 @@ In this section, you will learn how to transfer an ERC-20 token from Avalancheâ€
 <Step>
 ### Create a new blockchain and Deploy on Local Network
 
-Use the `avalanche` CLI to create a new blockchain where you will deploy the ERC-20 as the native token.
+Use the **Avalanche CLI** to create a new blockchain where you will deploy the ERC-20 as the native token.
 
 
 ```bash
 avalanche blockchain create myblockchain  
+```
+```bash
 avalanche blockchain deploy myblockchain
 ```
 </Step>
 <Step>
 ### Deploy an ERC-20 Contract on C-Chain
 
-Use the `avalanche` CLI to create a new blockchain where you will deploy the ERC-20 as the native token.
+Use the **Avalanche CLI** to create a new blockchain where you will deploy the ERC-20 as the native token.
 
 You will deploy an ERC-20 token on the Avalanche C-Chain, which will later be transferred and used as the native token on the new L1.
 
@@ -35,7 +37,7 @@ forge create --rpc-url local-c --private-key $PK lib/avalanche-interchain-token-
 </Step>
 <Step>
 ### Deploy Interchain Token Transfer Contracts
-Set up the home and remote transferer contracts for transferring tokens between the C-Chain and the L".
+Set up the home and remote transferer contracts for transferring tokens between the C-Chain and the newly created L1.
 
 - `ERC20TokenHome` Contract on C-Chain  
 ```bash
@@ -96,10 +98,11 @@ cast send --rpc-url local-c --private-key $PK $ERC20_HOME_C_CHAIN "approve(addre
 ```
 
 - **Add Collateral and Send Tokens**  
-Add collateral to the transferer contract and send the tokens to the L1.
+Add collateral to the transferer contract.
 ```bash 
 cast send --rpc-url local-c --private-key $PK $ERC20_HOME_TRANSFERER_C_CHAIN "addCollateral(bytes32, address, uint256)" $L1_BLOCKCHAIN_ID_HEX $NATIVE_TOKEN_REMOTE_L1 100000000000000000000
 ```
+Send tokens to the L1
 ```bash 
 cast send --rpc-url local-c --private-key $PK $ERC20_HOME_TRANSFERER_C_CHAIN "send((bytes32, address, address, address, uint256, uint256, uint256, address), uint256)" "(${L1_BLOCKCHAIN_ID_HEX}, ${NATIVE_TOKEN_REMOTE_L1}, ${FUNDED_ADDRESS}, ${ERC20_HOME_C_CHAIN}, 0, 0, 250000, 0x0000000000000000000000000000000000000000)" 1000000000000000000000
 ```
