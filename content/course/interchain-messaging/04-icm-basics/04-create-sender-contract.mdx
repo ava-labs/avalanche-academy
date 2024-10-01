@@ -13,9 +13,9 @@ Lets start by deploying our sender contract on C-Chain. It will be responsible f
 <Step>
 ### Read the Sender Contract
 
-The following contract is located inside `src/0-send-receive` directory. Read through the contract below and and understand what is happening:
+The following contract is located inside `contracts/interchain-messaging/send-receive` directory. Read through the contract below and and understand what is happening:
 
-```solidity title="src/0-send-receive/senderOnCChain.sol"
+```solidity title="contracts/interchain-messaging/send-receive/senderOnCChain.sol"
 // (c) 2023, Ava Labs, Inc. All rights reserved.
 // See the file LICENSE for licensing terms.
 
@@ -127,7 +127,7 @@ contract SenderOnCChain {
 To deploy a contract using Foundry use the following command:
 
 ```bash
-forge create --rpc-url local-c --private-key $PK src/0-send-receive/senderOnCChain.sol:SenderOnCChain
+forge create --rpc-url local-c --private-key $PK contracts/interchain-messaging/send-receive/senderOnCChain.sol:SenderOnCChain
 ```
 ```
 [⠊] Compiling...
