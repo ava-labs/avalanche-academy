@@ -131,7 +131,7 @@ const officialCourses: Course[] = [
         featured: true,
         tools: ["HyperSDK"],
         languages: ["Go", "Typescript"],
-        instructors: ["Aaron Buchwald", "Ilya", "Rodrigo Villar", "Martin Eckardt"]
+        instructors: ["Aaron Buchwald", "Ilya", "Rodrigo Villar", "Martin Eckardt", "Owen Wahlgren"]
     }
 ];
 
