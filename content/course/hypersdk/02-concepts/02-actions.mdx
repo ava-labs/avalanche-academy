@@ -12,7 +12,7 @@ Actions implement the following `chain.Action` interface. It requires additional
 
 ```go
 ComputeUnits(Rules) uint64
-StateKeys(actor codec.Address, actionID ids.ID) state.Keys
+StateKeys(actor codec.Address) state.Keys
 GetTypeID() uint8
 ValidRange(Rules) (start int64, end int64)
 Execute(
@@ -31,7 +31,7 @@ StateKeys() provides a description of exactly how key-value pairs in the state w
 For example, a Transfer action implements this method as:
 
 ```go
-func (t *Transfer) StateKeys(actor codec.Address, _ ids.ID) state.Keys {
+func (t *Transfer) StateKeys(actor codec.Address) state.Keys {
  return state.Keys{
   string(storage.BalanceKey(actor)): state.Read | state.Write,
   string(storage.BalanceKey(t.To)):  state.All,
