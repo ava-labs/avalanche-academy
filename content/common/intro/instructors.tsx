@@ -12,7 +12,7 @@ const instructors: Instructor[] = [
         name: "Martin Eckardt",
         title: "Director of Developer Relations",
 
-        twitter: "https://twitter.com/martin_eckardt",
+        twitter: "https://x.com/martin_eckardt",
         linkedin: "https://www.linkedin.com/in/eckardt/",
         github: "https://github.com/martineckardt",
     },
@@ -47,6 +47,30 @@ const instructors: Instructor[] = [
         twitter: "https://x.com/satatocom",
         linkedin: "https://www.linkedin.com/in/sarptaylan/",
         github: "https://github.com/0xstt",
+    },
+    {
+        name: "Aaron Buchwald",
+        title: "Director of Developer Relations",
+
+        twitter: "https://x.com/AaronBuchwald",
+        linkedin: "",
+        github: "",
+    },
+    {
+        name: "Ilya",
+        title: "Sr. Developer Relations Engineer",
+
+        twitter: "https://x.com/containerman17",
+        linkedin: "",
+        github: "",
+    },
+    {
+        name: "Rodrigo Villar",
+        title: "Developer Relations Engineer",
+
+        twitter: "https://x.com/rrodrigovillar",
+        linkedin: "",
+        github: "",
     }
 ];
 
