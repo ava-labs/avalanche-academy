@@ -50,7 +50,7 @@ const instructors: Instructor[] = [
     },
     {
         name: "Aaron Buchwald",
-        title: "Director of Developer Relations",
+        title: "HyperSDK Lead Engineer",
 
         twitter: "https://x.com/AaronBuchwald",
         linkedin: "",
