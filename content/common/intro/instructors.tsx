@@ -39,6 +39,14 @@ const instructors: Instructor[] = [
         twitter: "https://x.com/owenwahlgren",
         linkedin: "https://www.linkedin.com/in/owenwahlgren/",
         github: "https://github.com/owenwahlgren",
+    },
+    {
+        name: "Sarp",
+        title: "Sr. Developer Relations Engineer",
+
+        twitter: "https://x.com/satatocom",
+        linkedin: "https://www.linkedin.com/in/sarptaylan/",
+        github: "https://github.com/0xstt",
     }
 ];
 
