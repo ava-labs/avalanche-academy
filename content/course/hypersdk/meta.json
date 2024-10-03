@@ -3,6 +3,9 @@
   "root": true,
   "pages": [
     "index",
-    "---Coming Soon---"
+    "---HyperSDK Starter Kit---",
+    "...01-hypersdk-starter-kit",
+    "---Concepts---",
+    "...02-concepts"
   ]
 }
