@@ -6,7 +6,7 @@ export type Course = {
     description: string;
     slug: string;
     icon: any;
-    featured?: boolean;
+    status: "featured" | "normal" | "hidden";
     duration?: string;
     languages: string[];
     tools: string[];
@@ -19,7 +19,7 @@ const officialCourses: Course[] = [
         description: "Gain a comprehensive understanding of fundamental blockchain concepts, including how they work, and key components",
         slug: "blockchain-fundamentals",
         icon: <SquareIcon />,
-        featured: false,
+        status: "normal",
         duration: "1 hour",
         languages: [],
         tools: [],
@@ -30,7 +30,7 @@ const officialCourses: Course[] = [
         description: "Get a high level overview of Avalanche Consensus, L1s and VMs",
         slug: "avalanche-fundamentals",
         icon: <Triangle />,
-        featured: true,
+        status: "featured",
         duration: "1 hour",
         languages: [],
         tools: ["AvaCloud"],
@@ -41,7 +41,7 @@ const officialCourses: Course[] = [
         description: "Dive deeper into the Multi-Chain Architecture and deploy your own Blockchain",
         slug: "multi-chain-architecture",
         icon: <SquareStackIcon />,
-        featured: true,
+        status: "featured",
         duration: "1.5 hours",
         languages: [],
         tools: ["Avalanche-CLI"],
@@ -52,7 +52,7 @@ const officialCourses: Course[] = [
         description:"Utilize Avalanche Interchain Messaging to build cross-chain dApps in the Avalanche network",
         slug:"interchain-messaging",
         icon: <MailIcon />,
-        featured: true,
+        status: "featured",
         duration: "3 hours",
         tools: ["Avalanche-CLI"],
         languages: ["Solidity"],
@@ -63,18 +63,63 @@ const officialCourses: Course[] = [
         description:"Deploy Avalanche Interchain Token Transfer to transfer assets between Avalanche blockchains",
         slug:"interchain-token-transfer",
         icon: <ArrowLeftRight />,
-        featured: true,
+        status: "featured",
         duration: "2.5 hours",
         tools: ["ICM", "Foundry"],
         languages: ["Solidity"],
         instructors: ["Martin Eckardt", "Andrea Vargas", "Ash", "Owen Wahlgren", "Sarp"]
      },
-     /*{
+     {
+        name:"Customizing the EVM",
+        description:"Learn how to customize the EVM and add your own custom precompiles",
+        slug:"customizing-evm",
+        icon: <SquareCode />,
+        duration: "4 hours",
+        status: "featured",
+        tools: ["Avalanche-CLI"],
+        languages: ["Go"],
+        instructors: ["Martin Eckardt", "Ash"] // + Usman
+     },
+    {
+       name:"Layer 1 Tokenomics",
+       description:"Learn how to design and deploy tokenomics for your Avalanche L1",
+       slug:"l1-tokenomics",
+       icon: <Coins />,
+       duration: "2 hours",
+       status: "featured",
+       tools: ["Avalanche-CLI", "ICM"],
+       languages: ["Solidity"],
+       instructors: ["Sarp"]
+   },
+   {
+        name:"AvaCloud APIs",
+        description:"Learn how to leverage AvaCloud APIs to build web apps on Avalanche",
+        slug:"avacloudapis",
+        icon: <SquareCode />,
+        duration: "1 hour",
+        status: "featured",
+        tools: ["AvaCloudSDK", "AvaCloud API"],
+        languages: ["Typescript"],
+        instructors: ["Owen Wahlgren"]
+    }
+    ,
+   {
+        name:"HyperSDK",
+        description:"Learn how to build a high-performance blockchain using HyperSDK",
+        slug:"hypersdk",
+        icon: <TerminalIcon />,
+        duration: "1 hour",
+        status: "hidden",
+        tools: ["HyperSDK"],
+        languages: ["Go", "Typescript"],
+        instructors: ["Aaron Buchwald", "Ilya", "Rodrigo Villar", "Martin Eckardt", "Owen Wahlgren"]
+    }
+    /*{
         name:"Chainlink VRF with Interchain Messaging ",
         description:"Utilize Interchain Messaging to make Chainlink VRF available on any blockchain in the Avalanche Network",
         slug:"teleporter-chainlink-vrf",
         icon: Dice3Icon,
-        featured: true,
+        status: "featured",
         duration: "2.5 hours",
         tools: ["Teleporter", "Chainlink VRF"],
         languages: ["Solidity"]
@@ -88,51 +133,6 @@ const officialCourses: Course[] = [
         tools: ["Avalanche-CLI"],
         languages: ["Go"]
      },*/
-     {
-        name:"Customizing the EVM",
-        description:"Learn how to customize the EVM and add your own custom precompiles",
-        slug:"customizing-evm",
-        icon: <SquareCode />,
-        duration: "4 hours",
-        featured: true,
-        tools: ["Avalanche-CLI"],
-        languages: ["Go"],
-        instructors: ["Martin Eckardt", "Ash"] // + Usman
-     },
-    {
-       name:"Layer 1 Tokenomics",
-       description:"Learn how to design and deploy tokenomics for your Avalanche L1",
-       slug:"l1-tokenomics",
-       icon: <Coins />,
-       duration: "2 hours",
-       featured: true,
-       tools: ["Avalanche-CLI", "ICM"],
-       languages: ["Solidity"],
-       instructors: ["Sarp"]
-   },
-   {
-        name:"AvaCloud APIs",
-        description:"Learn how to leverage AvaCloud APIs to build web apps on Avalanche",
-        slug:"avacloudapis",
-        icon: <SquareCode />,
-        duration: "1 hour",
-        featured: true,
-        tools: ["AvaCloudSDK", "AvaCloud API"],
-        languages: ["Typescript"],
-        instructors: ["Owen Wahlgren"]
-    }
-    ,
-   {
-        name:"HyperSDK",
-        description:"Learn how to build a high-performance blockchain using HyperSDK",
-        slug:"hypersdk",
-        icon: <TerminalIcon />,
-        duration: "1 hour",
-        featured: true,
-        tools: ["HyperSDK"],
-        languages: ["Go", "Typescript"],
-        instructors: ["Aaron Buchwald", "Ilya", "Rodrigo Villar", "Martin Eckardt", "Owen Wahlgren"]
-    }
 ];
 
 const ecosystemCourses: Course[] = [
@@ -157,8 +157,8 @@ const ecosystemCourses: Course[] = [
 ];
 
 export default {
-    official: officialCourses,
-    official_featured: officialCourses.filter((course) => course.featured),
+    official: officialCourses.filter((course) =>  ["normal", "featured"].includes(course.status)),
+    official_featured: officialCourses.filter((course) => course.status === "featured"),
     ecosystem: ecosystemCourses,
 };
 
