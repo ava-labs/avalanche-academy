@@ -1,5 +1,5 @@
 
-import { ArrowLeftRight, Coins, MailIcon, SquareCode, SquareIcon, SquareStackIcon, Triangle } from 'lucide-react';
+import { ArrowLeftRight, Coins, MailIcon, SquareCode, SquareIcon, SquareStackIcon, TerminalIcon, Triangle } from 'lucide-react';
 
 export type Course = {
     name: string;
@@ -120,6 +120,18 @@ const officialCourses: Course[] = [
         tools: ["AvaCloudSDK", "AvaCloud API"],
         languages: ["Typescript"],
         instructors: ["Owen Wahlgren"]
+    }
+    ,
+   {
+        name:"HyperSDK",
+        description:"Learn how to build a high-performance blockchain using HyperSDK",
+        slug:"hypersdk",
+        icon: <TerminalIcon />,
+        duration: "1 hour",
+        featured: true,
+        tools: ["HyperSDK"],
+        languages: ["Go", "Typescript"],
+        instructors: ["Aaron Buchwald", "Ilya", "Rodrigo Villar", "Martin Eckardt"]
     }
 ];
 
