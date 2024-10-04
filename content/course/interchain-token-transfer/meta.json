@@ -22,7 +22,9 @@
     "---Send and Call---",
     "...12-send-and-call",
     "---Cross-Chain Token Swaps---",
-    "...13-cross-chain-token-swaps"
+    "...13-cross-chain-token-swaps",
+    "---Scaling Token Decimals---",
+    "...14-scaling-decimals"
   ]
 }
 
