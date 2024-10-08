@@ -89,7 +89,7 @@ const officialCourses: Course[] = [
        status: "featured",
        tools: ["Avalanche-CLI", "ICM"],
        languages: ["Solidity"],
-       instructors: ["Sarp"]
+       instructors: ["Sarp", "Owen Wahlgren"]
    },
    {
         name:"AvaCloud APIs",
