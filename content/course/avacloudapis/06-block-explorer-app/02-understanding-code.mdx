@@ -29,7 +29,7 @@ const fetchRecentTransactions = async () => {
     return data as NativeTransaction[]
   }
 ```
-`fetchRecentTransactions` is a function that will make a call to our backend to get the user's ERC-721 token balances. It will call the `getRecentTransactions` method on our backend with the user's address. It will then return the balances as an array of `NativeTransaction` objects.
+`fetchRecentTransactions` is a function that will make a call to our backend to get the most recent transactions from the chain. It will call the `getRecentTransactions` method on our backend. It will then return the transactions as an array of `NativeTransaction` objects.
 
 </Step>
 <Step>
@@ -42,7 +42,7 @@ const fetchRecentBlocks = async () => {
   }
 ```
 
-`fetchRecentBlocks` is a function that will make a call to our backend to get the user's ERC-1155 token balances. It will call the `getRecentBlocks` method on our backend with the user's address. It will then return the balances as an array of `EvmBlock` objects.
+`fetchRecentBlocks` is a function that will make a call to our backend to get the most recent blocks from the chain. It will call the `getRecentBlocks` method on our backend. It will then return the blocks as an array of `EvmBlock` objects.
 
 </Step>
 </Steps>
