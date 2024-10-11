@@ -10,7 +10,7 @@
     },
     "interchain-token-transfer": {
       "title": "Interchain Token Transfer",
-      "quizzes": ["118", "119", "120", "121", "122", "123", "124", "125", "126"]
+      "quizzes": ["118", "119", "120", "121", "122", "123", "124", "125", "126", "127"]
     }
   },
   "quizzes": {
@@ -236,18 +236,18 @@
       ],
       "correctAnswers": [1],
       "hint": "Consider both value transfer and execution costs in the network.",
-      "explanation": "In an EVM-based blockchain, the native token serves as both a means of value transfer within the network and as the gas token for executing transfers or smart contracts.",
+      "explanation": "In an EVM-based blockchain, the native token serves as both a means of value transfer within the network and as the gas token for executing transfers or smart contracts. Some blockchains optionally choose to also use the native token as their staking and governance token.",
       "chapter": "Interchain Token Transfer"
     },
     "119": {
       "question": "What is the purpose of marking a function as 'payable' in Solidity?",
       "options": [
         "It allows the function to receive ERC-20 tokens.",
-        "It allows the function to receive native blockchain tokens.",
         "It enables the function to execute without gas fees.",
+        "It allows the function to receive native blockchain tokens.",
         "It prevents the function from modifying state variables."
       ],
-      "correctAnswers": [1],
+      "correctAnswers": [2],
       "hint": "Think about how functions handle incoming funds.",
       "explanation": "In Solidity, marking a function as 'payable' allows it to accept native blockchain tokens like ETH or AVAX. Without 'payable', the function cannot receive native tokens.",
       "chapter": "Interchain Token Transfer"
@@ -256,7 +256,7 @@
       "question": "What is the purpose of the `approve()` function in the ERC-20 token standard?",
       "options": [
         "It allows an address to transfer tokens to another address directly.",
-        "It enables an owner to authorize a spender to transfer up to a certain amount from the owner's account.",
+        "It grants an allowance for another account to spend the balance of an account.",
         "It returns the total supply of the token.",
         "It checks the balance of a specific address."
       ],
@@ -269,11 +269,11 @@
       "question": "Why is it necessary to call the `approve()` function before transferring ERC-20 tokens to a smart contract?",
       "options": [
         "Because it sets the gas fee for the transaction.",
-        "To authorize the smart contract to transfer tokens from your account.",
         "It is not necessary; tokens can be transferred without approval.",
-        "To check the balance of the smart contract."
+        "To check the balance of the smart contract.",
+        "To authorize the smart contract to transfer tokens from your account."
       ],
-      "correctAnswers": [1],
+      "correctAnswers": [3],
       "hint": "Consider how a smart contract gets permission to spend tokens from your account.",
       "explanation": "The `approve()` function allows a user to authorize a smart contract to withdraw tokens from their account up to a specified limit. This enables the smart contract to use `transferFrom()` to transfer tokens on behalf of the user.",
       "chapter": "Interchain Token Transfer"
@@ -282,11 +282,11 @@
       "question": "Why are native tokens wrapped into ERC-20 tokens like wAVAX or wETH?",
       "options": [
         "To increase their transaction speed on the blockchain.",
-        "To represent native assets as ERC-20 tokens for compatibility with DeFi applications.",
         "To reduce the supply of the native token.",
+        "To represent native assets as ERC-20 tokens for compatibility with DeFi applications.",
         "To convert them into stablecoins pegged to fiat currencies."
       ],
-      "correctAnswers": [1],
+      "correctAnswers": [2],
       "hint": "Consider how wrapping affects interoperability within the EVM ecosystem.",
       "explanation": "Wrapping native tokens into ERC-20 tokens allows them to conform to the ERC-20 standard, making them compatible with decentralized applications, exchanges, and smart contracts that require ERC-20 tokens. This enhances interoperability and usability within the blockchain ecosystem.",
       "chapter": "Interchain Token Transfer"
@@ -341,6 +341,17 @@
       "correctAnswers": [0],
       "hint": "Consider how token amounts are scaled between chains with different decimal places.",
       "explanation": "The `_tokenMultiplier` is used to scale the token amounts when transferring between chains with different decimal systems. It is calculated based on the difference in decimals between the home and remote tokens and ensures that the token value remains consistent across chains.",
+      "chapter": "Interchain Token Transfer"
+    },
+    "127": {
+      "question": "Can there be multiple TokenRemotes for a single TokenHome?",
+      "hint": "Think about how tokens are transferred between chains and where they originate from.",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "correctAnswers": [0],
+      "explanation": "Yes, there can be multiple TokenRemotes for a single TokenHome. This allows the same token to be bridged to multiple chains, enabling cross-chain interoperability and use cases across different blockchain networks.",
       "chapter": "Interchain Token Transfer"
     }
   }
