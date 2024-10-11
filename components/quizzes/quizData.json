@@ -7,6 +7,10 @@
     "l1-tokenomics": {
       "title": "L1 Tokenomics",
       "quizzes": ["201", "202", "203", "204", "205", "206", "207", "208", "209"]
+    },
+    "interchain-token-transfer": {
+      "title": "Interchain Token Transfer",
+      "quizzes": ["118", "119", "120", "121", "122", "123", "124", "125", "126"]
     }
   },
   "quizzes": {
@@ -221,6 +225,123 @@
       "hint": "Think about how Avalanche allows developers to modify Virtual Machines.",
       "explanation": "Unlike one-chain-fits all systems, which requires a wide consensus to make changes, Avalanche allows for straightforward customization of Virtual Machines, making it more adaptable to unique use cases.",
       "chapter": "Virtual Machine Customization"
+    },
+    "118": {
+      "question": "Which of the following best describes the role of a native token in an EVM-based blockchain?",
+      "options": [
+        "It is used only for staking and governance within the blockchain.",
+        "It serves as both a means of value transfer and as the gas token for executing transactions and smart contracts.",
+        "It is used exclusively for purchasing NFTs on the blockchain.",
+        "It has no functional role other than being a store of value."
+      ],
+      "correctAnswers": [1],
+      "hint": "Consider both value transfer and execution costs in the network.",
+      "explanation": "In an EVM-based blockchain, the native token serves as both a means of value transfer within the network and as the gas token for executing transfers or smart contracts.",
+      "chapter": "Interchain Token Transfer"
+    },
+    "119": {
+      "question": "What is the purpose of marking a function as 'payable' in Solidity?",
+      "options": [
+        "It allows the function to receive ERC-20 tokens.",
+        "It allows the function to receive native blockchain tokens.",
+        "It enables the function to execute without gas fees.",
+        "It prevents the function from modifying state variables."
+      ],
+      "correctAnswers": [1],
+      "hint": "Think about how functions handle incoming funds.",
+      "explanation": "In Solidity, marking a function as 'payable' allows it to accept native blockchain tokens like ETH or AVAX. Without 'payable', the function cannot receive native tokens.",
+      "chapter": "Interchain Token Transfer"
+    },
+    "120": {
+      "question": "What is the purpose of the `approve()` function in the ERC-20 token standard?",
+      "options": [
+        "It allows an address to transfer tokens to another address directly.",
+        "It enables an owner to authorize a spender to transfer up to a certain amount from the owner's account.",
+        "It returns the total supply of the token.",
+        "It checks the balance of a specific address."
+      ],
+      "correctAnswers": [1],
+      "hint": "Consider how a spender gets permission to spend tokens from an owner's account.",
+      "explanation": "The `approve()` function allows an owner to authorize a spender to withdraw tokens from the owner's account, up to a specified limit, enabling the spender to use `transferFrom()` to transfer tokens.",
+      "chapter": "Interchain Token Transfer"
+    },
+    "121": {
+      "question": "Why is it necessary to call the `approve()` function before transferring ERC-20 tokens to a smart contract?",
+      "options": [
+        "Because it sets the gas fee for the transaction.",
+        "To authorize the smart contract to transfer tokens from your account.",
+        "It is not necessary; tokens can be transferred without approval.",
+        "To check the balance of the smart contract."
+      ],
+      "correctAnswers": [1],
+      "hint": "Consider how a smart contract gets permission to spend tokens from your account.",
+      "explanation": "The `approve()` function allows a user to authorize a smart contract to withdraw tokens from their account up to a specified limit. This enables the smart contract to use `transferFrom()` to transfer tokens on behalf of the user.",
+      "chapter": "Interchain Token Transfer"
+    },
+    "122": {
+      "question": "Why are native tokens wrapped into ERC-20 tokens like wAVAX or wETH?",
+      "options": [
+        "To increase their transaction speed on the blockchain.",
+        "To represent native assets as ERC-20 tokens for compatibility with DeFi applications.",
+        "To reduce the supply of the native token.",
+        "To convert them into stablecoins pegged to fiat currencies."
+      ],
+      "correctAnswers": [1],
+      "hint": "Consider how wrapping affects interoperability within the EVM ecosystem.",
+      "explanation": "Wrapping native tokens into ERC-20 tokens allows them to conform to the ERC-20 standard, making them compatible with decentralized applications, exchanges, and smart contracts that require ERC-20 tokens. This enhances interoperability and usability within the blockchain ecosystem.",
+      "chapter": "Interchain Token Transfer"
+    },
+    "123": {
+      "question": "Which of the following best describes the 'Lock & Mint' mechanism in asset bridging?",
+      "options": [
+        "Locking assets on the source blockchain and minting equivalent tokens on the target blockchain.",
+        "Burning assets on both the source and target blockchains simultaneously.",
+        "Using custodians to manage and transfer assets between blockchains.",
+        "Releasing assets without the need for smart contracts or locking mechanisms."
+      ],
+      "correctAnswers": [0],
+      "hint": "Consider how assets are secured on one chain and represented on another.",
+      "explanation": "In the 'Lock & Mint' mechanism, assets are locked in a smart contract on the source blockchain, and an equivalent amount of wrapped tokens are minted on the target blockchain. This allows the asset's value to be transferred and used on a different blockchain.",
+      "chapter": "Interchain Token Transfer"
+    },
+    "124": {
+      "question": "Which type of smart contract exploit allows attackers to repeatedly withdraw funds before the contract's state is updated?",
+      "options": [
+        "Reentrancy Attacks",
+        "Arithmetic Errors",
+        "Logic Flaws",
+        "Phishing Attacks"
+      ],
+      "correctAnswers": [0],
+      "hint": "Consider exploits involving recursive calls to a contract.",
+      "explanation": "Reentrancy attacks exploit a contract's ability to call itself before the initial function call is completed, allowing attackers to repeatedly withdraw funds before the contract's state is updated.",
+      "chapter": "Interchain Token Transfer"
+    },
+    "125": {
+      "question": "Which statement is true about token transfers in the Avalanche Interchain Token Transfer Design?",
+      "options": [
+        "Only ERC20 tokens can be transferred; native tokens are not supported.",
+        "Transfers must involve the same token type on both home and remote chains.",
+        "Any combination of ERC20 and native tokens can be transferred between home and remote chains.",
+        "Token transfers require approval from network administrators."
+      ],
+      "correctAnswers": [2],
+      "hint": "Consider the flexibility of token types allowed in transfers.",
+      "explanation": "The Avalanche Interchain Token Transfer Design supports transferring tokens with any combination of ERC20 and native tokens between home and remote chains, including ERC20 to ERC20, ERC20 to Native, Native to ERC20, and Native to Native.",
+      "chapter": "Interchain Token Transfer"
+    },
+    "126": {
+      "question": "What is the purpose of the `_tokenMultiplier` in the `TokenRemote` contract when bridging assets between chains with different decimal systems?",
+      "options": [
+        "It adjusts the token amount to match the decimal system of the target chain by multiplying or dividing as necessary.",
+        "It locks the tokens on the source chain before transfer.",
+        "It handles the minting of new tokens on the target chain.",
+        "It calculates the transaction fees for cross-chain transfers."
+      ],
+      "correctAnswers": [0],
+      "hint": "Consider how token amounts are scaled between chains with different decimal places.",
+      "explanation": "The `_tokenMultiplier` is used to scale the token amounts when transferring between chains with different decimal systems. It is calculated based on the difference in decimals between the home and remote tokens and ensures that the token value remains consistent across chains.",
+      "chapter": "Interchain Token Transfer"
     }
   }
 }
