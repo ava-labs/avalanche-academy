@@ -20,8 +20,8 @@
       "title": "Multichain Architecture",
       "quizzes": ["401", "402", "403", "404", "405", "406", "407", "408", "409", "410"]
     }
-  },
-  "quizzes": {
+    },
+    "quizzes": {
     "101": {
       "question": "What is the underlying principle of the Avalanche Consensus family?",
       "options": [
