@@ -242,7 +242,7 @@ export default function HackathonPage() {
                   This hackathon aims to harness the potential of Avalanche's robust technology stack to address pressing issues and create scalable, practical solutions. 
               </p>
             </div>
-            <Link href="/course/blockchain-fundamentals" className="block max-w-xl p-4 mx-auto mt-8 text-sm rounded-lg bg-muted border border-b " role="alert">
+            <Link href="https://avax.typeform.com/to/mUSRGxjh" className="block max-w-xl p-4 mx-auto mt-8 text-sm rounded-lg bg-muted border border-b ">
               <span className="font-medium">Ready to create a Submission for the Hackathon? </span><span className='underline'>Click here to share your project</span>
             </Link>
           </div>
