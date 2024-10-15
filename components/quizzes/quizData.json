@@ -15,6 +15,10 @@
     "interchain-messaging": {
       "title": "Interchain Messaging",
       "quizzes": ["301", "302", "303", "304", "305", "306", "307", "308", "309", "310", "311", "312", "313", "314", "315", "316"]
+    },
+    "multichain-architecture": {
+      "title": "Multichain Architecture",
+      "quizzes": ["401", "402", "403", "404", "405", "406", "407", "408", "409", "410"]
     }
     },
     "quizzes": {
@@ -822,6 +826,156 @@
       "hint": "The fee should cover the costs and provide additional profit to the Relayer.",
       "explanation": "To ensure the Relayer makes at least a 10% profit, the fee amount should be calculated as 1.1 times the cost. The cost is determined by multiplying the requiredGasLimit by the gas price in native tokens and the native token price. Therefore, the minimum fee should be 1.1 * (requiredGasLimit * gas_price_in_native_token * native_token_price).",
       "chapter": "Determining the Fee"
+    },
+    "401": {
+      "question": "What advantage do custom blockchains on Avalanche offer in terms of gas tokens compared to the C-Chain?",
+      "options": [
+          "They use a fixed gas token similar to ETH on the C-Chain.",
+          "They eliminate the need for gas tokens altogether.",
+          "They allow developers to use any ERC-20 token as the gas token.",
+          "They automatically adjust gas fees based on network demand."
+      ],
+      "correctAnswers": [
+          2
+      ],
+      "hint": "Custom blockchains offer flexibility in defining their gas tokens, unlike the C-Chain's fixed system.",
+      "explanation": "Custom blockchains on Avalanche provide the flexibility to define their economic models, including the ability to use any ERC-20 token as their gas token. This differs from the C-Chain, which has a fixed gas token system (ETH). This flexibility allows developers to tailor the economic incentives and stability of their networks according to their specific needs.",
+      "chapter": "Customizable Tokenomics"
+    },
+    "402": {
+      "question": "How do Avalanche Custom Blockchains differ from Layer 2 rollups in terms of security and decentralization?",
+      "options": [
+          "Avalanche Custom Blockchains delegate security to the Ethereum mainnet, while Layer 2 rollups maintain independent security.",
+          "Avalanche Custom Blockchains maintain their own security as part of the Avalanche base layer, whereas Layer 2 rollups delegate security to the Ethereum mainnet.",
+          "Both Avalanche Custom Blockchains and Layer 2 rollups rely solely on the security of their respective base layers.",
+          "Layer 2 rollups offer independent security for each blockchain, while Avalanche Custom Blockchains share a unified security model."
+      ],
+      "correctAnswers": [
+          1
+      ],
+      "hint": "Avalanche Custom Blockchains are part of the base layer, while Layer 2 rollups rely on another mainnet for security.",
+      "explanation": "Avalanche Custom Blockchains maintain their own security as part of the Avalanche base layer, ensuring that a compromise in one blockchain does not affect others. In contrast, Layer 2 rollups delegate their security to the Ethereum mainnet, meaning that if the Ethereum mainnet experiences a security breach, it can potentially impact all Layer 2 solutions relying on it.",
+      "chapter": "Decentralization and Security"
+    },
+    "403": {
+      "question": "What is the primary purpose of implementing dynamic transaction fees (gas fees) in the Ethereum network?",
+      "options": [
+          "To regulate access to limited processing resources and prevent network congestion.",
+          "To reward developers for maintaining the network.",
+          "To fund protocol upgrades and improvements.",
+          "To incentivize liquidity providers."
+      ],
+      "correctAnswers": [
+          0
+      ],
+      "hint": "Dynamic fees help manage the flow of transactions and avoid network overload.",
+      "explanation": "Dynamic transaction fees, also known as gas fees, are implemented in the Ethereum network to regulate access to its limited processing resources. By adjusting fees based on network demand, Ethereum ensures that the blockchain remains efficient and prevents congestion, much like a flexible toll system on a highway manages traffic flow during peak hours.",
+      "chapter": "Transaction Fees and Gas Fees"
+    },
+    "404": {
+      "question": "Which interoperability use case on Avalanche allows users to transfer tokens like USDC across different Layer 1 blockchains without using centralized exchanges?",
+      "options": [
+          "Decentralized Data Feeds (Chainlink Price Feeds)",
+          "Cross-Chain Token Transfers",
+          "Cross-Chain NFTs",
+          "Interoperable DeFi Protocols"
+      ],
+      "correctAnswers": [
+          1
+      ],
+      "hint": "This use case focuses on moving tokens seamlessly between different blockchain networks.",
+      "explanation": "Cross-Chain Token Transfers enable users to move tokens such as USDC from one Layer 1 blockchain to another without the need for centralized exchanges or third-party intermediaries. This facilitates seamless transactions with minimal fees and fast processing times, enhancing liquidity access and maintaining decentralization by keeping users in control of their assets during the transfer.",
+      "chapter": "Interoperability Use Cases"
+    },
+    "405": {
+      "question": "What is the primary role of Avalanche's Interchain Messaging Protocol (ICM Protocol)?",
+      "options": [
+          "To facilitate the rapid transfer of assets between different Layer 1 blockchains.",
+          "To manage validator sets and staking operations on Avalanche.",
+          "To handle the creation of new blockchains and Avalanche L1s.",
+          "To enable smart contracts on different chains to interact directly without intermediaries."
+      ],
+      "correctAnswers": [
+          3
+      ],
+      "hint": "The ICM Protocol allows direct interaction between smart contracts on different chains.",
+      "explanation": "The primary role of Avalanche's Interchain Messaging Protocol (ICM Protocol) is to enable smart contracts on different chains within the Avalanche network to interact with each other directly, without relying on third-party intermediaries. This facilitates complex cross-chain operations, enhancing the interoperability and functionality of the Avalanche ecosystem.",
+      "chapter": "Interchain Messaging & the Interchain Messaging Protocol"
+    },
+    "406": {
+      "question": "What is one of the primary benefits of implementing permissioning on an Avalanche L1 blockchain?",
+      "options": [
+          "Enhancing the decentralization by allowing anyone to participate.",
+          "Increasing transaction speeds by reducing the number of validators.",
+          "Ensuring data privacy and confidentiality by restricting access to authorized parties.",
+          "Automatically adjusting gas fees based on network demand."
+      ],
+      "correctAnswers": [
+          2
+      ],
+      "hint": "Permissioning helps in controlling who can access sensitive information on the blockchain.",
+      "explanation": "One of the primary benefits of implementing permissioning on an Avalanche L1 blockchain is ensuring data privacy and confidentiality. By restricting access to authorized parties, permissioned blockchains protect sensitive information from unauthorized access, which is crucial in industries like finance and healthcare where data privacy is paramount.",
+      "chapter": "Permissioning Your Avalanche L1"
+    },
+    "407": {
+      "question": "How does permissioning on an Avalanche L1 blockchain help institutions comply with regulatory requirements?",
+      "options": [
+          "By allowing anyone to deploy contracts and initiate transactions.",
+          "By enabling only pre-approved users to deploy contracts or initiate transactions.",
+          "By automatically adjusting transaction fees based on user activity.",
+          "By decentralizing control over smart contract deployments."
+      ],
+      "correctAnswers": [
+          1
+      ],
+      "hint": "Permissioning restricts actions to authorized users to ensure compliance.",
+      "explanation": "Permissioning on an Avalanche L1 blockchain allows institutions to enforce regulatory compliance by enabling only pre-approved users to deploy contracts or initiate transactions. This control ensures that only vetted and authorized parties can interact with the blockchain, thereby preventing unauthorized or potentially illicit activities. By restricting access, institutions can implement necessary measures such as KYC (Know Your Customer) and AML (Anti-Money Laundering) protocols, thereby adhering to industry-specific regulations and maintaining the integrity and security of their blockchain systems.",
+      "chapter": "Compliance"
+    },
+    "408": {
+      "question": "What is a primary benefit of implementing a permissioned validator set on an Avalanche L1 blockchain?",
+      "options": [
+          "It allows anyone to participate in the validation process, enhancing decentralization.",
+          "It automatically adjusts transaction fees based on validator performance.",
+          "It eliminates the need for validators by using a centralized authority.",
+          "It restricts validation to pre-approved validators, ensuring compliance and security."
+      ],
+      "correctAnswers": [
+          3
+      ],
+      "hint": "Permissioned validator sets provide control over who can validate transactions.",
+      "explanation": "Implementing a permissioned validator set on an Avalanche L1 blockchain restricts the validation process to pre-approved validators. This enhances compliance with regulatory requirements, ensures higher security by limiting participation to trusted entities, and allows for better control over the network's governance and operations. Such a setup is particularly beneficial for enterprises, consortiums, government agencies, and financial institutions that require strict adherence to compliance and data privacy standards.",
+      "chapter": "Permissioning Validators"
+    },
+    "409": {
+      "question": "How can Avalanche L1 validators configure their blockchain to restrict data visibility only to validators?",
+      "options": [
+          "By setting their node to public mode.",
+          "By enabling data encryption on the blockchain.",
+          "By setting `validatorOnly` to true.",
+          "By increasing gas fees."
+      ],
+      "correctAnswers": [
+          2
+      ],
+      "hint": "Permissioned blockchains can limit data visibility to a select group.",
+      "explanation": "Avalanche L1 validators can restrict data visibility by setting the `validatorOnly` flag to true on their nodes. This configuration ensures that only validators can exchange messages with the blockchain, preventing other peers from accessing the blockchain's data. This is essential for maintaining privacy and confidentiality in permissioned blockchains, especially in enterprise or regulated environments where data protection is paramount.",
+      "chapter": "Private Blockchains"
+    },
+    "410": {
+      "question": "How can a community running an Avalanche L1 blockchain maintain a hard cap on the native token supply?",
+      "options": [
+          "By keeping the Native Minter Precompile deactivated, preventing additional minting.",
+          "By activating the Native Minter Precompile to allow unlimited minting.",
+          "By setting the initial supply to 720 million AVAX and allowing periodic increases.",
+          "By delegating minting rights to a centralized authority."
+      ],
+      "correctAnswers": [
+          0
+      ],
+      "hint": "Maintaining a hard cap involves restricting the ability to mint new tokens.",
+      "explanation": "To maintain a hard cap on the native token supply, a community running an Avalanche L1 blockchain should keep the Native Minter Precompile deactivated. By doing so, they prevent the creation of additional native tokens beyond the predefined limit. This ensures that the total supply remains fixed, which is essential for scenarios where a valueless gas token or a specific tokenomics structure is required. The Native Minter Precompile is deactivated by default, allowing blockchain creators to choose whether to enable or disable minting based on their economic models and requirements.",
+      "chapter": "Native Token Minting Rights"
     }
   }
 }
