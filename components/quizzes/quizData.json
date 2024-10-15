@@ -6,11 +6,15 @@
     },
     "l1-tokenomics": {
       "title": "L1 Tokenomics",
-      "quizzes": ["201", "202", "203", "204", "205", "206", "207", "208", "209"]
+      "quizzes": ["201", "202", "203", "204", "205", "206", "207", "208", "209", "210", "211", "212", "213", "214", "215"]
     },
     "interchain-token-transfer": {
       "title": "Interchain Token Transfer",
       "quizzes": ["118", "119", "120", "121", "122", "123", "124", "125", "126", "127"]
+    },
+    "interchain-messaging": {
+      "title": "Interchain Messaging",
+      "quizzes": ["301", "302", "303", "304", "305", "306", "307", "308", "309", "310", "311", "312", "313", "314", "315", "316"]
     },
     "multichain-architecture": {
       "title": "Multichain Architecture",
@@ -357,6 +361,471 @@
       "correctAnswers": [0],
       "explanation": "Yes, there can be multiple TokenRemotes for a single TokenHome. This allows the same token to be bridged to multiple chains, enabling cross-chain interoperability and use cases across different blockchain networks.",
       "chapter": "Interchain Token Transfer"
+    },
+    "201": {
+      "question": "Which function is used to allow another account to transfer tokens on your behalf?",
+      "options": [
+          "transfer()",
+          "approve()",
+          "transferFrom()",
+          "allowance()"
+      ],
+      "correctAnswers": [
+          1
+      ],
+      "hint": "This function sets an approval limit for token transfers by a third party.",
+      "explanation": "The approve() function allows another account to spend tokens on your behalf up to a specified amount.",
+      "chapter": "ERC-20 Tokens"
+  },
+  "202": {
+      "question": "What is the primary purpose of wrapping a native token into an ERC-20 token?",
+      "options": [
+          "To increase its supply",
+          "To burn the native token",
+          "To make the native token compatible with the ERC-20 standard",
+          "To mint more native tokens"
+      ],
+      "correctAnswers": [
+          2
+      ],
+      "hint": "Wrapping allows the native token to be used in decentralized applications that require ERC-20 tokens.",
+      "explanation": "The wrapping process makes native tokens (like ETH, AVAX) compatible with the ERC-20 standard, enabling their use in dApps and DeFi protocols.",
+      "chapter": "Wrapped Native Tokens"
+  },
+  "203": {
+      "question": "What is the primary advantage of using a custom native token in a blockchain?",
+      "options": [
+          "It automatically increases in value over time",
+          "It can only be used for test environments",
+          "It eliminates the need for validators",
+          "It allows for more control over transaction fees and tokenomics"
+      ],
+      "correctAnswers": [
+          3
+      ],
+      "hint": "Custom native tokens give developers flexibility in managing blockchain economics.",
+      "explanation": "A custom native token allows developers to control transaction fees, design tokenomics, and tailor the blockchain’s fee structure to meet specific needs.",
+      "chapter": "Custom Native Tokens"
+  },
+  "204": {
+      "question": "What is the AllowList used for when configuring the Native Minter Precompile?",
+      "options": [
+          "To set transaction fees for using the native token",
+          "To control which addresses are allowed to mint native tokens",
+          "To limit the total number of native tokens that can be minted",
+          "To freeze minting of native tokens"
+      ],
+      "correctAnswers": [
+          1
+      ],
+      "hint": "The allow list determines which addresses have permission to interact with the precompiled contract.",
+      "explanation": "The AllowList is used to specify which addresses have the permission to mint native tokens or manage the minting process.",
+      "chapter": "Activating Native Minter Precompile"
+  },
+  "205": {
+      "question": "What is the main advantage of a multi-chain ecosystem?",
+      "options": [
+          "It reduces the security of the blockchain.",
+          "It increases the gas fees.",
+          "It enables tokens and assets to be transferred across multiple blockchains.",
+          "It restricts interoperability between different blockchains."
+      ],
+      "correctAnswers": [
+          2
+      ],
+      "hint": "Think about the ability of assets and tokens to move freely across multiple chains.",
+      "explanation": "The key benefit of a multi-chain ecosystem is that it allows tokens, assets, and data to be transferred between different blockchains, promoting interoperability.",
+      "chapter": "Cross-Chain Ecosystems"
+  },
+  "206": {
+      "question": "What role does Avalanche play in enabling multi-chain ecosystems?",
+      "options": [
+          "It provides a single-chain environment for transactions.",
+          "It limits token usage to the native chain.",
+          "It supports seamless cross-chain communication with tools like L1s and ICTT.",
+          "It prevents interoperability between its L1s and other chains."
+      ],
+      "correctAnswers": [
+          2
+      ],
+      "hint": "Avalanche is known for its ability to support cross-chain communication and interoperability through its architecture.",
+      "explanation": "Avalanche's architecture, including its L1s and Interchain Token Transfers (ICTT), is designed to support seamless cross-chain communication and interoperability between different blockchain networks.",
+      "chapter": "Cross-Chain Ecosystems"
+  },
+  "207": {
+      "question": "Which contract must be granted minting rights for the ERC-20 token to be used as a native token on a new L1 chain?",
+      "options": [
+          "NativeTokenRemote contract",
+          "ERC-20 Home contract",
+          "ERC-712 contract",
+          "L1 governance contract"
+      ],
+      "correctAnswers": [
+          0
+      ],
+      "hint": "This contract mints native tokens on the destination chain after ERC-20 tokens are transferred.",
+      "explanation": "The NativeTokenRemote contract must be granted minting rights to allow the native token to be minted on the new L1 after ERC-20 tokens are transferred from the source chain.",
+      "chapter": "Use ERC-20 as Native Token"
+  },
+  "208": {
+      "question": "Why is collateralization important in transferring native tokens between L1 chains?",
+      "options": [
+          "It increases the supply of tokens on the C-Chain.",
+          "It ensures the total supply of tokens remains balanced across both chains.",
+          "It burns the tokens on the remote chain.",
+          "It locks the token permanently on the C-Chain."
+      ],
+      "correctAnswers": [
+          1
+      ],
+      "hint": "Collateralization ensures balance across chains during token transfers.",
+      "explanation": "Collateralization locks the transferred tokens on the source chain, ensuring that the minted tokens on the destination chain have an equivalent backing.",
+      "chapter": "Use ERC-20 as Native Token"
+  },
+  "209": {
+      "question": "What is the purpose of wrapping a native token on the C-Chain before transferring it to a new L1?",
+      "options": [
+          "To convert it into an ERC-721 token.",
+          "To prepare it for cross-chain transfer as an ERC-20 token.",
+          "To lock it in a smart contract and mint its representation on the new L1.",
+          "To burn the token and reduce its total supply."
+      ],
+      "correctAnswers": [
+          2
+      ],
+      "hint": "Wrapping a token creates a compatible version of it for cross-chain transfers.",
+      "explanation": "Wrapping the native token locks it on the C-Chain, allowing a compatible version of the token to be minted on the new L1, ensuring the cross-chain token transfer process.",
+      "chapter": "Use ERC-20 as Native Token"
+    },
+  "210": {
+    "question": "Which function is used to initialize the Validator set in the ValidatorManager contract?",
+    "options": [
+        "initializeValidatorRegistration()",
+        "deployProxyContract()",
+        "initializeValidatorSet()",
+        "setSubnetValidator()"
+    ],
+    "correctAnswers": [
+        2
+    ],
+    "hint": "Initialization of the Validator set is a critical step in setting up the ValidatorManager.",
+    "explanation": "The function `initializeValidatorSet` is called to initialize the Validator set in the ValidatorManager contract, setting up the starting Validators for the L1.",
+    "chapter": "Staking"
+  },
+  "211": {
+      "question": "Which configuration parameter sets the target rate of block production in seconds?",
+      "options": [
+          "minBaseFee",
+          "targetBlockRate",
+          "blockGasCostStep",
+          "baseFeeChangeDenominator"
+      ],
+      "correctAnswers": [
+          1
+      ],
+      "hint": "This parameter defines how frequently blocks should be produced.",
+      "explanation": "The `targetBlockRate` specifies the target rate of block production in seconds. For example, a target of 2 aims to produce a block every 2 seconds.",
+      "chapter": "Transaction Fees"
+    },
+  "212": {
+    "question": "Which allocation method ensures widespread ownership and participation in the network?",
+      "options": [
+          "Founders and Development Team",
+          "Early Investors and Backers",
+          "Community through token sales and airdrops",
+          "Reserve or Treasury"
+      ],
+      "correctAnswers": [
+          2
+      ],
+      "hint": "This allocation focuses on distributing tokens to a broad group of network participants.",
+      "explanation": "Allocating tokens to the community through mechanisms such as token sales and airdrops ensures widespread ownership and participation in the network, fostering decentralization and security.",
+      "chapter": "Token Distribution"
+  },
+  "213": {
+      "question": "What is the primary function of a bonding curve in token economics?",
+      "options": [
+          "To manage the governance of decentralized organizations.",
+          "To set a fixed price for tokens regardless of supply.",
+          "To define the relationship between a token's price and its supply, enabling automated price discovery and liquidity.",
+          "To create a voting mechanism for token holders."
+      ],
+      "correctAnswers": [
+          2
+      ],
+      "hint": "Bonding curves automate the price based on token supply.",
+      "explanation": "A bonding curve defines the relationship between a token's price and its supply, enabling automated price discovery and liquidity without relying on traditional market makers or exchanges.",
+      "chapter": "Token Distribution"
+    },
+  "214": {
+      "question": "Which governance model combines both on-chain and off-chain elements to balance flexibility and automation?",
+      "options": [
+          "On-Chain Governance",
+          "Off-Chain Governance",
+          "Hybrid Governance",
+          "DAO-Based Governance"
+      ],
+      "correctAnswers": [
+          2
+      ],
+      "hint": "This model integrates decision-making processes both on and off the blockchain.",
+      "explanation": "Hybrid governance combines on-chain and off-chain elements, aiming to balance the transparency and automation of on-chain governance with the flexibility and qualitative considerations of off-chain governance.",
+      "chapter": "Governance Models"
+  },
+  "215": {
+      "question": "Which of the following is a primary benefit of DAOs in blockchain governance?",
+      "options": [
+          "Centralized decision-making",
+          "Enhanced transparency through blockchain recording",
+          "Reduced need for community participation",
+          "Elimination of smart contracts"
+      ],
+      "correctAnswers": [
+          1
+      ],
+      "hint": "DAOs leverage blockchain technology to ensure openness and accountability.",
+      "explanation": "DAOs enhance transparency by recording all proposals, votes, and decisions on the blockchain, ensuring an immutable and transparent governance process that fosters trust and encourages active participation.",
+      "chapter": "Governance Models"
+    },
+    "301": {
+      "question": "What is the role of a message in cross-blockchain communication?",
+      "options": [
+          "To process the data on the destination chain.",
+          "To contain source, destination, and encoded data with a signature.",
+          "To originate communication from the source chain.",
+          "To validate the message authenticity on the source chain."
+      ],
+      "correctAnswers": [
+          1
+      ],
+      "hint": "Messages carry essential information between chains, including source and destination details.",
+      "explanation": "A message in cross-blockchain communication contains the source, destination, and encoded data along with a signature that guarantees its authenticity. This ensures that the information being transferred is accurate and can be trusted by the destination chain.",
+      "chapter": "Interchain Messaging"
+    },
+    "302": {
+      "question": "How does a multi-chain system achieve greater scalability compared to single-chain networks?",
+      "options": [
+          "By increasing the gas limit on a single chain.",
+          "By running independent chains in parallel, allowing for combined throughput.",
+          "By implementing more complex smart contracts on a single chain.",
+          "By reducing the number of validators in the network."
+      ],
+      "correctAnswers": [
+          1
+      ],
+      "hint": "Multi-chain systems utilize parallelism to enhance overall network performance.",
+      "explanation": "A multi-chain system achieves greater scalability by running independent chains in parallel. This parallelism allows the network to handle a higher combined throughput of transactions, as each chain can process its own set of transactions simultaneously without being bottlenecked by a single chain's limitations.",
+      "chapter": "Interchain Messaging"
+    },
+    "303": {
+      "question": "Which Solidity functions are used for encoding and decoding data?",
+      "options": [
+          "serializeData() and deserializeData()",
+          "encodeData() and decodeData()",
+          "abi.encode() and abi.decode()",
+          "bytes.encode() and bytes.decode()"
+      ],
+      "correctAnswers": [
+          2
+      ],
+      "hint": "These functions are part of Solidity's ABI encoding and decoding utilities.",
+      "explanation": "In Solidity, `abi.encode()` is used to encode data into a bytes array, and `abi.decode()` is used to decode a bytes array back into its original types. These functions are essential for handling complex data structures in smart contracts.",
+      "chapter": "Encoding & Decoding"
+    },
+    "304": {
+      "question": "What is the name of the function used by a dApp to send a cross-chain message in the Interchain Messaging contract?",
+      "options": [
+          "sendCrossChainMessage()",
+          "sendCrossMessage()",
+          "initiateCrossChainCommunication()",
+          "sendMessageCrossChain()"
+      ],
+      "correctAnswers": [
+          0
+      ],
+      "hint": "This function is part of the ITeleporterMessenger interface used for sending messages between chains.",
+      "explanation": "The `sendCrossChainMessage()` function is used by dApps to send cross-chain messages through the Interchain Messaging contract. It takes a `TeleporterMessageInput` struct as input, which includes details such as the destination chain ID, destination address, fee information, required gas limit, allowed relayers, and the encoded message.",
+      "chapter": "Sending a Message"
+    },
+    "305": {
+      "question": "Which interface must a contract implement to receive messages from the Interchain Messaging contract?",
+      "options": [
+          "ITeleporterMessenger",
+          "ITeleporterReceiver",
+          "ITeleporterSender",
+          "IMessageHandler"
+      ],
+      "correctAnswers": [
+          1
+      ],
+      "hint": "This interface defines the necessary function for receiving cross-chain messages.",
+      "explanation": "To receive messages from the Interchain Messaging contract, a contract must implement the `ITeleporterReceiver` interface. This interface requires the implementation of the `receiveTeleporterMessage` function, which handles incoming messages.",
+      "chapter": "Receiving a Message"
+    },
+    "306": {
+      "question": "After encoding multiple values into a byte array using `abi.encode()`, what must you know to correctly decode the byte array in Solidity?",
+      "options": [
+          "The length of the byte array",
+          "The contract's address",
+          "The types and order of the encoded values",
+          "The encoding algorithm used"
+      ],
+      "correctAnswers": [
+          2
+      ],
+      "hint": "Decoding requires knowledge of the original data structure used during encoding.",
+      "explanation": "To accurately decode a byte array in Solidity using `abi.decode()`, you must know the exact types and the order in which the values were encoded. This ensures that each segment of the byte array is interpreted correctly back into its original form.",
+      "chapter": "Encoding & Decoding"
+    },
+    "307": {
+      "question": "Why are `abi.encode()` functions called twice when encoding a function call with multiple parameters in a cross-chain message?",
+      "options": [
+          "To increase the security of the message.",
+          "To pack the function name and its parameters into a single bytes array.",
+          "To separate the message into two distinct byte arrays.",
+          "To comply with the Teleporter contract requirements."
+      ],
+      "correctAnswers": [
+          1
+      ],
+      "hint": "Encoding the function name alongside its parameters ensures proper identification and handling on the receiving end.",
+      "explanation": "Calling `abi.encode()` twice allows you to first encode the function parameters and then encode the function name along with the encoded parameters. This ensures that the receiving contract can decode the function name to determine which internal function to execute with the provided parameters.",
+      "chapter": "Encoding the Function Name and Parameters"
+    },
+    "308": {
+      "question": "How does the TeleporterRegistry contract track different versions of the TeleporterMessenger contracts?",
+      "options": [
+          "By maintaining an array of contract addresses.",
+          "By using separate variables for each version.",
+          "By maintaining a mapping of version numbers to contract addresses.",
+          "By storing all contract addresses in a single bytes array."
+      ],
+      "correctAnswers": [
+          2
+      ],
+      "hint": "The registry uses a key-value structure to associate versions with their corresponding contract addresses.",
+      "explanation": "The TeleporterRegistry contract tracks different versions of the TeleporterMessenger contracts by maintaining a mapping of version numbers to their respective contract addresses. This allows cross-Avalanche L1 dApps to request either the latest version or a specific version of the TeleporterMessenger as needed.",
+      "chapter": "How the ICM Registry works"
+    },
+   "309": {
+      "question": "What is the purpose of the `Recover` algorithm in some signature schemes?",
+      "options": [
+          "To generate a key pair.",
+          "To sign a message using the private key.",
+          "To recover the public key from a message and its signature.",
+          "To verify the integrity of a message."
+      ],
+      "correctAnswers": [
+          2
+      ],
+      "hint": "The `Recover` algorithm helps to retrieve the public key used to create a signature.",
+      "explanation": "The `Recover` algorithm is used to retrieve the public key that corresponds to the private key used to create the signature for a given message. This allows for verification of the signature by matching the recovered public key with the sender's public key, ensuring the authenticity and integrity of the message.",
+      "chapter": "Signature Schemes"
+    },
+    "310": {
+      "question": "What is a key advantage of the BLS multi-signature scheme in blockchain applications?",
+      "options": [
+          "It requires only one private key for all participants.",
+          "It eliminates the need for public keys.",
+          "It uses symmetric cryptography for enhanced security.",
+          "It supports signature and public key aggregation, resulting in compact signatures."
+      ],
+      "correctAnswers": [
+          3
+      ],
+      "hint": "The BLS scheme is known for its ability to aggregate multiple signatures into one.",
+      "explanation": "The BLS (Boneh-Lynn-Shacham) multi-signature scheme is highly efficient for blockchain applications due to its support for both signature and public key aggregation. This means multiple signatures can be compressed into a single short signature, and multiple public keys can be aggregated into one, reducing the storage and transmission overhead while maintaining security and integrity.",
+      "chapter": "Signature Schemes"
+    },
+    "311": {
+      "question": "What is the primary responsibility of the P-Chain in the Avalanche Network?",
+      "options": [
+          "Overseeing validator registration and staking operations for Avalanche L1s.",
+          "Managing the execution of smart contracts.",
+          "Handling transactions on the X-Chain.",
+          "Facilitating the transfer of assets between different chains."
+      ],
+      "correctAnswers": [
+          0
+      ],
+      "hint": "The P-Chain is responsible for validator and staking operations.",
+      "explanation": "In the Avalanche Network, the P-Chain is responsible for validator and Avalanche L1-level operations. This includes the creation of new blockchains and Avalanche L1s, the addition of validators to Avalanche L1s, staking operations, and other platform-level operations. By registering BLS public keys and managing staking, the P-Chain ensures the security and functionality of the network.",
+      "chapter": "P-Chain"
+    },
+    "312": {
+      "question": "Which component is responsible for relaying interchain messages to the destination chain in the Avalanche Network?",
+      "options": [
+          "Warp Precompile",
+          "Signature Verification",
+          "AWM Relayer",
+          "Message Initialization"
+      ],
+      "correctAnswers": [
+          2
+      ],
+      "hint": "This component checks outgoing messages and delivers them to the destination chain.",
+      "explanation": "The **AWM Relayer** is responsible for relaying interchain messages to the destination chain. It periodically checks the source Avalanche L1 for outgoing messages and delivers these by calling the Interchain Messaging contract on the destination Avalanche L1. This ensures that messages are efficiently transmitted between chains.",
+      "chapter": "Data Flow of an Interchain Message"
+    },
+    "313": {
+      "question": "How does the AWM Relayer in the Avalanche Network detect new outgoing messages?",
+      "options": [
+        "By periodically polling the source chain or being triggered by notifications.",
+          "By receiving real-time alerts from validators.",
+          "By scanning transaction receipts on the destination chain.",
+          "By querying the latest block headers exclusively."
+      ],
+      "correctAnswers": [
+          0
+      ],
+      "hint": "The AWM Relayer uses either a regular checking mechanism or event-based triggers.",
+      "explanation": "The AWM Relayer detects new outgoing messages by either polling the source Avalanche L1 periodically for new messages or being triggered by notifications whenever a new outgoing message is detected by a node. This dual approach ensures that messages are efficiently picked up and relayed to the destination chain.",
+      "chapter": "Message Pickup"
+    },
+    "314": {
+      "question": "Why does the AWM Relayer not aggregate the BLS Public Keys off-chain and attach them to the message?",
+      "options": [
+          "Because aggregating off-chain would increase the message size significantly.",
+          "To prevent the AWM Relayer from creating fraudulent public keys and signatures, ensuring security.",
+          "Because the destination chain does not support off-chain aggregation.",
+          "To reduce the computational load on the AWM Relayer."
+      ],
+      "correctAnswers": [
+          1
+      ],
+      "hint": "Aggregating public keys off-chain could allow the relayer to fabricate signatures.",
+      "explanation": "The AWM Relayer does not aggregate the BLS Public Keys off-chain and attach them to the message to prevent security vulnerabilities. If aggregation were done off-chain, the relayer could create fake public keys and signatures, compromising the authenticity and integrity of the messages. By requiring each validator on the destination chain to perform the aggregation, the system ensures that the aggregated public key accurately represents the signing validators, maintaining trust and security in the cross-chain communication process.",
+      "chapter": "Signature Schemes"
+    },
+    "315": {
+      "question": "What is the primary purpose of depositing ERC-20 tokens into the Interchain Messaging contract in the Avalanche Network?",
+      "options": [
+          "To pay for gas fees associated with transactions.",
+          "To serve as collateral for staking operations.",
+          "To incentivize the AWM Relayer by providing a reward for delivering messages.",
+          "To lock tokens and prevent them from being transferred."
+      ],
+      "correctAnswers": [
+          2
+      ],
+      "hint": "Depositing tokens serves as a financial incentive for relayers to perform their duties.",
+      "explanation": "Depositing ERC-20 tokens into the Interchain Messaging contract acts as a reward mechanism for the AWM Relayer. When a relayer successfully delivers a message, they can claim the deposited tokens as compensation for their efforts in ensuring reliable cross-chain communication. This incentivization helps maintain the efficiency and security of the messaging system.",
+      "chapter": "Fee Data Flow"
+    },
+    "316": {
+      "question": "According to the Avalanche Network's fee incentivization model, how should the minimum fee amount be calculated to ensure that a Relayer makes at least a 10% profit?",
+      "options": [
+          "Fee = requiredGasLimit * gas_price_in_native_token",
+          "Fee = (requiredGasLimit * gas_price_in_native_token) / 1.1",
+          "Fee = requiredGasLimit + gas_price_in_native_token + native_token_price",
+          "Fee = 1.1 * (requiredGasLimit * gas_price_in_native_token * native_token_price)"
+      ],
+      "correctAnswers": [
+          3
+      ],
+      "hint": "The fee should cover the costs and provide additional profit to the Relayer.",
+      "explanation": "To ensure the Relayer makes at least a 10% profit, the fee amount should be calculated as 1.1 times the cost. The cost is determined by multiplying the requiredGasLimit by the gas price in native tokens and the native token price. Therefore, the minimum fee should be 1.1 * (requiredGasLimit * gas_price_in_native_token * native_token_price).",
+      "chapter": "Determining the Fee"
     },
     "401": {
       "question": "What advantage do custom blockchains on Avalanche offer in terms of gas tokens compared to the C-Chain?",
