@@ -3,6 +3,7 @@ import React, { useState, ReactNode } from "react";
 import Link from 'next/link';
 import { ArrowUpRight, Code, Link as Zap, Link2, Lightbulb, X, Book, Users, SquareTerminal } from 'lucide-react';
 import PartnerTracks from './partners';
+import { buttonVariants } from '@/components/ui/button';
 
 const Card = ({ children, className = "", onClick = () => {} }: { children: ReactNode; className?: string; onClick?: () => void }) => (
   <div className={`bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden ${className}`} onClick={onClick}>
@@ -233,7 +234,7 @@ export default function HackathonPage() {
   return (
     <div>
       <main className="container relative">
-        <div className="py-12 sm:py-24">
+        <div className="py-12 sm:py-12">
           <div className="mx-auto max-w-7xl px-6 lg:px-8">
             <div className="mx-auto w-full lg:mx-0">
               <h2 className="text-center text-5xl font-bold tracking-tight sm:text-10xl">Summit LATAM Hackathon</h2>
@@ -242,9 +243,11 @@ export default function HackathonPage() {
                   This hackathon aims to harness the potential of Avalanche's robust technology stack to address pressing issues and create scalable, practical solutions. 
               </p>
             </div>
-            <Link href="https://avax.typeform.com/to/mUSRGxjh" className="block max-w-xl p-4 mx-auto mt-8 text-sm rounded-lg bg-muted border border-b ">
-              <span className="font-medium">Ready to create a Submission for the Hackathon? </span><span className='underline'>Click here to share your project</span>
-            </Link>
+            <div className="flex items-center max-w-xl p-4 mx-auto mt-4 text-sm rounded-lg group" style={{ justifyContent: "center" }}>
+              <Link href="https://avax.typeform.com/to/mUSRGxjh" className={buttonVariants({ size: 'lg', variant: 'default' })}>
+                Click Here to Submit your Project <ArrowUpRight size={20} style={{ color: "inherit" }}/>
+              </Link>
+            </div>
           </div>
         </div>
 
