@@ -1,7 +1,8 @@
 "use client"
 import React, { useState, ReactNode } from "react";
 import Link from 'next/link';
-import { ArrowUpRight, Code, Link as Zap, Link2, Lightbulb, X, Book, Users, ExternalLink } from 'lucide-react';
+import { ArrowUpRight, Code, Link as Zap, Link2, Lightbulb, X, Book, Users, SquareTerminal } from 'lucide-react';
+import PartnerTracks from './partners';
 
 const Card = ({ children, className = "", onClick = () => {} }: { children: ReactNode; className?: string; onClick?: () => void }) => (
   <div className={`bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden ${className}`} onClick={onClick}>
@@ -9,11 +10,10 @@ const Card = ({ children, className = "", onClick = () => {} }: { children: Reac
   </div>
 );
 
-const Badge = ({ children, className = "" }: { children: React.ReactNode; className?: string }) => (
-  <span className={`inline-block px-2 py-1 text-sm font-semibold rounded-full ${className}`}>
-    {children}
-  </span>
-);
+interface Resource {
+  name: string;
+  url: string;
+}
 
 interface Track {
   id: string;
@@ -25,23 +25,8 @@ interface Track {
   challengeDetails?: string[];
   technologies?: { [key: string]: string | { description: string; skills?: string } };
   examples?: string[];
-  resources?: string[];
+  resources?: Resource[];
 }
-
-interface PartnerTrack {
-  id: string;
-  name: string;
-  prize: string;
-  description: string;
-  tracks: {
-    name: string;
-    bounty: string;
-    description: string;
-    examples?: string[];
-  }[];
-  eligibilityRequirements?: string[];
-}
-
 
 const Modal: React.FC<{ isOpen: boolean; onClose: () => void; track: Track }> = ({ isOpen, onClose, track }) => {
   if (!isOpen) return null;
@@ -88,7 +73,7 @@ const Modal: React.FC<{ isOpen: boolean; onClose: () => void; track: Track }> = 
           )}
           
           {track.examples && track.examples.length > 0 && (
-            <Section title="Examples | Focus Areas">
+            <Section title="Examples">
               <ul className="list-disc pl-5 space-y-2">
                 {track.examples.map((example, index) => (
                   <li key={index} className="text-gray-600 dark:text-gray-400">{example}</li>
@@ -102,7 +87,14 @@ const Modal: React.FC<{ isOpen: boolean; onClose: () => void; track: Track }> = 
               <ul className="list-disc pl-5 space-y-2">
                 {track.resources.map((resource, index) => (
                   <li key={index}>
-                    <a href="#" className="text-blue-600 hover:underline">{resource}</a>
+                    <Link 
+                      href={resource.url} 
+                      className="text-blue-600 hover:underline"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      {resource.name}
+                    </Link>
                   </li>
                 ))}
               </ul>
@@ -141,7 +133,7 @@ const TrackCard: React.FC<{ track: Track }> = ({ track }) => {
             <h3 className="text-2xl font-bold text-gray-800 dark:text-gray-200">{track.title}</h3>
           </div>
           <p className="text-gray-600 dark:text-gray-400 mb-4 line-clamp-4">{track.description}</p>
-          <div className={`inline-block px-3 py-1 rounded-full text-sm font-semibold ${track.color} bg-opacity-20`}>
+          <div className={`inline-block py-1 rounded-full text-sm font-semibold ${track.color} bg-opacity-20`}>
             {track.difficulty}
           </div>
         </div>
@@ -157,7 +149,7 @@ export default function HackathonPage() {
     {
       id: 'build',
       title: 'Build a Product',
-      description: "This track is designed for builders who want to develop clear, impactful use cases leveraging the full potential of Avalanche's technology stack. It focuses on creating practical applications that address real-world problems, demonstrating the versatility and power of Avalanche.",
+      description: "This track challenges builders to develop impactful use cases that leverage Avalanche's full tech stack. Participants will create practical applications addressing real-world problems with Avalanche technology.",
       difficulty: 'Intermediate',
       color: 'border-blue-500 text-blue-700',
       icon: <Zap size={24} className="text-blue-500" />,
@@ -181,12 +173,15 @@ export default function HackathonPage() {
         'Supply Chain Management',
         'Gaming'
       ],
-      resources: ['BuilderKit', 'Faucet']
+      resources: [
+        { name: 'Avalanche Starter Kit', url: 'https://github.com/ava-labs/avalanche-starter-kit' },
+        { name: 'Faucet', url: 'https://core.app/tools/testnet-faucet/?subnet=c&token=c' }
+      ]
     },
     {
       id: 'interop',
       title: 'Interoperability',
-      description: "This track is designed for developers who want to create seamless, scalable solutions focused on interoperability between different blockchains. Leveraging Avalanche's Interchain Messaging Protocol (ICM) and other cross-chain tools, this track encourages builders to develop solutions that facilitate data and asset transfers across multiple chains efficiently.",
+      description: "Developers will design seamless, scalable solutions for cross-chain interoperability. Using Avalanche's Interchain Messaging Protocol (ICM) and tools, builders will enable efficient multi-chain data transfers.",
       difficulty: 'Advanced',
       color: 'border-green-500 text-green-700',
       icon: <Link2 size={24} className="text-green-500" />,
@@ -196,12 +191,16 @@ export default function HackathonPage() {
         'Chain abstraction asset transfers, modify the EVM in a way to improve Multichain User Experience',
         'USDC to L1 via an On-Ramp on the C-Chain and ICTT'
       ],
-      resources: ['ICM Course', 'ICTT Course', 'AWM Relayer Repo']
+      resources: [
+        { name: 'ICM Course', url: 'https://academy.avax.network/course/interchain-messaging' },
+        { name: 'ICTT Course', url: 'https://academy.avax.network/course/interchain-token-transfer' },
+        { name: 'AWM Relayer Repo', url: 'https://github.com/ava-labs/awm-relayer' }
+      ]
     },
     {
       id: 'advanced',
       title: 'Advanced Technical Development',
-      description: "This track is dedicated to participants who want to focus purely on the technical aspects of blockchain development. It aims to push the boundaries of Avalanche's technology stack, fostering innovation in areas like performance optimization, advanced cryptography, and network scalability without the need to integrate business use cases.",
+      description: "This track invites participants to push Avalanche's technical boundaries. Focusing on performance, cryptography, and scalability, developers will explore cutting-edge blockchain solutions without business constraints.",
       difficulty: 'Advanced',
       color: 'border-purple-500 text-purple-700',
       icon: <Code size={24} className="text-purple-500" />,
@@ -220,7 +219,7 @@ export default function HackathonPage() {
     {
       id: 'innovation',
       title: 'Open Innovation',
-      description: 'Space for innovative projects that do not strictly fit into other tracks but use Avalanche technologies to solve real and scalable problems.',
+      description: "This track invites participants to push Avalanche's technical boundaries. Focusing on performance, cryptography, and scalability, developers will explore cutting-edge blockchain solutions without business constraints.",
       difficulty: 'Open',
       color: 'border-yellow-500 text-yellow-700',
       icon: <Lightbulb size={24} className="text-yellow-500" />,
@@ -230,35 +229,6 @@ export default function HackathonPage() {
       challengeDetails: ["Any innovative solution using Avalanche's capabilities to address problems in various industries."]
     },
   ];
-
-  const partners = [
-    {
-      id: 'chainlink',
-      name: 'Chainlink',
-      prize: '$20,000 in Prizes',
-      description: 'Two tracks focused on Chainlink enabled Avalanche L1s and On-chain Finance on Avalanche.',
-      details: [
-        'Track 1: Chainlink enabled Avalanche L1s - $10,000',
-        'Track 2: On-chain Finance on Avalanche - $10,000',
-        'Eligibility: Must use Chainlink to make a state change on blockchain',
-        'Code must be publicly viewable in a repository',
-      ],
-    },
-    {
-      id: 'gogopool',
-      name: 'GoGoPool',
-      prize: '1,000 GGP in Prizes',
-      description: 'Decentralized L1 purpose-built for AI agents using the Avalanche E devnet.',
-      details: [
-        '1st place: 500 GGP tokens',
-        '2nd place: 300 GGP tokens',
-        '3rd place: 200 GGP tokens',
-        'Focus: Explore potential of decentralized L1 blockchain for AI agents',
-        'Judging Criteria: Technical innovation, practicality, and overall cool factor',
-      ],
-    },
-  ];
-
 
   return (
     <div>
@@ -278,80 +248,83 @@ export default function HackathonPage() {
           </div>
         </div>
 
-        <section className="mb-12">
+        <div className="mb-12">
+          <Card className="bg-gradient-to-r from-yellow-100 to-yellow-200 dark:from-yellow-800 dark:to-yellow-900">
+            <div className="p-8 text-center">
+              <h3 className="text-3xl font-bold mb-4 flex justify-center items-center gap-2 text-yellow-600 dark:text-yellow-300">
+                <span>🏆</span> Prizes
+              </h3>
+              <div className="text-5xl font-extrabold text-gray-800 dark:text-gray-100 mb-4">
+                $50,000 Prize Pool
+              </div>
+              <p className="text-xl text-gray-700 dark:text-gray-300 mb-6">
+                Distributed across all tracks based on project impact and innovation.
+              </p>
+              <div className="mb-6">
+                <p className="text-lg text-gray-600 dark:text-gray-400">
+                  Top participants may earn a spot in the <strong>Codebase Incubator Program</strong>, gaining access to exclusive resources and mentorship.
+                </p>
+              </div>
+              <Link href="https://codebase.avax.network/" className="inline-block px-6 py-3 bg-yellow-500 text-white rounded-full shadow hover:bg-yellow-600 transition">
+                Learn More About Codebase Incubator →
+              </Link>
+            </div>
+          </Card>
+        </div>
+
+        <div className="mb-12">
           <h2 className="text-3xl font-bold mb-6 text-gray-800 dark:text-gray-200">Hackathon Tracks</h2>
           <div className="grid gap-6 md:grid-cols-2">
             {tracks.map((track) => (
               <TrackCard key={track.id} track={track} />
             ))}
           </div>
-        </section>
+        </div>
 
-        <section className="mb-12">
-          <h2 className="text-3xl font-semibold mb-6 text-gray-800 dark:text-gray-200">Partner Tracks</h2>
-          <div className="grid gap-6 md:grid-cols-2">
-            {partners.map((partner) => (
-              <Card key={partner.id} className="p-6">
-                <h3 className="text-2xl font-semibold mb-3 text-gray-800 dark:text-gray-200">{partner.name}</h3>
-                <Badge className="mb-4 bg-indigo-100 text-indigo-800 dark:bg-indigo-900 dark:text-indigo-100">{partner.prize}</Badge>
-                <p className="mb-4 text-gray-600 dark:text-gray-400">{partner.description}</p>
-                <div className="bg-gray-50 dark:bg-gray-700 rounded-lg p-4">
-                  <h4 className="font-semibold mb-2 text-lg text-gray-800 dark:text-gray-200">Challenge Details:</h4>
-                  <ul className="list-disc pl-5 space-y-1 text-gray-600 dark:text-gray-400">
-                    {partner.details.map((detail, index) => (
-                      <li key={index}>{detail}</li>
-                    ))}
-                  </ul>
-                </div>
-              </Card>
-            ))}
-          </div>
-        </section>
+        <PartnerTracks />
 
-        <section className="mb-12">
+        <div className="mb-12">
           <h2 className="text-3xl font-semibold mb-6 text-gray-800 dark:text-gray-200">Resources and Support</h2>
           <div className="grid gap-6 md:grid-cols-3">
             <Card>
               <div className="p-6">
-                <Users className="h-12 w-12 text-blue-500 mb-4" />
+                <Users className="h-6 w-6 text-blue-500 mb-4" />
                 <h3 className="text-xl font-semibold mb-3 text-gray-800 dark:text-gray-200">Technical Mentorship</h3>
                 <p className="text-gray-600 dark:text-gray-400">The DevRel team at Ava Labs will be available to guide teams on various technologies throughout the hackathon.</p>
               </div>
             </Card>
             <Card>
               <div className="p-6">
-                <Book className="h-12 w-12 text-green-500 mb-4" />
+                <Book className="h-6 w-6 text-green-500 mb-4" />
                 <h3 className="text-xl font-semibold mb-3 text-gray-800 dark:text-gray-200">Workshops</h3>
                 <p className="text-gray-600 dark:text-gray-400">Attend hands-on workshops on Avalanche technologies, cross-chain communication, blockchain customization, and data visualization.</p>
               </div>
             </Card>
             <Card>
               <div className="p-6">
+                <SquareTerminal className="h-6 w-6 text-green-500 mb-4" />
                 <h3 className="text-xl font-semibold mb-3 text-gray-800 dark:text-gray-200">Developer Resources</h3>
                 <ul className="space-y-3 text-gray-600 dark:text-gray-400">
                   <li>
+                    <Link href="https://docs.avax.network" className="flex items-center text-blue-600 dark:text-blue-400 hover:underline">
+                      Avalanche Docs
+                    </Link>
+                  </li>
+                  <li>
                     <Link href="https://academy.avax.network" className="flex items-center text-blue-600 dark:text-blue-400 hover:underline">
-                      <ExternalLink className="mr-2 h-4 w-4" />
                       Avalanche Academy
                     </Link>
                   </li>
                   <li>
-                    <Link href="https://faucet.avax.network" className="flex items-center text-blue-600 dark:text-blue-400 hover:underline">
-                      <ExternalLink className="mr-2 h-4 w-4" />
+                    <Link href="https://core.app/tools/testnet-faucet/?subnet=c&token=c" className="flex items-center text-blue-600 dark:text-blue-400 hover:underline">
                       Avalanche Faucet
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href="https://bento.me/avalanche-developers" className="flex items-center text-blue-600 dark:text-blue-400 hover:underline">
-                      <ExternalLink className="mr-2 h-4 w-4" />
-                      Avalanche Developers
                     </Link>
                   </li>
                 </ul>
               </div>
             </Card>
           </div>
-        </section>
+        </div>
       </main>
     </div>
   );
