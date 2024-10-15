@@ -61,3 +61,5 @@ The `sendCrossChainMessage` function takes `TeleporterMessageInput` struct as an
 - **`requiredGasLimit`:** The amount of gas the delivery of the message requires. If the relayer provides the required gas, the message will be considered delivered whether or not its execution succeeds, such that the relayer can claim their fee reward.
 - **`allowedRelayerAddresses`:** An array of addresses of allowed relayers. An empty allowed relayers list means anyone is allowed to deliver the message. We will look at this later in more detail.
 - **`message`:** The message to be sent as bytes. The message can contain multiple encoded values. DApps using Interchain Messaging are responsible for defining the exact format of this payload in a way that can be decoded on the receiving end. The message can hold multiple values that be encoded in a single bytes object. For example, applications may encode multiple method parameters on the sending side, then decode this data in the contract implementing the receiveTeleporterMessage function and call another contract with the parameters from there.
+
+<Quiz quizId="304"/>
