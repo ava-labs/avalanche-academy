@@ -1,28 +1,5 @@
-import { AcademicCapIcon, ChatBubbleLeftRightIcon, CloudArrowUpIcon, GiftIcon, LockClosedIcon, ServerIcon } from '@heroicons/react/20/solid'
-
 import COURSES from '@/content/courses';
 import Link from 'next/link';
-
-
-const features = [
-  {
-    name: 'Earn an Avalanche Academy Certificate.',
-    description: 'Showcase your Avalanche Academy accomplishments on your CV and platforms like LinkedIn, X, and more.',
-    icon: AcademicCapIcon,
-  },
-  {
-    name: 'Join the Avalanche Community.',
-    description:
-      'Get connected with other Avalanche builders and like-minded individuals passionate about Avalanche.',
-    icon: ChatBubbleLeftRightIcon,
-  },
-  {
-    name: 'Get Rewards.',
-    description: 'Top performing students can earn benefits, such as exclusive Avalanche Merchandise, complimentary event tickets, and additional privileges.',
-    icon: GiftIcon,
-  },
-]
-
 
 export default function HomePage(): React.ReactElement {
   return (
