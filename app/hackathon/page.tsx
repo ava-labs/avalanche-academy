@@ -263,7 +263,7 @@ export default function HackathonPage() {
         </div>
       </div>
 
-      <div className="py-6 sm:py-8">
+      <div className="py-6 sm:py-6">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <Card className="bg-gradient-to-r from-yellow-100 to-yellow-200 dark:from-yellow-800 dark:to-yellow-900">
             <div className="p-8 text-center">
