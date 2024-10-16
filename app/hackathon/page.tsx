@@ -245,26 +245,26 @@ export default function HackathonPage() {
   ];
 
   return (
-    <div>
-      <main className="container relative">
-        <div className="py-12 sm:py-12">
-          <div className="mx-auto max-w-7xl px-6 lg:px-8">
-            <div className="mx-auto w-full lg:mx-0">
-              <h2 className="text-center text-5xl font-bold tracking-tight sm:text-10xl">Summit LATAM Hackathon</h2>
-              <p className="mt-12 text-center text-lg leading-8 text-muted-foreground">
-                  At Avalanche, we believe in the power of technology to transform industries and solve real-world problems.
-                  This hackathon aims to harness the potential of Avalanche's robust technology stack to address pressing issues and create scalable, practical solutions. 
-              </p>
-            </div>
-            <div className="flex items-center max-w-xl p-4 mx-auto mt-4 text-sm rounded-lg group" style={{ justifyContent: "center" }}>
-              <Link href="https://avax.typeform.com/to/mUSRGxjh" className={buttonVariants({ size: 'lg', variant: 'default' })}>
-                Click Here to Submit your Project <ArrowUpRight size={20} style={{ color: "inherit" }}/>
-              </Link>
-            </div>
+    <main className="container relative">
+      <div className="py-12 sm:py-12">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+          <div className="mx-auto w-full lg:mx-0">
+            <h2 className="text-center text-5xl font-bold tracking-tight sm:text-10xl">Summit LATAM Hackathon</h2>
+            <p className="mt-12 text-center text-lg leading-8 text-muted-foreground">
+              At Avalanche, we believe in the power of technology to transform industries and solve real-world problems.
+              This hackathon aims to harness the potential of Avalanche's robust technology stack to address pressing issues and create scalable, practical solutions. 
+            </p>
+          </div>
+          <div className="flex items-center max-w-xl p-4 mx-auto mt-4 text-sm rounded-lg group" style={{ justifyContent: "center" }}>
+            <Link href="https://avax.typeform.com/to/mUSRGxjh" className={buttonVariants({ size: 'lg', variant: 'default' })}>
+              Click Here to Submit your Project <ArrowUpRight size={20} style={{ color: "inherit" }}/>
+            </Link>
           </div>
         </div>
+      </div>
 
-        <div className="mb-12">
+      <div className="py-6 sm:py-8">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <Card className="bg-gradient-to-r from-yellow-100 to-yellow-200 dark:from-yellow-800 dark:to-yellow-900">
             <div className="p-8 text-center">
               <h3 className="text-3xl font-bold mb-4 flex justify-center items-center gap-2 text-yellow-600 dark:text-yellow-300">
@@ -287,8 +287,10 @@ export default function HackathonPage() {
             </div>
           </Card>
         </div>
+      </div>
 
-        <div className="mb-12">
+      <div className="py-12 sm:py-12">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <h2 className="text-3xl font-bold mb-6 text-gray-800 dark:text-gray-200">Hackathon Tracks</h2>
           <div className="grid gap-6 md:grid-cols-2">
             {tracks.map((track) => (
@@ -296,10 +298,16 @@ export default function HackathonPage() {
             ))}
           </div>
         </div>
+      </div>
 
-        <PartnerTracks />
+      <div className="py-8 sm:py-8">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+          <PartnerTracks />
+        </div>
+      </div>
 
-        <div className="mb-12">
+      <div className="py-4 sm:py-4">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <h2 className="text-3xl font-semibold mb-6 text-gray-800 dark:text-gray-200">Resources and Support</h2>
           <div className="grid gap-6 md:grid-cols-3">
             <Card>
@@ -341,7 +349,7 @@ export default function HackathonPage() {
             </Card>
           </div>
         </div>
-      </main>
-    </div>
+      </div>
+    </main>
   );
 }
