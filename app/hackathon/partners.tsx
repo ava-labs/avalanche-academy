@@ -13,6 +13,7 @@ interface PartnerTrack {
     examples?: string[];
   }[];
   eligibilityRequirements?: string[];
+  resources?: { name: string; url: string }[]; // New field for resources
 }
 
 const Badge = ({ children, className = "" }: { children: React.ReactNode; className?: string }) => (
@@ -90,6 +91,21 @@ const Modal: React.FC<{ isOpen: boolean; onClose: () => void; track: PartnerTrac
               </ul>
             </Section>
           )}
+
+          {/* New section for resources */}
+          {track.resources && track.resources.length > 0 && (
+            <Section title="Resources">
+              <ul className="list-disc pl-5 space-y-1">
+                {track.resources.map((resource, index) => (
+                  <li key={index} className="text-gray-600 dark:text-gray-400">
+                    <a href={resource.url} target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:underline">
+                      {resource.name}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </Section>
+          )}
         </div>
       </div>
     </div>
@@ -152,26 +168,31 @@ const PartnerTracks: React.FC = () => {
         'Code visibility: All project code must be publicly viewable in a repository for judging purposes.',
         'Documentation: Clearly document how Chainlink is used in your project description.',
         'Verifiable implementation: Ensure that judges can easily locate and verify the Chainlink integration in your code. Merely stating an intention to use Chainlink is not valid.'
+      ],
+      resources: [
+        { name: 'Chainlink Documentation', url: 'https://docs.chain.link/' },
+        { name: 'Chainlink CCIP', url: 'https://chain.link/cross-chain' },
+        { name: 'Chainlink Functions', url: 'https://chain.link/functions' }
       ]
     },
     {
-      id: 'gogopool',
-      name: 'GoGoPool',
-      prize: '1,000 GGP in Prizes',
-      description: "Explore the frontier of AI and blockchain integration with GoGoPool's challenge. Build a decentralized L1 blockchain purpose-built for AI agents using the Avalanche Etna Devnet.",
+      id: 'thirdweb',
+      name: 'ThirdWeb',
+      prize: 'Credits worth $600 for Developers',
+      description: "Leverage ThirdWeb toolings to create Web3 solutions that make blockchain technology accessible and practical for everyone. Receive credits worth $600 for different ThirdWeb services.",
       tracks: [
         {
-          name: 'Decentralized L1 for AI Agents',
-          bounty: '1,000 GGP [1st place: 500 GGP, 2nd place: 300 GGP, 3rd place: 200 GGP]',
-          description: 'This track invites participants to push the boundaries of AI and blockchain integration.\n\n1. Develop a decentralized L1 blockchain tailored for AI agent interactions.\n2. Showcase swarms of autonomous AI agents transacting with each other on-chain.\n3. Utilize the Avalanche Etna Devnet to demonstrate real-time, efficient transactions.\n4. Create a system where multiple AI agents can communicate, negotiate, and transact autonomously.\n\nYour challenge is to bring the concept of AI-driven blockchain interactions to life, demonstrating the potential of this groundbreaking integration.'
+          name: 'Web3 Solutions for Everyone',
+          bounty: '3 months Growth ($300) and Engine ($300) credit coupons',
+          description: "This track invites developers to build innovative Web3 applications or games utilizing ThirdWeb's cutting-edge tools. Participants will explore wallet integration and backend infrastructure to create seamless blockchain experiences that are accessible to all.\n\n1. Build an app or game with In-App Wallets for easy user onboarding.\n2. Implement Smart Wallets (Account Abstraction) to enhance user experience and security.\n3. Utilize ThirdWeb Engine to ensure scalable backend infrastructure for your application.\n\nBuild apps to onboard the next generation of users with seamless wallets experiences using In-App and Smart Wallets and scalable backends with Engine. "
         }
       ],
-      eligibilityRequirements: [
-        "Technical innovation: Push the boundaries of what's possible with AI and blockchain",
-        "Practicality: Demonstrate real-world applicability and potential impact",
-        "Cool factor: Showcase creative and exciting implementations of AI swarms interacting on-chain",
-        "Utilization of Avalanche Etna Devnet: Effectively leverage the provided infrastructure",
-        "Documentation: Clearly explain your project's architecture, AI agent design, and blockchain integration"
+      resources: [
+        { name: 'ThirdWeb Portal', url: 'https://portal.thirdweb.com/' },
+        { name: 'In-App Wallet', url: 'https://portal.thirdweb.com/connect/in-app-wallet/overview' },
+        { name: 'Account Abstraction', url: 'https://portal.thirdweb.com/connect/account-abstraction/overview' },
+        { name: 'Engine', url: 'https://portal.thirdweb.com/engine' },
+        { name: 'YouTube Videos', url: 'https://www.youtube.com/@thirdweb_' }
       ]
     }
   ];

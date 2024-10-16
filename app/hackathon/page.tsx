@@ -11,6 +11,12 @@ const Card = ({ children, className = "", onClick = () => {} }: { children: Reac
   </div>
 );
 
+const Badge = ({ children, className = "" }: { children: React.ReactNode; className?: string }) => (
+  <span className={`inline-block px-2 py-1 text-sm font-semibold rounded-full ${className}`}>
+    {children}
+  </span>
+);
+
 interface Resource {
   name: string;
   url: string;
@@ -117,6 +123,13 @@ const Section: React.FC<{ title: string; children: React.ReactNode }> = ({ title
 const TrackCard: React.FC<{ track: Track }> = ({ track }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
+  const badgeColors = {
+    'Beginner': 'bg-emerald-100 text-emerald-800 dark:bg-emerald-900 dark:text-emerald-100',
+    'Intermediate': 'bg-amber-100 text-amber-800 dark:bg-amber-900 dark:text-amber-100',
+    'Advanced': 'bg-rose-100 text-rose-800 dark:bg-rose-900 dark:text-rose-100',
+    'Open': 'bg-indigo-100 text-indigo-800 dark:bg-indigo-900 dark:text-indigo-100'
+  };
+
   return (
     <>
       <div 
@@ -134,9 +147,9 @@ const TrackCard: React.FC<{ track: Track }> = ({ track }) => {
             <h3 className="text-2xl font-bold text-gray-800 dark:text-gray-200">{track.title}</h3>
           </div>
           <p className="text-gray-600 dark:text-gray-400 mb-4 line-clamp-4">{track.description}</p>
-          <div className={`inline-block py-1 rounded-full text-sm font-semibold ${track.color} bg-opacity-20`}>
+          <Badge className={`mb-2 ${badgeColors[track.difficulty]}`}>
             {track.difficulty}
-          </div>
+          </Badge>
         </div>
       </div>
 
