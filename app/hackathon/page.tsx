@@ -189,6 +189,8 @@ export default function HackathonPage() {
       ],
       resources: [
         { name: 'Avalanche Starter Kit', url: 'https://github.com/ava-labs/avalanche-starter-kit' },
+        { name: 'HyperSDK Starter Kit', url: 'https://github.com/ava-labs/hypersdk-starter-kit' },
+        { name: 'BuilderKit', url: 'https://www.npmjs.com/package/@0xstt/builderkit' },
         { name: 'Faucet', url: 'https://core.app/tools/testnet-faucet/?subnet=c&token=c' }
       ]
     },
@@ -228,6 +230,11 @@ export default function HackathonPage() {
         'Build a DA solution with HyperSDK',
         'Gas Sponsorship',
         'Cryptographic enablements such as ZK proofs, etc.'
+      ],
+      resources: [
+        { name: 'HyperSDK Starter Kit', url: 'https://github.com/ava-labs/hypersdk-starter-kit' },
+        { name: 'Validator Manager Contracts', url: 'https://github.com/ava-labs/teleporter/tree/validator-manager/contracts/validator-manager' },
+        { name: 'Faucet', url: 'https://core.app/tools/testnet-faucet/?subnet=c&token=c' }
       ]
     },
     {
@@ -245,7 +252,7 @@ export default function HackathonPage() {
   ];
 
   return (
-    <main className="container relative">
+    <main className="container relative py-6">
       <div className="py-12 sm:py-12">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="mx-auto w-full lg:mx-0">
