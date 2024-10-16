@@ -184,7 +184,7 @@ const PartnerTracks: React.FC = () => {
         {
           name: 'Web3 Solutions for Everyone',
           bounty: '3 months Growth ($300) and Engine ($300) credit coupons',
-          description: "This track invites developers to build innovative Web3 applications or games utilizing ThirdWeb's cutting-edge tools. Participants will explore wallet integration and backend infrastructure to create seamless blockchain experiences that are accessible to all.\n\n1. Build an app or game with In-App Wallets for easy user onboarding.\n2. Implement Smart Wallets (Account Abstraction) to enhance user experience and security.\n3. Utilize ThirdWeb Engine to ensure scalable backend infrastructure for your application.\n\nBuild apps to onboard the next generation of users with seamless wallets experiences using In-App and Smart Wallets and scalable backends with Engine. "
+          description: "This track invites developers to build innovative Web3 applications or games utilizing ThirdWeb's cutting-edge tools. Participants will explore wallet integration and backend infrastructure to create seamless blockchain experiences that are accessible to all.\n\n1. Build an app or game with In-App Wallets for easy user onboarding.\n2. Implement Smart Wallets (Account Abstraction) to enhance user experience and security.\n3. Utilize ThirdWeb Engine to ensure scalable backend infrastructure for your application.\n\nBuild apps to onboard the next generation of users with seamless wallets experiences using In-App and Smart Wallets and scalable backends with Engine."
         }
       ],
       resources: [
@@ -193,6 +193,29 @@ const PartnerTracks: React.FC = () => {
         { name: 'Account Abstraction', url: 'https://portal.thirdweb.com/connect/account-abstraction/overview' },
         { name: 'Engine', url: 'https://portal.thirdweb.com/engine' },
         { name: 'YouTube Videos', url: 'https://www.youtube.com/@thirdweb_' }
+      ]
+    },
+    {
+      id: 'gogopool',
+      name: 'GoGoPool',
+      prize: '1000 GGP Tokens',
+      description: "Explore the frontier of AI and blockchain integration with GoGoPool's challenge. Build a decentralized L1 blockchain purpose-built for AI agents using GoGoPool.",
+      tracks: [
+        {
+          name: 'Decentralized L1 for AI Agents',
+          bounty: '1,000 GGP [1st place: 500 GGP, 2nd place: 300 GGP, 3rd place: 200 GGP]',
+          description: "Your challenge is to build a decentralized L1 purpose-built for AI agents, showcasing how these agents can transact seamlessly onchain while also delivering an intuitive, visually appealing interface for users and developers alike."
+        }
+      ],
+      eligibilityRequirements: [
+        'Must use the GoGoPool L1 Launcher to create their Fuji L1',
+        'Must demonstrate swarms of agents transacting with each other onchain ',
+        'Must write a ~1 page thesis document on why a L1 was requisit for their idea to work',
+        'If you can go beyond these requirements with something surprising or exceptional, you might just blow us away!'
+      ],
+      resources: [
+        { name: 'Etna Devnet Resources', url: 'https://github.com/ava-labs/etna-devnet-resources' },
+        { name: 'GGP L1 Launcher', url: 'https://www.gogopool.com/launcher' }
       ]
     }
   ];
