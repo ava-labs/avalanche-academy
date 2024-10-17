@@ -1,7 +1,7 @@
 "use client"
 import React, { useState, ReactNode } from "react";
 import Link from 'next/link';
-import { ArrowUpRight, Code, Link as Zap, Link2, Lightbulb, X, Book, Users, SquareTerminal } from 'lucide-react';
+import { ArrowUpRight, Code, Link as Zap, Link2, Lightbulb, X, Book, Users, SquareTerminal, Box } from 'lucide-react';
 import PartnerTracks from './partners';
 import { buttonVariants } from '@/components/ui/button';
 
@@ -161,6 +161,24 @@ const TrackCard: React.FC<{ track: Track }> = ({ track }) => {
 export default function HackathonPage() {
   const tracks: Track[] = [
     {
+      id: 'avalanche9000',
+      title: 'Avalanche9000',
+      description: "Avalanche's new Etna Devnet offers developers a platform to test new features and prepare for the upcoming network upgrade, pushing the limits of blockchain development.",
+      difficulty: 'Advanced',
+      color: 'border-red-500 text-red-700',
+      icon: <Box size={24} className="text-purple-500" />,
+      examples: [
+        'Create an intuitive and powerful Validator management platform for networks that utilize various mechanisms such as Proof of Authority (PoA), Proof of Stake (PoS), or Delegated Proof of Stake (dPoS).',
+        'Build a protocol that automates the payment of continuous P-Chain fees using USDC on the C-Chain.',
+        'Build a tooling/interface which enhances the experience of launching new L1s after the Avalanche9000 upgrade.'
+      ],
+      resources: [
+        { name: 'Etna Devnet Resources', url: 'https://github.com/ava-labs/etna-devnet-resources' },
+        { name: 'Validator Manager Contracts', url: 'https://github.com/ava-labs/teleporter/tree/validator-manager/contracts/validator-manager' },
+        { name: 'Devnet C-Chain Explorer', url: 'https://2ffd1590.etna-83w.pages.dev/devnet-c-chain' }
+      ]
+    },
+    {
       id: 'build',
       title: 'Build a Product',
       description: "This track challenges builders to develop impactful use cases that leverage Avalanche's full tech stack. Participants will create practical applications addressing real-world problems with Avalanche technology.",
@@ -226,7 +244,6 @@ export default function HackathonPage() {
         'Developer Tools: Build advanced tools and frameworks to support developers in building, testing, and deploying blockchain applications more efficiently'
       ],
       examples: [
-        'Validator manager dashboard (ACP-77): PoA, PoS, dPoS',
         'Build a DA solution with HyperSDK',
         'Gas Sponsorship',
         'Cryptographic enablements such as ZK proofs, etc.'
