@@ -57,8 +57,8 @@ const officialCourses: Course[] = [
         tools: ["Avalanche-CLI"],
         languages: ["Solidity"],
         instructors: ["Martin Eckardt", "Andrea Vargas", "Ash"] // + Usman
-     },
-     {
+    },
+    {
         name:"Interchain Token Transfer",
         description:"Deploy Avalanche Interchain Token Transfer to transfer assets between Avalanche blockchains",
         slug:"interchain-token-transfer",
@@ -68,8 +68,8 @@ const officialCourses: Course[] = [
         tools: ["ICM", "Foundry"],
         languages: ["Solidity"],
         instructors: ["Martin Eckardt", "Andrea Vargas", "Ash", "Owen Wahlgren", "Sarp"]
-     },
-     {
+    },
+    {
         name:"Customizing the EVM",
         description:"Learn how to customize the EVM and add your own custom precompiles",
         slug:"customizing-evm",
@@ -79,7 +79,7 @@ const officialCourses: Course[] = [
         tools: ["Avalanche-CLI"],
         languages: ["Go"],
         instructors: ["Martin Eckardt", "Ash"] // + Usman
-     },
+    },
     {
        name:"Layer 1 Tokenomics",
        description:"Learn how to design and deploy tokenomics for your Avalanche L1",
@@ -101,9 +101,8 @@ const officialCourses: Course[] = [
         tools: ["AvaCloudSDK", "AvaCloud API"],
         languages: ["Typescript"],
         instructors: ["Owen Wahlgren"]
-    }
-    ,
-   {
+    },
+    {
         name:"HyperSDK",
         description:"Learn how to build a high-performance blockchain using HyperSDK",
         slug:"hypersdk",
