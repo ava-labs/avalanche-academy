@@ -12,7 +12,7 @@ const bold = fetch(new URL('./inter-bold.woff', import.meta.url)).then((res) =>
 
 export async function GET(
   request: NextRequest,
-  { params }: { params: { course: string } },
+  { params }: { params: { slug: string } },
 ): Promise<ImageResponse> {
   const { searchParams } = request.nextUrl;
   const title = searchParams.get('title'),
@@ -22,7 +22,7 @@ export async function GET(
     OG({
       title: title ?? 'Avalanche Academy',
       description: description ?? 'The Learning Platform for Avalanche Ecosystem',
-      course: COURSES.official.find((course) => course.slug === params.course) ?? COURSES.official[0],
+      course: COURSES.official.find((course) => course.slug === params.slug) ?? COURSES.official[0],
     }),
     {
       width: 767,
