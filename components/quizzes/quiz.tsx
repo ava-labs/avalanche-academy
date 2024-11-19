@@ -6,7 +6,6 @@ import Image from 'next/image';
 import { cn } from '@/utils/cn';
 import { buttonVariants } from '@/components/ui/button';
 import quizData from './quizData.json';
-import l1TokenomicsQuestions from './courses/l1-tokenomics.json';
 
 interface QuizProps {
   quizId: string;
@@ -31,7 +30,6 @@ const Quiz: React.FC<QuizProps> = ({ quizId }) => {
     setIsClient(true);
     const all = {
       ...quizData.quizzes,
-      ...l1TokenomicsQuestions
     };
     const fetchedQuizInfo = all[quizId as keyof typeof quizData.quizzes];
     if (fetchedQuizInfo) {
