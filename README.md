@@ -3,7 +3,13 @@
 ## **Demo**
 
 - **Live Demo**: [https://avalcheck.com](https://avalcheck.com)
-- **Video Presentation**: [https://www.loom.com/share/b5304c48999a46c298d33fd0e73e7678](https://www.loom.com/share/b5304c48999a46c298d33fd0e73e7678)
+- **Video Presentation**: [https://www.loom.com/share/0cb4f9a3d1ed4bf181c1020bfce45100](https://www.loom.com/share/0cb4f9a3d1ed4bf181c1020bfce45100)
+
+- **Video Progress**: [https://www.loom.com/share/b5304c48999a46c298d33fd0e73e7678](https://www.loom.com/share/b5304c48999a46c298d33fd0e73e7678)
+
+- **Video Frontend Structure**: [https://www.loom.com/share/dc5c15b73b2f43ccae02726d878d126c](https://www.loom.com/share/dc5c15b73b2f43ccae02726d878d126c)
+
+- **Video Backend Structure**: [https://www.loom.com/share/768e87e5bd304c95a368e4bf76a9bc85](https://www.loom.com/share/768e87e5bd304c95a368e4bf76a9bc85)
 
 ---
 
