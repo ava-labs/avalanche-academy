@@ -52,3 +52,6 @@ L1 validators do not need to:
 - Validate or participate in consensus on the Primary Network (X, P, and C-Chains)
 
 Unless removed by the Owner Key, any Subnet validator added to the network before `ConvertSubnetToL1Tx` will continue to validate the network until its "end time" is reached.
+
+Once a Subnet has been converted to an L1, Subnet validators can no longer be added. After a previous Subnet validator is removed or its "end time" is reached, a validator with
+the name NodeID can be added as an L1 validator to the network with `RegisterL1ValidatorTx`, the same as any other L1 validator who wishes to join the network.
