@@ -120,7 +120,7 @@ const officialCourses: Course[] = [
         icon: <HexagonIcon />,
         status: "featured",
         duration: "2.5 hours",
-        tools: ["Teleporter", "Chainlink VRF"],
+        tools: ["ICM", "Chainlink VRF"],
         languages: ["Solidity"],
         instructors: ["Martin Eckardt", "Andrea Vargas", "Ash"]
     }
