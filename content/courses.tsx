@@ -1,5 +1,5 @@
 
-import { ArrowLeftRight, Coins, MailIcon, SquareCode, SquareIcon, SquareStackIcon, TerminalIcon, Triangle } from 'lucide-react';
+import { ArrowLeftRight, Coins, MailIcon, SquareCode, SquareIcon, SquareStackIcon, TerminalIcon, Triangle, HexagonIcon } from 'lucide-react';
 
 export type Course = {
     name: string;
@@ -112,18 +112,20 @@ const officialCourses: Course[] = [
         tools: ["HyperSDK"],
         languages: ["Go", "Typescript"],
         instructors: ["Aaron Buchwald", "Ilya", "Rodrigo Villar", "Martin Eckardt", "Owen Wahlgren"]
-    }
-    /*{
-        name:"Chainlink VRF with Interchain Messaging ",
+    },
+    {
+        name:"Chainlink VRF with Interchain Messaging",
         description:"Utilize Interchain Messaging to make Chainlink VRF available on any blockchain in the Avalanche Network",
-        slug:"teleporter-chainlink-vrf",
-        icon: Dice3Icon,
+        slug:"icm-chainlink",
+        icon: <HexagonIcon />,
         status: "featured",
         duration: "2.5 hours",
         tools: ["Teleporter", "Chainlink VRF"],
-        languages: ["Solidity"]
-     },
-     {
+        languages: ["Solidity"],
+        instructors: ["Martin Eckardt", "Andrea Vargas", "Ash"]
+    }
+    /*,
+    {
         name:"HyperSDK",
         description:"Learn to build customized Virtual Machines using our SDK",
         slug:"hypersdk",

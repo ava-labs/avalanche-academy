@@ -3,15 +3,7 @@
   "root": true,
   "pages": [
     "index",
-    "---L1 with C-chain services enabled---",
-    "...00-cchain-services-on-l1",
     "---Chainlink VRF on your L1---",
     "...01-access-chainlink-vrf-services",
-    "---Chainlink Functions on your L1---",
-    "...01-access-chainlink-functions",
-    "---Chainlink Functions on your L1---",
-    "...01-access-chainlink-automation",
-    "---Conclusion---",
-    "certificate"
   ]
 }
