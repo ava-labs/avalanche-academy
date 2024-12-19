@@ -29,6 +29,11 @@ const config = {
         permanent: true,
       },
       {
+        source: '/course/interchain-messaging/14-access-chainlink-vrf-services',
+        destination: '/course/icm-chainlink/01-access-chainlink-vrf-services',
+        permanent: true,
+      },
+      {
         source: '/start',
         destination: '/',
         permanent: true,
