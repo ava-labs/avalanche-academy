@@ -1,19 +1,15 @@
 {
-  "title": "Interchain Messaging",
+  "title": "Chainlink ICM",
   "root": true,
   "pages": [
     "index",
     "---Chainlink VRF on your L1---",
     "...01-access-chainlink-vrf-services",
-    "---L1 with C-chain services enabled---",
-    "...00-cchain-services-on-l1",
     "---Chainlink Functions on your L1---",
     "...02-access-chainlink-functions",
     "---Chainlink Automation on your L1---",
     "...03-access-chainlink-automation",
     "---Chainlink CCIP and ICM---",
-    "...04-ccip-icm",
-    "---Conclusion---",
-    "certificate"
+    "...04-ccip-icm"
   ]
 }

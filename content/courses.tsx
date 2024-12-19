@@ -114,8 +114,8 @@ const officialCourses: Course[] = [
         instructors: ["Aaron Buchwald", "Ilya", "Rodrigo Villar", "Martin Eckardt", "Owen Wahlgren"]
     },
     {
-        name:"Chainlink VRF with Interchain Messaging",
-        description:"Utilize Interchain Messaging to make Chainlink VRF available on any blockchain in the Avalanche Network",
+        name:"Chainlink on your L1 via ICM",
+        description:"Utilize Interchain Messaging to make Chainlink services available on any blockchain in the Avalanche Network",
         slug:"icm-chainlink",
         icon: <HexagonIcon />,
         status: "featured",
