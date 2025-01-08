@@ -7,20 +7,26 @@ icon: Book
 ---
 Previously, we explored the ERC-20 interface, a contract standard which allowed for the implementation of a token contract which the majority of smart contract users are able to easily call. As a result of the ERC-20 standard, many protocols were able flourish without having to worry about incompatible token interfaces. However, there is one thing that the ERC-20 standard did not fix...
 To understand the biggest shortcoming of the ERC-20 standard, we will first digress from talking about the functionality of the ERC-20 to discussing the concept of fungibility. 
-Fungibility
+
+## Fungibility
+
 Fungibility refers to the ability of an item to be converted into another item (without any difference in value). The most basic example of fungibility is currency:
-Dollar bills are considered fungible because if we swap one dollar bill for another dollar bill without any change in value
-For a given $100 bill, we can convert it into 100 $1 bills. Therefore, we can consider a $100 bill to be fungible
-For a $2 bill, we can convert it into 200 pennies. Therefore, $2 bills are fungible.
+- Dollar bills are considered fungible because if we swap one dollar bill for another dollar bill without any change in value
+- For a given $100 bill, we can convert it into 100 $1 bills. Therefore, we can consider a $100 bill to be fungible
+- For a $2 bill, we can convert it into 200 pennies. Therefore, $2 bills are fungible.
 Relating this to ERC-20 tokens, notice that 1 unit of some ERC-20 token A will always be equivalent to 1 unit of the same ERC-20 token A. Therefore, ERC-20 tokens are fungible. However, this also implies that for a use case that requires for 1 unit of some ERC-20 A to be different in value than 1 unit of the same ERC-20 token A, the ERC-20 token standard is not sufficient for such a use case.
-ERC-721
+
+## ERC-721
+
 To make clear a particular that ERC-20 cannot support, imagine we wanted to represent an art collection within a smart contract. The smart contract would contain the following functionality in a similar fashion to an ERC-20 token:
-The ability to query the "balance" (i.e. the art holdings) of a particular user
-The ability to transfer art pieces from one account to another
-The ability to get information about the art collection
-The biggest different between an arbitrary ERC-20 token contract and an art collection is the fungibility of individual items - ERC-20 tokens are inherently fungible with items in the art collections are not (since the items each vary in value).
+- The ability to query the "balance" (i.e. the art holdings) of a particular user
+- The ability to transfer art pieces from one account to another
+- The ability to get information about the art collection
+- The biggest different between an arbitrary ERC-20 token contract and an art collection is the fungibility of individual items - ERC-20 tokens are inherently fungible with items in the art collections are not (since the items each vary in value).
 
 To account for uses cases like an art collection, the ERC-721 standard was introduced. Formally, ERC-721 is a standard for non-fungible tokens. Below is the interface of the ERC-721 token from its original proposal :
+
+```solidity
 interface ERC721 {
     /// @dev This emits when ownership of any NFT changes by any mechanism.
     ///  This event emits when NFTs are created (`from` == 0) and destroyed
@@ -115,10 +121,21 @@ interface ERC721 {
     /// @return True if `_operator` is an approved operator for `_owner`, false otherwise
     function isApprovedForAll(address _owner, address _operator) external view returns (bool);
 }
-Implementation Design
+```
+
+## Implementation Design
+
 Notice that for an ERC-20 token, we can store the balance of all token holders with the following data structure:
+
+```solidity
 mapping(address => uint) balances;
+```
+
 In the case of the ERC-721 token standard, this is not enough, since using just this data structure would imply that all tokens of an ERC-721 contract are fungible. Therefore, we want to use the following data structures:
+
+```solidity
 mapping(address => uint) balances;
 mapping(uint => address) holders;
+```
+
 The balances data structure will map accounts to the number of non-fungible tokens they hold. The data structure holders, meanwhile, will map the ID of each non-fungible token to the address which holds the token. Therefore, by adding just another mapping, we've just allowed our token contract to incorporate non-fungible tokens!

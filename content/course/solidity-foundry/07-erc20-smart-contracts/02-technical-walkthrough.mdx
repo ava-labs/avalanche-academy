@@ -6,8 +6,11 @@ authors: [Andrea Vargas, Ash]
 icon: Book
 ---
 In this section, we will introduce the ERC-20 interface that all token contracts should aim to implement. Furthermore, we will go through each function that the ERC-20 contract mentions and explain what it does in-depth.
-ERC-20 Interface
+## ERC-20 Interface
+
 Below is the ERC-20 interface from EIP-20:
+
+```solidity
 interface IERC20 {
 ​
     function name() external view returns (string memory);
@@ -29,18 +32,33 @@ interface IERC20 {
     function allowance(address _owner, address _spender) external view returns (uint256 remaining);
 ​
 }
+```
 The above is derived from eips.ethereum.org/EIPS/eip-20, the official proposal page for the ERC-20 standard. We will now examine each function:
+
+```solidity
 name()
+```
+
 As the name might suggest, this function returns the name of the token. As an example, for the Wrapped AVAX contract, this would return "Wrapped AVAX".
+
+```solidity
 symbol()
+```
+
 This function returns the ticker representation of the token. As an example, the United States Dollar usually has the ticker symbol "USD".  For Wrapped Avax, we have "WAVAX".
+
+```solidity
 decimals()
+```
+
 Perhaps the first unfamiliar topic here, decimals refers to the precision of the token. In Solidity, there is no support for floating point numbers (i.e. decimals) and therefore, any quantity must be represented as a whole number. 
 
 To get around this intricacy, we can represent floating-point numbers by multiplying them with a large number to convert them into a whole number: Consider the following examples:
-0.05 * 100 = 5
-0.54367 * 100000 = 54367
-0.3 * 10 = 3
+
+$$0.05 * 100 = 5$$
+$$0.54367 * 100000 = 54367$$
+$$0.3 * 10 = 3$$
+
 Multiplying by a power of 10 is equivalent to shifting a number one place to the right. Therefore, for a quantity of token x (which could be a floating point number), we represent this value on-chain as x * 10^n, where n is a number greater than 0. Therefore, n is what decimals() would return.
 For the rest of this section, we will refer to the following terms:
 Numerical Representation: a quantity of the token that has been converted from a floating-point number to a whole number (via multiplying by 10^n)
