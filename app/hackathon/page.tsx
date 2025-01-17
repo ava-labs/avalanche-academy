@@ -325,7 +325,7 @@ export default function HackathonPage() {
             
             <p className="text-lg text-gray-600 dark:text-gray-400">
               Are you a project looking for developers to test your product and enhace the Avalanche Ecosystem?{" "}
-              <Link href="mailto:example@example.com" passHref>
+              <Link href="mailto:brittany.gilliam@avalabs.org" passHref>
                 <strong className="text-yellow-500 hover:underline">
                 Contact us
                 </strong>
