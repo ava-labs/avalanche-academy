@@ -1,7 +1,7 @@
 "use client"
 import React, { useState, ReactNode } from "react";
 import Link from 'next/link';
-import { ArrowUpRight, Code, Link as Zap, Link2, Lightbulb, X, Book, Users, SquareTerminal, Box } from 'lucide-react';
+import { ArrowUpRight, Code, Link as Zap, Link2, Lightbulb, X, Book, Users, SquareTerminal, Box, Mail } from 'lucide-react';
 import PartnerTracks from './partners';
 import { buttonVariants } from '@/components/ui/button';
 
@@ -161,111 +161,90 @@ const TrackCard: React.FC<{ track: Track }> = ({ track }) => {
 export default function HackathonPage() {
   const tracks: Track[] = [
     {
-      id: 'avalanche9000',
-      title: 'Avalanche9000',
-      description: "Avalanche's new Etna Devnet offers developers a platform to test new features and prepare for the upcoming network upgrade, pushing the limits of blockchain development.",
+      id: 'nodes-network',
+      title: 'Nodes and Network',
+      description: "Develop solutions for staking management contracts, on-chain governance, membership platforms, and validator node group management.",
       difficulty: 'Advanced',
       color: 'border-red-500 text-red-700',
-      icon: <Box size={24} className="text-purple-500" />,
+      icon: <Box size={24} className="text-red-500" />,
       examples: [
-        'Create an intuitive and powerful Validator management platform for networks that utilize various mechanisms such as Proof of Authority (PoA), Proof of Stake (PoS), or Delegated Proof of Stake (dPoS).',
-        'Build a protocol that automates the payment of continuous P-Chain fees using USDC on the C-Chain.',
-        'Build a tooling/interface which enhances the experience of launching new L1s after the Avalanche9000 upgrade.'
+        'Build staking management smart contracts for validator nodes.',
+        'Create on-chain governance frameworks to manage decentralized networks.',
+        'Develop platforms to manage memberships and validator node groups.'
       ],
       resources: [
-        { name: 'Etna Devnet Resources', url: 'https://github.com/ava-labs/etna-devnet-resources' },
-        { name: 'Validator Manager Contracts', url: 'https://github.com/ava-labs/teleporter/tree/validator-manager/contracts/validator-manager' },
-        { name: 'Devnet C-Chain Explorer', url: 'https://2ffd1590.etna-83w.pages.dev/devnet-c-chain' }
+        { name: 'Avalanche Validator Guide', url: 'https://docs.avax.network/nodes' },
+        { name: 'Governance Models', url: 'https://github.com/ava-labs/icm-contracts/tree/main/contracts/governance' }
       ]
     },
     {
-      id: 'build',
-      title: 'Build a Product',
-      description: "This track challenges builders to develop impactful use cases that leverage Avalanche's full tech stack. Participants will create practical applications addressing real-world problems with Avalanche technology.",
-      difficulty: 'Intermediate',
+      id: 'virtual-machines',
+      title: 'Virtual Machines',
+      description: "Customize the execution layer of your blockchain by enhancing the EVM or creating dedicated virtual machines for specific functionalities, optimizing resource usage, and increasing TPS.",
+      difficulty: 'Advanced',
       color: 'border-blue-500 text-blue-700',
-      icon: <Zap size={24} className="text-blue-500" />,
-      challengeDetails: [
-        'Create practical applications that address real-world problems',
-        'Demonstrate the versatility and power of Avalanche',
-        'Focus on real-world use cases with significant impact potential'
+      icon: <SquareTerminal size={24} className="text-blue-500" />,
+      examples: [
+        'Add custom functionality to the EVM for specialized use cases.',
+        'Develop dedicated virtual machines for optimized transaction processing.',
+        'Utilize modular frameworks to modify transaction logic.'
       ],
-      technologies: {
-        'ICTT and Teleporter': { description: 'Cross-chain communication protocols for data and token transfers across different Avalanche L1s', skills: 'Solidity experience' },
-        'Glacier & Webhooks': { description: 'Create dashboards, enhance data visualization and bring insightful content to your users by reading on-chain indexed data', skills: 'API usage' },
-        'Avalanche L1s': { description: 'Deploy your own Layer 1 blockchain to meet diverse technical requirements and reach scalability', skills: 'Interact with CLI, or using AvaCloud (no code)' },
-        'Custom VMs': { description: 'Innovate with custom virtual machines and EVM-precompiles to enable new types of computations and functionalities on the blockchain', skills: 'Golang, Solidity' },
-        'HyperSDK': { description: 'Create your own Hyper-Performant Virtual Machine', skills: 'Golang, Solidity' }
+      resources: [
+        { name: 'Customize the EVM:', url: 'https://academy.avax.network/course/customizing-evm' },
+        { name: 'Custom VM with HyperSDK:', url: 'https://github.com/ava-labs/hypersdk' }
+      ]
+    },
+    {
+        id: 'cross-chain-dapps',
+        title: 'Cross-Chain Decentralized Applications (dApps)',
+        description: "Develop cross-chain decentralized applications on your own customizable L1 that seamlessly interacts with multiple blockchain networks using ICM and ICTT.",
+        difficulty: 'Intermediate',
+        color: 'border-green-500 text-green-700',
+        icon: <Zap size={24} className="text-green-500" />,
+        examples: [
+          'Create DeFi, SocialFi, or Gaming dApps that operate across multiple Avalanche L1s and other blockchains.',
+          'Develop applications utilizing staking, governance, or NFTs with cross-chain functionality.',
+          'Integrate seamless user experiences with multi-network infrastructures.'
+        ],
+        resources: [
+          { name: 'InterChain Messaging', url: 'https://academy.avax.network/course/interchain-messaging' },
+          { name: 'InterChain Token Transfer', url: 'https://academy.avax.network/course/interchain-token-transfer' },
+          { name: 'Cross-Chain Communication', url: 'https://docs.avax.network/build/avalanchego/cross-chain' }
+        ]
       },
-      examples: [
-        'Real World Assets (RWA)',
-        'SocialFi',
-        'DeFi',
-        'Institutional Use Cases',
-        'Supply Chain Management',
-        'Gaming'
-      ],
-      resources: [
-        { name: 'Avalanche Starter Kit', url: 'https://github.com/ava-labs/avalanche-starter-kit' },
-        { name: 'HyperSDK Starter Kit', url: 'https://github.com/ava-labs/hypersdk-starter-kit' },
-        { name: 'BuilderKit', url: 'https://www.npmjs.com/package/@0xstt/builderkit' },
-        { name: 'Faucet', url: 'https://core.app/tools/testnet-faucet/?subnet=c&token=c' }
-      ]
-    },
-    {
-      id: 'interop',
-      title: 'Interoperability',
-      description: "Developers will design seamless, scalable solutions for cross-chain interoperability. Using Avalanche's Interchain Messaging Protocol (ICM) and tools, builders will enable efficient multi-chain data transfers.",
-      difficulty: 'Advanced',
-      color: 'border-green-500 text-green-700',
-      icon: <Link2 size={24} className="text-green-500" />,
-      examples: [
-        'Enable C-chain deployed services in L1s with ICM',
-        'ICM support for the HyperSDK',
-        'Chain abstraction asset transfers, modify the EVM in a way to improve Multichain User Experience',
-        'USDC to L1 via an On-Ramp on the C-Chain and ICTT'
-      ],
-      resources: [
-        { name: 'ICM Course', url: 'https://academy.avax.network/course/interchain-messaging' },
-        { name: 'ICTT Course', url: 'https://academy.avax.network/course/interchain-token-transfer' },
-        { name: 'AWM Relayer Repo', url: 'https://github.com/ava-labs/awm-relayer' }
-      ]
-    },
-    {
-      id: 'advanced',
-      title: 'Advanced Technical Development',
-      description: "This track invites participants to push Avalanche's technical boundaries. Focusing on performance, cryptography, and scalability, developers will explore cutting-edge blockchain solutions without business constraints.",
-      difficulty: 'Advanced',
-      color: 'border-purple-500 text-purple-700',
-      icon: <Code size={24} className="text-purple-500" />,
-      challengeDetails: [
-        'Performance Optimization: Improve the speed and efficiency of blockchain operations, focusing on reducing latency and increasing throughput',
-        'Scalability Solutions: Create innovative solutions to scale the Avalanche network, addressing challenges related to consensus, data storage, and node management',
-        'Developer Tools: Build advanced tools and frameworks to support developers in building, testing, and deploying blockchain applications more efficiently'
-      ],
-      examples: [
-        'Build a DA solution with HyperSDK',
-        'Gas Sponsorship',
-        'Cryptographic enablements such as ZK proofs, etc.'
-      ],
-      resources: [
-        { name: 'HyperSDK Starter Kit', url: 'https://github.com/ava-labs/hypersdk-starter-kit' },
-        { name: 'Validator Manager Contracts', url: 'https://github.com/ava-labs/teleporter/tree/validator-manager/contracts/validator-manager' },
-        { name: 'Faucet', url: 'https://core.app/tools/testnet-faucet/?subnet=c&token=c' }
-      ]
-    },
-    {
-      id: 'innovation',
-      title: 'Open Innovation',
-      description: "This track invites participants to push Avalanche's technical boundaries. Focusing on performance, cryptography, and scalability, developers will explore cutting-edge blockchain solutions without business constraints.",
-      difficulty: 'Open',
-      color: 'border-yellow-500 text-yellow-700',
-      icon: <Lightbulb size={24} className="text-yellow-500" />,
-      technologies: {
-        'Avalanche Stack': { description: 'Free use of all Avalanche technologies' }
+      {
+        id: 'tooling',
+        title: 'Developer Tooling',
+        description: "Leverage Avalanche's technology by creating developer tools that simplify building and deploying applications on Avalanche.",
+        difficulty: 'Intermediate',
+        color: 'border-purple-500 text-purple-700',
+        icon: <Code size={24} className="text-purple-500" />,
+        examples: [
+          'Develop SDKs or APIs to improve developer experience.',
+          'Build tools for smart contract deployment and testing.',
+          'Create dashboards for network monitoring and analytics.'
+        ],
+        resources: [
+          { name: 'Avalanche SDK', url: 'https://github.com/ava-labs/avalanchejs' },
+          { name: 'Developer Tools', url: 'https://docs.avax.network/tools' }
+        ]
       },
-      challengeDetails: ["Any innovative solution using Avalanche's capabilities to address problems in various industries."]
-    },
+      {
+        id: 'ai-agent',
+        title: 'AI Agents',
+        description: "Leverage Avalanche's technology by creating developer tools that simplify building and deploying applications on Avalanche.",
+        difficulty: 'Intermediate',
+        color: 'border-purple-500 text-purple-700',
+        icon: <Code size={24} className="text-purple-500" />,
+        examples: [
+          'Develop SDKs or APIs to improve developer experience.',
+          'Build tools for smart contract deployment and testing.',
+          'Create dashboards for network monitoring and analytics.'
+        ],
+        resources: [
+          { name: 'Avalanche SDK', url: 'https://github.com/ava-labs/avalanchejs' },
+        ]
+      },  
   ];
 
   return (
@@ -273,15 +252,15 @@ export default function HackathonPage() {
       <div className="py-12 sm:py-12">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="mx-auto w-full lg:mx-0">
-            <h2 className="text-center text-5xl font-bold tracking-tight sm:text-10xl">Summit LATAM Hackathon</h2>
+            <h2 className="text-center text-5xl font-bold tracking-tight sm:text-10xl">Summit London Hackathon</h2>
             <p className="mt-12 text-center text-lg leading-8 text-muted-foreground">
               At Avalanche, we believe in the power of technology to transform industries and solve real-world problems.
               This hackathon aims to harness the potential of Avalanche's robust technology stack to address pressing issues and create scalable, practical solutions. 
             </p>
           </div>
           <div className="flex items-center max-w-xl p-4 mx-auto mt-4 text-sm rounded-lg group" style={{ justifyContent: "center" }}>
-            <Link href="https://avax.typeform.com/to/mUSRGxjh" className={buttonVariants({ size: 'lg', variant: 'default' })}>
-              Click Here to Submit your Project <ArrowUpRight size={20} style={{ color: "inherit" }}/>
+            <Link href="https://lu.ma/avalanchesummitlondonhackathon" className={buttonVariants({ size: 'lg', variant: 'default' })}>
+              Register Here! →
             </Link>
           </div>
         </div>
@@ -298,16 +277,18 @@ export default function HackathonPage() {
                 $50,000 Prize Pool
               </div>
               <p className="text-xl text-gray-700 dark:text-gray-300 mb-6">
-                Distributed across all tracks based on project impact and innovation.
+                Distributed across all tracks based on project impact and innovation. (Plus partner's prizes).
               </p>
               <div className="mb-6">
                 <p className="text-lg text-gray-600 dark:text-gray-400">
-                  Top participants may earn a spot in the <strong>Codebase Incubator Program</strong>, gaining access to exclusive resources and mentorship.
+                  Top participants may earn a spot in the{" "}
+                  <Link href="https://codebase.avax.network/" passHref>
+                    <strong className="text-yellow-500 hover:underline">
+                    Codebase Incubator Program
+                    </strong>
+                  </Link>, gaining access to exclusive resources and mentorship.
                 </p>
               </div>
-              <Link href="https://codebase.avax.network/" className="inline-block px-6 py-3 bg-yellow-500 text-white rounded-full shadow hover:bg-yellow-600 transition">
-                Learn More About Codebase Incubator →
-              </Link>
             </div>
           </Card>
         </div>
@@ -316,17 +297,40 @@ export default function HackathonPage() {
       <div className="py-12 sm:py-12">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <h2 className="text-3xl font-bold mb-6 text-gray-800 dark:text-gray-200">Hackathon Tracks</h2>
+          {/*
+          <p className="text-lg text-gray-600 dark:text-gray-400">
+              To be Announced...<strong>Stay Tuned!</strong>
+          </p>
+          */}
+          
           <div className="grid gap-6 md:grid-cols-2">
             {tracks.map((track) => (
               <TrackCard key={track.id} track={track} />
             ))}
-          </div>
+          </div> 
+          
         </div>
       </div>
 
-      <div className="py-8 sm:py-8">
+      {/*<div className="py-8 sm:py-8">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <PartnerTracks />
+        <PartnerTracks />  
+        </div>
+      </div>
+      */}
+      
+      <div className="py-12 sm:py-12">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+          <h2 className="text-3xl font-bold mb-6 text-gray-800 dark:text-gray-200">Partner Tracks</h2>
+            
+            <p className="text-lg text-gray-600 dark:text-gray-400">
+              Are you a project looking for developers to test your product and enhace the Avalanche Ecosystem?{" "}
+              <Link href="mailto:brittany.gilliam@avalabs.org" passHref>
+                <strong className="text-yellow-500 hover:underline">
+                Contact us
+                </strong>
+              </Link>, and become a partner
+            </p>
         </div>
       </div>
 
