@@ -13,16 +13,16 @@ const staticRedirects: RedirectMap = {
 
 function getDestinationUrl(currentPath: string): string {
   if (currentPath in staticRedirects) {
-    return `https://developers.avax.network${staticRedirects[currentPath]}`;
+    return `https://build.avax.network${staticRedirects[currentPath]}`;
   }
   
   if (currentPath.startsWith('/course/')) {
     const newPath = currentPath.replace('/course/', '/academy/');
-    return `https://developers.avax.network${newPath}`;
+    return `https://build.avax.network${newPath}`;
   }
 
   const cleanPath = currentPath.startsWith('/') ? currentPath.slice(1) : currentPath;
-  return `https://developers.avax.network/${cleanPath}`;
+  return `https://build.avax.network/${cleanPath}`;
 }
 
 export async function generateMetadata({ 
