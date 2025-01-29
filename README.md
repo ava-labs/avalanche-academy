@@ -1,5 +1,8 @@
 # Avalanche Academy
 
+> [!CAUTION]
+> The Avalanche Academy has been migrated to the Avalanche Builder Hub. You can find the repository [here](https://github.com/ava-labs/avalanche-docs)). This repository is not monitored anymore.
+
 Avalanche Academy is a comprehensive learning platform designed to educate developers, enthusiasts, and industry professionals about the Avalanche ecosystem. It offers a variety of courses and resources to help users understand and leverage Avalanche's blockchain technology stack.
 
 ## Content Types
